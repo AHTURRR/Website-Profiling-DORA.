@@ -26,8 +26,8 @@ export const SystemRequirements: React.FC<SystemRequirementsProps> = ({ requirem
 
         {/* Requirements Cards */}
         <div className="requirements-grid">
-          {requirements.map((req) => (
-            <div key={req.osKey} className="requirement-card" id={`req-card-${req.osKey}`}>
+          {requirements.map((req, idx) => (
+            <div key={`${req.osKey}-${idx}`} className="requirement-card" id={`req-card-${req.osKey}-${idx}`}>
               <div className="req-header">
                 <h3 className="req-os-name">{req.osName}</h3>
                 <span className="badge badge-success">Terverifikasi</span>
