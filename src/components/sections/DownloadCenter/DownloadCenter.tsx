@@ -165,9 +165,10 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
                   className="download-pkg-btn"
                   id={`btn-download-${release.id}`}
                   download
+                  title={`Download ${release.filename}`}
                 >
                   <Download size={18} />
-                  <span>Download {release.filename}</span>
+                  <span>{release.buttonLabel || `Download ${release.filename}`}</span>
                 </a>
               </div>
             </div>

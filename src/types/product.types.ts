@@ -61,6 +61,7 @@ export interface ReleasePackage {
   checksumSha256?: string;
   isPrimaryForPlatform?: boolean;
   notes?: string;
+  buttonLabel?: string;
 }
 
 export interface SystemRequirementsItem {
