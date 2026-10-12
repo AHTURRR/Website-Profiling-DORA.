@@ -1,0 +1,127 @@
+.requirements-section {
+  background-color: var(--color-bg-main);
+}
+
+.requirements-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.75rem;
+  max-width: 980px;
+  margin: 0 auto 2.5rem;
+}
+
+.requirement-card {
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.75rem;
+  box-shadow: var(--shadow-xs);
+  transition: all var(--transition-normal);
+  display: flex;
+  flex-direction: column;
+}
+
+.requirement-card:hover {
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-2px);
+}
+
+.req-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--color-border);
+  margin-bottom: 1.25rem;
+}
+
+.req-os-name {
+  font-size: 1.25rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+}
+
+.req-table {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  flex-grow: 1;
+}
+
+.req-row {
+  display: flex;
+  gap: 0.85rem;
+  align-items: flex-start;
+}
+
+.req-row-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: var(--radius-xs);
+  background-color: var(--color-blue-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-blue-accent);
+  flex-shrink: 0;
+  margin-top: 0.1rem;
+}
+
+.req-row-content {
+  display: flex;
+  flex-direction: column;
+}
+
+.req-label {
+  font-size: 0.75rem;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  margin-bottom: 0.2rem;
+}
+
+.req-value {
+  font-size: 0.9rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-primary);
+  line-height: 1.4;
+}
+
+.req-subvalue {
+  font-size: 0.775rem;
+  color: var(--color-text-secondary);
+  margin-top: 0.15rem;
+}
+
+.req-note {
+  font-size: 0.825rem;
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-regular);
+}
+
+.requirements-footer-note {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  text-align: center;
+  padding: 1rem;
+  background-color: var(--color-bg-subtle);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--color-border);
+}
+
+.note-ok-icon {
+  color: var(--color-success);
+  flex-shrink: 0;
+}
+
+@media (max-width: 1024px) {
+  .requirements-grid {
+    grid-template-columns: 1fr;
+  }
+}

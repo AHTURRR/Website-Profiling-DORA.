@@ -1,0 +1,84 @@
+/**
+ * Design Tokens
+ * Berdasarkan panduan visual PRD Bagian 12:
+ * - Clean Professional / Product-first
+ * - Palette: Navy (#172D50), Blue Accent (#1F5EFF), Background (#F7F9FC), Text (#142844, #53647A)
+ */
+
+:root {
+  /* Brand & Core Palette */
+  --color-navy: #172D50;
+  --color-navy-dark: #0F1E36;
+  --color-navy-light: #223F6D;
+  --color-blue-accent: #1F5EFF;
+  --color-blue-hover: #1449CC;
+  --color-blue-subtle: #EEF4FF;
+  --color-blue-border: #D0E0FF;
+
+  /* Surfaces & Backgrounds */
+  --color-bg-main: #F7F9FC;
+  --color-bg-surface: #FFFFFF;
+  --color-bg-elevated: #FFFFFF;
+  --color-bg-subtle: #F1F4F9;
+  --color-bg-dark-section: #0F1E36;
+  --color-bg-dark-card: #172D50;
+
+  /* Typography Colors */
+  --color-text-primary: #142844;
+  --color-text-secondary: #53647A;
+  --color-text-muted: #8494A7;
+  --color-text-inverse: #FFFFFF;
+  --color-text-inverse-muted: #A0B2C6;
+
+  /* Borders & Dividers */
+  --color-border: #DCE3ED;
+  --color-border-subtle: #E8EEF5;
+  --color-border-hover: #BACADF;
+  --color-border-dark: #274068;
+
+  /* Status Colors */
+  --color-success: #059669;
+  --color-success-bg: #ECFDF5;
+  --color-success-border: #A7F3D0;
+  --color-warning: #D97706;
+  --color-warning-bg: #FFFBEB;
+  --color-info: #0284C7;
+  --color-info-bg: #F0F9FF;
+
+  /* Typography Families */
+  --font-family-base: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-family-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Font Weights */
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+  --font-weight-extrabold: 800;
+
+  /* Radii */
+  --radius-xs: 4px;
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-xs: 0 1px 2px rgba(20, 40, 68, 0.04);
+  --shadow-sm: 0 2px 4px rgba(20, 40, 68, 0.05);
+  --shadow-md: 0 6px 16px rgba(20, 40, 68, 0.07);
+  --shadow-lg: 0 12px 32px rgba(20, 40, 68, 0.09);
+  --shadow-xl: 0 20px 48px rgba(20, 40, 68, 0.12);
+  --shadow-glow: 0 0 24px rgba(31, 94, 255, 0.25);
+
+  /* Transitions */
+  --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Layout Max Width */
+  --container-max-width: 1200px;
+  --container-narrow-width: 860px;
+  --header-height: 72px;
+}

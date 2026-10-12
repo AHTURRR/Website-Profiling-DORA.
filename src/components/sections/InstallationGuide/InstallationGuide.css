@@ -1,0 +1,190 @@
+.installation-section {
+  background-color: #ffffff;
+  border-top: 1px solid var(--color-border);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.guide-os-tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-bottom: 2.5rem;
+}
+
+.guide-tab-btn {
+  padding: 0.65rem 1.4rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.95rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  background-color: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-fast);
+}
+
+.guide-tab-btn:hover {
+  color: var(--color-navy);
+  border-color: var(--color-border-hover);
+}
+
+.guide-tab-btn.active {
+  background-color: var(--color-navy);
+  color: #ffffff;
+  border-color: var(--color-navy);
+  box-shadow: var(--shadow-sm);
+}
+
+.guide-card {
+  max-width: 920px;
+  margin: 0 auto;
+  background: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  box-shadow: var(--shadow-xs);
+}
+
+/* Steps Timeline */
+.steps-timeline {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.5rem;
+}
+
+.step-timeline-item {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.step-timeline-item:last-child .step-connector-line {
+  display: none;
+}
+
+.step-number-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.step-number-circle {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--color-blue-accent);
+  color: #ffffff;
+  font-weight: var(--font-weight-bold);
+  font-size: 0.95rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(31, 94, 255, 0.3);
+  flex-shrink: 0;
+}
+
+.step-connector-line {
+  width: 2px;
+  flex-grow: 1;
+  background-color: var(--color-border);
+  margin: 0.5rem 0;
+  min-height: 30px;
+}
+
+.step-content-col {
+  padding-bottom: 2rem;
+  flex-grow: 1;
+}
+
+.step-title {
+  font-size: 1.15rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+  margin-bottom: 0.35rem;
+}
+
+.step-desc {
+  font-size: 0.95rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+.step-code-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  background: #0f1c30;
+  color: #e2e8f0;
+  padding: 0.65rem 1rem;
+  border-radius: var(--radius-sm);
+  margin-top: 0.75rem;
+  font-family: var(--font-family-mono);
+  font-size: 0.85rem;
+}
+
+.terminal-icon {
+  color: #38bdf8;
+}
+
+.step-warning-box {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: var(--color-warning-bg);
+  color: var(--color-warning);
+  padding: 0.5rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.85rem;
+  margin-top: 0.75rem;
+}
+
+/* Tips Grid */
+.guide-tips-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--color-border);
+}
+
+.tip-box {
+  background: var(--color-bg-main);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+}
+
+.tip-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.tip-header h4 {
+  font-size: 0.95rem;
+  font-weight: var(--font-weight-bold);
+  color: var(--color-navy);
+}
+
+.tip-icon-success {
+  color: var(--color-success);
+}
+
+.tip-icon-info {
+  color: var(--color-blue-accent);
+}
+
+.tip-box p {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+  .guide-card {
+    padding: 1.5rem;
+  }
+
+  .guide-tips-grid {
+    grid-template-columns: 1fr;
+  }
+}
