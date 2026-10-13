@@ -79,7 +79,7 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
                 <span className="dot dot-yellow"></span>
                 <span className="dot dot-green"></span>
               </div>
-              <div className="mock-window-title">DORA v4.0.0 — [{currentPreview.title}]</div>
+              <div className="mock-window-title">DORA v5.0.0 — [{currentPreview.title}]</div>
               <button
                 type="button"
                 className="mock-fullscreen-btn"

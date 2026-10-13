@@ -18,7 +18,7 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
         <div className="hero-content">
           <div className="hero-badge">
             <span className="hero-badge-dot"></span>
-            <span>Versi Resmi {recommendedRelease ? recommendedRelease.version : 'v4.0.0'} Tersedia • Metriks Studio</span>
+            <span>Versi Resmi {recommendedRelease ? recommendedRelease.version : 'v5.0.0'} Tersedia • Metriks Studio</span>
           </div>
 
           <h1 className="hero-title">
@@ -87,7 +87,7 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
                 <span className="dot dot-green"></span>
               </div>
               <div className="window-title">
-                <span>DORA — Data Overview & Research Assistant (PySide6)</span>
+                <span>DORA v5.0.0 — Data Overview & Research Assistant (PySide6)</span>
               </div>
               <div className="window-badge">PIPELINE READY</div>
             </div>
