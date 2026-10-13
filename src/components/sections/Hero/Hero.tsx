@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, ArrowRight, ShieldCheck, Sparkles, Terminal, CheckCircle2 } from 'lucide-react';
+import { Download, ArrowRight, ShieldCheck, Sparkles, Terminal, CheckCircle2, Globe } from 'lucide-react';
 import type { ProductInfo, ReleasePackage, SupportedOS } from '../../../types/product.types';
 import './Hero.css';
 
@@ -63,7 +63,11 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
           <div className="hero-trust-row">
             <div className="hero-trust-item">
               <ShieldCheck size={18} className="trust-icon" />
-              <span>100% Analisis Dataset Lokal & Offline</span>
+              <span>Pemrosesan Dataset Lokal & Privat</span>
+            </div>
+            <div className="hero-trust-item">
+              <Globe size={18} className="trust-icon" />
+              <span>Riset Literatur & Dataset Online</span>
             </div>
             <div className="hero-trust-item">
               <Terminal size={18} className="trust-icon" />
@@ -89,7 +93,7 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
               <div className="window-title">
                 <span>DORA v5.0.0 — Data Overview & Research Assistant (PySide6)</span>
               </div>
-              <div className="window-badge">PIPELINE READY</div>
+              <div className="window-badge">HYBRID PIPELINE</div>
             </div>
 
             {/* Window Interior Content */}
@@ -117,27 +121,27 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
               <div className="mock-graph-container">
                 <div className="mock-graph-header">
                   <span>Pipeline Execution Flow</span>
-                  <span className="mock-time">LOCAL RUNTIME</span>
+                  <span className="mock-time">LOCAL RUNTIME + ONLINE API</span>
                 </div>
                 <div className="mock-timeline-bars">
                   <div className="timeline-track">
                     <div className="track-bar bar-1" style={{ width: '100%' }}>
-                      <span>Stage 1: Dataset Profiling & Imputation (Median/Mode) [Done]</span>
+                      <span>Stage 1: Dataset Profiling & Imputation (Median/Mode) [Local Compute]</span>
                     </div>
                   </div>
                   <div className="timeline-track">
                     <div className="track-bar bar-2" style={{ width: '85%' }}>
-                      <span>Stage 2: Feature Engineering & PyPI Packages (Seaborn/Scikit)</span>
+                      <span>Stage 2: Dataset Search & PyPI Packages (Kaggle, HF & pip) [Online Access]</span>
                     </div>
                   </div>
                   <div className="timeline-track">
                     <div className="track-bar bar-5" style={{ width: '92%' }}>
-                      <span>Stage 3: ML Intelligence (RandomForest 91.8% F1-Score)</span>
+                      <span>Stage 3: ML Intelligence (RandomForest 91.8% F1-Score) [Local Runtime]</span>
                     </div>
                   </div>
                   <div className="timeline-track">
                     <div className="track-bar bar-4" style={{ width: '78%' }}>
-                      <span>Stage 4: Literature Ranking (OpenAlex, SINTA & Scopus)</span>
+                      <span>Stage 4: Literature Ranking (OpenAlex, SINTA & Scopus) [Online Discovery]</span>
                     </div>
                   </div>
                 </div>
@@ -149,7 +153,7 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
                   <CheckCircle2 size={14} className="text-accent" />
                   <span>Research Report Ready for PDF Export</span>
                 </div>
-                <span className="engine-meta">SQLite Local DB • Zero Cloud Leaks</span>
+                <span className="engine-meta">SQLite Local Storage • Zero Dataset Leakage</span>
               </div>
             </div>
           </div>

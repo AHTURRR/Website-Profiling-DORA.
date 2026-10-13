@@ -10,9 +10,9 @@ export const productConfig: ProductConfig = {
     name: 'DORA',
     tagline: 'Data Overview & Academic Research Assistant — Asisten Cerdas Peneliti Dataset & Machine Learning',
     shortDescription:
-      'Aplikasi desktop native untuk membantu peneliti dan akademisi memahami dataset, mengeksplorasi eksperimen machine learning, dan meninjau literatur ilmiah secara lokal di komputer.',
+      'Aplikasi desktop native dengan arsitektur hybrid: pemrosesan dataset dan model ML 100% lokal di komputer Anda, terintegrasi dengan pencarian dataset publik dan literatur akademik online.',
     fullDescription:
-      'DORA (Data Overview & Research Assistant) dikembangkan oleh Metriks Studio untuk kebutuhan pembelajaran, riset, dan analisis data. Menggabungkan profiling dataset lokal, pencarian dataset publik dari Kaggle & Hugging Face, notebook Python interaktif, estimasi tugas ML otomatis, hingga penelusuran paper akademik (OpenAlex, Crossref, Semantic Scholar, SINTA, DOAJ, Scopus) dalam satu antarmuka desktop yang bersih dan responsif.',
+      'DORA (Data Overview & Research Assistant) dikembangkan oleh Metriks Studio untuk kebutuhan pembelajaran, riset, dan analisis data. DORA menggabungkan pemrosesan dataset dan machine learning privat yang dieksekusi secara lokal di komputer pengguna (tanpa risiko kebocoran data ke cloud), dengan konektivitas online untuk pencarian dataset publik (Kaggle & Hugging Face), penelusuran paper ilmiah (OpenAlex, Crossref, Semantic Scholar, SINTA, Scopus, DOAJ), dan instalasi pustaka PyPI via pip.',
     developer: {
       name: 'Metriks Studio',
       url: 'https://github.com/NezzyGremory/Dataset-Research',
@@ -37,48 +37,54 @@ export const productConfig: ProductConfig = {
       id: 'dataset-profiling',
       title: 'Dataset Profiling & Audit Kualitas Data',
       description:
-        'Unggah file CSV dengan drag-and-drop, pratinjau tabel, skor kualitas data, deteksi missing values (median/mode imputation), pemeriksaan outliers, dan matriks korelasi interaktif.',
-      benefitBadge: '100% Analisis Lokal',
+        'Unggah file CSV dengan drag-and-drop, pratinjau tabel, skor kualitas data, deteksi missing values (median/mode imputation), pemeriksaan outliers, dan matriks korelasi interaktif. Seluruh data diproses 100% lokal di komputer tanpa dikirim ke cloud.',
+      benefitBadge: 'Audit & Imputasi',
+      executionScope: 'Lokal (Offline)',
       icon: 'database',
     },
     {
       id: 'dataset-search',
       title: 'Pencarian Dataset Publik Terintegrasi',
       description:
-        'Cari ribuan dataset publik berdasarkan kata kunci dari Kaggle, Hugging Face, atau kombinasi keduanya (All providers), lalu unduh langsung ke workspace lokal DORA.',
+        'Cari ribuan dataset publik secara real-time via koneksi internet dari Kaggle, Hugging Face, atau kombinasi keduanya (All providers), lalu unduh langsung ke workspace lokal DORA hanya dalam satu klik.',
       benefitBadge: 'Kaggle & Hugging Face',
+      executionScope: 'Online (Internet)',
       icon: 'search',
     },
     {
       id: 'editor-analysis',
       title: 'Editor Analysis & Notebook Python Terpadu',
       description:
-        'Editor bergaya notebook untuk tahapan EDA, feature engineering, dan pemodelan ML (klasifikasi, regresi, clustering, ensemble). Dilengkapi eksekusi lokal, instalasi paket PyPI (pip install), dan dukungan berkas .ipynb.',
+        'Editor bergaya notebook untuk tahapan EDA, feature engineering, dan pemodelan ML (klasifikasi, regresi, clustering, ensemble). Kode dieksekusi di runtime Python lokal, dengan dukungan instalasi pustaka baru langsung dari PyPI via pip install online.',
       benefitBadge: 'Jupyter-Style Notebook',
+      executionScope: 'Hybrid (Lokal + Online)',
       icon: 'cpu',
     },
     {
       id: 'ml-intelligence',
       title: 'ML Intelligence & Estimasi Model Kandidat',
       description:
-        'Menganalisis karakteristik dataset dan target untuk memperkirakan jenis task secara otomatis, merekomendasikan metode kandidat terbaik, dan menyajikan metrik evaluasi model.',
+        'Menganalisis karakteristik dataset dan target untuk memperkirakan jenis task secara otomatis, merekomendasikan metode kandidat terbaik, dan menyajikan metrik evaluasi model secara lokal di lingkungan PC Anda.',
       benefitBadge: 'Auto-Task Detection',
+      executionScope: 'Lokal (Offline)',
       icon: 'sparkles',
     },
     {
       id: 'academic-research',
       title: 'Pencarian Literatur & Indeks Jurnal Akademik',
       description:
-        'Kueri otomatis dari konteks dataset untuk mencari paper di OpenAlex, Crossref, Semantic Scholar, Europe PMC, dan OpenAIRE. Dilengkapi verifikasi akreditasi SINTA serta indeks Scopus & DOAJ.',
+        'Membentuk kueri otomatis dari konteks dataset untuk mencari paper ilmiah via koneksi internet ke OpenAlex, Crossref, Semantic Scholar, Europe PMC, dan OpenAIRE, lengkap dengan verifikasi akreditasi SINTA serta indeks Scopus & DOAJ.',
       benefitBadge: 'SINTA, Scopus & DOAJ',
+      executionScope: 'Online (Internet)',
       icon: 'book-open',
     },
     {
       id: 'landscape-gap-report',
       title: 'Research Landscape, Gap Discovery & PDF Export',
       description:
-        'Pemetaan visual metode dan tren venue publikasi, identifikasi kandidat celah penelitian (Research Gap), serta penyusunan dan ekspor laporan riset komprehensif ke format PDF.',
-      benefitBadge: 'Ekspor Laporan PDF',
+        'Pemetaan visual tren publikasi dan venue, eksplorasi kandidat celah penelitian (Research Gap) dengan dukungan insight AI Google Gemini (opsional online), serta penyusunan dan ekspor laporan riset komprehensif ke format PDF.',
+      benefitBadge: 'Sintesis & Ekspor PDF',
+      executionScope: 'Hybrid (Lokal + Online)',
       icon: 'file-text',
     },
   ],
@@ -189,6 +195,7 @@ export const productConfig: ProductConfig = {
       ramMinimum: '4 GB RAM',
       ramRecommended: '8 GB RAM atau lebih (disarankan untuk dataset besar & matplotlib visualisasi)',
       storage: '500 MB ruang kosong disk untuk aplikasi, runtime, dan database SQLite lokal',
+      network: 'Akses internet diperlukan untuk: pencarian dataset (Kaggle/HF), kueri paper akademik (OpenAlex/Crossref/Semantic Scholar/Scopus), verifikasi SINTA & DOAJ, serta instalasi paket PyPI via pip.',
       extraRuntime: 'Tidak memerlukan runtime eksternal jika menggunakan installer setup .exe bawaan.',
     },
     {
@@ -200,6 +207,7 @@ export const productConfig: ProductConfig = {
       ramMinimum: '4 GB RAM',
       ramRecommended: '8 GB RAM',
       storage: '500 MB ruang penyimpanan disk',
+      network: 'Akses internet diperlukan untuk: clone repository GitHub, pip install dependensi PyPI, pencarian dataset, dan API literatur akademik.',
       extraRuntime: 'Python 3.11 - 3.13 dan pip untuk virtual environment (.venv).',
     },
   ],
@@ -282,32 +290,39 @@ export const productConfig: ProductConfig = {
         'DORA adalah aplikasi desktop native berbasis PySide6 (Qt) yang dikembangkan oleh Metriks Studio untuk membantu mahasiswa, peneliti, dan pengembang dalam memahami dataset, mencoba analisis machine learning terarah, serta meninjau publikasi ilmiah yang relevan dalam satu alur kerja yang terpadu.',
     },
     {
-      id: 'faq-offline-privacy',
+      id: 'faq-hybrid-offline-online',
       category: 'general',
-      question: 'Apakah isi dataset dan hasil analisis saya dikirim ke internet?',
+      question: 'Apakah DORA bekerja secara offline atau memerlukan koneksi internet?',
       answer:
-        'Tidak sama sekali. Seluruh proses analisis, profiling, pembersihan data, dan eksekusi kode machine learning berjalan 100% secara lokal di komputer Anda. Telemetri opsional hanya mencakup event penggunaan terbatas dan default-nya dinonaktifkan (TELEMETRY_API_URL kosong). Konten dataset, input pengguna, dan API key tidak pernah dikirim ke pihak luar.',
+        'DORA mengusung arsitektur hybrid yang jelas dan transparan: (1) Fitur Lokal & Offline: Pemrosesan dataset CSV Anda (profiling, audit kualitas data, pembersihan, imputasi, outlier, matriks korelasi), eksekusi model Machine Learning, dan Editor Notebook berjalan 100% secara lokal di PC Anda tanpa mengirim file dataset ke cloud. (2) Fitur Terkoneksi Internet: Pencarian dataset publik (Kaggle & Hugging Face), penelusuran publikasi ilmiah (OpenAlex, Crossref, Semantic Scholar, Europe PMC, OpenAIRE, Scopus), verifikasi akreditasi SINTA & indeks DOAJ, instalasi library baru via pip install, serta penjelasan AI Google Gemini opsional memerlukan koneksi internet aktif.',
+    },
+    {
+      id: 'faq-dataset-privacy',
+      category: 'general',
+      question: 'Bagaimana keamanan dataset dan privasi data penelitian saya?',
+      answer:
+        'Privasi data penelitian Anda sepenuhnya terjaga. Seluruh konten file dataset CSV, baris data, dan hasil perhitungan analisis numerik diproses secara lokal di komputer Anda dan disimpan di database SQLite lokal (%LOCALAPPDATA%). Telemetri default-nya dinonaktifkan (TELEMETRY_API_URL kosong) dan jikapun diaktifkan, telemetri hanya mengirimkan event pemakaian anonim yang dibatasi; konten dataset, input pengguna, dan API key tidak pernah dikirim ke pihak luar.',
     },
     {
       id: 'faq-dataset-search',
       category: 'general',
       question: 'Bagaimana cara mencari dan mengunduh dataset di DORA?',
       answer:
-        'Anda dapat membuka menu Dataset Search, mengetik kata kunci topik penelitian yang diinginkan, dan memilih provider pencarian (Kaggle, Hugging Face, atau All providers). Hasil pencarian dapat langsung diunduh ke workspace lokal DORA hanya dengan satu klik.',
+        'Anda dapat membuka menu Dataset Search, mengetik kata kunci topik penelitian yang diinginkan, dan memilih provider pencarian (Kaggle, Hugging Face, atau All providers). Fitur ini mengakses API penyedia publik secara online dan hasil pencarian dapat langsung diunduh ke workspace lokal DORA hanya dengan satu klik.',
     },
     {
       id: 'faq-editor-notebook',
       category: 'general',
       question: 'Apa fungsi Editor Analysis di dalam aplikasi?',
       answer:
-        'Editor Analysis menyediakan ruang kerja interaktif bergaya Jupyter Notebook dengan template kode Python siap pakai untuk Data Profiling, Cleaning, EDA, Feature Engineering, hingga algoritma klasifikasi, regresi, clustering, dan ensemble. Anda dapat mengedit kode, mengeksekusinya di lingkungan lokal, memasang library tambahan via pip install, serta membuka dan menyimpan berkas .ipynb.',
+        'Editor Analysis menyediakan ruang kerja interaktif bergaya Jupyter Notebook dengan template kode Python siap pakai untuk Data Profiling, Cleaning, EDA, Feature Engineering, hingga algoritma klasifikasi, regresi, clustering, dan ensemble. Kode dieksekusi di runtime Python lokal komputer Anda dengan akses instalasi paket PyPI online (pip install) dan dukungan membuka/menyimpan berkas .ipynb.',
     },
     {
       id: 'faq-academic-indexing',
       category: 'support',
       question: 'Provider publikasi apa saja yang didukung dan bagaimana status jurnal diperiksa?',
       answer:
-        'DORA terhubung ke provider akademik terkemuka seperti OpenAlex, Crossref, Semantic Scholar, Europe PMC, OpenAIRE, dan Scopus (opsional via API key Elsevier). DORA juga menyediakan fitur pemeriksaan status akreditasi nasional SINTA serta indeks reputasi internasional seperti DOAJ dan Scopus.',
+        'DORA terhubung secara online ke provider akademik terkemuka seperti OpenAlex, Crossref, Semantic Scholar, Europe PMC, OpenAIRE, dan Scopus (opsional via API key Elsevier). DORA juga menyediakan fitur pemeriksaan status akreditasi nasional SINTA secara daring serta indeks reputasi internasional seperti DOAJ dan Scopus.',
     },
     {
       id: 'faq-admin-install',

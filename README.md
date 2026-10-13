@@ -16,7 +16,7 @@ Situs ini dibangun sesuai spesifikasi teknis dan etika transparansi dalam dokume
 3. **Galeri Tangkapan Layar Asli (Lightbox Zoom):** Menampilkan antarmuka nyata DORA (Overview, Dataset Profiling, Editor Notebook, ML Intelligence, Academic Research, Research Landscape & Gap) yang disinkronkan dari repositori resmi.
 4. **Persyaratan Sistem Terverifikasi:** Kartu spesifikasi perangkat keras 2 kolom simetris untuk lingkungan Setup Installer dan Developer Source Mode.
 5. **Panduan Instalasi Langkah-demi-Langkah:** Tab interaktif untuk Windows Installer dan instalasi mandiri via PowerShell dengan cuplikan perintah CLI terformat.
-6. **FAQ & Kebijakan Privasi Lokal:** Penjelasan menyeluruh mengenai arsitektur 100% analisis lokal (SQLite, zero telemetry leakage).
+6. **FAQ & Arsitektur Hybrid:** Penjelasan transparan mengenai pemrosesan dataset dan model ML yang berjalan secara lokal & privat (SQLite, zero dataset leakage), serta integrasi online untuk pencarian dataset publik (Kaggle/HF), penelusuran literatur akademik (OpenAlex/SINTA/Scopus), dan package manager PyPI.
 7. **Aksesibilitas & Performa:** Memenuhi standar WCAG AA (kontras warna tajam, navigasi keyboard penuh, semantic HTML5, skip link).
 
 ---

@@ -11,6 +11,7 @@ import {
   Zap,
   Sliders,
   CheckCircle2,
+  Globe,
 } from 'lucide-react';
 import type { FeatureItem } from '../../../types/product.types';
 import './Features.css';
@@ -34,6 +35,8 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
         return <BookOpen size={24} className="feature-icon" />;
       case 'file-text':
         return <FileText size={24} className="feature-icon" />;
+      case 'globe':
+        return <Globe size={24} className="feature-icon" />;
       case 'shield':
         return <Shield size={24} className="feature-icon" />;
       case 'layers':
@@ -74,6 +77,29 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
 
               <h3 className="feature-card-title">{feature.title}</h3>
               <p className="feature-card-desc">{feature.description}</p>
+
+              {feature.executionScope && (
+                <div className="feature-card-footer">
+                  <div
+                    className={`scope-pill ${
+                      feature.executionScope.includes('Hybrid')
+                        ? 'scope-hybrid'
+                        : feature.executionScope.includes('Online')
+                        ? 'scope-online'
+                        : 'scope-local'
+                    }`}
+                  >
+                    {feature.executionScope.includes('Hybrid') ? (
+                      <Zap size={13} />
+                    ) : feature.executionScope.includes('Online') ? (
+                      <Globe size={13} />
+                    ) : (
+                      <Shield size={13} />
+                    )}
+                    <span>{feature.executionScope}</span>
+                  </div>
+                </div>
+              )}
             </div>
           ))}
         </div>

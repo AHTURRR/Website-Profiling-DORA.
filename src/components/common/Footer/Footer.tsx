@@ -89,7 +89,7 @@ export const Footer = ({ product, latestVersion }: FooterProps) => {
                 </li>
               )}
               <li>
-                <a href="#privacy">Kebijakan Privasi (Offline-First)</a>
+                <a href="#faq">Kebijakan Privasi & Pemrosesan Data</a>
               </li>
               {product.license.url && (
                 <li>

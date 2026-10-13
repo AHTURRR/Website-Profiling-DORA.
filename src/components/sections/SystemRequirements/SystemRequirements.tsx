@@ -1,5 +1,5 @@
 import React from 'react';
-import { Cpu, CheckCircle2, HardDrive, Layers, ShieldAlert, Monitor } from 'lucide-react';
+import { Cpu, CheckCircle2, HardDrive, Layers, ShieldAlert, Monitor, Globe } from 'lucide-react';
 import type { SystemRequirementsItem } from '../../../types/product.types';
 import './SystemRequirements.css';
 
@@ -75,6 +75,18 @@ export const SystemRequirements: React.FC<SystemRequirementsProps> = ({ requirem
                     <span className="req-value">{req.storage}</span>
                   </div>
                 </div>
+
+                {req.network && (
+                  <div className="req-row">
+                    <div className="req-row-icon">
+                      <Globe size={16} />
+                    </div>
+                    <div className="req-row-content">
+                      <span className="req-label">Koneksi Internet (Fitur Online)</span>
+                      <span className="req-value req-note">{req.network}</span>
+                    </div>
+                  </div>
+                )}
 
                 {req.extraRuntime && (
                   <div className="req-row">

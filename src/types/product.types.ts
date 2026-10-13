@@ -34,7 +34,8 @@ export interface FeatureItem {
   title: string;
   description: string;
   benefitBadge?: string;
-  icon: 'zap' | 'shield' | 'layers' | 'cpu' | 'sparkles' | 'sliders' | 'check-circle' | 'database' | 'search' | 'book-open' | 'file-text' | 'bar-chart';
+  executionScope?: 'Lokal (Offline)' | 'Online (Internet)' | 'Hybrid (Lokal + Online)';
+  icon: 'zap' | 'shield' | 'layers' | 'cpu' | 'sparkles' | 'sliders' | 'check-circle' | 'database' | 'search' | 'book-open' | 'file-text' | 'bar-chart' | 'globe';
 }
 
 export interface ProductPreviewImage {
@@ -73,6 +74,7 @@ export interface SystemRequirementsItem {
   ramMinimum: string;
   ramRecommended: string;
   storage: string;
+  network?: string;
   extraRuntime?: string;
 }
 
