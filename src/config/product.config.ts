@@ -8,11 +8,11 @@ import type { ProductConfig } from '../types/product.types';
 export const productConfig: ProductConfig = {
   product: {
     name: 'DORA',
-    tagline: 'Data Overview & Academic Research Assistant — Asisten Cerdas Peneliti Dataset & Machine Learning',
+    tagline: 'Data Overview & Academic Research Assistant — Asisten Cerdas Peneliti Dataset & Machine Learning Terkoneksi Internet',
     shortDescription:
-      'Aplikasi desktop native dengan arsitektur hybrid: pemrosesan dataset dan model ML 100% lokal di komputer Anda, terintegrasi dengan pencarian dataset publik dan literatur akademik online.',
+      'Aplikasi desktop native yang terhubung ke jaringan internet untuk riset dataset cerdas, ML Intelligence & estimasi model prediktif, serta penelusuran literatur akademik.',
     fullDescription:
-      'DORA (Data Overview & Research Assistant) dikembangkan oleh Metriks Studio untuk kebutuhan pembelajaran, riset, dan analisis data. DORA menggabungkan pemrosesan dataset dan machine learning privat yang dieksekusi secara lokal di komputer pengguna (tanpa risiko kebocoran data ke cloud), dengan konektivitas online untuk pencarian dataset publik (Kaggle & Hugging Face), penelusuran paper ilmiah (OpenAlex, Crossref, Semantic Scholar, SINTA, Scopus, DOAJ), dan instalasi pustaka PyPI via pip.',
+      'DORA (Data Overview & Research Assistant) dikembangkan oleh Metriks Studio sebagai aplikasi desktop yang memanfaatkan koneksi jaringan internet untuk alur kerja riset menyeluruh: integrasi ML Intelligence berbasis jaringan untuk estimasi task dan rekomendasi model, pencarian dataset publik (Kaggle & Hugging Face), penelusuran paper ilmiah terindeks (OpenAlex, Crossref, Semantic Scholar, SINTA, Scopus, DOAJ), dan instalasi pustaka PyPI via pip. Seluruh analisis file CSV privat tetap tersimpan aman di ruang kerja komputer pengguna.',
     developer: {
       name: 'Metriks Studio',
       url: 'https://github.com/NezzyGremory/Dataset-Research',
@@ -37,9 +37,9 @@ export const productConfig: ProductConfig = {
       id: 'dataset-profiling',
       title: 'Dataset Profiling & Audit Kualitas Data',
       description:
-        'Unggah file CSV dengan drag-and-drop, pratinjau tabel, skor kualitas data, deteksi missing values (median/mode imputation), pemeriksaan outliers, dan matriks korelasi interaktif. Seluruh data diproses 100% lokal di komputer tanpa dikirim ke cloud.',
+        'Unggah file CSV dengan drag-and-drop, pratinjau tabel, skor kualitas data, deteksi missing values (median/mode imputation), pemeriksaan outliers, dan matriks korelasi interaktif. Berjalan cepat di ruang kerja lokal Anda dan terintegrasi langsung dengan ekosistem riset online DORA.',
       benefitBadge: 'Audit & Imputasi',
-      executionScope: 'Lokal (Offline)',
+      executionScope: 'Lokal (Privat)',
       icon: 'database',
     },
     {
@@ -55,18 +55,18 @@ export const productConfig: ProductConfig = {
       id: 'editor-analysis',
       title: 'Editor Analysis & Notebook Python Terpadu',
       description:
-        'Editor bergaya notebook untuk tahapan EDA, feature engineering, dan pemodelan ML (klasifikasi, regresi, clustering, ensemble). Kode dieksekusi di runtime Python lokal, dengan dukungan instalasi pustaka baru langsung dari PyPI via pip install online.',
-      benefitBadge: 'Jupyter-Style Notebook',
-      executionScope: 'Hybrid (Lokal + Online)',
+        'Editor bergaya notebook untuk tahapan EDA, feature engineering, dan pemodelan ML (klasifikasi, regresi, clustering, ensemble). Dilengkapi koneksi jaringan internet untuk instalasi pustaka baru langsung dari PyPI via pip install dan integrasi modul AI.',
+      benefitBadge: 'Jupyter-Style Notebook & PyPI',
+      executionScope: 'Online (Internet)',
       icon: 'cpu',
     },
     {
       id: 'ml-intelligence',
       title: 'ML Intelligence & Estimasi Model Kandidat',
       description:
-        'Menganalisis karakteristik dataset dan target untuk memperkirakan jenis task secara otomatis, merekomendasikan metode kandidat terbaik, dan menyajikan metrik evaluasi model secara lokal di lingkungan PC Anda.',
-      benefitBadge: 'Auto-Task Detection',
-      executionScope: 'Lokal (Offline)',
+        'Memanfaatkan koneksi jaringan internet untuk menganalisis karakteristik dataset, memperkirakan jenis task prediktif secara otomatis, merekomendasikan metode kandidat terbaik, dan menyajikan estimasi metrik evaluasi model secara cerdas.',
+      benefitBadge: 'Auto-Task & Network Intelligence',
+      executionScope: 'Online (Internet)',
       icon: 'sparkles',
     },
     {
@@ -82,9 +82,9 @@ export const productConfig: ProductConfig = {
       id: 'landscape-gap-report',
       title: 'Research Landscape, Gap Discovery & PDF Export',
       description:
-        'Pemetaan visual tren publikasi dan venue, eksplorasi kandidat celah penelitian (Research Gap) dengan dukungan insight AI Google Gemini (opsional online), serta penyusunan dan ekspor laporan riset komprehensif ke format PDF.',
-      benefitBadge: 'Sintesis & Ekspor PDF',
-      executionScope: 'Hybrid (Lokal + Online)',
+        'Pemetaan visual tren publikasi dan venue secara daring, eksplorasi kandidat celah penelitian (Research Gap) dengan dukungan insight AI Google Gemini online, serta penyusunan dan ekspor laporan riset komprehensif ke format PDF.',
+      benefitBadge: 'Sintesis Online & Ekspor PDF',
+      executionScope: 'Online (Internet)',
       icon: 'file-text',
     },
   ],
@@ -195,7 +195,7 @@ export const productConfig: ProductConfig = {
       ramMinimum: '4 GB RAM',
       ramRecommended: '8 GB RAM atau lebih (disarankan untuk dataset besar & matplotlib visualisasi)',
       storage: '500 MB ruang kosong disk untuk aplikasi, runtime, dan database SQLite lokal',
-      network: 'Akses internet diperlukan untuk: pencarian dataset (Kaggle/HF), kueri paper akademik (OpenAlex/Crossref/Semantic Scholar/Scopus), verifikasi SINTA & DOAJ, serta instalasi paket PyPI via pip.',
+      network: 'Koneksi internet aktif diperlukan untuk: ML Intelligence & estimasi model prediktif, pencarian dataset publik (Kaggle/HF), kueri paper akademik (OpenAlex/Crossref/Semantic Scholar/Scopus), verifikasi SINTA & DOAJ, serta instalasi paket PyPI via pip.',
       extraRuntime: 'Tidak memerlukan runtime eksternal jika menggunakan installer setup .exe bawaan.',
     },
     {
@@ -207,7 +207,7 @@ export const productConfig: ProductConfig = {
       ramMinimum: '4 GB RAM',
       ramRecommended: '8 GB RAM',
       storage: '500 MB ruang penyimpanan disk',
-      network: 'Akses internet diperlukan untuk: clone repository GitHub, pip install dependensi PyPI, pencarian dataset, dan API literatur akademik.',
+      network: 'Koneksi internet aktif diperlukan untuk: clone repository GitHub, pip install dependensi PyPI, ML Intelligence, pencarian dataset publik, dan API literatur akademik.',
       extraRuntime: 'Python 3.11 - 3.13 dan pip untuk virtual environment (.venv).',
     },
   ],
@@ -290,11 +290,11 @@ export const productConfig: ProductConfig = {
         'DORA adalah aplikasi desktop native berbasis PySide6 (Qt) yang dikembangkan oleh Metriks Studio untuk membantu mahasiswa, peneliti, dan pengembang dalam memahami dataset, mencoba analisis machine learning terarah, serta meninjau publikasi ilmiah yang relevan dalam satu alur kerja yang terpadu.',
     },
     {
-      id: 'faq-hybrid-offline-online',
+      id: 'faq-internet-connection',
       category: 'general',
-      question: 'Apakah DORA bekerja secara offline atau memerlukan koneksi internet?',
+      question: 'Apakah aplikasi DORA memerlukan koneksi internet?',
       answer:
-        'DORA mengusung arsitektur hybrid yang jelas dan transparan: (1) Fitur Lokal & Offline: Pemrosesan dataset CSV Anda (profiling, audit kualitas data, pembersihan, imputasi, outlier, matriks korelasi), eksekusi model Machine Learning, dan Editor Notebook berjalan 100% secara lokal di PC Anda tanpa mengirim file dataset ke cloud. (2) Fitur Terkoneksi Internet: Pencarian dataset publik (Kaggle & Hugging Face), penelusuran publikasi ilmiah (OpenAlex, Crossref, Semantic Scholar, Europe PMC, OpenAIRE, Scopus), verifikasi akreditasi SINTA & indeks DOAJ, instalasi library baru via pip install, serta penjelasan AI Google Gemini opsional memerlukan koneksi internet aktif.',
+        'Ya, DORA adalah aplikasi desktop yang dirancang menggunakan koneksi jaringan internet untuk menjalankan seluruh kapabilitas riset cerdasnya. Koneksi internet aktif digunakan untuk: (1) ML Intelligence & estimasi model prediktif, (2) Pencarian dataset publik dari Kaggle dan Hugging Face, (3) Penelusuran publikasi ilmiah (OpenAlex, Crossref, Semantic Scholar, Europe PMC, OpenAIRE, Scopus), (4) Verifikasi status akreditasi nasional SINTA dan indeks DOAJ, (5) Instalasi pustaka Python tambahan langsung dari PyPI via pip install, dan (6) Eksplorasi Research Gap berbasis AI Google Gemini. Sementara itu, integritas file CSV Anda tetap terjaga aman karena analisis data numerik dilakukan di lingkungan lokal komputer Anda tanpa risiko kebocoran data ke server cloud.',
     },
     {
       id: 'faq-dataset-privacy',

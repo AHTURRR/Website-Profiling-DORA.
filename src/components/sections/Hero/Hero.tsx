@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, ArrowRight, ShieldCheck, Sparkles, Terminal, CheckCircle2, Globe } from 'lucide-react';
+import { Download, ArrowRight, ShieldCheck, Sparkles, BookOpen, CheckCircle2, Globe } from 'lucide-react';
 import type { ProductInfo, ReleasePackage, SupportedOS } from '../../../types/product.types';
 import './Hero.css';
 
@@ -62,20 +62,20 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
           {/* Trust & Transparency Badges */}
           <div className="hero-trust-row">
             <div className="hero-trust-item">
-              <ShieldCheck size={18} className="trust-icon" />
-              <span>Pemrosesan Dataset Lokal & Privat</span>
-            </div>
-            <div className="hero-trust-item">
               <Globe size={18} className="trust-icon" />
-              <span>Riset Literatur & Dataset Online</span>
-            </div>
-            <div className="hero-trust-item">
-              <Terminal size={18} className="trust-icon" />
-              <span>Embedded Python Notebook & pip</span>
+              <span>Terkoneksi Jaringan Internet</span>
             </div>
             <div className="hero-trust-item">
               <Sparkles size={18} className="trust-icon" />
-              <span>Open Source (MIT) • Metriks Studio</span>
+              <span>ML Intelligence & Estimator Online</span>
+            </div>
+            <div className="hero-trust-item">
+              <BookOpen size={18} className="trust-icon" />
+              <span>Riset Literatur & Jurnal Akademik</span>
+            </div>
+            <div className="hero-trust-item">
+              <ShieldCheck size={18} className="trust-icon" />
+              <span>Dataset Privat Aman di Komputer</span>
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
               <div className="window-title">
                 <span>DORA v5.0.0 — Data Overview & Research Assistant (PySide6)</span>
               </div>
-              <div className="window-badge">HYBRID PIPELINE</div>
+              <div className="window-badge">CONNECTED PIPELINE</div>
             </div>
 
             {/* Window Interior Content */}
@@ -121,27 +121,27 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
               <div className="mock-graph-container">
                 <div className="mock-graph-header">
                   <span>Pipeline Execution Flow</span>
-                  <span className="mock-time">LOCAL RUNTIME + ONLINE API</span>
+                  <span className="mock-time">ONLINE NETWORK INTELLIGENCE</span>
                 </div>
                 <div className="mock-timeline-bars">
                   <div className="timeline-track">
                     <div className="track-bar bar-1" style={{ width: '100%' }}>
-                      <span>Stage 1: Dataset Profiling & Imputation (Median/Mode) [Local Compute]</span>
+                      <span>Stage 1: Dataset Profiling & Imputation (Median/Mode) [Local Workspace]</span>
                     </div>
                   </div>
                   <div className="timeline-track">
                     <div className="track-bar bar-2" style={{ width: '85%' }}>
-                      <span>Stage 2: Dataset Search & PyPI Packages (Kaggle, HF & pip) [Online Access]</span>
+                      <span>Stage 2: Dataset Search & Discovery (Kaggle & Hugging Face) [Online Network]</span>
                     </div>
                   </div>
                   <div className="timeline-track">
                     <div className="track-bar bar-5" style={{ width: '92%' }}>
-                      <span>Stage 3: ML Intelligence (RandomForest 91.8% F1-Score) [Local Runtime]</span>
+                      <span>Stage 3: ML Intelligence & Model Estimator (RandomForest 91.8% F1) [Online Network]</span>
                     </div>
                   </div>
                   <div className="timeline-track">
                     <div className="track-bar bar-4" style={{ width: '78%' }}>
-                      <span>Stage 4: Literature Ranking (OpenAlex, SINTA & Scopus) [Online Discovery]</span>
+                      <span>Stage 4: Literature & Journal Ranking (OpenAlex, SINTA & Scopus) [Online Network]</span>
                     </div>
                   </div>
                 </div>
