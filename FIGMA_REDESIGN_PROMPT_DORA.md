@@ -121,7 +121,6 @@ Gunakan rincian instruksi di bawah ini saat mendesain manual di Figma atau tempe
   - **Kiri (Logo Brand):** Icon box persegi rounded-10px gradient cyan, teks `"DORA"` (Bold 18px), pill badge mono `"v5.0.0"`.
   - **Tengah (Menu Navigasi):** Auto layout horizontal gap 24px.
     - *Fitur*
-    - *Redesign UI/UX* ➔ Desain khusus: Pill chip dengan background `rgba(56,189,248,0.15)`, text `#38BDF8`, border `rgba(56,189,248,0.3)`.
     - *Pratinjau*
     - *Download*
     - *Spesifikasi*
@@ -141,10 +140,10 @@ Gunakan rincian instruksi di bawah ini saat mendesain manual di Figma atau tempe
      `"Aplikasi desktop native yang terhubung ke jaringan internet untuk riset dataset cerdas, ML Intelligence & estimasi model prediktif, serta penelusuran literatur akademik."`
   4. **CTA Button Group:**
      - **Tombol Primer:** Height 52px, Radius 12px, Background Gradient `#2563EB` ➔ `#1D4ED8`, ikon Download (22px), teks 2 baris: *"Download untuk Windows"* (Bold 15px) & *"v5.0.0 • x64 • 78.4 MB"* (12px Muted).
-     - **Tombol Sekunder:** Height 52px, Radius 12px, Surface dark, Border subtle, teks *"Eksplorasi Fitur →"*.
-  5. **Windows Defender Quick Hint:**  
+     - **Tombol Sekunder:** Height 52px, Radius 12px, Surface dark/clean, Border subtle, teks *"Eksplorasi Fitur →"*.
+  5. **Windows Defender Quick Trigger Button:**  
      Box rounded-full dengan background `rgba(245,158,11,0.12)`, border `rgba(245,158,11,0.35)`, teks amber 13px:  
-     `"⚠️ Gagal download atau tertahan Windows Defender / SmartScreen? Buka Panduan 5 Langkah →"`
+     `"⚠️ Bingung tidak bisa download / terindikasi Windows Defender? Lihat Cara Mengatasinya"`
   6. **4 Trust Badges (Horizontal Row):**
      - 🌐 Terkoneksi Jaringan Internet
      - ✨ ML Intelligence & Estimator Online
@@ -162,64 +161,53 @@ Gunakan rincian instruksi di bawah ini saat mendesain manual di Figma atau tempe
 
 ---
 
-### C. Katalog Fitur & Scope Pills
-- **Layout:** Grid 3 Kolom x 2 Baris, Gap 24px.
-- **Komponen Kartu Fitur:**
-  - Auto Layout Vertical, Padding 24px, Radius 16px, Surface `#1E293B` (60%), Border 1px `rgba(255,255,255,0.08)`.
-  - **Top Row:** Icon wrapper bulat (48px) dengan glow warna + Benefit Tag (contoh: *"Kaggle & Hugging Face"*).
-  - **Judul:** Bold 18px putih.
-  - **Deskripsi:** 14px abu-abu (`#94A3B8`), max 3 baris.
-  - **Footer Scope Pill (PENTING):**
-    - 🟢 `Lokal (Privat)` ➔ Background hijau transparan, ikon perisai.
-    - 🔵 `Online (Internet)` ➔ Background biru transparan, ikon globe.
-    - 🟣 `Hybrid (Lokal + Online)` ➔ Background ungu transparan, ikon petir.
+### C. Solusi Terintegrasi: Kartu Fitur Ringkas (Compact Cards)
+- **Konsep:** Progressive Disclosure untuk menjaga kebersihan visual halaman utama landing page. Tidak menampilkan teks deskripsi panjang atau daftar poin sekaligus di halaman depan.
+- **Layout Grid:** 3 Kolom x 4 Baris (10 Fitur), Gap 24px, Height Seragam (Uniform Height).
+- **Spesifikasi Kartu Kompak (HANYA 4 ELEMEN UTAMA):**
+  1. **Top Row:** 
+     - **Ikon Fitur (Kiri Atas):** Kotak rounded-12px (42x42px), background biru muda `#EFF6FF`, border `#DBEAFE`, ikon biru `#1F5EFF`.
+     - **Badge Kategori (Kanan Atas):** Pill rounded-full, background `#F8FAFC`, border `#E2E8F0`, teks bold 11.5px navy (contoh: `"Pipeline & Checklist"`, `"CSV, Excel, JSON & Parquet"`).
+  2. **Judul Fitur:** Bold 17px/23px, warna Navy `#0B192C`, fixed min-height 48px, line-clamp-2.
+  3. **Ringkasan Singkat (1 Kalimat Maksimal 10–12 Kata):**  
+     14px/22px, warna Slate `#64748B`, fixed min-height 44px, line-clamp-2.
+  4. **Tombol Pemicu di Bagian Bawah:**  
+     Teks *"Lihat Detail →"* dengan font semi-bold 13.5px warna `#1F5EFF`, ikon panah yang bergeser ke kanan saat hover.
 
 ---
 
-### D. Before & After Split Screen Showcase (Inti Desain)
-- **Judul Section:**  
-  `"Transformasi Keterbacaan: Progressive Disclosure & Glassmorphism Blur"`
-- **Layout:** Grid 2 Kolom Sejajar (50% : 50%), Gap 24px, Height 580px.
-
-#### 1. Frame Kiri: "SISI KIRI: DESAIN LAMA (Penuh & Sulit Dibaca)"
-- **Badge Status:** Background merah gelap `#2B0B14`, text merah `#F87171`, titik merah.
-- **Viewport Canvas:** Latar gelap keunguan dengan 2 mesh orbs neon pink & biru yang menyilaukan (*cluttered glow*).
-- **Konten:**
-  - Paragraf teks sangat panjang dan lebar, font size seragam tanpa jarak yang memadai.
-  - 3 kotak padat bertuliskan teks tanpa jeda: *"Profiling & Monitoring"*, *"Security DORA Regulation"*, *"Feature Navigation"*.
-  - Footer kritik visual: *"❌ Evaluasi UX: Teks melebar, tanpa whitespace, kontras silau, mata cepat lelah."*
-
-#### 2. Frame Kanan: "SISI KANAN: REKOMENDASI UI BARU (Dengan Pop-up Interaktif)"
-- **Badge Status:** Background biru gelap `#0C2340`, text cyan `#38BDF8`, titik cyan.
-- **Viewport Canvas:** Dark Slate `#0F172A` bersih, tipografi lega, hero mini dengan teks rapi.
-- **3 Kartu Ringkas di Bawah:**
-  - Kartu 1: `🔍 Profiling & Monitoring` + Ikon `+` + Tombol *"Lihat Detail →"*.
-  - Kartu 2: `🛡️ Security DORA Regulation` + Ikon `+` + Tombol *"Lihat Detail →"*.
-  - Kartu 3: `🧭 Feature Navigation` + Ikon `+` + Tombol *"Lihat Detail →"*.
-- **Backdrop Overlay Blur:** Lapisan di atasnya dengan fill `rgba(15, 23, 42, 0.75)` dan **Layer Blur 10px**.
-- **Pop-up Modal Compact (Melayang di Tengah):**  
-  Lihat spesifikasi detail pada Bagian E di bawah.
+### D. Pop-up Modal Detail Fitur (Dengan Efek Background Blur)
+Ketika pengunjung mengklik kartu fitur atau tombol *"Lihat Detail →"*, pop-up modal muncul di tengah layar:
+- **Backdrop Overlay Blur:** Fixed Inset 0, background `rgba(15, 23, 42, 0.45)`, **Backdrop Filter Blur 8px** (`backdrop-blur-md`), kunci scroll body (`overflow: hidden`).
+- **Ukuran & Bentuk Modal Container:**
+  - Width: Max 680px, Auto Height (Max 88vh), Radius `rounded-3xl` (24px).
+  - Background: `#FFFFFF`, Border 1px `#E2E8F0`, Box Shadow ganda halus (`0 25px 60px -15px rgba(15, 23, 42, 0.25)`).
+  - Animasi pembesaran pop-in halus (*Scale-in 0.92 ➔ 1.0*).
+- **Konten di Dalam Pop-up Modal:**
+  1. **Header Modal:**
+     - Icon box + Badge kategori + Badge status scope (Lokal / Online / Hybrid).
+     - Judul Fitur besar (Bold 23px Navy).
+     - Tombol Tutup `"✕"` lingkaran bulat di pojok kanan atas dengan hover merah muda.
+  2. **Body Modal (Scrollable):**
+     - **Deskripsi Lengkap:** Paragraf penjelasan mendalam (font size 15px/26px, warna `#334155`).
+     - **Daftar "KEGUNAAN & KEMAMPUAN UTAMA":** Container kartu abu-abu muda (`#F8FAFC`) berisi daftar poin lengkap dengan ikon centang biru (`CheckCircle2` / `#1D4ED8`).
+  3. **Footer Modal:**
+     - Petunjuk keyboard: *"Tekan ESC atau klik di luar kotak untuk menutup"*.
+     - Tombol Tutup Navy membulat (*"Tutup"*).
 
 ---
 
-### E. Glassmorphism Progressive Disclosure Modal
-Ini adalah komponen kunci untuk mengatasi kelelahan membaca:
-- **Ukuran Frame:** Width 380px, Auto Height, Radius 20px.
-- **Background:** `rgba(15, 23, 42, 0.88)` dengan Background Blur 20px.
-- **Border:** 1px Inside Gradient Linear (135°): `#38BDF8` (90%) ke `#C084FC` (90%).
-- **Shadow:** Drop shadow ganda (hitam pekat 60% + cyan ambient glow 25%).
-- **Isi Komponen (Auto Layout Vertical, Padding 24px, Gap 16px):**
-  1. **Header Row:**
-     - Judul: `"🔍 Profiling & Monitoring"` (Bold 18px putih).
-     - Tombol Tutup: Lingkaran 28px dengan ikon `"✕"` (`#94A3B8`).
-  2. **Tagline:**  
-     `"Inspeksi performa real-time dan evaluasi metrik dataset komprehensif."` (13px `#94A3B8`).
-  3. **3 Poin Checklist Hijau (Auto Layout Vertical, Gap 10px):**
-     - Row 1: Bulatan hijau kecil dengan checkmark putih + Teks `"1. Real-time debugging & frame inspection"`.
-     - Row 2: Bulatan hijau kecil dengan checkmark putih + Teks `"2. Live performance metrics"`.
-     - Row 3: Bulatan hijau kecil dengan checkmark putih + Teks `"3. Resource management"`.
-  4. **Primary CTA Button:**  
-     Width 100%, Height 44px, Radius 10px, Background Gradient Cyan-ke-Biru, Teks `"Coba Sekarang →"` (Bold 14px putih).
+### E. Pop-up Panduan Download Windows Defender & SmartScreen
+Panduan 5 langkah terstruktur jika proses unduhan installer `DORA-v5.0.0-Setup.exe` tertahan:
+- **Pemicu:** Tombol *"⚠️ Bingung tidak bisa download / terindikasi Windows Defender? Lihat Cara Mengatasinya"* di Hero & Download Center.
+- **Backdrop Blur:** `backdrop-filter: blur(8px)`, `bg-slate-900/40`.
+- **5 Langkah Instruksi Terstruktur:**
+  1. **Langkah 1:** Pastikan pengaturan Windows Defender / SmartScreen terlebih dahulu apabila proses unduhan ditahan.
+  2. **Langkah 2:** Saat di bagian Downloads browser muncul peringatan: `"DORA-v5.0.0-Setup.exe isn't commonly downloaded. Make sure you trust DORA-v5.0.0-Setup.exe before you open it."`, arahkan kursor ke file tersebut.
+  3. **Langkah 3:** Klik ikon **Titik Tiga (⋯)** di samping peringatan file unduhan.
+  4. **Langkah 4:** Klik pilihan **"Keep"** (*Tetap simpan*).
+  5. **Langkah 5:** Klik ikon **Panah Bawah (∨)** (*Show more*), lalu pilih **"Keep anyway"** agar file berhasil terunduh sepenuhnya.
+- **Alternatif Tambahan:** Perintah PowerShell satu-klik: `curl.exe -L -o "DORA-v5.0.0-Setup.exe" "[download_url]"` untuk unduh instan tanpa intervensi filter browser.
 
 ---
 

@@ -133,15 +133,6 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
                   <span>Lihat Detail</span>
                   <ArrowRight size={14} className="compact-arrow-icon" />
                 </span>
-                {feature.executionScope && (
-                  <span className="compact-scope-tag">
-                    {feature.executionScope.includes('Hybrid')
-                      ? 'Hybrid'
-                      : feature.executionScope.includes('Online')
-                      ? 'Online'
-                      : 'Lokal'}
-                  </span>
-                )}
               </div>
             </div>
           ))}
