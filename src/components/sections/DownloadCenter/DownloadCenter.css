@@ -278,6 +278,33 @@
   box-shadow: 0 4px 14px rgba(31, 94, 255, 0.35);
 }
 
+.card-defender-help-btn {
+  margin-top: 0.75rem;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  font-size: 0.775rem;
+  font-weight: 500;
+  color: #92400e;
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px dashed rgba(245, 158, 11, 0.4);
+  padding: 0.5rem 0.65rem;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  text-align: center;
+  transition: all var(--transition-fast);
+  line-height: 1.35;
+}
+
+.card-defender-help-btn:hover {
+  background: rgba(245, 158, 11, 0.2);
+  border-color: #f59e0b;
+  color: #78350f;
+  transform: translateY(-1px);
+}
+
 /* Live Download Started Feedback Alert */
 .download-started-alert {
   display: flex;

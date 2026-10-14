@@ -36,6 +36,7 @@ export const productConfig: ProductConfig = {
     {
       id: 'overview-pipeline',
       title: 'Overview & ML Pipeline Checklist',
+      shortSummary: 'Pantau status dataset, kebersihan data, dan kelengkapan pipeline riset machine learning.',
       description:
         'Dashboard sentral yang mengumpulkan status dataset aktif, ringkasan skor kualitas data, rekomendasi cepat ML, progres pipeline riset, dan pintasan laporan. Dilengkapi ML Pipeline Checklist untuk memantau tahapan alur kerja yang sudah selesai, direkomendasikan, atau belum tersedia.',
       benefitBadge: 'Pipeline & Checklist',
@@ -51,6 +52,7 @@ export const productConfig: ProductConfig = {
     {
       id: 'dataset-profiling',
       title: 'Multi-Format Loader & Data Profiling',
+      shortSummary: 'Muat dataset multi-format dengan deteksi otomatis delimiter serta audit peran kolom.',
       description:
         'Memuat berkas dataset CSV, Excel (.xlsx/.xls), JSON, dan Parquet melalui pemilih berkas atau drag-and-drop. Dilengkapi pendeteksian otomatis karakter pemisah (delimiter) dan encoding, tabel paginasi responsif, serta audit tipe dan peran kolom.',
       benefitBadge: 'CSV, Excel, JSON & Parquet',
@@ -66,6 +68,7 @@ export const productConfig: ProductConfig = {
     {
       id: 'data-quality-cleaning',
       title: 'Audit Kualitas Data & Drop Missing Values',
+      shortSummary: 'Audit integritas data menyeluruh dan pembersihan 4 strategi tanpa merusak file asli.',
       description:
         'Pemeriksaan integritas data menyeluruh. Menghitung jumlah nilai kosong dan nilai 0 secara terpisah, deteksi outliers (IQR/Z-Score), korelasi variabel, serta dialog Drop Missing Values dengan 4 strategi canggih tanpa mengubah file CSV asli.',
       benefitBadge: '4 Strategi Cleaning',
@@ -82,6 +85,7 @@ export const productConfig: ProductConfig = {
     {
       id: 'pre-modeling-diagnostics',
       title: 'Pre-Modeling Diagnostics & Leakage Check',
+      shortSummary: 'Diagnostik sebaran distribusi fitur, keseimbangan kelas, dan pencegahan risiko data leakage.',
       description:
         'Diagnostik mendalam karakteristik dataset sebelum pemodelan Machine Learning. Menganalisis sebaran distribusi fitur, keseimbangan kelas (class balance), deteksi risiko kebocoran data (data leakage), serta petunjuk seleksi fitur dan pembagian train-test.',
       benefitBadge: 'Leakage & Split Guidance',
@@ -97,6 +101,7 @@ export const productConfig: ProductConfig = {
     {
       id: 'dataset-search',
       title: 'Pencarian Dataset Publik (Kaggle & Hugging Face)',
+      shortSummary: 'Cari dan unduh ribuan dataset Kaggle dan Hugging Face langsung ke workspace.',
       description:
         'Menelusuri ribuan dataset publik secara real-time via koneksi internet dari Kaggle, Hugging Face, atau kombinasi keduanya (All providers), lalu mengunduhnya langsung ke ruang kerja lokal DORA hanya dalam satu klik.',
       benefitBadge: 'Kaggle & Hugging Face',
@@ -112,6 +117,7 @@ export const productConfig: ProductConfig = {
     {
       id: 'editor-analysis',
       title: 'Editor Analysis & Notebook Kernel PyPI',
+      shortSummary: 'Editor interaktif ala Jupyter dengan template riset dan instalasi pustaka PyPI.',
       description:
         'Editor interaktif bergaya Jupyter Notebook dengan template alur riset lengkap (Data Profiling, Cleaning, EDA, Feature Engineering, hingga Pemodelan ML). Mendukung instalasi pustaka PyPI via pip install dan membuka/menyimpan berkas .ipynb.',
       benefitBadge: 'Jupyter-Style Notebook & PyPI',
@@ -127,6 +133,7 @@ export const productConfig: ProductConfig = {
     {
       id: 'ml-intelligence',
       title: 'ML Intelligence & Estimasi Model Kandidat',
+      shortSummary: 'Deteksi otomatis tugas ML prediktif serta estimasi performa algoritma kandidat terbaik.',
       description:
         'Memanfaatkan koneksi jaringan internet untuk menganalisis sifat dataset, memperkirakan jenis tugas prediktif secara otomatis, merekomendasikan metode algoritma terbaik, dan menyajikan estimasi metrik performa model empiris.',
       benefitBadge: 'Auto-Task & Network Intelligence',
@@ -142,6 +149,7 @@ export const productConfig: ProductConfig = {
     {
       id: 'academic-research',
       title: 'Pencarian Literatur & Verifikasi Jurnal Akademik',
+      shortSummary: 'Pencarian literatur ilmiah otomatis lengkap dengan verifikasi akreditasi SINTA dan Scopus.',
       description:
         'Membentuk kueri otomatis dari fingerprint dataset untuk mencari publikasi ilmiah via koneksi internet ke OpenAlex, Crossref, Semantic Scholar, Europe PMC, dan Scopus, lengkap dengan perankingan relevansi serta verifikasi akreditasi SINTA dan indeks DOAJ.',
       benefitBadge: 'SINTA, Scopus & DOAJ',
@@ -157,6 +165,7 @@ export const productConfig: ProductConfig = {
     {
       id: 'landscape-gap-report',
       title: 'Research Landscape, Gap Discovery & PDF Export',
+      shortSummary: 'Pemetaan tren riset, sintesis AI Google Gemini, dan ekspor laporan ke PDF.',
       description:
         'Pemetaan visual lanskap riset tren publikasi dan venue, eksplorasi kandidat celah penelitian (Research Gap) dengan dukungan insight AI Google Gemini online, serta penyusunan dan ekspor laporan riset komprehensif ke format PDF.',
       benefitBadge: 'Sintesis AI & Ekspor PDF',
@@ -172,6 +181,7 @@ export const productConfig: ProductConfig = {
     {
       id: 'ui-scale-responsive',
       title: 'Penskalaan UI (UI Scale) & Privasi Zero-Leakage',
+      shortSummary: 'Skala antarmuka fleksibel dan penyimpanan lokal privat tanpa risiko kebocoran data.',
       description:
         'Pengaturan skala antarmuka responsif dari Auto hingga 70%–150%, navigasi sidebar adaptif dengan mode ikon otomatis pada layar kecil, serta arsitektur keamanan offline lokal SQLite yang memastikan privasi dataset terlindungi 100%.',
       benefitBadge: 'Zoom 70%–150% & Privasi Total',

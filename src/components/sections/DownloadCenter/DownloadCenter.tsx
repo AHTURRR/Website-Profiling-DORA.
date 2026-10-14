@@ -121,10 +121,10 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
                 <AlertTriangle size={13} />
                 <span>PANDUAN SOLUSI RESMI</span>
               </span>
-              <strong className="trigger-heading">⚠️ Gagal Download / Terblokir Windows Defender & SmartScreen?</strong>
+              <strong className="trigger-heading">⚠️ Bingung tidak bisa download / terindikasi Windows Defender? Lihat Cara Mengatasinya</strong>
             </div>
             <p className="trigger-subtext">
-              Klik di sini untuk <strong>Panduan 5 Langkah Mudah</strong> mengatasi peringatan browser (&quot;isn&apos;t commonly downloaded&quot;) dan cara klik tombol <span className="highlight-pill">Titik Tiga (⋯)</span> &gt; <span className="highlight-pill">Keep anyway</span>.
+              Klik di sini untuk <strong>Panduan 5 Langkah Mudah</strong> mengatasi peringatan browser (&quot;isn&apos;t commonly downloaded&quot;) dan cara klik tombol <span className="highlight-pill">Titik Tiga (⋯)</span> &gt; <span className="highlight-pill">Keep</span> &gt; <span className="highlight-pill">Keep anyway</span>.
             </p>
           </div>
           <button type="button" className="trigger-guide-btn" onClick={(e) => { e.stopPropagation(); setIsDefenderModalOpen(true); }}>
@@ -224,6 +224,16 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
                   <Download size={18} />
                   <span>{release.buttonLabel || `Download ${release.filename}`}</span>
                 </a>
+
+                <button
+                  type="button"
+                  className="card-defender-help-btn"
+                  onClick={() => setIsDefenderModalOpen(true)}
+                  title="Klik untuk panduan jika unduhan tertahan Windows Defender"
+                >
+                  <ShieldAlert size={13} className="text-amber-accent" />
+                  <span>⚠️ Bingung tidak bisa download / terindikasi Windows Defender? Lihat Cara Mengatasinya</span>
+                </button>
               </div>
             </div>
           ))}

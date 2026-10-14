@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Download, ArrowRight, ShieldCheck, Sparkles, BookOpen, CheckCircle2, Globe, ExternalLink, ShieldAlert } from 'lucide-react';
 import type { ProductInfo, ReleasePackage, SupportedOS } from '../../../types/product.types';
+import { WindowsDefenderGuideModal } from '../../modals/WindowsDefenderGuideModal';
 import './Hero.css';
 
 interface HeroProps {
@@ -10,6 +11,8 @@ interface HeroProps {
 }
 
 export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
+  const [isDefenderModalOpen, setIsDefenderModalOpen] = useState(false);
+
   return (
     <section id="hero" className="hero-section">
       <div className="hero-bg-glow"></div>
@@ -73,13 +76,26 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
             </a>
           </div>
 
-          {/* Defender & Browser Help Quick Hint */}
+          {/* Defender & Browser Help Quick Trigger Button */}
           <div className="hero-defender-hint">
-            <a href="#downloads" className="hero-defender-link" id="hero-defender-help-link">
-              <ShieldAlert size={14} className="text-amber-accent" />
-              <span>Gagal download atau tertahan Windows Defender / SmartScreen? Buka Panduan 5 Langkah →</span>
-            </a>
+            <button
+              type="button"
+              className="hero-defender-btn"
+              onClick={() => setIsDefenderModalOpen(true)}
+              id="hero-defender-help-btn"
+            >
+              <ShieldAlert size={15} className="text-amber-accent" />
+              <span>⚠️ Bingung tidak bisa download / terindikasi Windows Defender? Lihat Cara Mengatasinya</span>
+            </button>
           </div>
+
+          {/* Windows Defender Guide Modal */}
+          <WindowsDefenderGuideModal
+            isOpen={isDefenderModalOpen}
+            onClose={() => setIsDefenderModalOpen(false)}
+            downloadUrl={recommendedRelease?.downloadUrl}
+            filename={recommendedRelease?.filename || 'DORA-v5.0.0-Setup.exe'}
+          />
 
           {/* Trust & Transparency Badges */}
           <div className="hero-trust-row">
