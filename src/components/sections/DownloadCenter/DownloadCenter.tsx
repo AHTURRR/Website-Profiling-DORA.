@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download, Copy, Check, Shield, FileCode, Calendar, HardDrive, ExternalLink } from 'lucide-react';
+import { Download, Copy, Check, Shield, FileCode, Calendar, HardDrive, ExternalLink, AlertCircle, Terminal } from 'lucide-react';
 import type { ReleasePackage, ProductInfo } from '../../../types/product.types';
 import './DownloadCenter.css';
 
@@ -12,6 +12,7 @@ interface DownloadCenterProps {
 export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, releases }) => {
   const [selectedFilter, setSelectedFilter] = useState<'all' | 'installer' | 'source'>('all');
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [activeDownloadNotice, setActiveDownloadNotice] = useState<string | null>(null);
 
   const filteredReleases =
     selectedFilter === 'all'
@@ -26,6 +27,13 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
     setTimeout(() => {
       setCopiedId(null);
     }, 2000);
+  };
+
+  const handleDownloadClick = (filename: string) => {
+    setActiveDownloadNotice(filename);
+    setTimeout(() => {
+      setActiveDownloadNotice(null);
+    }, 8000);
   };
 
   return (
@@ -164,8 +172,11 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
                   href={release.downloadUrl}
                   className="download-pkg-btn"
                   id={`btn-download-${release.id}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   download
                   title={`Download ${release.filename}`}
+                  onClick={() => handleDownloadClick(release.filename)}
                 >
                   <Download size={18} />
                   <span>{release.buttonLabel || `Download ${release.filename}`}</span>
@@ -173,6 +184,76 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
               </div>
             </div>
           ))}
+        </div>
+
+        {/* Live Download Started Feedback Alert */}
+        {activeDownloadNotice && (
+          <div className="download-started-alert" role="status">
+            <Check size={18} className="started-icon" />
+            <div className="started-content">
+              <strong>Permintaan unduh {activeDownloadNotice} telah dikirim ke browser!</strong>
+              <span>
+                Jika unduhan tidak dimulai otomatis, gunakan{' '}
+                <a href={product.links.releaseNotes} target="_blank" rel="noopener noreferrer">
+                  Mirror Resmi GitHub Releases
+                </a>{' '}
+                atau panduan di bawah.
+              </span>
+            </div>
+          </div>
+        )}
+
+        {/* Troubleshooting / Solusi Jika Tidak Berhasil Di-Download */}
+        <div className="download-troubleshoot-card">
+          <div className="troubleshoot-header">
+            <AlertCircle size={20} className="troubleshoot-icon" />
+            <div>
+              <h4 className="troubleshoot-title">Tidak Berhasil Mengunduh Berkas? (Solusi & Mirror Alternatif)</h4>
+              <p className="troubleshoot-desc">
+                Jika berkas gagal diunduh, terputus, atau browser menampilkan peringatan keamanan:
+              </p>
+            </div>
+          </div>
+          <div className="troubleshoot-options-grid">
+            <div className="troubleshoot-item">
+              <span className="troubleshoot-badge">Opsi 1</span>
+              <div className="troubleshoot-item-body">
+                <strong>Unduh via Halaman GitHub Releases Resmi</strong>
+                <p>Buka mirror rilis GitHub secara langsung untuk memilih file biner atau aset rilis lainnya.</p>
+                <a
+                  href={product.links.releaseNotes}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="troubleshoot-btn-link"
+                >
+                  <span>Buka Halaman Rilis GitHub</span>
+                  <ExternalLink size={13} />
+                </a>
+              </div>
+            </div>
+
+            <div className="troubleshoot-item">
+              <span className="troubleshoot-badge">Opsi 2</span>
+              <div className="troubleshoot-item-body">
+                <strong>Unduh Cepat via PowerShell / Terminal</strong>
+                <p>Salin dan jalankan perintah cURL di Windows PowerShell jika browser memblokir:</p>
+                <div className="troubleshoot-cli-snippet">
+                  <Terminal size={13} className="cli-icon" />
+                  <code>curl.exe -L -o DORA-v5.0.0-Setup.exe {releases[0]?.downloadUrl}</code>
+                </div>
+              </div>
+            </div>
+
+            <div className="troubleshoot-item">
+              <span className="troubleshoot-badge">Opsi 3</span>
+              <div className="troubleshoot-item-body">
+                <strong>Peringatan SmartScreen / Browser Block</strong>
+                <p>
+                  Jika muncul &quot;File ini mungkin berbahaya&quot;, klik ikon titik tiga (•••) pada download bar &gt; <em>Keep</em> &gt; <em>Keep anyway</em> karena file belum ditandatangani sertifikat EV berbayar.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
 
         {/* Security & Verification Notice */}

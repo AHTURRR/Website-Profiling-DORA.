@@ -10,7 +10,7 @@ Situs ini dibangun sesuai spesifikasi teknis dan etika transparansi dalam dokume
 
 1. **Config-Driven Architecture:** Seluruh metadata software, paket rilis, galeri tangkapan layar, spesifikasi sistem, panduan instalasi, dan FAQ dikelola secara terpusat melalui `src/config/product.config.ts`.
 2. **Pusat Unduhan Resmi (Windows Focused):**
-   - Paket biner resmi Windows Setup Installer (`DatasetResearch-v5.0.0-Setup.exe`).
+   - Paket biner resmi Windows Setup Installer (`DORA-v5.0.0-Setup.exe` rilis utama dan `DatasetResearch-v4.0.0-Setup.exe` legacy).
    - Paket Source Code (`Dataset-Research-v5.0.0.zip`) untuk eksekusi via Windows PowerShell.
    - Dilengkapi validasi integritas biner SHA256 dengan tombol salin interaktif.
 3. **Galeri Tangkapan Layar Asli (Lightbox Zoom):** Menampilkan antarmuka nyata DORA (Overview, Dataset Profiling, Editor Notebook, ML Intelligence, Academic Research, Research Landscape & Gap) yang disinkronkan dari repositori resmi.

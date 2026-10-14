@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, ArrowRight, ShieldCheck, Sparkles, BookOpen, CheckCircle2, Globe } from 'lucide-react';
+import { Download, ArrowRight, ShieldCheck, Sparkles, BookOpen, CheckCircle2, Globe, ExternalLink } from 'lucide-react';
 import type { ProductInfo, ReleasePackage, SupportedOS } from '../../../types/product.types';
 import './Hero.css';
 
@@ -34,6 +34,8 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
                 href={recommendedRelease.downloadUrl}
                 className="hero-btn-primary"
                 id="hero-primary-download-btn"
+                target="_blank"
+                rel="noopener noreferrer"
                 download
               >
                 <div className="hero-btn-icon">
@@ -56,6 +58,18 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
             <a href="#features" className="hero-btn-secondary" id="hero-explore-features-btn">
               <span>Eksplorasi Fitur</span>
               <ArrowRight size={18} />
+            </a>
+
+            <a
+              href={product.links.repository}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hero-btn-secondary"
+              id="hero-github-repo-btn"
+              title="Kunjungi Repositori GitHub"
+            >
+              <span>Repositori GitHub</span>
+              <ExternalLink size={16} />
             </a>
           </div>
 
