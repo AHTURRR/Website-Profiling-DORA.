@@ -36,6 +36,7 @@ export interface FeatureItem {
   benefitBadge?: string;
   executionScope?: 'Lokal (Offline)' | 'Lokal (Privat)' | 'Online (Internet)' | 'Hybrid (Lokal + Online)';
   icon: 'zap' | 'shield' | 'layers' | 'cpu' | 'sparkles' | 'sliders' | 'check-circle' | 'database' | 'search' | 'book-open' | 'file-text' | 'bar-chart' | 'globe';
+  capabilities?: string[];
 }
 
 export interface ProductPreviewImage {

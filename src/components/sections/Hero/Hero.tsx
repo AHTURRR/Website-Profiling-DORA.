@@ -115,47 +115,57 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
               <div className="mock-stat-bar">
                 <div className="mock-stat-item">
                   <span className="mock-stat-label">Active Dataset</span>
-                  <span className="mock-stat-val">student_research.csv</span>
+                  <span className="mock-stat-val">student_research.csv (Parquet/Excel)</span>
                 </div>
                 <div className="mock-stat-item">
                   <span className="mock-stat-label">Data Quality</span>
-                  <span className="mock-stat-val text-accent">96.4% Clean</span>
+                  <span className="mock-stat-val text-accent">98.2% Cleaned</span>
                 </div>
                 <div className="mock-stat-item">
-                  <span className="mock-stat-label">ML Task</span>
-                  <span className="mock-stat-val">Classification</span>
+                  <span className="mock-stat-label">ML Intelligence</span>
+                  <span className="mock-stat-val">RandomForest (92.4% F1)</span>
                 </div>
                 <div className="mock-stat-item">
                   <span className="mock-stat-label">Academic Papers</span>
-                  <span className="mock-stat-val">28 Verified</span>
+                  <span className="mock-stat-val">32 SINTA & Scopus</span>
                 </div>
               </div>
 
               {/* Graphical Timeline Mock */}
               <div className="mock-graph-container">
                 <div className="mock-graph-header">
-                  <span>Pipeline Execution Flow</span>
-                  <span className="mock-time">ONLINE NETWORK INTELLIGENCE</span>
+                  <span>ML Pipeline Checklist & Alur Kerja Riset</span>
+                  <span className="mock-time">7/7 WORKFLOW STAGES READY</span>
                 </div>
                 <div className="mock-timeline-bars">
                   <div className="timeline-track">
                     <div className="track-bar bar-1" style={{ width: '100%' }}>
-                      <span>Stage 1: Dataset Profiling & Imputation (Median/Mode) [Local Workspace]</span>
+                      <span>Stage 1: Multi-Format Loader & Profiling (CSV/Excel/Parquet) [Completed]</span>
                     </div>
                   </div>
                   <div className="timeline-track">
-                    <div className="track-bar bar-2" style={{ width: '85%' }}>
-                      <span>Stage 2: Dataset Search & Discovery (Kaggle & Hugging Face) [Online Network]</span>
+                    <div className="track-bar bar-2" style={{ width: '100%' }}>
+                      <span>Stage 2: Drop Missing Values (4 Strategi) & Outlier Check [Cleaned Version Active]</span>
                     </div>
                   </div>
                   <div className="timeline-track">
-                    <div className="track-bar bar-5" style={{ width: '92%' }}>
-                      <span>Stage 3: ML Intelligence & Model Estimator (RandomForest 91.8% F1) [Online Network]</span>
+                    <div className="track-bar bar-5" style={{ width: '95%' }}>
+                      <span>Stage 3: Pre-Modeling Diagnostics & Leakage Check [Guidance Applied]</span>
                     </div>
                   </div>
                   <div className="timeline-track">
-                    <div className="track-bar bar-4" style={{ width: '78%' }}>
-                      <span>Stage 4: Literature & Journal Ranking (OpenAlex, SINTA & Scopus) [Online Network]</span>
+                    <div className="track-bar bar-3" style={{ width: '90%' }}>
+                      <span>Stage 4: Dataset Search Kaggle & Hugging Face [Integrated]</span>
+                    </div>
+                  </div>
+                  <div className="timeline-track">
+                    <div className="track-bar bar-1" style={{ width: '92%' }}>
+                      <span>Stage 5: ML Intelligence & Model Evaluation [Empirical Candidates Ready]</span>
+                    </div>
+                  </div>
+                  <div className="timeline-track">
+                    <div className="track-bar bar-4" style={{ width: '85%' }}>
+                      <span>Stage 6: Academic Research, SINTA Verification & Research Gap [Synthesized]</span>
                     </div>
                   </div>
                 </div>
@@ -165,7 +175,7 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
               <div className="window-footer-bar">
                 <div className="status-indicator">
                   <CheckCircle2 size={14} className="text-accent" />
-                  <span>Research Report Ready for PDF Export</span>
+                  <span>Draf Research Report Siap Diekspor ke Dokumen PDF</span>
                 </div>
                 <span className="engine-meta">SQLite Local Storage • Zero Dataset Leakage</span>
               </div>

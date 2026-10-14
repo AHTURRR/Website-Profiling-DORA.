@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Eye, Maximize2, X, Check, BarChart3, Database, Terminal, Sparkles, BookOpen, Layers } from 'lucide-react';
+import { Eye, Maximize2, X, Check, BarChart3, Database, Terminal, Sparkles, BookOpen, Layers, Search, FileText, Sliders } from 'lucide-react';
 import type { ProductPreviewImage } from '../../../types/product.types';
 import './Preview.css';
 
@@ -13,8 +13,19 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
 
   const currentPreview = previews[activeTab] || previews[0];
 
-  const getTabIcon = (index: number) => {
-    switch (index) {
+  const getTabIcon = (preview: ProductPreviewImage, index: number) => {
+    const tag = preview.tag?.toLowerCase() || '';
+    if (tag.includes('overview')) return <BarChart3 size={16} />;
+    if (tag.includes('loader') || tag.includes('dataset')) return <Database size={16} />;
+    if (tag.includes('quality') || tag.includes('missing')) return <Sliders size={16} />;
+    if (tag.includes('search')) return <Search size={16} />;
+    if (tag.includes('editor')) return <Terminal size={16} />;
+    if (tag.includes('ml')) return <Sparkles size={16} />;
+    if (tag.includes('literatur') || tag.includes('paper')) return <BookOpen size={16} />;
+    if (tag.includes('laporan') || tag.includes('report')) return <FileText size={16} />;
+    if (tag.includes('landscape') || tag.includes('gap')) return <Layers size={16} />;
+
+    switch (index % 6) {
       case 0:
         return <BarChart3 size={16} />;
       case 1:
@@ -61,7 +72,7 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
                 className={`preview-tab-btn ${activeTab === idx ? 'active' : ''}`}
                 onClick={() => setActiveTab(idx)}
               >
-                {getTabIcon(idx)}
+                {getTabIcon(preview, idx)}
                 <span>{preview.title}</span>
                 {preview.badge && <span className="tab-badge">{preview.badge}</span>}
               </button>

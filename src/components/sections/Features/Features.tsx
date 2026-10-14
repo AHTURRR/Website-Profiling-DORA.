@@ -12,6 +12,7 @@ import {
   Sliders,
   CheckCircle2,
   Globe,
+  Check,
 } from 'lucide-react';
 import type { FeatureItem } from '../../../types/product.types';
 import './Features.css';
@@ -77,6 +78,21 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
 
               <h3 className="feature-card-title">{feature.title}</h3>
               <p className="feature-card-desc">{feature.description}</p>
+
+              {/* Detail Kegunaan Praktis Fitur */}
+              {feature.capabilities && feature.capabilities.length > 0 && (
+                <div className="feature-capabilities">
+                  <span className="capabilities-label">Kegunaan & Kemampuan Utama:</span>
+                  <ul className="capabilities-list">
+                    {feature.capabilities.map((cap, idx) => (
+                      <li key={idx} className="capability-item">
+                        <Check size={14} className="capability-check-icon" />
+                        <span>{cap}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
 
               {feature.executionScope && (
                 <div className="feature-card-footer">
