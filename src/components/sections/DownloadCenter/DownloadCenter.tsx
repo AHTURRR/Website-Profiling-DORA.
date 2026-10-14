@@ -12,7 +12,6 @@ import {
   Terminal,
   ShieldAlert,
   ArrowRight,
-  AlertTriangle,
 } from 'lucide-react';
 import type { ReleasePackage, ProductInfo } from '../../../types/product.types';
 import { WindowsDefenderGuideModal } from '../../modals/WindowsDefenderGuideModal';
@@ -27,6 +26,7 @@ interface DownloadCenterProps {
 export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, releases }) => {
   const [selectedFilter, setSelectedFilter] = useState<'all' | 'installer' | 'source'>('all');
   const [copiedId, setCopiedId] = useState<string | null>(null);
+  const [copiedCurl, setCopiedCurl] = useState(false);
   const [activeDownloadNotice, setActiveDownloadNotice] = useState<string | null>(null);
   const [isDefenderModalOpen, setIsDefenderModalOpen] = useState(false);
 
@@ -42,6 +42,14 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
     setCopiedId(id);
     setTimeout(() => {
       setCopiedId(null);
+    }, 2000);
+  };
+
+  const copyCurlCommand = (cmd: string) => {
+    navigator.clipboard.writeText(cmd);
+    setCopiedCurl(true);
+    setTimeout(() => {
+      setCopiedCurl(false);
     }, 2000);
   };
 
@@ -105,33 +113,6 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
               <span>Changelog & Catatan Rilis</span>
             </a>
           )}
-        </div>
-
-        {/* Quick Defender & Browser Help Banner */}
-        <div
-          className="defender-guide-trigger-banner"
-          onClick={() => setIsDefenderModalOpen(true)}
-          id="btn-open-defender-guide-banner"
-          role="button"
-          tabIndex={0}
-        >
-          <div className="trigger-banner-left">
-            <div className="trigger-badge-wrap">
-              <span className="trigger-warning-badge">
-                <AlertTriangle size={13} />
-                <span>PANDUAN SOLUSI RESMI</span>
-              </span>
-              <strong className="trigger-heading">⚠️ Bingung tidak bisa download / terindikasi Windows Defender? Lihat Cara Mengatasinya</strong>
-            </div>
-            <p className="trigger-subtext">
-              Klik di sini untuk <strong>Panduan 5 Langkah Mudah</strong> mengatasi peringatan browser (&quot;isn&apos;t commonly downloaded&quot;) dan cara klik tombol <span className="highlight-pill">Titik Tiga (⋯)</span> &gt; <span className="highlight-pill">Keep</span> &gt; <span className="highlight-pill">Keep anyway</span>.
-            </p>
-          </div>
-          <button type="button" className="trigger-guide-btn" onClick={(e) => { e.stopPropagation(); setIsDefenderModalOpen(true); }}>
-            <ShieldAlert size={16} />
-            <span>Buka Panduan Solusi</span>
-            <ArrowRight size={14} />
-          </button>
         </div>
 
         {/* Releases Cards Grid */}
@@ -225,13 +206,14 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
                   <span>{release.buttonLabel || `Download ${release.filename}`}</span>
                 </a>
 
+                {/* Clean, single helper text button below download button */}
                 <button
                   type="button"
-                  className="card-defender-help-btn"
+                  className="release-helper-link"
                   onClick={() => setIsDefenderModalOpen(true)}
-                  title="Klik untuk panduan jika unduhan tertahan Windows Defender"
+                  title="Buka panduan jika unduhan tertahan Windows Defender atau browser"
                 >
-                  <ShieldAlert size={13} className="text-amber-accent" />
+                  <ShieldAlert size={14} className="helper-link-icon" />
                   <span>⚠️ Bingung tidak bisa download / terindikasi Windows Defender? Lihat Cara Mengatasinya</span>
                 </button>
               </div>
@@ -244,23 +226,9 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
           <div className="download-started-alert" role="status">
             <Check size={18} className="started-icon" />
             <div className="started-content">
-              <div className="started-top-line">
-                <strong>Permintaan unduh {activeDownloadNotice} telah dikirim ke browser!</strong>
-                <button
-                  type="button"
-                  className="alert-guide-action-btn"
-                  onClick={() => setIsDefenderModalOpen(true)}
-                  id="btn-alert-open-defender"
-                >
-                  <ShieldAlert size={14} />
-                  <span>File Tertahan / Windows Defender? Klik Panduan</span>
-                </button>
-              </div>
+              <strong>Permintaan unduh {activeDownloadNotice} telah dikirim ke browser.</strong>
               <span className="started-subtext">
-                Jika browser menampilkan peringatan &quot;isn&apos;t commonly downloaded&quot;, silakan klik tombol panduan di atas atau gunakan{' '}
-                <a href={product.links.releaseNotes} target="_blank" rel="noopener noreferrer">
-                  Mirror Resmi GitHub Releases
-                </a>.
+                Jika berkas tertahan di menu Downloads browser, silakan gunakan Opsi 2 (PowerShell) atau Opsi 3 di bawah ini.
               </span>
             </div>
           </div>
@@ -278,52 +246,85 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
             </div>
           </div>
           <div className="troubleshoot-options-grid">
+            {/* Opsi 1 */}
             <div className="troubleshoot-item">
               <span className="troubleshoot-badge">Opsi 1</span>
               <div className="troubleshoot-item-body">
-                <strong>Unduh via Halaman GitHub Releases Resmi</strong>
-                <p>Buka mirror rilis GitHub secara langsung untuk memilih file biner atau aset rilis lainnya.</p>
-                <a
-                  href={product.links.releaseNotes}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="troubleshoot-btn-link"
-                >
-                  <span>Buka Halaman Rilis GitHub</span>
-                  <ExternalLink size={13} />
-                </a>
-              </div>
-            </div>
-
-            <div className="troubleshoot-item">
-              <span className="troubleshoot-badge">Opsi 2</span>
-              <div className="troubleshoot-item-body">
-                <strong>Unduh Cepat via PowerShell / Terminal</strong>
-                <p>Salin dan jalankan perintah cURL di Windows PowerShell jika browser memblokir:</p>
-                <div className="troubleshoot-cli-snippet">
-                  <Terminal size={13} className="cli-icon" />
-                  <code>curl.exe -L -o DORA-v5.0.0-Setup.exe {releases[0]?.downloadUrl}</code>
+                <div className="troubleshoot-item-content">
+                  <strong>Unduh via Halaman GitHub Releases Resmi</strong>
+                  <p>Buka mirror rilis GitHub secara langsung untuk memilih file biner atau aset rilis lainnya.</p>
+                </div>
+                <div className="troubleshoot-item-action">
+                  <a
+                    href={product.links.releaseNotes}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="troubleshoot-btn-link"
+                  >
+                    <span>Buka Halaman Rilis GitHub</span>
+                    <ExternalLink size={13} />
+                  </a>
                 </div>
               </div>
             </div>
 
+            {/* Opsi 2 */}
+            <div className="troubleshoot-item">
+              <span className="troubleshoot-badge">Opsi 2</span>
+              <div className="troubleshoot-item-body">
+                <div className="troubleshoot-item-content">
+                  <strong>Unduh Cepat via PowerShell / Terminal</strong>
+                  <p>Salin dan jalankan perintah cURL di Windows PowerShell jika browser memblokir:</p>
+                </div>
+                <div className="troubleshoot-cli-snippet">
+                  <div className="cli-code-text">
+                    <Terminal size={13} className="cli-icon" />
+                    <code>curl.exe -L -o DORA-v5.0.0-Setup.exe {releases[0]?.downloadUrl}</code>
+                  </div>
+                  <button
+                    type="button"
+                    className="cli-inline-copy-btn"
+                    onClick={() => copyCurlCommand(`curl.exe -L -o DORA-v5.0.0-Setup.exe "${releases[0]?.downloadUrl}"`)}
+                    title="Salin perintah cURL"
+                  >
+                    {copiedCurl ? (
+                      <>
+                        <Check size={12} />
+                        <span>Tersalin!</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy size={12} />
+                        <span>Salin Perintah</span>
+                      </>
+                    )}
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            {/* Opsi 3 */}
             <div className="troubleshoot-item">
               <span className="troubleshoot-badge">Opsi 3</span>
               <div className="troubleshoot-item-body">
-                <strong>Peringatan SmartScreen / Browser Block</strong>
-                <p>
-                  Jika muncul &quot;isn&apos;t commonly downloaded&quot;, klik ikon <strong>Titik Tiga (⋯)</strong> &gt; <em>Keep</em> &gt; <em>Keep anyway</em>.
-                </p>
-                <button
-                  type="button"
-                  className="troubleshoot-btn-link troubleshoot-modal-trigger"
-                  onClick={() => setIsDefenderModalOpen(true)}
-                  id="btn-troubleshoot-open-defender"
-                >
-                  <ShieldAlert size={14} />
-                  <span>Buka Panduan Bergambar 5 Langkah</span>
-                  <ArrowRight size={13} />
-                </button>
+                <div className="troubleshoot-item-content">
+                  <strong>Peringatan SmartScreen / Browser Block</strong>
+                  <p>
+                    Jika muncul pesan peringatan, klik ikon <strong>Titik Tiga (⋯)</strong> &gt; <em>Keep</em> &gt; <em>Keep anyway</em>.
+                  </p>
+                </div>
+                <div className="troubleshoot-item-action">
+                  <button
+                    type="button"
+                    className="troubleshoot-btn-link troubleshoot-modal-trigger"
+                    onClick={() => setIsDefenderModalOpen(true)}
+                    id="btn-troubleshoot-open-defender"
+                  >
+                    <ShieldAlert size={14} />
+                    <span>Buka Panduan 5 Langkah</span>
+                    <ArrowRight size={13} />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
