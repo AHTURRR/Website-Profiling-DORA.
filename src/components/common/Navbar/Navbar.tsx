@@ -46,6 +46,11 @@ export const Navbar = ({ product, latestVersion }: NavbarProps) => {
               </a>
             </li>
             <li>
+              <a href="#ui-redesign-showcase" className="navbar-link navbar-link-highlight">
+                Redesign UI/UX
+              </a>
+            </li>
+            <li>
               <a href="#preview" className="navbar-link">
                 Pratinjau
               </a>
@@ -114,6 +119,11 @@ export const Navbar = ({ product, latestVersion }: NavbarProps) => {
               <li>
                 <a href="#features" className="mobile-nav-link" onClick={closeMenu}>
                   Fitur Unggulan
+                </a>
+              </li>
+              <li>
+                <a href="#ui-redesign-showcase" className="mobile-nav-link text-cyan-accent" onClick={closeMenu}>
+                  🎨 Redesign UI/UX (Before & After)
                 </a>
               </li>
               <li>

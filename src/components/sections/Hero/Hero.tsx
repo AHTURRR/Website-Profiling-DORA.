@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, ArrowRight, ShieldCheck, Sparkles, BookOpen, CheckCircle2, Globe, ExternalLink } from 'lucide-react';
+import { Download, ArrowRight, ShieldCheck, Sparkles, BookOpen, CheckCircle2, Globe, ExternalLink, ShieldAlert } from 'lucide-react';
 import type { ProductInfo, ReleasePackage, SupportedOS } from '../../../types/product.types';
 import './Hero.css';
 
@@ -70,6 +70,14 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
             >
               <span>Repositori GitHub</span>
               <ExternalLink size={16} />
+            </a>
+          </div>
+
+          {/* Defender & Browser Help Quick Hint */}
+          <div className="hero-defender-hint">
+            <a href="#downloads" className="hero-defender-link" id="hero-defender-help-link">
+              <ShieldAlert size={14} className="text-amber-accent" />
+              <span>Gagal download atau tertahan Windows Defender / SmartScreen? Buka Panduan 5 Langkah →</span>
             </a>
           </div>
 

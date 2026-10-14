@@ -1,6 +1,21 @@
 import React, { useState } from 'react';
-import { Download, Copy, Check, Shield, FileCode, Calendar, HardDrive, ExternalLink, AlertCircle, Terminal } from 'lucide-react';
+import {
+  Download,
+  Copy,
+  Check,
+  Shield,
+  FileCode,
+  Calendar,
+  HardDrive,
+  ExternalLink,
+  AlertCircle,
+  Terminal,
+  ShieldAlert,
+  ArrowRight,
+  AlertTriangle,
+} from 'lucide-react';
 import type { ReleasePackage, ProductInfo } from '../../../types/product.types';
+import { WindowsDefenderGuideModal } from '../../modals/WindowsDefenderGuideModal';
 import './DownloadCenter.css';
 
 interface DownloadCenterProps {
@@ -13,6 +28,7 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
   const [selectedFilter, setSelectedFilter] = useState<'all' | 'installer' | 'source'>('all');
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [activeDownloadNotice, setActiveDownloadNotice] = useState<string | null>(null);
+  const [isDefenderModalOpen, setIsDefenderModalOpen] = useState(false);
 
   const filteredReleases =
     selectedFilter === 'all'
@@ -89,6 +105,33 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
               <span>Changelog & Catatan Rilis</span>
             </a>
           )}
+        </div>
+
+        {/* Quick Defender & Browser Help Banner */}
+        <div
+          className="defender-guide-trigger-banner"
+          onClick={() => setIsDefenderModalOpen(true)}
+          id="btn-open-defender-guide-banner"
+          role="button"
+          tabIndex={0}
+        >
+          <div className="trigger-banner-left">
+            <div className="trigger-badge-wrap">
+              <span className="trigger-warning-badge">
+                <AlertTriangle size={13} />
+                <span>PANDUAN SOLUSI RESMI</span>
+              </span>
+              <strong className="trigger-heading">⚠️ Gagal Download / Terblokir Windows Defender & SmartScreen?</strong>
+            </div>
+            <p className="trigger-subtext">
+              Klik di sini untuk <strong>Panduan 5 Langkah Mudah</strong> mengatasi peringatan browser (&quot;isn&apos;t commonly downloaded&quot;) dan cara klik tombol <span className="highlight-pill">Titik Tiga (⋯)</span> &gt; <span className="highlight-pill">Keep anyway</span>.
+            </p>
+          </div>
+          <button type="button" className="trigger-guide-btn" onClick={(e) => { e.stopPropagation(); setIsDefenderModalOpen(true); }}>
+            <ShieldAlert size={16} />
+            <span>Buka Panduan Solusi</span>
+            <ArrowRight size={14} />
+          </button>
         </div>
 
         {/* Releases Cards Grid */}
@@ -191,13 +234,23 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
           <div className="download-started-alert" role="status">
             <Check size={18} className="started-icon" />
             <div className="started-content">
-              <strong>Permintaan unduh {activeDownloadNotice} telah dikirim ke browser!</strong>
-              <span>
-                Jika unduhan tidak dimulai otomatis, gunakan{' '}
+              <div className="started-top-line">
+                <strong>Permintaan unduh {activeDownloadNotice} telah dikirim ke browser!</strong>
+                <button
+                  type="button"
+                  className="alert-guide-action-btn"
+                  onClick={() => setIsDefenderModalOpen(true)}
+                  id="btn-alert-open-defender"
+                >
+                  <ShieldAlert size={14} />
+                  <span>File Tertahan / Windows Defender? Klik Panduan</span>
+                </button>
+              </div>
+              <span className="started-subtext">
+                Jika browser menampilkan peringatan &quot;isn&apos;t commonly downloaded&quot;, silakan klik tombol panduan di atas atau gunakan{' '}
                 <a href={product.links.releaseNotes} target="_blank" rel="noopener noreferrer">
                   Mirror Resmi GitHub Releases
-                </a>{' '}
-                atau panduan di bawah.
+                </a>.
               </span>
             </div>
           </div>
@@ -249,8 +302,18 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
               <div className="troubleshoot-item-body">
                 <strong>Peringatan SmartScreen / Browser Block</strong>
                 <p>
-                  Jika muncul &quot;File ini mungkin berbahaya&quot;, klik ikon titik tiga (•••) pada download bar &gt; <em>Keep</em> &gt; <em>Keep anyway</em> karena file belum ditandatangani sertifikat EV berbayar.
+                  Jika muncul &quot;isn&apos;t commonly downloaded&quot;, klik ikon <strong>Titik Tiga (⋯)</strong> &gt; <em>Keep</em> &gt; <em>Keep anyway</em>.
                 </p>
+                <button
+                  type="button"
+                  className="troubleshoot-btn-link troubleshoot-modal-trigger"
+                  onClick={() => setIsDefenderModalOpen(true)}
+                  id="btn-troubleshoot-open-defender"
+                >
+                  <ShieldAlert size={14} />
+                  <span>Buka Panduan Bergambar 5 Langkah</span>
+                  <ArrowRight size={13} />
+                </button>
               </div>
             </div>
           </div>
@@ -269,6 +332,14 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
             </p>
           </div>
         </div>
+
+        {/* Windows Defender / Browser Download Guide Pop-Up Modal */}
+        <WindowsDefenderGuideModal
+          isOpen={isDefenderModalOpen}
+          onClose={() => setIsDefenderModalOpen(false)}
+          downloadUrl={releases[0]?.downloadUrl}
+          filename={releases[0]?.filename}
+        />
       </div>
     </section>
   );

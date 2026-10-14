@@ -5,6 +5,7 @@ import { fetchLiveReleases } from './services/githubReleases';
 import { Navbar } from './components/common/Navbar/Navbar';
 import { Hero } from './components/sections/Hero/Hero';
 import { Features } from './components/sections/Features/Features';
+import { UiRedesignShowcase } from './components/sections/UiRedesignShowcase/UiRedesignShowcase';
 import { Preview } from './components/sections/Preview/Preview';
 import { DownloadCenter } from './components/sections/DownloadCenter/DownloadCenter';
 import { SystemRequirements } from './components/sections/SystemRequirements/SystemRequirements';
@@ -50,6 +51,7 @@ export const App: React.FC = () => {
       <main id="main-content">
         <Hero product={product} detectedOS={userOSInfo} recommendedRelease={recommendedRelease} />
         <Features features={features} />
+        <UiRedesignShowcase />
         <Preview previews={previews} />
         <DownloadCenter product={product} releases={releases} userOS={userOSInfo.os} />
         <SystemRequirements requirements={systemRequirements} />

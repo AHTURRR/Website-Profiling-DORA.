@@ -150,6 +150,36 @@
   transform: translateY(-1px);
 }
 
+/* Defender & Browser Download Hint */
+.hero-defender-hint {
+  margin-bottom: 1.5rem;
+}
+
+.hero-defender-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.82rem;
+  font-weight: var(--font-weight-medium);
+  color: #b45309;
+  background: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.35);
+  padding: 0.45rem 0.85rem;
+  border-radius: var(--radius-full);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.hero-defender-link:hover {
+  background: rgba(245, 158, 11, 0.22);
+  border-color: #f59e0b;
+  transform: translateY(-1px);
+}
+
+.text-amber-accent {
+  color: #d97706;
+}
+
 /* Trust Row */
 .hero-trust-row {
   display: flex;
