@@ -7,7 +7,6 @@ import {
   FileCode,
   Calendar,
   HardDrive,
-  ExternalLink,
   AlertCircle,
   Terminal,
   ShieldAlert,
@@ -24,18 +23,10 @@ interface DownloadCenterProps {
 }
 
 export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, releases }) => {
-  const [selectedFilter, setSelectedFilter] = useState<'all' | 'installer' | 'source'>('all');
   const [copiedId, setCopiedId] = useState<string | null>(null);
   const [copiedCurl, setCopiedCurl] = useState(false);
   const [activeDownloadNotice, setActiveDownloadNotice] = useState<string | null>(null);
   const [isDefenderModalOpen, setIsDefenderModalOpen] = useState(false);
-
-  const filteredReleases =
-    selectedFilter === 'all'
-      ? releases
-      : selectedFilter === 'installer'
-      ? releases.filter((rel) => rel.filename.endsWith('.exe'))
-      : releases.filter((rel) => rel.filename.endsWith('.zip') || rel.filename.endsWith('.tar.gz'));
 
   const copyChecksum = (checksum: string, id: string) => {
     navigator.clipboard.writeText(checksum);
@@ -45,8 +36,8 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
     }, 2000);
   };
 
-  const copyCurlCommand = (cmd: string) => {
-    navigator.clipboard.writeText(cmd);
+  const copyCurlCommand = (command: string) => {
+    navigator.clipboard.writeText(command);
     setCopiedCurl(true);
     setTimeout(() => {
       setCopiedCurl(false);
@@ -71,53 +62,14 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
           </div>
           <h2 className="section-title">Unduh Installer Resmi Terverifikasi</h2>
           <p className="section-subtitle">
-            Dapatkan paket rilis resmi {product.name} langsung dari server distribusi resmi. Seluruh file dilengkapi
-            checksum SHA256 untuk verifikasi integritas biner.
+            Dapatkan installer resmi {product.name} untuk Windows. Seluruh file dilengkapi checksum SHA256 untuk
+            verifikasi integritas biner.
           </p>
-        </div>
-
-        {/* Filter Bar */}
-        <div className="download-filter-bar">
-          <div className="filter-buttons" role="group" aria-label="Filter Berdasarkan Paket Rilis">
-            <button
-              type="button"
-              className={`filter-btn ${selectedFilter === 'all' ? 'active' : ''}`}
-              onClick={() => setSelectedFilter('all')}
-            >
-              Semua Paket Rilis ({releases.length})
-            </button>
-            <button
-              type="button"
-              className={`filter-btn ${selectedFilter === 'installer' ? 'active' : ''}`}
-              onClick={() => setSelectedFilter('installer')}
-            >
-              Windows Setup (.exe)
-            </button>
-            <button
-              type="button"
-              className={`filter-btn ${selectedFilter === 'source' ? 'active' : ''}`}
-              onClick={() => setSelectedFilter('source')}
-            >
-              Source Code (.zip)
-            </button>
-          </div>
-
-          {product.links.releaseNotes && (
-            <a
-              href={product.links.releaseNotes}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="changelog-link"
-            >
-              <ExternalLink size={14} />
-              <span>Changelog & Catatan Rilis</span>
-            </a>
-          )}
         </div>
 
         {/* Releases Cards Grid */}
         <div className="releases-grid">
-          {filteredReleases.map((release) => (
+          {releases.map((release) => (
             <div
               key={release.id}
               className={`release-card ${release.isPrimaryForPlatform ? 'release-recommended' : ''}`}
@@ -251,18 +203,18 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
               <span className="troubleshoot-badge">Opsi 1</span>
               <div className="troubleshoot-item-body">
                 <div className="troubleshoot-item-content">
-                  <strong>Unduh via Halaman GitHub Releases Resmi</strong>
-                  <p>Buka mirror rilis GitHub secara langsung untuk memilih file biner atau aset rilis lainnya.</p>
+                  <strong>Unduh Berkas Langsung (Direct Download)</strong>
+                  <p>Unduh berkas instalasi biner .exe secara langsung melalui tautan unduh utama tanpa jeda.</p>
                 </div>
                 <div className="troubleshoot-item-action">
                   <a
-                    href={product.links.releaseNotes}
-                    target="_blank"
-                    rel="noopener noreferrer"
+                    href={releases[0]?.downloadUrl}
                     className="troubleshoot-btn-link"
+                    download
+                    onClick={() => handleDownloadClick(releases[0]?.filename || 'DORA-v5.0.0-Setup.exe')}
                   >
-                    <span>Buka Halaman Rilis GitHub</span>
-                    <ExternalLink size={13} />
+                    <span>Unduh Berkas Langsung (.exe)</span>
+                    <Download size={13} />
                   </a>
                 </div>
               </div>
@@ -336,7 +288,7 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
           <div className="notice-content">
             <h4>Jaminan Integritas & Keamanan Unduhan</h4>
             <p>
-              Seluruh berkas installer resmi didistribusikan langsung melalui rilis GitHub resmi Metriks Studio.
+              Seluruh berkas installer resmi didistribusikan secara aman dan terverifikasi oleh Metriks Studio.
               Verifikasi kesesuaian nilai SHA256 hash di Windows PowerShell menggunakan perintah:{' '}
               <code>Get-FileHash [nama_file] -Algorithm SHA256</code> atau di Command Prompt{' '}
               <code>certutil -hashfile [nama_file] SHA256</code>.

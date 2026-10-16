@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { HelpCircle, ChevronDown, MessageSquare } from 'lucide-react';
+import { HelpCircle, ChevronDown } from 'lucide-react';
 import type { FaqItem, ProductInfo } from '../../../types/product.types';
 import './FAQ.css';
 
@@ -30,8 +30,7 @@ export const FAQ: React.FC<FAQProps> = ({ faqList, product }) => {
           </div>
           <h2 className="section-title">Jawaban Seputar Produk & Dukungan</h2>
           <p className="section-subtitle">
-            Temukan jawaban atas pertanyaan yang paling sering diajukan mengenai fungsionalitas, lisensi, dan pemeliharaan
-            aplikasi.
+            Temukan jawaban atas pertanyaan yang paling sering diajukan mengenai fungsionalitas, lisensi, dan pemeliharaan {product.name}.
           </p>
         </div>
 
@@ -63,27 +62,6 @@ export const FAQ: React.FC<FAQProps> = ({ faqList, product }) => {
             );
           })}
         </div>
-
-        {/* Support Help Box */}
-        {product.links.issues && (
-          <div className="faq-support-box">
-            <MessageSquare size={20} className="support-box-icon" />
-            <div className="support-box-text">
-              <h4>Memerlukan bantuan teknis lebih lanjut?</h4>
-              <p>
-                Jika kendala Anda belum tercantum di atas, silakan buka tiket pelaporan pada kanal pelacak bug resmi kami.
-              </p>
-            </div>
-            <a
-              href={product.links.issues}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="support-box-btn"
-            >
-              Laporkan di GitHub Issues
-            </a>
-          </div>
-        )}
       </div>
     </section>
   );

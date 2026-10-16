@@ -60,44 +60,16 @@ export const Footer = ({ product, latestVersion }: FooterProps) => {
               <li>
                 <a href="#faq">Pertanyaan Umum (FAQ)</a>
               </li>
-              {product.links.documentation && (
-                <li>
-                  <a href={product.links.documentation} target="_blank" rel="noopener noreferrer">
-                    Dokumentasi Teknis
-                  </a>
-                </li>
-              )}
             </ul>
           </div>
 
-          {/* Repositories & Legal */}
+          {/* Legal */}
           <div className="footer-links-col">
-            <h4 className="footer-heading">Komunitas & Legal</h4>
+            <h4 className="footer-heading">Legal</h4>
             <ul className="footer-nav-list">
-              {product.links.repository && (
-                <li>
-                  <a href={product.links.repository} target="_blank" rel="noopener noreferrer">
-                    Repositori GitHub
-                  </a>
-                </li>
-              )}
-              {product.links.issues && (
-                <li>
-                  <a href={product.links.issues} target="_blank" rel="noopener noreferrer">
-                    Pelacak Masalah (Issue Tracker)
-                  </a>
-                </li>
-              )}
               <li>
-                <a href="#faq">Kebijakan Privasi & Pemrosesan Data</a>
+                <a href="#faq">Kebijakan Privasi &amp; Pemrosesan Data</a>
               </li>
-              {product.license.url && (
-                <li>
-                  <a href={product.license.url} target="_blank" rel="noopener noreferrer">
-                    Ketentuan Lisensi MIT
-                  </a>
-                </li>
-              )}
             </ul>
           </div>
         </div>

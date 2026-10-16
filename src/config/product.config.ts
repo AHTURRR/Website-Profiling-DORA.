@@ -2,7 +2,6 @@ import type { ProductConfig } from '../types/product.types';
 
 /**
  * PUSAT KONFIGURASI PRODUK DORA (Data Overview & Research Assistant)
- * Berdasarkan dokumentasi resmi: https://github.com/NezzyGremory/Dataset-Research
  * Pengembang: Metriks Studio
  */
 export const productConfig: ProductConfig = {
@@ -15,20 +14,14 @@ export const productConfig: ProductConfig = {
       'DORA (Data Overview & Research Assistant) dikembangkan oleh Metriks Studio sebagai aplikasi desktop native yang menggabungkan kecepatan pemrosesan lokal dengan koneksi jaringan internet untuk alur riset terpadu. Seluruh berkas dataset privat dan operasi pembersihan numerik diproses 100% secara lokal di komputer pengguna (SQLite lokal, zero dataset leakage). Sementara itu, koneksi internet dimanfaatkan untuk pencarian dataset publik (Kaggle & Hugging Face), instalasi pustaka PyPI via pip di Editor Analysis, penelusuran paper ilmiah akademik (OpenAlex, Crossref, Semantic Scholar, Scopus), verifikasi akreditasi nasional SINTA & DOAJ, serta eksplorasi celah penelitian (Research Gap) berbasis AI.',
     developer: {
       name: 'Metriks Studio',
-      url: 'https://github.com/NezzyGremory/Dataset-Research',
       copyrightYear: 2026,
     },
     license: {
-      name: 'MIT Open Source License',
-      url: 'https://github.com/NezzyGremory/Dataset-Research/blob/main/LICENSE',
+      name: 'Gratis untuk Penggunaan Riset',
       isFree: true,
     },
     links: {
-      repository: 'https://github.com/NezzyGremory/Dataset-Research',
-      documentation: 'https://github.com/NezzyGremory/Dataset-Research#readme',
-      issues: 'https://github.com/NezzyGremory/Dataset-Research/issues',
       privacyPolicy: '#privacy',
-      releaseNotes: 'https://github.com/NezzyGremory/Dataset-Research/releases',
     },
   },
 
@@ -406,21 +399,6 @@ export const productConfig: ProductConfig = {
       buttonLabel: 'Download Setup v4.0.0 (.exe)',
       notes: 'Installer Windows Setup resmi rilis stabil v4.0.0 sebelumnya (Dataset Research). Dapat diunduh sebagai opsi alternatif jika membutuhkan versi v4.',
     },
-    {
-      id: 'source-zip-v5',
-      os: 'windows',
-      osName: 'Windows Source (PowerShell)',
-      architecture: 'Python 3.11 - 3.13',
-      version: 'v5.0.0',
-      releaseDate: 'Oktober 2026',
-      fileSize: '7.3 MB',
-      filename: 'Dataset-Research-v5.0.0.zip',
-      downloadUrl: 'https://github.com/NezzyGremory/Dataset-Research/archive/refs/tags/v5.0.0.zip',
-      checksumSha256: '8004bdb15c42d5b15b81fe0db50cafd5baf7ce4581bee64ea16d71c6232bac7d',
-      isPrimaryForPlatform: false,
-      buttonLabel: 'Download Source Code (.zip)',
-      notes: 'Paket source code resmi rilis v5.0.0 final untuk dijalankan via Python virtual environment (python run.py) bagi pengembang atau lingkungan riset kustom.',
-    },
   ],
 
   systemRequirements: [
@@ -435,18 +413,6 @@ export const productConfig: ProductConfig = {
       storage: '500 MB ruang kosong disk untuk aplikasi, runtime, dan database SQLite lokal',
       network: 'Koneksi internet aktif diperlukan untuk: ML Intelligence & estimasi model prediktif, pencarian dataset publik (Kaggle/HF), kueri paper akademik (OpenAlex/Crossref/Semantic Scholar/Scopus), verifikasi SINTA & DOAJ, serta instalasi paket PyPI via pip.',
       extraRuntime: 'Tidak memerlukan runtime eksternal jika menggunakan installer setup .exe bawaan.',
-    },
-    {
-      osKey: 'windows',
-      osName: 'Microsoft Windows (Developer Source Mode)',
-      minimumOs: 'Windows 10 / 11 64-bit dengan PowerShell',
-      recommendedOs: 'Windows 11 dengan Windows Terminal & PowerShell 7+',
-      cpu: 'Prosesor 64-bit dual-core 2.0 GHz atau lebih tinggi',
-      ramMinimum: '4 GB RAM',
-      ramRecommended: '8 GB RAM',
-      storage: '500 MB ruang penyimpanan disk',
-      network: 'Koneksi internet aktif diperlukan untuk: clone repository GitHub, pip install dependensi PyPI, ML Intelligence, pencarian dataset publik, dan API literatur akademik.',
-      extraRuntime: 'Python 3.11 - 3.13 dan pip untuk virtual environment (.venv).',
     },
   ],
 
@@ -482,40 +448,6 @@ export const productConfig: ProductConfig = {
         'Saat pertama kali dijalankan, DORA akan menginisialisasi database SQLite lokal di folder %LOCALAPPDATA%\\Dataset Research secara otomatis.',
       troubleshootingTip:
         'Jika Windows SmartScreen menampilkan peringatan unrecognized publisher (karena installer belum menggunakan sertifikat berbayar code-signing), klik "More info" lalu pilih "Run anyway".',
-    },
-    {
-      os: 'windows',
-      osName: 'Menjalankan dari Source (PowerShell Windows)',
-      steps: [
-        {
-          step: 1,
-          title: 'Clone Repositori GitHub',
-          description: 'Clone repositori resmi Dataset-Research ke komputer lokal Anda:',
-          codeSnippet: 'git clone https://github.com/NezzyGremory/Dataset-Research.git',
-        },
-        {
-          step: 2,
-          title: 'Buat & Aktifkan Virtual Environment',
-          description: 'Buka PowerShell pada folder proyek dan aktifkan environment:',
-          codeSnippet: 'python -m venv .venv; .\\.venv\\Scripts\\Activate.ps1',
-        },
-        {
-          step: 3,
-          title: 'Pasang Dependensi Proyek',
-          description: 'Instal seluruh pustaka yang dibutuhkan (PySide6, pandas, scikit-learn, matplotlib, httpx):',
-          codeSnippet: 'python -m pip install -r requirements.txt',
-        },
-        {
-          step: 4,
-          title: 'Jalankan Aplikasi DORA',
-          description: 'Eksekusi script entry point aplikasi di PowerShell:',
-          codeSnippet: 'python run.py',
-        },
-      ],
-      firstRunTip:
-        'Jika PowerShell memblokir aktivasi script karena Execution Policy, jalankan langsung via interpreter: .\\.venv\\Scripts\\python.exe run.py',
-      troubleshootingTip:
-        'Untuk pengujian otomatis test suite di PowerShell, Anda dapat mengeksekusi: python -m pytest tests/ -v',
     },
   ],
 
@@ -572,16 +504,16 @@ export const productConfig: ProductConfig = {
     {
       id: 'faq-pricing-license',
       category: 'general',
-      question: 'Apakah software ini gratis dan open-source?',
+      question: 'Apakah software ini gratis?',
       answer:
-        'Ya! DORA 100% gratis dan berlisensi open-source di bawah lisensi MIT. Anda dapat memeriksa seluruh source code dan berkontribusi langsung pada repositori GitHub resmi di https://github.com/NezzyGremory/Dataset-Research.',
+        'Ya! DORA dapat diunduh dan digunakan secara gratis untuk keperluan riset dan pembelajaran melalui installer Windows resmi yang tersedia di halaman ini.',
     },
     {
       id: 'faq-download-troubleshooting',
       category: 'installation',
-      question: 'Bagaimana jika berkas installer tidak berhasil diunduh (download gagal, 404, atau terblokir browser)?',
+      question: 'Bagaimana jika berkas installer tidak berhasil diunduh (download gagal atau terblokir browser)?',
       answer:
-        'Jika berkas tidak berhasil diunduh: (1) Lakukan hard refresh browser (Ctrl + F5) agar tautan rilis terbaru tersinkronisasi, (2) Unduh langsung melalui cermin resmi halaman GitHub Releases di https://github.com/NezzyGremory/Dataset-Research/releases, (3) Jika browser (Edge/Chrome) menampilkan peringatan unduhan file .exe ("File might be dangerous"), pilih opsi "Keep" atau "Tetap simpan" karena installer open-source ini belum menggunakan sertifikat EV berbayar, atau (4) Unduh melalui terminal PowerShell menggunakan perintah: curl.exe -L -o DORA-v5.0.0-Setup.exe [URL_UNDUHAN]. Anda juga dapat memilih opsi menjalankan aplikasi dari source code Python.',
+        'Jika berkas tidak berhasil diunduh: (1) Lakukan hard refresh browser (Ctrl + F5) lalu coba unduh kembali, (2) Jika browser (Edge/Chrome) menampilkan peringatan "isn\'t commonly downloaded", klik ikon Titik Tiga (⋯) > "Keep" > "Keep anyway" karena installer belum menggunakan sertifikat code-signing berbayar, atau (3) Buka panduan 5 langkah Windows Defender yang tersedia di bawah tombol Download.',
     },
     {
       id: 'faq-loader-formats',

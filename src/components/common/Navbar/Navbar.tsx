@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Download, ExternalLink } from 'lucide-react';
+import { Menu, X, Download } from 'lucide-react';
 import type { ProductInfo } from '../../../types/product.types';
 import './Navbar.css';
 
@@ -75,18 +75,6 @@ export const Navbar = ({ product, latestVersion }: NavbarProps) => {
 
         {/* CTA & Actions */}
         <div className="navbar-actions">
-          {product.links.repository && (
-            <a
-              href={product.links.repository}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="navbar-icon-link"
-              title="GitHub Repository"
-              aria-label="Kunjungi repositori GitHub resmi"
-            >
-              <ExternalLink size={18} />
-            </a>
-          )}
           <a href="#downloads" className="navbar-cta-btn" id="navbar-download-cta">
             <Download size={16} />
             <span>Download</span>

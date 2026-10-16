@@ -1,7 +1,6 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useMemo } from 'react';
 import { productConfig } from './config/product.config';
 import { detectUserOS } from './utils/platformDetector';
-import { fetchLiveReleases } from './services/githubReleases';
 import { Navbar } from './components/common/Navbar/Navbar';
 import { Hero } from './components/sections/Hero/Hero';
 import { Features } from './components/sections/Features/Features';
@@ -13,14 +12,7 @@ import { FAQ } from './components/sections/FAQ/FAQ';
 import { Footer } from './components/common/Footer/Footer';
 
 export const App: React.FC = () => {
-  const { product, features, previews, systemRequirements, installationGuides, faqList } = productConfig;
-  const [releases, setReleases] = useState(productConfig.releases);
-
-  useEffect(() => {
-    fetchLiveReleases(productConfig.releases).then((liveReleases) => {
-      setReleases(liveReleases);
-    });
-  }, []);
+  const { product, features, previews, systemRequirements, installationGuides, faqList, releases } = productConfig;
 
   // Detect visitor's operating system
   const userOSInfo = useMemo(() => detectUserOS(), []);

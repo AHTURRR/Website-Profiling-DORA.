@@ -12,20 +12,14 @@ export interface ProductInfo {
   fullDescription: string;
   developer: {
     name: string;
-    url?: string;
     copyrightYear: number;
   };
   license: {
     name: string;
-    url?: string;
     isFree: boolean;
   };
   links: {
-    repository?: string;
-    documentation?: string;
-    issues?: string;
     privacyPolicy?: string;
-    releaseNotes?: string;
   };
 }
 
