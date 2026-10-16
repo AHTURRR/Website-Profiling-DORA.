@@ -269,6 +269,11 @@
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
 }
 
+.defender-primary-btn:focus-visible {
+  outline: 2px solid #2563eb;
+  outline-offset: 2px;
+}
+
 @media (max-width: 640px) {
   .defender-modal-header {
     padding: 1.25rem;

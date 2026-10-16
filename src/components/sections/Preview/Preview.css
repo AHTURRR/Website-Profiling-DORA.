@@ -35,6 +35,11 @@
   color: var(--color-navy);
 }
 
+.preview-tab-btn:focus-visible {
+  outline: 2px solid var(--color-blue-accent);
+  outline-offset: 2px;
+}
+
 .preview-tab-btn.active {
   background-color: var(--color-bg-surface);
   color: var(--color-blue-accent);
@@ -103,6 +108,11 @@
 .mock-fullscreen-btn:hover {
   color: #ffffff;
   border-color: var(--color-blue-accent);
+}
+
+.mock-fullscreen-btn:focus-visible {
+  outline: 2px solid var(--color-blue-accent);
+  outline-offset: 2px;
 }
 
 .mock-screen-viewport {

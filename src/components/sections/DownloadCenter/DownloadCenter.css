@@ -238,6 +238,11 @@
   background: rgba(56, 189, 248, 0.2);
 }
 
+.copy-checksum-btn:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 2px;
+}
+
 .checksum-hash {
   font-family: var(--font-family-mono);
   font-size: 0.725rem;
@@ -278,6 +283,11 @@
   box-shadow: 0 4px 14px rgba(31, 94, 255, 0.35);
 }
 
+.download-pkg-btn:focus-visible {
+  outline: 2px solid var(--color-blue-accent);
+  outline-offset: 3px;
+}
+
 .release-helper-link {
   margin-top: 0.65rem;
   width: 100%;
@@ -300,6 +310,12 @@
 
 .release-helper-link:hover {
   color: #78350f;
+}
+
+.release-helper-link:focus-visible {
+  outline: 2px solid #d97706;
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
 }
 
 .helper-link-icon {
@@ -460,6 +476,12 @@
 .troubleshoot-btn-link:hover {
   color: var(--color-blue-hover);
   text-decoration: underline;
+}
+
+.troubleshoot-btn-link:focus-visible {
+  outline: 2px solid var(--color-blue-accent);
+  outline-offset: 2px;
+  border-radius: var(--radius-xs);
 }
 
 /* Opsi 2 CLI block */
