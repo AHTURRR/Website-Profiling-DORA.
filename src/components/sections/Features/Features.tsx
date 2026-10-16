@@ -13,7 +13,6 @@ import {
   CheckCircle2,
   Globe,
   Check,
-  ArrowRight,
   X,
 } from 'lucide-react';
 import type { FeatureItem } from '../../../types/product.types';
@@ -22,6 +21,14 @@ import './Features.css';
 interface FeaturesProps {
   features: FeatureItem[];
 }
+
+const PRIMARY_PIPELINE_IDS = [
+  'overview-pipeline',
+  'multi-format-loader',
+  'data-quality-drop',
+  'ml-intelligence',
+  'literature-search',
+];
 
 export const Features: React.FC<FeaturesProps> = ({ features }) => {
   const [selectedFeature, setSelectedFeature] = useState<FeatureItem | null>(null);
@@ -92,50 +99,55 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
           </p>
         </div>
 
-        {/* Compact Feature Cards Grid */}
+        {/* Compact Feature Cards Grid with Visual Hierarchy */}
         <div className="features-grid">
-          {features.map((feature) => (
-            <div
-              key={feature.id}
-              className="feature-compact-card"
-              id={`feature-card-${feature.id}`}
-              onClick={() => setSelectedFeature(feature)}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  setSelectedFeature(feature);
-                }
-              }}
-              aria-haspopup="dialog"
-              aria-label={`Buka detail fitur ${feature.title}`}
-            >
-              {/* Top Row: Icon on left, Category Badge on right */}
-              <div className="compact-card-top">
-                <div className="compact-icon-wrapper">{renderIcon(feature.icon, 20)}</div>
-                {feature.benefitBadge && (
-                  <span className="compact-benefit-badge">{feature.benefitBadge}</span>
-                )}
-              </div>
+          {features.map((feature) => {
+            const isPillar = PRIMARY_PIPELINE_IDS.includes(feature.id);
+            return (
+              <div
+                key={feature.id}
+                className={`feature-compact-card ${isPillar ? 'feature-card-pillar' : ''}`}
+                id={`feature-card-${feature.id}`}
+                onClick={() => setSelectedFeature(feature)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSelectedFeature(feature);
+                  }
+                }}
+                aria-haspopup="dialog"
+                aria-label={`Buka detail fitur ${feature.title}`}
+              >
+                {/* Top Row: Icon on left, Category Badge on right */}
+                <div className="compact-card-top">
+                  <div className="compact-icon-wrapper">{renderIcon(feature.icon, 20)}</div>
+                  <div className="compact-badge-group">
+                    {isPillar && <span className="compact-pillar-tag">Modul Utama</span>}
+                    {feature.benefitBadge && (
+                      <span className="compact-benefit-badge">{feature.benefitBadge}</span>
+                    )}
+                  </div>
+                </div>
 
-              {/* Title & 1 Brief Sentence */}
-              <div className="compact-card-content">
-                <h3 className="compact-card-title">{feature.title}</h3>
-                <p className="compact-card-summary">
-                  {feature.shortSummary || feature.description}
-                </p>
-              </div>
+                {/* Title & 1 Brief Sentence */}
+                <div className="compact-card-content">
+                  <h3 className="compact-card-title">{feature.title}</h3>
+                  <p className="compact-card-summary">
+                    {feature.shortSummary || feature.description}
+                  </p>
+                </div>
 
-              {/* Bottom: Trigger indicator "Lihat Detail →" */}
-              <div className="compact-card-footer">
-                <span className="compact-detail-trigger">
-                  <span>Lihat Detail</span>
-                  <ArrowRight size={14} className="compact-arrow-icon" />
-                </span>
+                {/* Bottom: Trigger indicator "Lihat Detail" */}
+                <div className="compact-card-footer">
+                  <span className="compact-detail-trigger">
+                    <span>Lihat Detail Modul</span>
+                  </span>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </div>
 

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download, ArrowRight, ShieldCheck, Sparkles, BookOpen, CheckCircle2, Globe, ShieldAlert } from 'lucide-react';
+import { Download, ShieldCheck, Sparkles, BookOpen, CheckCircle2, Globe, ShieldAlert } from 'lucide-react';
 import type { ProductInfo, ReleasePackage, SupportedOS } from '../../../types/product.types';
 import { WindowsDefenderGuideModal } from '../../modals/WindowsDefenderGuideModal';
 import './Hero.css';
@@ -15,13 +15,13 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
 
   return (
     <section id="hero" className="hero-section">
-      <div className="hero-bg-glow"></div>
       <div className="container hero-container">
         {/* Text Content */}
         <div className="hero-content">
-          <div className="hero-badge">
-            <span className="hero-badge-dot"></span>
-            <span>Versi Resmi {recommendedRelease ? recommendedRelease.version : 'v5.0.0'} Tersedia • Metriks Studio</span>
+          <div className="hero-release-badge">
+            <span className="hero-release-tag">Rilis Resmi {recommendedRelease ? recommendedRelease.version : 'v5.0.0'}</span>
+            <span className="hero-release-sep">•</span>
+            <span className="hero-release-publisher">Metriks Studio</span>
           </div>
 
           <h1 className="hero-title">
@@ -60,7 +60,6 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
 
             <a href="#features" className="hero-btn-secondary" id="hero-explore-features-btn">
               <span>Eksplorasi Fitur</span>
-              <ArrowRight size={18} />
             </a>
           </div>
 
@@ -111,15 +110,15 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
           <div className="hero-window-card">
             {/* Window title bar */}
             <div className="window-header">
-              <div className="window-dots">
-                <span className="dot dot-red"></span>
-                <span className="dot dot-yellow"></span>
-                <span className="dot dot-green"></span>
+              <div className="window-title-group">
+                <img src="/brand/about-brand-mark.png" alt="DORA" className="window-app-icon" onError={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; }} />
+                <span className="window-title-text">DORA v5.0.0: Data Overview & Research Assistant (PySide6)</span>
               </div>
-              <div className="window-title">
-                <span>DORA v5.0.0 — Data Overview & Research Assistant (PySide6)</span>
+              <div className="window-controls">
+                <span className="win-btn win-min" aria-hidden="true">─</span>
+                <span className="win-btn win-max" aria-hidden="true">□</span>
+                <span className="win-btn win-close" aria-hidden="true">✕</span>
               </div>
-              <div className="window-badge">CONNECTED PIPELINE</div>
             </div>
 
             {/* Window Interior Content */}

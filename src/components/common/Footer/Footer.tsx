@@ -80,7 +80,7 @@ export const Footer = ({ product, latestVersion }: FooterProps) => {
             © {product.developer.copyrightYear} {product.developer.name}. Seluruh hak cipta dilindungi.
           </p>
           <div className="footer-meta-right">
-            <span>DORA (Data Overview & Research Assistant) — Official Desktop Software & Research Center</span>
+            <span>DORA (Data Overview & Research Assistant): Official Desktop Software & Research Center</span>
           </div>
         </div>
       </div>

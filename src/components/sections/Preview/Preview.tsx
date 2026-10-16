@@ -85,22 +85,27 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
           <div className="preview-mock-window">
             {/* Window Bar */}
             <div className="mock-window-header">
-              <div className="window-dots">
-                <span className="dot dot-red"></span>
-                <span className="dot dot-yellow"></span>
-                <span className="dot dot-green"></span>
+              <div className="window-title-group">
+                <img src="/brand/about-brand-mark.png" alt="DORA" className="window-app-icon" onError={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; }} />
+                <div className="mock-window-title">DORA v5.0.0: [{currentPreview.title}]</div>
               </div>
-              <div className="mock-window-title">DORA v5.0.0 — [{currentPreview.title}]</div>
-              <button
-                type="button"
-                className="mock-fullscreen-btn"
-                onClick={() => setModalOpen(true)}
-                title="Buka perbesaran modal"
-                aria-label="Perbesar tampilan tangkapan layar"
-              >
-                <Maximize2 size={15} />
-                <span>Perbesar Gambar</span>
-              </button>
+              <div className="mock-window-actions">
+                <button
+                  type="button"
+                  className="mock-fullscreen-btn"
+                  onClick={() => setModalOpen(true)}
+                  title="Buka perbesaran modal"
+                  aria-label="Perbesar tampilan tangkapan layar"
+                >
+                  <Maximize2 size={13} />
+                  <span>Perbesar Gambar</span>
+                </button>
+                <div className="window-controls">
+                  <span className="win-btn win-min" aria-hidden="true">─</span>
+                  <span className="win-btn win-max" aria-hidden="true">□</span>
+                  <span className="win-btn win-close" aria-hidden="true">✕</span>
+                </div>
+              </div>
             </div>
 
             {/* Screen Content: Authentic Screenshot or Fallback */}

@@ -10,7 +10,6 @@ import {
   AlertCircle,
   Terminal,
   ShieldAlert,
-  ArrowRight,
 } from 'lucide-react';
 import type { ReleasePackage, ProductInfo } from '../../../types/product.types';
 import { WindowsDefenderGuideModal } from '../../modals/WindowsDefenderGuideModal';
@@ -274,7 +273,6 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
                   >
                     <ShieldAlert size={14} />
                     <span>Buka Panduan 5 Langkah</span>
-                    <ArrowRight size={13} />
                   </button>
                 </div>
               </div>

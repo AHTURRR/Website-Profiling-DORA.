@@ -7,7 +7,7 @@ import type { ProductConfig } from '../types/product.types';
 export const productConfig: ProductConfig = {
   product: {
     name: 'DORA',
-    tagline: 'Data Overview & Academic Research Assistant — Asisten Desktop Terpadu Eksplorasi Dataset, Machine Learning & Riset Literatur Ilmiah',
+    tagline: 'Data Overview & Academic Research Assistant: Asisten Desktop Terpadu Eksplorasi Dataset, Machine Learning & Riset Literatur Ilmiah',
     shortDescription:
       'Aplikasi desktop native PySide6 untuk alur kerja riset menyeluruh: pemuatan dataset multi-format (CSV/Excel/JSON/Parquet), audit kualitas data dan pembersihan cerdas, ML Pipeline Checklist, Editor Analysis bergaya notebook dengan instalasi PyPI, ML Intelligence, penelusuran paper terindeks SINTA/Scopus/DOAJ, analisis Research Gap, hingga ekspor laporan PDF siap pakai.',
     fullDescription:
