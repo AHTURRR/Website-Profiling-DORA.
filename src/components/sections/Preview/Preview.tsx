@@ -8,10 +8,33 @@ interface PreviewProps {
 }
 
 export const Preview: React.FC<PreviewProps> = ({ previews }) => {
+  const [selectedCategory, setSelectedCategory] = useState<'all' | 'data' | 'modeling' | 'academic'>('all');
   const [activeTab, setActiveTab] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
 
+  const getCategoryForPreview = (idx: number) => {
+    if (idx <= 3) return 'data';
+    if (idx <= 7) return 'modeling';
+    return 'academic';
+  };
+
+  const filteredPreviews = previews
+    .map((p, originalIdx) => ({ ...p, originalIdx }))
+    .filter((p) => {
+      if (selectedCategory === 'all') return true;
+      return getCategoryForPreview(p.originalIdx) === selectedCategory;
+    });
+
   const currentPreview = previews[activeTab] || previews[0];
+
+  const handleCategorySelect = (cat: 'all' | 'data' | 'modeling' | 'academic') => {
+    setSelectedCategory(cat);
+    if (cat === 'all') return;
+    const firstOfCat = previews.findIndex((_, idx) => getCategoryForPreview(idx) === cat);
+    if (firstOfCat !== -1) {
+      setActiveTab(firstOfCat);
+    }
+  };
 
   const getTabIcon = (preview: ProductPreviewImage, index: number) => {
     const tag = preview.tag?.toLowerCase() || '';
@@ -59,20 +82,55 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
           </p>
         </div>
 
+        {/* Workflow Phase Filter Segments */}
+        <div className="preview-category-switcher">
+          <button
+            type="button"
+            className={`category-pill ${selectedCategory === 'all' ? 'active' : ''}`}
+            onClick={() => handleCategorySelect('all')}
+          >
+            <span>Semua Layar (11)</span>
+          </button>
+          <button
+            type="button"
+            className={`category-pill ${selectedCategory === 'data' ? 'active' : ''}`}
+            onClick={() => handleCategorySelect('data')}
+          >
+            <Database size={14} />
+            <span>Data & Kualitas (4)</span>
+          </button>
+          <button
+            type="button"
+            className={`category-pill ${selectedCategory === 'modeling' ? 'active' : ''}`}
+            onClick={() => handleCategorySelect('modeling')}
+          >
+            <Sparkles size={14} />
+            <span>Analisis & ML (4)</span>
+          </button>
+          <button
+            type="button"
+            className={`category-pill ${selectedCategory === 'academic' ? 'active' : ''}`}
+            onClick={() => handleCategorySelect('academic')}
+          >
+            <BookOpen size={14} />
+            <span>Literatur & Laporan (3)</span>
+          </button>
+        </div>
+
         {/* Preview Tabs */}
         <div className="preview-tabs-container">
           <div className="preview-tabs-list" role="tablist" aria-label="Tab Pratinjau Antarmuka">
-            {previews.map((preview, idx) => (
+            {filteredPreviews.map((preview) => (
               <button
                 key={preview.id}
                 role="tab"
-                aria-selected={activeTab === idx}
+                aria-selected={activeTab === preview.originalIdx}
                 aria-controls={`preview-panel-${preview.id}`}
                 id={`preview-tab-${preview.id}`}
-                className={`preview-tab-btn ${activeTab === idx ? 'active' : ''}`}
-                onClick={() => setActiveTab(idx)}
+                className={`preview-tab-btn ${activeTab === preview.originalIdx ? 'active' : ''}`}
+                onClick={() => setActiveTab(preview.originalIdx)}
               >
-                {getTabIcon(preview, idx)}
+                {getTabIcon(preview, preview.originalIdx)}
                 <span>{preview.title}</span>
                 {preview.badge && <span className="tab-badge">{preview.badge}</span>}
               </button>
@@ -116,7 +174,8 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
                     src={currentPreview.imageSrc}
                     alt={currentPreview.title}
                     className="preview-real-screenshot"
-                    loading="lazy"
+                    loading="eager"
+                    decoding="async"
                   />
                   <div className="image-zoom-overlay">
                     <Maximize2 size={24} />

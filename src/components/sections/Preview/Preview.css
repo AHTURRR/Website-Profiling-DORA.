@@ -2,21 +2,65 @@
   background-color: var(--color-bg-main);
 }
 
+.preview-category-switcher {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.25rem;
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.45rem 1rem;
+  border-radius: var(--radius-full);
+  font-size: 0.825rem;
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text-secondary);
+  background-color: #ffffff;
+  border: 1px solid var(--color-border);
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.03);
+}
+
+.category-pill:hover {
+  color: var(--color-navy);
+  border-color: var(--color-border-hover);
+  background-color: var(--color-bg-subtle);
+}
+
+.category-pill:focus-visible {
+  outline: 2px solid var(--color-blue-accent);
+  outline-offset: 2px;
+}
+
+.category-pill.active {
+  background-color: var(--color-navy);
+  color: #ffffff;
+  border-color: var(--color-navy);
+  box-shadow: 0 2px 8px rgba(23, 45, 80, 0.2);
+}
+
 .preview-tabs-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 2.25rem;
 }
 
 .preview-tabs-list {
   display: inline-flex;
-  gap: 0.5rem;
-  background-color: var(--color-bg-subtle);
+  gap: 0.4rem;
+  background-color: rgba(235, 241, 250, 0.7);
   padding: 0.35rem;
   border-radius: var(--radius-md);
   border: 1px solid var(--color-border);
   flex-wrap: wrap;
   justify-content: center;
+  max-width: 1040px;
 }
 
 .preview-tab-btn {
@@ -133,16 +177,20 @@
 .preview-image-wrapper {
   position: relative;
   width: 100%;
+  aspect-ratio: 16 / 10;
   cursor: pointer;
   overflow: hidden;
   background: #09101d;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .preview-real-screenshot {
   width: 100%;
-  height: auto;
-  max-height: 560px;
-  object-fit: contain;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
   display: block;
   transition: transform var(--transition-normal);
 }

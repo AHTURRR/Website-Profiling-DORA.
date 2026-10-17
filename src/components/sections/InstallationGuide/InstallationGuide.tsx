@@ -29,19 +29,25 @@ export const InstallationGuide: React.FC<InstallationGuideProps> = ({ guides }) 
           </p>
         </div>
 
-        {/* Method Selector Tabs */}
-        <div className="guide-os-tabs">
-          {guides.map((guide, idx) => (
-            <button
-              key={idx}
-              type="button"
-              className={`guide-tab-btn ${activeTab === idx ? 'active' : ''}`}
-              onClick={() => setActiveTab(idx)}
-            >
-              <span>{guide.osName}</span>
-            </button>
-          ))}
-        </div>
+        {/* Method Selector Tabs or Single Badge */}
+        {guides.length > 1 ? (
+          <div className="guide-os-tabs">
+            {guides.map((guide, idx) => (
+              <button
+                key={idx}
+                type="button"
+                className={`guide-tab-btn ${activeTab === idx ? 'active' : ''}`}
+                onClick={() => setActiveTab(idx)}
+              >
+                <span>{guide.osName}</span>
+              </button>
+            ))}
+          </div>
+        ) : (
+          <div className="guide-single-method-row">
+            <span className="guide-method-badge">Metode Resmi: {activeGuide.osName}</span>
+          </div>
+        )}
 
         {/* Steps Card */}
         <div className="guide-card">

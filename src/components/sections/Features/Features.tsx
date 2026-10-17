@@ -99,56 +99,142 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
           </p>
         </div>
 
-        {/* Compact Feature Cards Grid with Visual Hierarchy */}
-        <div className="features-grid">
-          {features.map((feature) => {
-            const isPillar = PRIMARY_PIPELINE_IDS.includes(feature.id);
-            return (
-              <div
-                key={feature.id}
-                className={`feature-compact-card ${isPillar ? 'feature-card-pillar' : ''}`}
-                id={`feature-card-${feature.id}`}
-                onClick={() => setSelectedFeature(feature)}
-                role="button"
-                tabIndex={0}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    setSelectedFeature(feature);
-                  }
-                }}
-                aria-haspopup="dialog"
-                aria-label={`Buka detail fitur ${feature.title}`}
-              >
-                {/* Top Row: Icon on left, Category Badge on right */}
-                <div className="compact-card-top">
-                  <div className="compact-icon-wrapper">{renderIcon(feature.icon, 20)}</div>
-                  <div className="compact-badge-group">
-                    {isPillar && <span className="compact-pillar-tag">Modul Utama</span>}
-                    {feature.benefitBadge && (
-                      <span className="compact-benefit-badge">{feature.benefitBadge}</span>
-                    )}
+        {/* Feature 1: Spotlight Master Pipeline Card */}
+        {(() => {
+          const spotlightFeature = features.find((f) => f.id === 'overview-pipeline') || features[0];
+          const remainingFeatures = features.filter((f) => f.id !== spotlightFeature?.id);
+
+          return (
+            <>
+              {spotlightFeature && (
+                <div
+                  className="feature-spotlight-card"
+                  id={`feature-card-${spotlightFeature.id}`}
+                  onClick={() => setSelectedFeature(spotlightFeature)}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setSelectedFeature(spotlightFeature);
+                    }
+                  }}
+                  aria-haspopup="dialog"
+                  aria-label={`Buka detail fitur ${spotlightFeature.title}`}
+                >
+                  <div className="spotlight-badge-row">
+                    <div className="spotlight-icon-wrapper">{renderIcon(spotlightFeature.icon, 24)}</div>
+                    <div className="compact-badge-group">
+                      <span className="compact-pillar-tag">Modul Utama Terpadu</span>
+                      {spotlightFeature.benefitBadge && (
+                        <span className="compact-benefit-badge">{spotlightFeature.benefitBadge}</span>
+                      )}
+                    </div>
+                  </div>
+
+                  <div className="spotlight-content-grid">
+                    <div className="spotlight-left">
+                      <h3 className="spotlight-title">{spotlightFeature.title}</h3>
+                      <p className="spotlight-description">
+                        {spotlightFeature.description}
+                      </p>
+                      <div className="spotlight-pipeline-stages">
+                        <span className="stage-pill stage-active">01 Multi-Format</span>
+                        <span className="stage-arrow">→</span>
+                        <span className="stage-pill stage-active">02 Quality Audit</span>
+                        <span className="stage-arrow">→</span>
+                        <span className="stage-pill stage-active">03 Pre-Modeling</span>
+                        <span className="stage-arrow">→</span>
+                        <span className="stage-pill stage-active">04 Dataset Search</span>
+                        <span className="stage-arrow">→</span>
+                        <span className="stage-pill stage-active">05 Editor PyPI</span>
+                        <span className="stage-arrow">→</span>
+                        <span className="stage-pill stage-active">06 ML Intelligence</span>
+                        <span className="stage-arrow">→</span>
+                        <span className="stage-pill stage-active">07 SINTA/Scopus</span>
+                      </div>
+                    </div>
+
+                    <div className="spotlight-right">
+                      <div className="spotlight-highlights-list">
+                        <div className="spotlight-highlight-item">
+                          <Check size={16} className="spotlight-check" />
+                          <span>Status Siklus Pipeline 7 Tahapan Terpadu</span>
+                        </div>
+                        <div className="spotlight-highlight-item">
+                          <Check size={16} className="spotlight-check" />
+                          <span>Checklist Kesiapan Pra-Pemodelan ML Empiris</span>
+                        </div>
+                        <div className="spotlight-highlight-item">
+                          <Check size={16} className="spotlight-check" />
+                          <span>Penyimpanan SQLite Privat Bebas Kebocoran</span>
+                        </div>
+                      </div>
+                      <div className="spotlight-cta-wrapper">
+                        <span className="spotlight-cta-btn">
+                          <span>Buka Detail Modul Lengkap</span>
+                          <span aria-hidden="true">→</span>
+                        </span>
+                      </div>
+                    </div>
                   </div>
                 </div>
+              )}
 
-                {/* Title & 1 Brief Sentence */}
-                <div className="compact-card-content">
-                  <h3 className="compact-card-title">{feature.title}</h3>
-                  <p className="compact-card-summary">
-                    {feature.shortSummary || feature.description}
-                  </p>
-                </div>
+              {/* Remaining 9 Compact Feature Cards Grid (3x3 Balanced) */}
+              <div className="features-grid">
+                {remainingFeatures.map((feature) => {
+                  const isPillar = PRIMARY_PIPELINE_IDS.includes(feature.id);
+                  return (
+                    <div
+                      key={feature.id}
+                      className={`feature-compact-card ${isPillar ? 'feature-card-pillar' : ''}`}
+                      id={`feature-card-${feature.id}`}
+                      onClick={() => setSelectedFeature(feature)}
+                      role="button"
+                      tabIndex={0}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          setSelectedFeature(feature);
+                        }
+                      }}
+                      aria-haspopup="dialog"
+                      aria-label={`Buka detail fitur ${feature.title}`}
+                    >
+                      {/* Top Row: Icon on left, Category Badge on right */}
+                      <div className="compact-card-top">
+                        <div className="compact-icon-wrapper">{renderIcon(feature.icon, 20)}</div>
+                        <div className="compact-badge-group">
+                          {isPillar && <span className="compact-pillar-tag">Modul Utama</span>}
+                          {feature.benefitBadge && (
+                            <span className="compact-benefit-badge">{feature.benefitBadge}</span>
+                          )}
+                        </div>
+                      </div>
 
-                {/* Bottom: Trigger indicator "Lihat Detail" */}
-                <div className="compact-card-footer">
-                  <span className="compact-detail-trigger">
-                    <span>Lihat Detail Modul</span>
-                  </span>
-                </div>
+                      {/* Title & 1 Brief Sentence */}
+                      <div className="compact-card-content">
+                        <h3 className="compact-card-title">{feature.title}</h3>
+                        <p className="compact-card-summary">
+                          {feature.shortSummary || feature.description}
+                        </p>
+                      </div>
+
+                      {/* Bottom: Trigger indicator "Lihat Detail" */}
+                      <div className="compact-card-footer">
+                        <span className="compact-detail-trigger">
+                          <span>Lihat Detail Modul</span>
+                          <span aria-hidden="true" style={{ marginLeft: '4px' }}>→</span>
+                        </span>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
-            );
-          })}
-        </div>
+            </>
+          );
+        })()}
       </div>
 
       {/* Pop-up Modal with Backdrop Blur & Scale-In Animation */}

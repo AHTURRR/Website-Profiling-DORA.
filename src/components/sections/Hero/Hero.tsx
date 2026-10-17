@@ -21,14 +21,16 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
           <div className="hero-release-badge">
             <span className="hero-release-tag">Rilis Resmi {recommendedRelease ? recommendedRelease.version : 'v5.0.0'}</span>
             <span className="hero-release-sep">•</span>
-            <span className="hero-release-publisher">Metriks Studio</span>
+            <span className="hero-release-publisher">{product.name} ({product.developer.name})</span>
           </div>
 
           <h1 className="hero-title">
             Eksplorasi Dataset, Eksperimen <span className="hero-title-gradient">Machine Learning</span> & Riset Literatur
           </h1>
 
-          <p className="hero-description">{product.shortDescription}</p>
+          <p className="hero-description">
+            Aplikasi desktop native PySide6 untuk analisis dataset, pra-pemodelan ML, dan riset literatur ilmiah dalam satu alur kerja terpadu yang cepat dan privat.
+          </p>
 
           {/* Action CTAs */}
           <div className="hero-cta-group">
@@ -42,7 +44,7 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
                 download
               >
                 <div className="hero-btn-icon">
-                  <Download size={22} />
+                  <Download size={20} />
                 </div>
                 <div className="hero-btn-text">
                   <span className="hero-btn-action">Download untuk Windows</span>
@@ -53,7 +55,7 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
               </a>
             ) : (
               <a href="#downloads" className="hero-btn-primary">
-                <Download size={20} />
+                <Download size={18} />
                 <span>Lihat Pilihan Download</span>
               </a>
             )}
@@ -63,16 +65,17 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
             </a>
           </div>
 
-          {/* Defender & Browser Help Quick Trigger Button */}
+          {/* Subtle Defender Help Inline Link */}
           <div className="hero-defender-hint">
             <button
               type="button"
-              className="hero-defender-btn"
+              className="hero-defender-inline-btn"
               onClick={() => setIsDefenderModalOpen(true)}
               id="hero-defender-help-btn"
+              title="Panduan jika browser atau Windows SmartScreen menampilkan peringatan"
             >
-              <ShieldAlert size={15} className="text-amber-accent" />
-              <span>⚠️ Bingung tidak bisa download / terindikasi Windows Defender? Lihat Cara Mengatasinya</span>
+              <ShieldAlert size={14} className="text-amber-accent" />
+              <span>Mengalami kendala Windows Defender / SmartScreen? Lihat Solusi</span>
             </button>
           </div>
 
@@ -84,23 +87,26 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
             filename={recommendedRelease?.filename || 'DORA-v5.0.0-Setup.exe'}
           />
 
-          {/* Trust & Transparency Badges */}
-          <div className="hero-trust-row">
-            <div className="hero-trust-item">
-              <Globe size={18} className="trust-icon" />
-              <span>Terkoneksi Jaringan Internet</span>
+          {/* Sleek Horizontal Trust Strip */}
+          <div className="hero-trust-strip">
+            <div className="trust-strip-item">
+              <ShieldCheck size={14} className="trust-strip-icon" />
+              <span>SQLite Lokal (Zero Leakage)</span>
             </div>
-            <div className="hero-trust-item">
-              <Sparkles size={18} className="trust-icon" />
-              <span>ML Intelligence & Estimator Online</span>
+            <span className="trust-strip-sep">•</span>
+            <div className="trust-strip-item">
+              <Sparkles size={14} className="trust-strip-icon" />
+              <span>ML Intelligence</span>
             </div>
-            <div className="hero-trust-item">
-              <BookOpen size={18} className="trust-icon" />
-              <span>Riset Literatur & Jurnal Akademik</span>
+            <span className="trust-strip-sep">•</span>
+            <div className="trust-strip-item">
+              <BookOpen size={14} className="trust-strip-icon" />
+              <span>SINTA & Scopus</span>
             </div>
-            <div className="hero-trust-item">
-              <ShieldCheck size={18} className="trust-icon" />
-              <span>Dataset Privat Aman di Komputer</span>
+            <span className="trust-strip-sep">•</span>
+            <div className="trust-strip-item">
+              <Globe size={14} className="trust-strip-icon" />
+              <span>Online Fitur & PyPI</span>
             </div>
           </div>
         </div>
@@ -156,27 +162,17 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
                   </div>
                   <div className="timeline-track">
                     <div className="track-bar bar-2" style={{ width: '100%' }}>
-                      <span>Stage 2: Drop Missing Values (4 Strategi) & Outlier Check [Cleaned Version Active]</span>
+                      <span>Stage 2: Data Quality, Missing Values (4 Strategi) & Outlier [Cleaned]</span>
                     </div>
                   </div>
                   <div className="timeline-track">
-                    <div className="track-bar bar-5" style={{ width: '95%' }}>
-                      <span>Stage 3: Pre-Modeling Diagnostics & Leakage Check [Guidance Applied]</span>
+                    <div className="track-bar bar-5" style={{ width: '96%' }}>
+                      <span>Stage 3: Pre-Modeling Diagnostics & Leakage Check [Applied]</span>
                     </div>
                   </div>
                   <div className="timeline-track">
-                    <div className="track-bar bar-3" style={{ width: '90%' }}>
-                      <span>Stage 4: Dataset Search Kaggle & Hugging Face [Integrated]</span>
-                    </div>
-                  </div>
-                  <div className="timeline-track">
-                    <div className="track-bar bar-1" style={{ width: '92%' }}>
-                      <span>Stage 5: ML Intelligence & Model Evaluation [Empirical Candidates Ready]</span>
-                    </div>
-                  </div>
-                  <div className="timeline-track">
-                    <div className="track-bar bar-4" style={{ width: '85%' }}>
-                      <span>Stage 6: Academic Research, SINTA Verification & Research Gap [Synthesized]</span>
+                    <div className="track-bar bar-3" style={{ width: '92%' }}>
+                      <span>Stage 4: ML Intelligence & Academic Literature Verification [Ready]</span>
                     </div>
                   </div>
                 </div>
