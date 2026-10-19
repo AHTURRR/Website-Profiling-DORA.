@@ -20,6 +20,8 @@ export interface ProductInfo {
   };
   links: {
     privacyPolicy?: string;
+    repositoryUrl?: string;
+    releasesUrl?: string;
   };
 }
 

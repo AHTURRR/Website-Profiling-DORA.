@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { Eye, Maximize2, X, Check, BarChart3, Database, Terminal, Sparkles, BookOpen, Layers, Search, FileText, Sliders } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Eye, Maximize2, X, Check, BarChart3, Database, Terminal, Cpu, BookOpen, Layers, Search, FileText, Sliders, Shield } from 'lucide-react';
 import type { ProductPreviewImage } from '../../../types/product.types';
 import './Preview.css';
 
@@ -11,6 +11,25 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'data' | 'modeling' | 'academic'>('all');
   const [activeTab, setActiveTab] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
+
+  useEffect(() => {
+    if (modalOpen) {
+      const originalOverflow = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+
+      const handleKeyDown = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') {
+          setModalOpen(false);
+        }
+      };
+
+      window.addEventListener('keydown', handleKeyDown);
+      return () => {
+        document.body.style.overflow = originalOverflow;
+        window.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [modalOpen]);
 
   const getCategoryForPreview = (idx: number) => {
     if (idx <= 3) return 'data';
@@ -43,10 +62,11 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
     if (tag.includes('quality') || tag.includes('missing')) return <Sliders size={16} />;
     if (tag.includes('search')) return <Search size={16} />;
     if (tag.includes('editor')) return <Terminal size={16} />;
-    if (tag.includes('ml')) return <Sparkles size={16} />;
+    if (tag.includes('ml')) return <Cpu size={16} />;
     if (tag.includes('literatur') || tag.includes('paper')) return <BookOpen size={16} />;
     if (tag.includes('laporan') || tag.includes('report')) return <FileText size={16} />;
     if (tag.includes('landscape') || tag.includes('gap')) return <Layers size={16} />;
+    if (tag.includes('tentang') || tag.includes('privasi')) return <Shield size={16} />;
 
     switch (index % 6) {
       case 0:
@@ -56,7 +76,7 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
       case 2:
         return <Terminal size={16} />;
       case 3:
-        return <Sparkles size={16} />;
+        return <Cpu size={16} />;
       case 4:
         return <BookOpen size={16} />;
       case 5:
@@ -73,12 +93,12 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
         <div className="section-header">
           <div className="section-tag">
             <Eye size={14} />
-            <span>Galeri & Tangkapan Layar Asli</span>
+            <span>Galeri & Tangkapan Layar Asli v6.0</span>
           </div>
-          <h2 className="section-title">Antarmuka Desktop DORA yang Intuitif & Modern</h2>
+          <h2 className="section-title">Antarmuka Desktop DORA v6.0.0 yang Konsisten & Responsif</h2>
           <p className="section-subtitle">
-            Jelajahi antarmuka asli DORA (Data Overview & Research Assistant) berbasis PySide6. Seluruh fitur dirancang
-            untuk memudahkan eksplorasi data, pengujian model ML, hingga penelusuran publikasi ilmiah.
+            Jelajahi tangkapan layar asli DORA (Data Overview & Research Assistant v6.0.0) berbasis PySide6 dengan
+            navigasi sidebar 16 rute yang seragam, menu Node Editor, analisis sidik jari SHA-256, hingga halaman Tentang & Privasi.
           </p>
         </div>
 
@@ -89,7 +109,7 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
             className={`category-pill ${selectedCategory === 'all' ? 'active' : ''}`}
             onClick={() => handleCategorySelect('all')}
           >
-            <span>Semua Layar (11)</span>
+            <span>Semua Layar ({previews.length})</span>
           </button>
           <button
             type="button"
@@ -104,8 +124,8 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
             className={`category-pill ${selectedCategory === 'modeling' ? 'active' : ''}`}
             onClick={() => handleCategorySelect('modeling')}
           >
-            <Sparkles size={14} />
-            <span>Analisis & ML (4)</span>
+            <Cpu size={14} />
+            <span>Analisis, Node & ML (4)</span>
           </button>
           <button
             type="button"
@@ -113,7 +133,7 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
             onClick={() => handleCategorySelect('academic')}
           >
             <BookOpen size={14} />
-            <span>Literatur & Laporan (3)</span>
+            <span>Literatur, Laporan & Info (4)</span>
           </button>
         </div>
 
@@ -145,7 +165,7 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
             <div className="mock-window-header">
               <div className="window-title-group">
                 <img src="/brand/about-brand-mark.png" alt="DORA" className="window-app-icon" onError={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; }} />
-                <div className="mock-window-title">DORA v5.0.0: [{currentPreview.title}]</div>
+                <div className="mock-window-title">DORA v6.0.0: [{currentPreview.title}]</div>
               </div>
               <div className="mock-window-actions">
                 <button

@@ -202,17 +202,18 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
               <span className="troubleshoot-badge">Opsi 1</span>
               <div className="troubleshoot-item-body">
                 <div className="troubleshoot-item-content">
-                  <strong>Unduh Berkas Langsung (Direct Download)</strong>
-                  <p>Unduh berkas instalasi biner .exe secara langsung melalui tautan unduh utama tanpa jeda.</p>
+                  <strong>Unduh dari Halaman GitHub Releases Resmi</strong>
+                  <p>Buka halaman rilis repositori Data-Overview-Research-Assistant atau unduh langsung berkas biner .exe.</p>
                 </div>
                 <div className="troubleshoot-item-action">
                   <a
-                    href={releases[0]?.downloadUrl}
+                    href={product.links.releasesUrl || releases[0]?.downloadUrl}
                     className="troubleshoot-btn-link"
-                    download
-                    onClick={() => handleDownloadClick(releases[0]?.filename || 'DORA-v5.0.0-Setup.exe')}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    onClick={() => handleDownloadClick(releases[0]?.filename || 'Data-Overview-Research-Assistant-v6-Setup.exe')}
                   >
-                    <span>Unduh Berkas Langsung (.exe)</span>
+                    <span>Buka GitHub Releases v6.0.0</span>
                     <Download size={13} />
                   </a>
                 </div>
@@ -230,12 +231,12 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
                 <div className="troubleshoot-cli-snippet">
                   <div className="cli-code-text">
                     <Terminal size={13} className="cli-icon" />
-                    <code>curl.exe -L -o DORA-v5.0.0-Setup.exe {releases[0]?.downloadUrl}</code>
+                    <code>curl.exe -L -o {releases[0]?.filename || 'Data-Overview-Research-Assistant-v6-Setup.exe'} {releases[0]?.downloadUrl}</code>
                   </div>
                   <button
                     type="button"
                     className="cli-inline-copy-btn"
-                    onClick={() => copyCurlCommand(`curl.exe -L -o DORA-v5.0.0-Setup.exe "${releases[0]?.downloadUrl}"`)}
+                    onClick={() => copyCurlCommand(`curl.exe -L -o ${releases[0]?.filename || 'Data-Overview-Research-Assistant-v6-Setup.exe'} "${releases[0]?.downloadUrl}"`)}
                     title="Salin perintah cURL"
                   >
                     {copiedCurl ? (
@@ -286,10 +287,10 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
           <div className="notice-content">
             <h4>Jaminan Integritas & Keamanan Unduhan</h4>
             <p>
-              Seluruh berkas installer resmi didistribusikan secara aman dan terverifikasi oleh Metriks Studio.
+              Seluruh berkas installer resmi didistribusikan langsung dari repositori GitHub resmi Metriks Studio (<code>NezzyGremory/Data-Overview-Research-Assistant</code>).
               Verifikasi kesesuaian nilai SHA256 hash di Windows PowerShell menggunakan perintah:{' '}
-              <code>Get-FileHash [nama_file] -Algorithm SHA256</code> atau di Command Prompt{' '}
-              <code>certutil -hashfile [nama_file] SHA256</code>.
+              <code>Get-FileHash {releases[0]?.filename || 'Data-Overview-Research-Assistant-v6-Setup.exe'} -Algorithm SHA256</code> atau di Command Prompt{' '}
+              <code>certutil -hashfile {releases[0]?.filename || 'Data-Overview-Research-Assistant-v6-Setup.exe'} SHA256</code>.
             </p>
           </div>
         </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Download, ShieldCheck, Sparkles, BookOpen, CheckCircle2, Globe, ShieldAlert } from 'lucide-react';
+import { Download, ShieldCheck, Cpu, BookOpen, CheckCircle2, Globe, ShieldAlert } from 'lucide-react';
 import type { ProductInfo, ReleasePackage, SupportedOS } from '../../../types/product.types';
 import { WindowsDefenderGuideModal } from '../../modals/WindowsDefenderGuideModal';
 import './Hero.css';
@@ -12,6 +12,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
   const [isDefenderModalOpen, setIsDefenderModalOpen] = useState(false);
+  const currentVersion = recommendedRelease ? recommendedRelease.version : 'v6.0.0';
 
   return (
     <section id="hero" className="hero-section">
@@ -19,17 +20,17 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
         {/* Text Content */}
         <div className="hero-content">
           <div className="hero-release-badge">
-            <span className="hero-release-tag">Rilis Resmi {recommendedRelease ? recommendedRelease.version : 'v5.0.0'}</span>
+            <span className="hero-release-tag">Rilis Resmi {currentVersion}</span>
             <span className="hero-release-sep">•</span>
             <span className="hero-release-publisher">{product.name} ({product.developer.name})</span>
           </div>
 
           <h1 className="hero-title">
-            Eksplorasi Dataset, Eksperimen <span className="hero-title-gradient">Machine Learning</span> & Riset Literatur
+            Eksplorasi Dataset, Visual <span className="hero-title-gradient">ML Node Editor</span> & Riset Literatur
           </h1>
 
           <p className="hero-description">
-            Aplikasi desktop native PySide6 untuk analisis dataset, pra-pemodelan ML, dan riset literatur ilmiah dalam satu alur kerja terpadu yang cepat dan privat.
+            Aplikasi desktop native PySide6 ({currentVersion}) untuk analisis dataset lokal, penyusunan pipeline Machine Learning berbasis Node Editor & Notebook PyPI, serta riset literatur terindeks SINTA dan Scopus.
           </p>
 
           {/* Action CTAs */}
@@ -47,7 +48,7 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
                   <Download size={20} />
                 </div>
                 <div className="hero-btn-text">
-                  <span className="hero-btn-action">Download untuk Windows</span>
+                  <span className="hero-btn-action">Download Installer Windows</span>
                   <span className="hero-btn-meta">
                     {recommendedRelease.version} • {recommendedRelease.architecture} • {recommendedRelease.fileSize}
                   </span>
@@ -61,7 +62,7 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
             )}
 
             <a href="#features" className="hero-btn-secondary" id="hero-explore-features-btn">
-              <span>Eksplorasi Fitur</span>
+              <span>Lihat Modul v6.0</span>
             </a>
           </div>
 
@@ -84,29 +85,29 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
             isOpen={isDefenderModalOpen}
             onClose={() => setIsDefenderModalOpen(false)}
             downloadUrl={recommendedRelease?.downloadUrl}
-            filename={recommendedRelease?.filename || 'DORA-v5.0.0-Setup.exe'}
+            filename={recommendedRelease?.filename || 'Data-Overview-Research-Assistant-v6-Setup.exe'}
           />
 
           {/* Sleek Horizontal Trust Strip */}
           <div className="hero-trust-strip">
             <div className="trust-strip-item">
               <ShieldCheck size={14} className="trust-strip-icon" />
-              <span>SQLite Lokal (Zero Leakage)</span>
+              <span>SQLite Lokal & Panel Privasi</span>
             </div>
             <span className="trust-strip-sep">•</span>
             <div className="trust-strip-item">
-              <Sparkles size={14} className="trust-strip-icon" />
-              <span>ML Intelligence</span>
+              <Cpu size={14} className="trust-strip-icon" />
+              <span>Visual Node Editor & ML</span>
             </div>
             <span className="trust-strip-sep">•</span>
             <div className="trust-strip-item">
               <BookOpen size={14} className="trust-strip-icon" />
-              <span>SINTA & Scopus</span>
+              <span>SINTA 1-6 & Scopus</span>
             </div>
             <span className="trust-strip-sep">•</span>
             <div className="trust-strip-item">
               <Globe size={14} className="trust-strip-icon" />
-              <span>Online Fitur & PyPI</span>
+              <span>Kaggle, HF & PyPI</span>
             </div>
           </div>
         </div>
@@ -118,7 +119,7 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
             <div className="window-header">
               <div className="window-title-group">
                 <img src="/brand/about-brand-mark.png" alt="DORA" className="window-app-icon" onError={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; }} />
-                <span className="window-title-text">DORA v5.0.0: Data Overview & Research Assistant (PySide6)</span>
+                <span className="window-title-text">DORA {currentVersion}: Data Overview & Research Assistant (PySide6)</span>
               </div>
               <div className="window-controls">
                 <span className="win-btn win-min" aria-hidden="true">─</span>
@@ -132,47 +133,47 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
               <div className="mock-stat-bar">
                 <div className="mock-stat-item">
                   <span className="mock-stat-label">Active Dataset</span>
-                  <span className="mock-stat-val">student_research.csv (Parquet/Excel)</span>
+                  <span className="mock-stat-val">Titanic-Dataset.csv (891x12)</span>
                 </div>
                 <div className="mock-stat-item">
-                  <span className="mock-stat-label">Data Quality</span>
-                  <span className="mock-stat-val text-accent">98.2% Cleaned</span>
+                  <span className="mock-stat-label">Readiness Score</span>
+                  <span className="mock-stat-val text-accent">82/100 Ready</span>
                 </div>
                 <div className="mock-stat-item">
-                  <span className="mock-stat-label">ML Intelligence</span>
-                  <span className="mock-stat-val">RandomForest (92.4% F1)</span>
+                  <span className="mock-stat-label">Node & ML Engine</span>
+                  <span className="mock-stat-val">RandomForest (82.8% Acc)</span>
                 </div>
                 <div className="mock-stat-item">
                   <span className="mock-stat-label">Academic Papers</span>
-                  <span className="mock-stat-val">32 SINTA & Scopus</span>
+                  <span className="mock-stat-val">SINTA, DOAJ & Scopus</span>
                 </div>
               </div>
 
               {/* Graphical Timeline Mock */}
               <div className="mock-graph-container">
                 <div className="mock-graph-header">
-                  <span>ML Pipeline Checklist & Alur Kerja Riset</span>
+                  <span>Overview & Alur Kerja Riset Terpadu (16 Rute Aktif)</span>
                   <span className="mock-time">7/7 WORKFLOW STAGES READY</span>
                 </div>
                 <div className="mock-timeline-bars">
                   <div className="timeline-track">
                     <div className="track-bar bar-1" style={{ width: '100%' }}>
-                      <span>Stage 1: Multi-Format Loader & Profiling (CSV/Excel/Parquet) [Completed]</span>
+                      <span>Stage 1: Multi-Format Loader, Profiling & SHA-256 Fingerprint [Done]</span>
                     </div>
                   </div>
                   <div className="timeline-track">
                     <div className="track-bar bar-2" style={{ width: '100%' }}>
-                      <span>Stage 2: Data Quality, Missing Values (4 Strategi) & Outlier [Cleaned]</span>
+                      <span>Stage 2: Data Quality, 4 Strategi Drop Missing & Leakage Check [Done]</span>
                     </div>
                   </div>
                   <div className="timeline-track">
                     <div className="track-bar bar-5" style={{ width: '96%' }}>
-                      <span>Stage 3: Pre-Modeling Diagnostics & Leakage Check [Applied]</span>
+                      <span>Stage 3: Visual Node Editor, Editor Analysis & ML Intelligence [Done]</span>
                     </div>
                   </div>
                   <div className="timeline-track">
                     <div className="track-bar bar-3" style={{ width: '92%' }}>
-                      <span>Stage 4: ML Intelligence & Academic Literature Verification [Ready]</span>
+                      <span>Stage 4: Academic Research, Landscape, Gap & Ekspor PDF/Kode [Ready]</span>
                     </div>
                   </div>
                 </div>
@@ -182,9 +183,9 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
               <div className="window-footer-bar">
                 <div className="status-indicator">
                   <CheckCircle2 size={14} className="text-accent" />
-                  <span>Draf Research Report Siap Diekspor ke Dokumen PDF</span>
+                  <span>Ekspor Siap: Laporan PDF (A4) & Pipeline (.py / .ipynb / .pkl / .zip)</span>
                 </div>
-                <span className="engine-meta">SQLite Local Storage • Zero Dataset Leakage</span>
+                <span className="engine-meta">SQLite Local • UI Scale Auto</span>
               </div>
             </div>
           </div>

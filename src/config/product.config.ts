@@ -1,190 +1,207 @@
 import type { ProductConfig } from '../types/product.types';
 
 /**
- * PUSAT KONFIGURASI PRODUK DORA (Data Overview & Research Assistant)
+ * PUSAT KONFIGURASI PRODUK DORA (Data Overview & Research Assistant) v6.0.0
+ * Repositori Resmi: https://github.com/NezzyGremory/Data-Overview-Research-Assistant.git
  * Pengembang: Metriks Studio
  */
 export const productConfig: ProductConfig = {
   product: {
     name: 'DORA',
-    tagline: 'Data Overview & Academic Research Assistant: Asisten Desktop Terpadu Eksplorasi Dataset, Machine Learning & Riset Literatur Ilmiah',
+    tagline:
+      'Data Overview & Research Assistant v6.0.0: Aplikasi Desktop Eksplorasi Dataset, Visual ML Node Editor & Riset Literatur Ilmiah',
     shortDescription:
-      'Aplikasi desktop native PySide6 untuk alur kerja riset menyeluruh: pemuatan dataset multi-format (CSV/Excel/JSON/Parquet), audit kualitas data dan pembersihan cerdas, ML Pipeline Checklist, Editor Analysis bergaya notebook dengan instalasi PyPI, ML Intelligence, penelusuran paper terindeks SINTA/Scopus/DOAJ, analisis Research Gap, hingga ekspor laporan PDF siap pakai.',
+      'Aplikasi desktop native PySide6 (v6.0.0) untuk alur kerja riset data dan akademik: pemuatan dataset multi-format (CSV/Excel/JSON/Parquet), audit kualitas data 4 strategi, Visual Node Editor & ML Graph Engine dengan ekspor multi-format (.py, .ipynb, .pkl, .csv, .zip), Editor Analysis interaktif, penelusuran literatur terindeks SINTA/Scopus/DOAJ, hingga ekspor laporan PDF.',
     fullDescription:
-      'DORA (Data Overview & Research Assistant) dikembangkan oleh Metriks Studio sebagai aplikasi desktop native yang menggabungkan kecepatan pemrosesan lokal dengan koneksi jaringan internet untuk alur riset terpadu. Seluruh berkas dataset privat dan operasi pembersihan numerik diproses 100% secara lokal di komputer pengguna (SQLite lokal, zero dataset leakage). Sementara itu, koneksi internet dimanfaatkan untuk pencarian dataset publik (Kaggle & Hugging Face), instalasi pustaka PyPI via pip di Editor Analysis, penelusuran paper ilmiah akademik (OpenAlex, Crossref, Semantic Scholar, Scopus), verifikasi akreditasi nasional SINTA & DOAJ, serta eksplorasi celah penelitian (Research Gap) berbasis AI.',
+      'Data Overview & Research Assistant (DORA v6.0.0) dikembangkan oleh Metriks Studio sebagai aplikasi desktop native berbasis Python 3.13 dan PySide6 6.11 yang memadukan pemrosesan dataset lokal di perangkat dengan layanan pencarian online. Pada rilis v6.0.0, DORA menghadirkan penyempurnaan tata letak Overview (kondisi kosong maupun terisi), keselarasan navigasi sidebar pada seluruh 16 rute aktif, Node Editor visual yang berjalan di latar belakang dengan cache analisis serta ekspor multi-format, penguatan kontrol event Qt pada Editor Analisis, peluncuran otomatis berbasis virtual environment proyek (.venv), serta panel informasi privasi lengkap pada halaman Tentang.',
     developer: {
       name: 'Metriks Studio',
       copyrightYear: 2026,
     },
     license: {
-      name: 'Gratis untuk Penggunaan Riset',
+      name: 'Gratis untuk Penggunaan Riset & Akademik',
       isFree: true,
     },
     links: {
-      privacyPolicy: '#privacy',
+      privacyPolicy: '#faq',
+      repositoryUrl: 'https://github.com/NezzyGremory/Data-Overview-Research-Assistant',
+      releasesUrl: 'https://github.com/NezzyGremory/Data-Overview-Research-Assistant/releases',
     },
   },
 
   features: [
     {
       id: 'overview-pipeline',
-      title: 'Overview & ML Pipeline Checklist',
-      shortSummary: 'Pantau status dataset, kebersihan data, dan kelengkapan pipeline riset machine learning.',
+      title: 'Overview & Navigasi 16 Rute Konsisten (v6.0)',
+      shortSummary:
+        'Dashboard utama dengan tata letak yang dirapikan, ML Pipeline Checklist, dan navigasi sidebar seragam di 16 rute.',
       description:
-        'Dashboard sentral yang mengumpulkan status dataset aktif, ringkasan skor kualitas data, rekomendasi cepat ML, progres pipeline riset, dan pintasan laporan. Dilengkapi ML Pipeline Checklist untuk memantau tahapan alur kerja yang sudah selesai, direkomendasikan, atau belum tersedia.',
-      benefitBadge: 'Pipeline & Checklist',
+        'Dashboard sentral yang merangkum status dataset aktif, skor kualitas data, rekomendasi model ML, progres pipeline riset 7 tahapan, dan pintasan laporan. Pada v6.0.0, skala tipografi, jarak, dan tampilan saat belum ada dataset dibuat lebih jelas dan responsif, didukung navigasi sidebar yang selaras di seluruh 16 rute menu dengan transisi halaman 140 ms.',
+      benefitBadge: 'Overview & 16 Rute UI',
       executionScope: 'Hybrid (Lokal + Online)',
       icon: 'layers',
       capabilities: [
-        'Memantau status dataset aktif, skor kebersihan, dan progress alur kerja riset secara terpadu',
-        'ML Pipeline Checklist cerdas untuk memeriksa kelengkapan tahapan sebelum pemodelan',
-        'Ringkasan cepat estimasi tugas ML dan status paper terverifikasi',
-        'Pintasan cepat (one-click shortcut) ke modul analisis, editor, dan ekspor laporan riset',
+        'Tampilan Overview v6.0.0 yang konsisten baik saat kondisi dataset kosong maupun setelah dataset dimuat',
+        'ML Pipeline Checklist 7 tahapan untuk memantau progres dari pemuatan dataset hingga penyusunan laporan',
+        'Navigasi sidebar seragam di 16 rute aktif (Workspace, Alat Tambahan, dan Research Tools) dengan fokus keyboard yang jelas',
+        'Pintasan langsung ke halaman Dataset, Analysis, Node Editor, ML Intelligence, serta Research Report',
+      ],
+    },
+    {
+      id: 'node-editor-graph',
+      title: 'Visual Node Editor & ML Graph Engine (Baru di v6.0)',
+      shortSummary:
+        'Susun pipeline ML secara visual dengan deteksi task otomatis, cache latar belakang, dan ekspor 5 format.',
+      description:
+        'Ruang kerja berbasis node visual untuk merancang, memvalidasi, dan mengeksekusi eksperimen Machine Learning. Pada v6.0.0, pemuatan dan analisis dataset, deteksi task otomatis, serta pembuatan template graph dinamis dijalankan di latar belakang dengan dukungan cache analisis untuk mengurangi pemrosesan berulang.',
+      benefitBadge: 'Visual Graph & 5 Ekspor',
+      executionScope: 'Hybrid (Lokal + Online)',
+      icon: 'cpu',
+      capabilities: [
+        'Pemrosesan latar belakang (background worker) dan cache analisis untuk kanvas Node Editor yang responsif',
+        'Deteksi task otomatis (Klasifikasi, Regresi, Pengelompokan, Deteksi Anomali, Rangkaian Waktu) dan filter node sesuai task',
+        'Registry node otomatis dari scikit-learn serta dukungan plugin eksternal (XGBoost, LightGBM, imbalanced-learn, Optuna, SHAP)',
+        'Pemeriksaan dependensi preflight dengan whitelist instalasi aman, riwayat eksperimen SQLite, serta Undo/Redo 50 langkah',
+        'Ekspor pipeline multi-format: skrip Python mandiri (.py), Jupyter Notebook (.ipynb), model (.pkl), tabel run (.csv), dan bundel (.zip)',
       ],
     },
     {
       id: 'dataset-profiling',
       title: 'Multi-Format Loader & Data Profiling',
-      shortSummary: 'Muat dataset multi-format dengan deteksi otomatis delimiter serta audit peran kolom.',
+      shortSummary:
+        'Muat berkas CSV, Excel, JSON, dan Parquet dengan deteksi delimiter otomatis serta sidik jari SHA-256.',
       description:
-        'Memuat berkas dataset CSV, Excel (.xlsx/.xls), JSON, dan Parquet melalui pemilih berkas atau drag-and-drop. Dilengkapi pendeteksian otomatis karakter pemisah (delimiter) dan encoding, tabel paginasi responsif, serta audit tipe dan peran kolom.',
+        'Memuat berkas dataset CSV, Excel (.xlsx/.xls), JSON, dan Parquet melalui pemilih berkas atau drag-and-drop. Dilengkapi pendeteksian otomatis karakter pemisah (delimiter) dan encoding, tabel pratinjau berpaginasi, sidik jari dataset SHA-256, serta identifikasi tipe dan peran kolom.',
       benefitBadge: 'CSV, Excel, JSON & Parquet',
       executionScope: 'Lokal (Privat)',
       icon: 'database',
       capabilities: [
-        'Mendukung multi-format: CSV, Excel (.xlsx/.xls), JSON, dan Parquet',
-        'Deteksi otomatis encoding dan delimiter (koma, titik-koma, tab)',
-        'Pratinjau tabel interaktif dengan paginasi cepat untuk dataset berukuran besar',
-        'Identifikasi peran kolom (fitur numerik, kategorikal, teks, ID unik, atau target)',
+        'Mendukung multi-format data penelitian: CSV, Excel (.xlsx/.xls), JSON, dan Apache Parquet',
+        'Deteksi otomatis encoding berkas dan karakter delimiter umum (koma, titik-koma, tab)',
+        'Pratinjau tabel interaktif dan perhitungan sidik jari (fingerprint SHA-256) dataset secara lokal',
+        'Identifikasi tipe dan peran setiap kolom (fitur numerik, kategorikal, datetime, ID unik, atau variabel target)',
       ],
     },
     {
       id: 'data-quality-cleaning',
-      title: 'Audit Kualitas Data & Drop Missing Values',
-      shortSummary: 'Audit integritas data menyeluruh dan pembersihan 4 strategi tanpa merusak file asli.',
+      title: 'Audit Kualitas Data & 4 Strategi Drop Missing',
+      shortSummary:
+        'Audit nilai kosong vs nilai 0 secara terpisah dan bersihkan dataset dengan 4 strategi tanpa mengubah file asli.',
       description:
-        'Pemeriksaan integritas data menyeluruh. Menghitung jumlah nilai kosong dan nilai 0 secara terpisah, deteksi outliers (IQR/Z-Score), korelasi variabel, serta dialog Drop Missing Values dengan 4 strategi canggih tanpa mengubah file CSV asli.',
+        'Pemeriksaan integritas data menyeluruh yang menghitung nilai kosong dan nilai 0 secara terpisah, mendeteksi duplikasi, outlier (IQR/Z-Score), serta matriks korelasi. Dialog Drop Missing Values menyediakan 4 strategi pembersihan yang menyimpan versi Cleaned baru di workspace tanpa menulis ulang file CSV sumber.',
       benefitBadge: '4 Strategi Cleaning',
       executionScope: 'Lokal (Privat)',
       icon: 'sliders',
       capabilities: [
-        '4 Strategi pembersihan: Drop Baris (any/all), Drop Kolom berbasis ambang, Imputasi statistik, dan Laporan dampak',
-        'Pembedaan cerdas antara missing value sesungguhnya dengan angka 0 yang bermakna valid',
-        'Membuat salinan Cleaned Dataset baru di workspace; file CSV asli tetap aman terjaga',
-        'Normalisasi placeholder otomatis (-, NA, null, tidak tersedia, #VALUE!) & format angka Indonesia/global',
-        'Ekspor dataset bersih sekaligus ekspor berkas catatan baris terbuang (_dropped_rows.csv)',
+        '4 strategi pembersihan: Drop Baris (aturan any/all), Drop Kolom berbasis ambang, Imputasi (mean/median/mode/interpolasi/per-grup), dan Laporan dampak',
+        'Pemisahan analisis antara nilai kosong (missing value) dengan angka 0 yang valid atau mencurigakan secara statistik',
+        'Menyimpan versi Cleaned Dataset di workspace sehingga peneliti bebas berpindah antara versi Original dan Cleaned',
+        'Normalisasi placeholder umum (-, NA, null, tidak tersedia, #VALUE!) dan parsing angka format Indonesia maupun internasional',
+        'Ekspor opsional dataset bersih ke CSV beserta penyimpanan baris yang dibuang ke berkas saudara (<nama>_dropped_rows.csv)',
       ],
     },
     {
       id: 'pre-modeling-diagnostics',
       title: 'Pre-Modeling Diagnostics & Leakage Check',
-      shortSummary: 'Diagnostik sebaran distribusi fitur, keseimbangan kelas, dan pencegahan risiko data leakage.',
+      shortSummary:
+        'Analisis distribusi fitur, keseimbangan kelas target, dan pemeriksaan dini risiko kebocoran data.',
       description:
-        'Diagnostik mendalam karakteristik dataset sebelum pemodelan Machine Learning. Menganalisis sebaran distribusi fitur, keseimbangan kelas (class balance), deteksi risiko kebocoran data (data leakage), serta petunjuk seleksi fitur dan pembagian train-test.',
+        'Menyajikan diagnostik karakteristik dataset sebelum pemodelan Machine Learning: ikhtisar tipe data, sebaran distribusi fitur, keseimbangan kelas (class balance), pemeriksaan risiko kebocoran data (data leakage warnings), serta panduan pembagian train-test dan seleksi fitur.',
       benefitBadge: 'Leakage & Split Guidance',
       executionScope: 'Lokal (Privat)',
       icon: 'zap',
       capabilities: [
-        'Analisis distribusi statistik fitur numerik dan visualisasi keseimbangan kelas target',
-        'Pemeriksaan dini risiko kebocoran data (Data Leakage Warning) antar variabel',
-        'Rekomendasi metode preprocessing, penskalaan (scaling), dan skema train-test split',
-        'Petunjuk seleksi fitur (Feature Selection Hints) untuk optimasi performa model',
+        'Visualisasi interaktif distribusi statistik kolom numerik (histogram) dan evaluasi keseimbangan kelas target',
+        'Pemeriksaan dini risiko kebocoran data (Data Leakage Check) sebelum melatih model supervised',
+        'Panduan analitis skema pembagian data (train-test split) dan tahapan pra-pemrosesan (scaling/encoding)',
+        'Petunjuk seleksi fitur (Feature Selection Hints) dan definisi masalah (Problem Definition) secara terstruktur',
+      ],
+    },
+    {
+      id: 'editor-analysis',
+      title: 'Editor Analysis & Notebook Kernel PyPI (Diperkuat v6.0)',
+      shortSummary:
+        'Editor kode Python bergaya notebook dengan penguatan event Qt, autosave, manajemen kernel, dan instalasi PyPI.',
+      description:
+        'Editor interaktif bergaya Jupyter Notebook dengan tahapan terstruktur (Data Understanding, Cleaning, EDA, Feature Engineering, Metode Algoritma, Evaluasi Model). Pada v6.0.0, koneksi kontrol dan penanganan event Qt untuk editor kode, cell notebook, autosave, eksekusi, serta pengelolaan kernel lokal diperkuat.',
+      benefitBadge: 'Notebook .ipynb & PyPI',
+      executionScope: 'Hybrid (Lokal + Online)',
+      icon: 'file-text',
+      capabilities: [
+        'Penguatan penanganan event Qt di v6.0.0 untuk editor kode, cell notebook, fitur autosave, dan mulai ulang kernel Python',
+        'Template kode Python terstruktur yang dapat diedit, dijalankan per langkah, atau dipulihkan ke kondisi awal',
+        'Eksekusi kode lokal pada salinan dataset dengan keluaran teks konsol dan grafik visualisasi Matplotlib',
+        'Pemasangan pustaka Python tambahan dari PyPI langsung di lingkungan proyek (contoh: pip install seaborn atau xgboost)',
+        'Dukungan penuh untuk membuka dan menyimpan berkas notebook standar (.ipynb)',
+      ],
+    },
+    {
+      id: 'ml-intelligence',
+      title: 'ML Intelligence & Evaluasi Kandidat Model',
+      shortSummary:
+        'Perkirakan tugas ML berdasarkan karakteristik dataset dan bandingkan evaluasi empiris algoritma kandidat.',
+      description:
+        'Memperkirakan jenis tugas Machine Learning berdasarkan karakteristik dataset dan variabel target yang dipilih, lalu menampilkan metode algoritma kandidat beserta hasil evaluasi empiris sebagai bahan pertimbangan peneliti.',
+      benefitBadge: 'Auto-Task & Evaluasi ML',
+      executionScope: 'Lokal (Privat)',
+      icon: 'bar-chart',
+      capabilities: [
+        'Deteksi otomatis jenis tugas prediktif (Klasifikasi Biner/Multikelas, Regresi, Clustering, Anomaly Detection)',
+        'Rekomendasi metode kandidat terbaik mulai dari Random Forest, Gradient Boosting, hingga Logistic Regression dan Ensemble',
+        'Penyajian hasil metrik evaluasi model lokal (Akurasi, F1-Score, Precision, Recall, ROC AUC, MSE, MAE, R²)',
+        'Integrasi hasil rekomendasi langsung ke ringkasan Overview dan draf Research Report',
       ],
     },
     {
       id: 'dataset-search',
       title: 'Pencarian Dataset Publik (Kaggle & Hugging Face)',
-      shortSummary: 'Cari dan unduh ribuan dataset Kaggle dan Hugging Face langsung ke workspace.',
+      shortSummary:
+        'Telusuri katalog dataset publik dari Kaggle dan Hugging Face lalu unduh langsung ke workspace DORA.',
       description:
-        'Menelusuri ribuan dataset publik secara real-time via koneksi internet dari Kaggle, Hugging Face, atau kombinasi keduanya (All providers), lalu mengunduhnya langsung ke ruang kerja lokal DORA hanya dalam satu klik.',
+        'Menelusuri dataset publik berdasarkan kata kunci melalui koneksi internet dari Kaggle, Hugging Face, atau gabungan keduanya lewat pilihan All providers, kemudian mengunduh dataset pilihan langsung ke ruang kerja lokal DORA.',
       benefitBadge: 'Kaggle & Hugging Face',
       executionScope: 'Online (Internet)',
       icon: 'search',
       capabilities: [
-        'Pencarian dataset publik lintas platform (Kaggle & Hugging Face) secara terintegrasi',
-        'Filter pencarian fleksibel berdasarkan penyedia (Kaggle, Hugging Face, atau All providers)',
-        'Unduh langsung berkas dataset ke workspace lokal DORA tanpa perlu membuka browser',
-        'Membantu mempercepat komparasi dataset benchmark dan studi literatur empiris',
-      ],
-    },
-    {
-      id: 'editor-analysis',
-      title: 'Editor Analysis & Notebook Kernel PyPI',
-      shortSummary: 'Editor interaktif ala Jupyter dengan template riset dan instalasi pustaka PyPI.',
-      description:
-        'Editor interaktif bergaya Jupyter Notebook dengan template alur riset lengkap (Data Profiling, Cleaning, EDA, Feature Engineering, hingga Pemodelan ML). Mendukung instalasi pustaka PyPI via pip install dan membuka/menyimpan berkas .ipynb.',
-      benefitBadge: 'Jupyter-Style Notebook & PyPI',
-      executionScope: 'Hybrid (Lokal + Online)',
-      icon: 'cpu',
-      capabilities: [
-        'Template kode Python siap pakai untuk klasifikasi, regresi, clustering, dan ensemble',
-        'Eksekusi kode lokal dengan output ganda: teks konsol terminal dan visualisasi grafik Matplotlib',
-        'Instalasi paket Python PyPI secara daring langsung dari workspace (misal: pip install seaborn)',
-        'Kompatibilitas penuh membuka dan menyimpan berkas notebook standar (.ipynb)',
-      ],
-    },
-    {
-      id: 'ml-intelligence',
-      title: 'ML Intelligence & Estimasi Model Kandidat',
-      shortSummary: 'Deteksi otomatis tugas ML prediktif serta estimasi performa algoritma kandidat terbaik.',
-      description:
-        'Memanfaatkan koneksi jaringan internet untuk menganalisis sifat dataset, memperkirakan jenis tugas prediktif secara otomatis, merekomendasikan metode algoritma terbaik, dan menyajikan estimasi metrik performa model empiris.',
-      benefitBadge: 'Auto-Task & Network Intelligence',
-      executionScope: 'Online (Internet)',
-      icon: 'sparkles',
-      capabilities: [
-        'Pendeteksian otomatis jenis tugas ML (Klasifikasi, Regresi, Clustering, Anomaly Detection)',
-        'Rekomendasi metode algoritma kandidat terbaik termasuk metode ensemble modern',
-        'Estimasi metrik evaluasi model empiris (Akurasi, F1-Score, Precision, Recall, MSE/R2)',
-        'Memberikan panduan berbasis bukti bagi peneliti sebelum melatih model final',
+        'Pencarian dataset publik lintas penyedia (Kaggle, Hugging Face, atau mode All providers)',
+        'Pengiriman kata kunci pencarian secara langsung ke penyedia terkait dan pengunduhan berkas ke workspace lokal',
+        'Memudahkan eksplorasi dataset pembanding (benchmark) tanpa perlu berpindah aplikasi',
+        'Langsung terhubung dengan alur pratinjau tabel, audit kualitas data, dan analisis di DORA',
       ],
     },
     {
       id: 'academic-research',
-      title: 'Pencarian Literatur & Verifikasi Jurnal Akademik',
-      shortSummary: 'Pencarian literatur ilmiah otomatis lengkap dengan verifikasi akreditasi SINTA dan Scopus.',
+      title: 'Academic Research, Papers & Verifikasi SINTA/Scopus',
+      shortSummary:
+        'Cari dan beri peringkat paper ilmiah dengan penyaringan artikel serta verifikasi akreditasi SINTA, DOAJ, dan Scopus.',
       description:
-        'Membentuk kueri otomatis dari fingerprint dataset untuk mencari publikasi ilmiah via koneksi internet ke OpenAlex, Crossref, Semantic Scholar, Europe PMC, dan Scopus, lengkap dengan perankingan relevansi serta verifikasi akreditasi SINTA dan indeks DOAJ.',
-      benefitBadge: 'SINTA, Scopus & DOAJ',
+        'Membentuk kueri dari konteks dan fingerprint dataset untuk mencari serta memberi peringkat publikasi ilmiah dari OpenAlex, Crossref, Semantic Scholar, Europe PMC, OpenAIRE, dan Scopus. Halaman Papers menyediakan penyaringan artikel serta pemeriksaan akreditasi nasional SINTA (SINTA 1 hingga 6) yang ditampilkan terpisah dari indeks DOAJ dan Scopus.',
+      benefitBadge: 'SINTA 1-6, DOAJ & Scopus',
       executionScope: 'Online (Internet)',
       icon: 'book-open',
       capabilities: [
-        'Pembuatan kueri pencarian otomatis berbasis kata kunci konteks dan fingerprint dataset',
-        'Pencarian multi-provider dengan deduplikasi paper dan perangkingan relevansi cerdas',
-        'Pemeriksaan akreditasi nasional SINTA (SINTA 1 hingga SINTA 6) secara terintegrasi',
-        'Verifikasi indeks internasional DOAJ dan Scopus secara transparan dan terpisah',
+        'Pencarian publikasi ilmiah multi-provider dengan deduplikasi otomatis dan perankingan relevansi terhadap dataset',
+        'Penyaringan daftar paper dan pemeriksaan status akreditasi jurnal nasional SINTA (peringkat SINTA 1 sampai SINTA 6)',
+        'Verifikasi status indeks internasional DOAJ dan Scopus yang dipisahkan secara tegas dari peringkat akreditasi SINTA',
+        'Penyimpanan hasil penelusuran literatur dan status skrining jurnal di database SQLite lokal proyek',
       ],
     },
     {
-      id: 'landscape-gap-report',
-      title: 'Research Landscape, Gap Discovery & PDF Export',
-      shortSummary: 'Pemetaan tren riset, sintesis AI Google Gemini, dan ekspor laporan ke PDF.',
+      id: 'landscape-gap-privacy',
+      title: 'Research Gap, Laporan PDF & Panel Privasi (v6.0)',
+      shortSummary:
+        'Pemetaan lanskap riset, analisis Research Gap, ekspor PDF format A4, serta transparansi privasi di halaman Tentang.',
       description:
-        'Pemetaan visual lanskap riset tren publikasi dan venue, eksplorasi kandidat celah penelitian (Research Gap) dengan dukungan insight AI Google Gemini online, serta penyusunan dan ekspor laporan riset komprehensif ke format PDF.',
-      benefitBadge: 'Sintesis AI & Ekspor PDF',
-      executionScope: 'Online (Internet)',
-      icon: 'file-text',
-      capabilities: [
-        'Pemetaan visual tren publikasi ilmiah, sebaran metodologi, dan venue konferensi/jurnal',
-        'Eksplorasi kandidat celah penelitian (Research Gap) didukung sintesis AI Google Gemini',
-        'Kompilasi otomatis audit data, eksperimen ML, dan literatur ke pratinjau draf laporan',
-        'Ekspor dokumen laporan riset menyeluruh siap publikasi ke format dokumen PDF',
-      ],
-    },
-    {
-      id: 'ui-scale-responsive',
-      title: 'Penskalaan UI (UI Scale) & Privasi Zero-Leakage',
-      shortSummary: 'Skala antarmuka fleksibel dan penyimpanan lokal privat tanpa risiko kebocoran data.',
-      description:
-        'Pengaturan skala antarmuka responsif dari Auto hingga 70%–150%, navigasi sidebar adaptif dengan mode ikon otomatis pada layar kecil, serta arsitektur keamanan offline lokal SQLite yang memastikan privasi dataset terlindungi 100%.',
-      benefitBadge: 'Zoom 70%–150% & Privasi Total',
-      executionScope: 'Lokal (Privat)',
+        'Menyajikan pemetaan Research Landscape, kandidat Research Gap dengan penjelasan otomatis (engine lokal atau Google Gemini berbasis ringkasan analisis), serta kompilasi Research Report berformat Times New Roman 12 pt (A4) siap ekspor ke PDF. Rilis v6.0.0 juga menambahkan bagian Informasi Privasi yang transparan pada halaman Tentang serta skala tampilan UI Scale (Auto atau 70% hingga 150%).',
+      benefitBadge: 'Research Gap, PDF & Privasi',
+      executionScope: 'Hybrid (Lokal + Online)',
       icon: 'shield',
       capabilities: [
-        'Fitur UI Scale fleksibel (Auto atau 70%–150%) melalui menu View untuk berbagai ukuran monitor',
-        'Pintasan zoom keyboard praktis: Ctrl+= (zoom in), Ctrl+- (zoom out), Ctrl+0 (auto reset), dan Ctrl+scroll',
-        'Sidebar navigasi yang dapat dibuka/diciutkan dan otomatis berubah ke mode ikon di layar sempit',
-        'Jaminan Zero Dataset Leakage: Data numerik dan CSV privat tidak pernah dikirim ke server luar',
+        'Pemetaan visual Research Landscape dan identifikasi kandidat Research Gap otomatis setelah perhitungan insights selesai',
+        'Penjelasan berbantuan Gemini (mengirim ringkasan statistik/profil tanpa mengirim file CSV utuh) atau fallback engine lokal',
+        'Penyusunan pratinjau Research Report gabungan dan ekspor dokumen ke format PDF standar A4',
+        'Panel Informasi Privasi baru pada halaman Tentang (v6.0.0) yang merinci pemrosesan lokal, pencarian online, Gemini, telemetry opsional, visibilitas IP, dan kunci API',
+        'Pengaturan UI Scale responsif (Auto atau 70%-150%) melalui menu View serta pintasan Ctrl+=, Ctrl+-, Ctrl+0, dan Ctrl+scroll',
       ],
     },
   ],
@@ -192,25 +209,25 @@ export const productConfig: ProductConfig = {
   previews: [
     {
       id: 'preview-overview',
-      title: 'Overview & Pipeline Workspace',
+      title: 'Overview & Pipeline Workspace (v6.0)',
       caption:
-        'Dashboard ringkasan status dataset, skor kualitas data, rekomendasi model ML, kemajuan alur kerja riset, serta ML Pipeline Checklist untuk memastikan kesiapan pra-pemodelan.',
+        'Dashboard ringkasan v6.0.0 dengan tata letak dan skala tipografi yang lebih konsisten. Menampilkan temuan utama, progres 7 tahapan Research Pipeline, kartu status Dataset, skor Data Quality, dan rekomendasi ML Intelligence.',
       aspectRatio: '16/10',
-      badge: 'Dashboard Utama',
+      badge: 'Dashboard v6.0',
       imageSrc: '/screenshots/overview.png',
       tag: 'Overview',
       details: [
-        'Status Pipeline Dataset Terpadu',
-        'ML Pipeline Checklist 7 Tahapan',
-        'Ringkasan Skor Kualitas Data',
-        'Pintasan Cepat Menuju Laporan Riset',
+        'Tata Letak & Tipografi v6.0 Konsisten',
+        'Research Pipeline 7 Tahapan Terpadu',
+        'Ringkasan Kesiapan Data & Model ML',
+        'Pintasan Cepat ke Research Report',
       ],
     },
     {
       id: 'preview-dataset-upload',
-      title: 'Memuat Dataset Multi-Format',
+      title: 'Unggah & Muat Dataset Multi-Format',
       caption:
-        'Area unggah fleksibel dengan drag-and-drop atau pemilih berkas. Mendukung berkas CSV, Excel (.xlsx/.xls), JSON, dan Parquet dengan deteksi otomatis delimiter dan encoding.',
+        'Area unggah dataset dengan dukungan pemilih berkas dan drag-and-drop. Menerima CSV, Excel (.xlsx/.xls), JSON, dan Parquet dengan deteksi encoding serta delimiter otomatis.',
       aspectRatio: '16/10',
       badge: 'Multi-Format Loader',
       imageSrc: '/screenshots/dataset-upload.png',
@@ -218,323 +235,372 @@ export const productConfig: ProductConfig = {
       details: [
         'Drag-and-Drop CSV, Excel, JSON & Parquet',
         'Deteksi Otomatis Encoding & Delimiter',
-        'Penyimpanan Aman di SQLite Lokal',
-        'Konfirmasi Unggah & Validasi Struktur',
+        'Pemrosesan Lokal di Perangkat',
+        'Validasi Struktur Sebelum Analisis',
       ],
     },
     {
       id: 'preview-dataset',
-      title: 'Pratinjau Dataset & Peran Kolom',
+      title: 'Pratinjau Dataset & Informasi Kolom',
       caption:
-        'Tampilan tabel interaktif dengan paginasi responsif, analisis tipe data kolom, pemetaan peran (fitur vs target), dan deteksi baris duplikat.',
+        'Tampilan tabel dataset interaktif disertai tab pemeriksaan kualitas data, informasi tipe dan peran setiap kolom, nilai kosong, outlier, dan korelasi.',
       aspectRatio: '16/10',
       badge: 'Data Profiling',
       imageSrc: '/screenshots/dataset-preview.png',
       tag: 'Dataset',
       details: [
-        'Tabel Interaktif & Paginasi Cepat',
-        'Analisis Tipe & Peran Setiap Kolom',
-        'Pemeriksaan Baris Duplikat',
-        'Statistik Ringkasan Dataset',
+        'Tabel Pratinjau Baris Interaktif',
+        'Identifikasi Tipe & Peran Kolom',
+        'Tab Kualitas, Missing, Outlier & Korelasi',
+        'Penyimpanan Versi Dataset di SQLite',
       ],
     },
     {
       id: 'preview-data-quality',
       title: 'Audit Kualitas Data & Missing Values',
       caption:
-        'Audit kebersihan data secara menyeluruh dengan skor kualitas data, pemisahan perhitungan missing values vs nilai 0 valid, dan analisis korelasi variabel.',
+        'Pemeriksaan kebersihan dataset secara menyeluruh: pemisahan jumlah nilai kosong dan nilai 0, deteksi duplikasi, serta akses ke 4 strategi Drop Missing Values tanpa mengubah file asli.',
       aspectRatio: '16/10',
       badge: 'Data Quality',
       imageSrc: '/screenshots/dataset-data-quality.png',
       tag: 'Data Quality',
       details: [
-        'Skor Kualitas & Persentase Kebersihan',
-        'Pemisahan Nilai Missing vs Nilai 0 Valid',
-        'Audit Outlier & Matriks Korelasi',
-        'Panduan Tindakan Pembersihan Data',
+        'Skor Kesiapan & Kebersihan Dataset',
+        'Pemisahan Nilai Kosong vs Nilai 0',
+        '4 Strategi Pembersihan (Cleaned Dataset)',
+        'Ekspor Berkas Catatan _dropped_rows.csv',
       ],
     },
     {
       id: 'preview-analysis',
-      title: 'Pre-Modeling Diagnostics & Leakage Check',
+      title: 'Dataset Analysis & Sidik Jari SHA-256',
       caption:
-        'Diagnostik karakteristik dataset sebelum pemodelan: sebaran distribusi fitur, keseimbangan kelas target (class balance), deteksi potensi data leakage, dan rekomendasi split data.',
+        'Halaman analisis struktur dan distribusi statistik dataset (seperti histogram fitur numerik), kartu sidik jari dataset SHA-256, Problem Definition, serta temuan kualitas pada nilai kosong, duplikasi, dan outlier.',
       aspectRatio: '16/10',
-      badge: 'Pre-Modeling',
+      badge: 'Analysis & Fingerprint',
       imageSrc: '/screenshots/analysis.png',
       tag: 'Analysis',
       details: [
-        'Distribusi Statistik Fitur Numerik',
-        'Evaluasi Class Balance Variabel Target',
-        'Peringatan Dini Data Leakage',
-        'Petunjuk Preprocessing & Train-Test Split',
+        'Visualisasi Distribusi & Statistik Fitur',
+        'Sidik Jari Dataset (SHA-256 Fingerprint)',
+        'Kartu Problem Definition & Target Check',
+        'Ringkasan Temuan Kosong, Duplikat & Outlier',
+      ],
+    },
+    {
+      id: 'preview-editor',
+      title: 'Editor Analysis, Node Editor & Kernel PyPI',
+      caption:
+        'Ruang kerja Editor Analysis bergaya notebook dengan 6 tahapan analisis, dukungan instalasi library PyPI, manajemen kernel Python lokal yang diperkuat di v6.0.0, serta akses ke menu Node Editor di sidebar Alat Tambahan.',
+      aspectRatio: '16/10',
+      badge: 'Editor & Node Tools',
+      imageSrc: '/screenshots/editor-analysis.png',
+      tag: 'Editor Python',
+      details: [
+        '6 Tahapan Template Analisis & Pemodelan',
+        'Menu Alat Tambahan: Editor Analysis & Node Editor',
+        'Instalasi Paket PyPI & Dukungan .ipynb',
+        'Penanganan Event Qt & Kernel Diperkuat (v6.0)',
+      ],
+    },
+    {
+      id: 'preview-ml',
+      title: 'ML Intelligence & Evaluasi Kandidat Model',
+      caption:
+        'Pendeteksian otomatis tugas Machine Learning berdasarkan dataset dan variabel target, disertai daftar metode kandidat dan perbandingan metrik evaluasi empiris.',
+      aspectRatio: '16/10',
+      badge: 'Model Candidates',
+      imageSrc: '/screenshots/ml-intelligence.png',
+      tag: 'ML Intelligence',
+      details: [
+        'Deteksi Otomatis Tugas Prediktif ML',
+        'Rekomendasi Algoritma & Metode Ensemble',
+        'Perbandingan Metrik Akurasi, F1 & R²',
+        'Bahan Pertimbangan Validasi Eksperimen',
       ],
     },
     {
       id: 'preview-dataset-search',
       title: 'Dataset Search (Kaggle & Hugging Face)',
       caption:
-        'Pencarian ribuan dataset publik secara real-time via koneksi internet dari Kaggle dan Hugging Face dengan opsi All providers, lalu mengunduh langsung ke workspace DORA dalam 1 klik.',
+        'Pencarian dataset publik berdasarkan kata kunci dari Kaggle, Hugging Face, atau mode gabungan All providers, dengan fitur unduh langsung ke workspace lokal DORA.',
       aspectRatio: '16/10',
       badge: 'Dataset Search',
       imageSrc: '/screenshots/dataset-search.png',
       tag: 'Search',
       details: [
-        'Katalog Ribuan Dataset Publik',
-        'Provider Kaggle & Hugging Face Terpadu',
-        'Unduh 1-Klik Langsung ke Workspace',
-        'Ideal untuk Studi Komparatif & Benchmark',
-      ],
-    },
-    {
-      id: 'preview-editor',
-      title: 'Editor Analysis & Notebook Kernel PyPI',
-      caption:
-        'Editor kode Python bergaya Jupyter Notebook dengan template alur riset lengkap, eksekusi teks dan visual grafik Matplotlib, dukungan pip install online, serta pembaca/penyimpan .ipynb.',
-      aspectRatio: '16/10',
-      badge: 'Interactive Code',
-      imageSrc: '/screenshots/editor-analysis.png',
-      tag: 'Editor Python',
-      details: [
-        'Template Klasifikasi, Regresi & Ensemble',
-        'Instalasi Paket PyPI via pip install',
-        'Output Teks Konsol & Grafik Matplotlib',
-        'Kompatibel Penuh Berkas Notebook .ipynb',
-      ],
-    },
-    {
-      id: 'preview-ml',
-      title: 'ML Intelligence & Evaluasi Model Empiris',
-      caption:
-        'Deteksi otomatis jenis tugas Machine Learning, pemilihan variabel target, rekomendasi metode kandidat terbaik, dan perbandingan performa evaluasi empiris model.',
-      aspectRatio: '16/10',
-      badge: 'Model Candidates',
-      imageSrc: '/screenshots/ml-intelligence.png',
-      tag: 'ML Intelligence',
-      details: [
-        'Deteksi Tugas Prediktif Otomatis',
-        'Rekomendasi Algoritma Kandidat & Ensemble',
-        'Evaluasi Metrik Akurasi, F1 & MSE/R2',
-        'Rekomendasi Terarah Berbasis Bukti',
+        'Pencarian Katalog Kaggle & Hugging Face',
+        'Pilihan Filter Provider & All Providers',
+        'Unduh Langsung ke Workspace Lokal DORA',
+        'Terintegrasi dengan Alur Analisis Dataset',
       ],
     },
     {
       id: 'preview-academic',
-      title: 'Academic Research & Ranking Paper',
+      title: 'Academic Research & Verifikasi SINTA/Scopus',
       caption:
-        'Penelusuran publikasi ilmiah multi-provider (OpenAlex, Crossref, Semantic Scholar, Scopus) dengan sinyal relevansi dan verifikasi akreditasi nasional SINTA 1–6.',
+        'Penelusuran dan perankingan paper ilmiah dari provider akademik (OpenAlex, Crossref, Semantic Scholar, Scopus) dengan pemeriksaan akreditasi nasional SINTA 1 sampai 6 serta indeks DOAJ.',
       aspectRatio: '16/10',
       badge: 'Literature Discovery',
       imageSrc: '/screenshots/academic-research.png',
       tag: 'Literatur Ilmiah',
       details: [
-        'Pembentukan Kueri Otomatis Berbasis Dataset',
-        'Pencarian Multi-Provider dengan Deduplikasi',
-        'Verifikasi Akreditasi Nasional SINTA 1–6',
-        'Pemeriksaan Indeks Scopus & DOAJ Terpisah',
+        'Kueri Otomatis Berbasis Konteks Dataset',
+        'Pencarian Multi-Provider & Deduplikasi',
+        'Pemeriksaan Akreditasi Nasional SINTA 1-6',
+        'Status Indeks DOAJ & Scopus Terpisah',
       ],
     },
     {
       id: 'preview-landscape',
-      title: 'Research Landscape & Research Gap',
+      title: 'Research Landscape & Kandidat Research Gap',
       caption:
-        'Visualisasi lanskap riset dari kumpulan paper ilmiah, eksplorasi kandidat celah penelitian (Research Gap) dengan insight AI Google Gemini online, serta penyusunan draf laporan akhir.',
+        'Pemetaan lanskap riset dari kumpulan literatur ilmiah dan identifikasi kandidat celah penelitian (Research Gap) dengan penjelasan otomatis dari engine lokal maupun Google Gemini.',
       aspectRatio: '16/10',
-      badge: 'Sintesis Riset',
+      badge: 'Landscape & Gap',
       imageSrc: '/screenshots/research-landscape.png',
       tag: 'Landscape & Gap',
       details: [
-        'Pemetaan Visual Tren Metode & Venue Publikasi',
-        'Eksplorasi Kandidat Celah Riset (Research Gap)',
-        'Dukungan Insight Kebaruan AI Google Gemini',
-        'Identifikasi Peluang Kontribusi Ilmiah',
+        'Pemetaan Tren Topik, Metode & Venue',
+        'Identifikasi Kandidat Celah Penelitian',
+        'Penjelasan Lokal atau Ringkasan via Gemini',
+        'Sinkronisasi Otomatis saat Insights Siap',
       ],
     },
     {
       id: 'preview-report',
       title: 'Research Report & Ekspor Dokumen PDF',
       caption:
-        'Kompilasi otomatis seluruh tahapan alur kerja riset (profil dataset, kualitas data, evaluasi ML, sintesis literatur, tren landscape, dan research gap) menjadi draf laporan siap ekspor ke PDF.',
+        'Penyusunan pratinjau laporan gabungan yang merangkum profil dataset, kualitas data, eksperimen ML, literatur, landscape, dan research gap dalam format dokumen A4 siap ekspor ke PDF.',
       aspectRatio: '16/10',
       badge: 'Ekspor PDF',
       imageSrc: '/screenshots/research-report.png',
       tag: 'Laporan Riset',
       details: [
-        'Kompilasi Otomatis Seluruh Tahap Pipeline',
-        'Sintesis Temuan Dataset, ML & Literatur',
-        'Pratinjau Draf Laporan Komprehensif',
-        'Ekspor Dokumen Siap Cetak ke Format PDF',
+        'Kompilasi Gabungan Seluruh Tahap Riset',
+        'Format Dokumen Standar A4 (Times New Roman)',
+        'Pratinjau Tabel, Grafik & Temuan Utuh',
+        'Ekspor Dokumen Laporan Riset ke PDF',
+      ],
+    },
+    {
+      id: 'preview-about',
+      title: 'Halaman Tentang, Tim & Informasi Privasi',
+      caption:
+        'Halaman informasi aplikasi DORA dan tim Metriks Studio yang pada rilis v6.0.0 dilengkapi bagian Informasi Privasi untuk menjelaskan pemrosesan lokal, pencarian online, penggunaan Gemini, telemetry opsional, dan pengelolaan API key.',
+      aspectRatio: '16/10',
+      badge: 'Tentang & Privasi v6.0',
+      imageSrc: '/screenshots/about.png',
+      tag: 'Tentang & Privasi',
+      details: [
+        'Profil Aplikasi DORA & Tim Metriks Studio',
+        'Ringkasan Transparansi Pemrosesan Lokal vs Online',
+        'Penjelasan Penggunaan Gemini & Telemetry Opsional',
+        'Informasi Visibilitas IP & Penyimpanan API Key',
       ],
     },
   ],
 
   releases: [
     {
-      id: 'win-installer-v5',
+      id: 'win-installer-v6',
       os: 'windows',
-      osName: 'Microsoft Windows',
+      osName: 'Microsoft Windows (Rilis Utama v6.0)',
       architecture: 'x64 (64-bit)',
-      version: 'v5.0.0',
-      releaseDate: 'Oktober 2026',
-      fileSize: '92.3 MB',
-      filename: 'DORA-v5.0.0-Setup.exe',
-      downloadUrl: 'https://github.com/NezzyGremory/Dataset-Research/releases/download/v5.0.0/DORA-v5.0.0-Setup.exe',
-      checksumSha256: '05c5dcc67a0b213d6e9f3ac31bd0db38025b04dd6f4e1ede691a6540f47f88b3',
+      version: 'v6.0.0',
+      releaseDate: '18 Oktober 2026',
+      fileSize: '95.1 MB',
+      filename: 'Data-Overview-Research-Assistant-v6-Setup.exe',
+      downloadUrl:
+        'https://github.com/NezzyGremory/Data-Overview-Research-Assistant/releases/download/v6.0.0/Data-Overview-Research-Assistant-v6-Setup.exe',
+      checksumSha256: '5c362738d57e470942aa14607b1036fc2f6ae1dd9258f554dae475752b1c1779',
       isPrimaryForPlatform: true,
-      buttonLabel: 'Download Windows Setup (.exe)',
-      notes: 'Installer Windows Setup resmi (Inno Setup 6) rilis v5.0.0 final. Menginstal ke %LOCALAPPDATA%\\Programs\\Dataset Research tanpa memerlukan hak Administrator, otomatis membuat shortcut Desktop dan Start Menu, serta menyertakan uninstaller.',
+      buttonLabel: 'Download Windows Setup v6.0.0 (.exe)',
+      notes:
+        'Installer Windows resmi (Inno Setup 6) untuk Data Overview Research & Assistant v6.0.0. Mencakup penyempurnaan UI/UX Overview, keselarasan navigasi sidebar 16 rute, Node Editor responsif dengan pemrosesan latar belakang & cache analisis, penguatan kontrol Editor Analisis, serta panel Informasi Privasi pada halaman Tentang. Menginstal ke %LOCALAPPDATA%\\Programs\\DORA tanpa memerlukan hak Administrator.',
     },
     {
-      id: 'win-installer-v4',
+      id: 'win-installer-v5',
       os: 'windows',
-      osName: 'Microsoft Windows (Legacy v4.0)',
+      osName: 'Microsoft Windows (Rilis Sebelumnya v5.0)',
       architecture: 'x64 (64-bit)',
-      version: 'v4.0.0',
-      releaseDate: 'Oktober 2026',
-      fileSize: '89.1 MB',
-      filename: 'DatasetResearch-v4.0.0-Setup.exe',
-      downloadUrl: 'https://github.com/NezzyGremory/Dataset-Research/releases/download/v4.0.0/DatasetResearch-v4.0.0-Setup.exe',
-      checksumSha256: '2656b4269366396844845d9ad097dc63d97080fa8b5816067e38e444969c1fc4',
+      version: 'v5.0.0',
+      releaseDate: '13 Oktober 2026',
+      fileSize: '92.3 MB',
+      filename: 'DORA-v5.0.0-Setup.exe',
+      downloadUrl:
+        'https://github.com/NezzyGremory/Data-Overview-Research-Assistant/releases/download/v5.0.0/DORA-v5.0.0-Setup.exe',
+      checksumSha256: '05c5dcc67a0b213d6e9f3ac31bd0db38025b04dd6f4e1ede691a6540f47f88b3',
       isPrimaryForPlatform: false,
-      buttonLabel: 'Download Setup v4.0.0 (.exe)',
-      notes: 'Installer Windows Setup resmi rilis stabil v4.0.0 sebelumnya (Dataset Research). Dapat diunduh sebagai opsi alternatif jika membutuhkan versi v4.',
+      buttonLabel: 'Download Setup v5.0.0 (.exe)',
+      notes:
+        'Installer Windows Setup resmi rilis v5.0.0 sebelumnya dari repositori Data-Overview-Research-Assistant. Tersedia sebagai arsip alternatif bagi pengguna yang membutuhkan paket instalasi versi v5.',
     },
   ],
 
   systemRequirements: [
     {
       osKey: 'windows',
-      osName: 'Microsoft Windows (Setup Installer)',
+      osName: 'Microsoft Windows (Installer v6.0.0 & Source)',
       minimumOs: 'Windows 10 (64-bit build 19041+) atau Windows 11',
       recommendedOs: 'Windows 11 versi 22H2 atau lebih baru (64-bit)',
-      cpu: 'Prosesor 64-bit dual-core (Intel Core i3 / AMD Ryzen 3 atau setara)',
+      cpu: 'Prosesor 64-bit dual-core (Intel Core i3 / AMD Ryzen 3 atau setara; multi-core disarankan untuk background worker Node Editor)',
       ramMinimum: '4 GB RAM',
-      ramRecommended: '8 GB RAM atau lebih (disarankan untuk dataset besar & matplotlib visualisasi)',
-      storage: '500 MB ruang kosong disk untuk aplikasi, runtime, dan database SQLite lokal',
-      network: 'Koneksi internet aktif diperlukan untuk: ML Intelligence & estimasi model prediktif, pencarian dataset publik (Kaggle/HF), kueri paper akademik (OpenAlex/Crossref/Semantic Scholar/Scopus), verifikasi SINTA & DOAJ, serta instalasi paket PyPI via pip.',
-      extraRuntime: 'Tidak memerlukan runtime eksternal jika menggunakan installer setup .exe bawaan.',
+      ramRecommended: '8 GB RAM atau lebih (disarankan untuk dataset besar, eksekusi graph ML, dan visualisasi Matplotlib)',
+      storage:
+        '500 MB ruang kosong disk untuk aplikasi (%LOCALAPPDATA%\\Programs\\DORA) dan data runtime SQLite lokal (%LOCALAPPDATA%\\Dataset Research)',
+      network:
+        'Analisis dataset utama berjalan secara lokal di perangkat. Koneksi internet diperlukan saat menggunakan pencarian dataset publik (Kaggle/Hugging Face), penelusuran literatur akademik (OpenAlex/Crossref/Semantic Scholar/Scopus/SINTA/DOAJ), penjelasan opsional Google Gemini, dan instalasi paket PyPI.',
+      extraRuntime:
+        'Tidak memerlukan instalasi Python terpisah jika menggunakan installer Data-Overview-Research-Assistant-v6-Setup.exe. Untuk eksekusi dari source code, lingkungan pengembangan menggunakan snapshot Python 3.13.12 dan PySide6 6.11.2 di dalam .venv.',
     },
   ],
 
   installationGuides: [
     {
       os: 'windows',
-      osName: 'Windows Installer (Rekomendasi)',
+      osName: 'Windows Setup Installer v6.0.0 (Rekomendasi)',
       steps: [
         {
           step: 1,
-          title: 'Unduh Setup Installer',
-          description: 'Unduh berkas DORA-v5.0.0-Setup.exe dari tombol Download resmi di halaman ini.',
+          title: 'Unduh Installer v6.0.0 Resmi',
+          description:
+            'Unduh berkas Data-Overview-Research-Assistant-v6-Setup.exe (95.1 MB) melalui tombol Download utama di halaman ini atau langsung dari halaman GitHub Releases resmi.',
         },
         {
           step: 2,
-          title: 'Jalankan Setup Executable',
+          title: 'Jalankan Pemasangan Per-User',
           description:
-            'Klik ganda pada berkas installer .exe yang telah diunduh. Pemasangan dilakukan per-user di folder %LOCALAPPDATA%\\Programs\\Dataset Research sehingga tidak memerlukan hak Administrator.',
+            'Klik ganda berkas Data-Overview-Research-Assistant-v6-Setup.exe. Installer bekerja pada mode pengguna saat ini (PrivilegesRequired=lowest) menuju direktori %LOCALAPPDATA%\\Programs\\DORA sehingga tidak memerlukan hak akses Administrator.',
         },
         {
           step: 3,
-          title: 'Konfirmasi Pemasangan',
+          title: 'Pembuatan Shortcut Otomatis',
           description:
-            'Setup wizard akan secara otomatis menyiapkan direktori program, membuat pintasan Desktop Shortcut, dan mendaftarkan aplikasi di Start Menu Windows.',
+            'Setup wizard akan mengekstrak aplikasi utama (DORA.exe), membuat shortcut "Data Overview Research & Assistant v6" pada Desktop serta Start Menu Windows, dan menyiapkan uninstaller.',
         },
         {
           step: 4,
-          title: 'Mulai Meneliti Dataset',
-          description: 'Klik shortcut "Dataset Research" di Desktop atau Start Menu Anda untuk langsung membuka aplikasi DORA.',
+          title: 'Jalankan Aplikasi DORA v6.0.0',
+          description:
+            'Buka aplikasi dari shortcut Desktop atau Start Menu. Seluruh database SQLite, konfigurasi, dan versi dataset disimpan secara aman di %LOCALAPPDATA%\\Dataset Research.',
         },
       ],
       firstRunTip:
-        'Saat pertama kali dijalankan, DORA akan menginisialisasi database SQLite lokal di folder %LOCALAPPDATA%\\Dataset Research secara otomatis.',
+        'Jika Anda memperbarui dari versi sebelumnya, data lokal pada %LOCALAPPDATA%\\Dataset Research tetap dipertahankan secara otomatis tanpa menghapus proyek atau dataset yang sudah ada.',
       troubleshootingTip:
-        'Jika Windows SmartScreen menampilkan peringatan unrecognized publisher (karena installer belum menggunakan sertifikat berbayar code-signing), klik "More info" lalu pilih "Run anyway".',
+        'Installer ini belum ditandatangani dengan sertifikat code-signing berbayar, sehingga Windows SmartScreen dapat menampilkan peringatan penerbit belum dikenal. Klik "More info" lalu pilih "Run anyway" setelah memastikan kecocokan hash SHA256.',
+    },
+    {
+      os: 'windows',
+      osName: 'Menjalankan dari Source Code (Git & PowerShell)',
+      steps: [
+        {
+          step: 1,
+          title: 'Clone Repositori Resmi DORA',
+          description:
+            'Salin repositori terbaru dari GitHub ke komputer Anda menggunakan Git di Windows PowerShell.',
+          codeSnippet: 'git clone https://github.com/NezzyGremory/Data-Overview-Research-Assistant.git',
+        },
+        {
+          step: 2,
+          title: 'Buat Virtual Environment (.venv)',
+          description:
+            'Masuk ke direktori proyek lalu buat dan aktifkan virtual environment Python agar dependensi terisolasi rapi.',
+          codeSnippet: 'python -m venv .venv; .\\.venv\\Scripts\\Activate.ps1',
+        },
+        {
+          step: 3,
+          title: 'Pasang Dependensi Proyek',
+          description:
+            'Pasang pustaka yang dibutuhkan (PySide6, pandas, NumPy, SciPy, scikit-learn, PyArrow, matplotlib, httpx).',
+          codeSnippet: 'python -m pip install -r requirements.txt',
+        },
+        {
+          step: 4,
+          title: 'Luncurkan Aplikasi',
+          description:
+            'Jalankan entry point aplikasi. Pada v6.0.0, launcher secara otomatis memprioritaskan interpreter dari virtual environment proyek (.venv) saat tersedia.',
+          codeSnippet: 'python run.py',
+        },
+      ],
+      firstRunTip:
+        'Jika PowerShell memblokir aktivasi skrip .venv, Anda dapat langsung memanggil .\\.venv\\Scripts\\python.exe run.py tanpa perlu menjalankan Activate.ps1.',
+      troubleshootingTip:
+        'Salin berkas .env.example menjadi .env hanya jika Anda ingin mengatur kunci opsional seperti GEMINI_API_KEY, SEMANTIC_SCHOLAR_API_KEY, atau ELSEVIER_API_KEY.',
     },
   ],
 
   faqList: [
     {
-      id: 'faq-what-is-dora',
+      id: 'faq-what-is-dora-v6',
       category: 'general',
-      question: 'Apa itu DORA (Data Overview & Research Assistant)?',
+      question: 'Apa saja pembaruan utama pada Data Overview Research & Assistant v6.0.0?',
       answer:
-        'DORA adalah aplikasi desktop native berbasis PySide6 (Qt) yang dikembangkan oleh Metriks Studio untuk membantu mahasiswa, peneliti, dan pengembang dalam memahami dataset, mencoba analisis machine learning terarah, serta meninjau publikasi ilmiah yang relevan dalam satu alur kerja yang terpadu.',
+        'Rilis v6.0.0 menghadirkan enam pembaruan utama: (1) Tampilan Overview yang lebih konsisten dan responsif baik saat belum ada dataset maupun saat dataset aktif, (2) Navigasi sidebar yang diselaraskan pada seluruh 16 rute menu termasuk Alat Tambahan, Dataset Search, dan Academic Research, (3) Node Editor yang lebih responsif dengan pemrosesan dataset, deteksi task, dan pembuatan template di latar belakang beserta cache analisis, (4) Penguatan koneksi kontrol dan event Qt pada Editor Analisis untuk cell notebook, autosave, eksekusi, dan pengelolaan kernel, (5) Penambahan bagian Informasi Privasi yang transparan pada halaman Tentang, serta (6) Peluncuran aplikasi yang konsisten menggunakan virtual environment proyek (.venv) saat tersedia.',
     },
     {
-      id: 'faq-internet-connection',
+      id: 'faq-node-editor',
       category: 'general',
-      question: 'Apakah aplikasi DORA memerlukan koneksi internet?',
+      question: 'Apa fungsi fitur Node Editor dan format ekspor apa saja yang didukung?',
       answer:
-        'Ya, DORA adalah aplikasi desktop yang dirancang menggunakan koneksi jaringan internet untuk menjalankan seluruh kapabilitas riset cerdasnya. Koneksi internet aktif digunakan untuk: (1) ML Intelligence & estimasi model prediktif, (2) Pencarian dataset publik dari Kaggle dan Hugging Face, (3) Penelusuran publikasi ilmiah (OpenAlex, Crossref, Semantic Scholar, Europe PMC, OpenAIRE, Scopus), (4) Verifikasi status akreditasi nasional SINTA dan indeks DOAJ, (5) Instalasi pustaka Python tambahan langsung dari PyPI via pip install, dan (6) Eksplorasi Research Gap berbasis AI Google Gemini. Sementara itu, integritas file CSV Anda tetap terjaga aman karena analisis data numerik dilakukan di lingkungan lokal komputer Anda tanpa risiko kebocoran data ke server cloud.',
+        'Node Editor adalah ruang kerja penyusunan pipeline Machine Learning berbasis graph/node visual di menu Alat Tambahan. Fitur ini mendeteksi task secara otomatis (Klasifikasi, Regresi, Pengelompokan, Deteksi Anomali, dan Rangkaian Waktu), menyaring node yang relevan dari scikit-learn maupun plugin (XGBoost, LightGBM, imbalanced-learn, Optuna, SHAP), memvalidasi risiko data leakage, serta mencatat riwayat eksperimen di SQLite lengkap dengan Undo/Redo. Hasil graph dapat diekspor ke 5 format: skrip Python mandiri (.py), Jupyter Notebook (.ipynb), model terlatih (.pkl), tabel riwayat run (.csv), dan arsip proyek lengkap (.zip).',
     },
     {
       id: 'faq-dataset-privacy',
       category: 'general',
-      question: 'Bagaimana keamanan dataset dan privasi data penelitian saya?',
+      question: 'Bagaimana kebijakan privasi dan pemrosesan data pada DORA v6.0.0?',
       answer:
-        'Privasi data penelitian Anda sepenuhnya terjaga. Seluruh konten file dataset CSV, baris data, dan hasil perhitungan analisis numerik diproses secara lokal di komputer Anda dan disimpan di database SQLite lokal (%LOCALAPPDATA%). Telemetri default-nya dinonaktifkan (TELEMETRY_API_URL kosong) dan jikapun diaktifkan, telemetri hanya mengirimkan event pemakaian anonim yang dibatasi; konten dataset, input pengguna, dan API key tidak pernah dikirim ke pihak luar.',
+        'Sebagaimana dirinci pada bagian Informasi Privasi di halaman Tentang aplikasi: (1) Analisis dataset utama berjalan secara lokal di perangkat dan tersimpan di database SQLite lokal (%LOCALAPPDATA%\\Dataset Research), (2) Pencarian dataset publik dan literatur hanya mengirim kata kunci pencarian ke penyedia terkait (Kaggle, Hugging Face, OpenAlex, Crossref, Semantic Scholar, Scopus, SINTA, DOAJ), (3) Jika fitur penjelasan Google Gemini dikonfigurasi dan dipakai, aplikasi hanya mengirim ringkasan analisis (profil, statistik, nilai kosong, duplikasi, outlier, korelasi, dan fingerprint) tanpa mengirim file CSV utuh; tanpa API key, penjelasan memakai engine lokal, (4) Telemetry tidak dikirim selama endpoint TELEMETRY_API_URL kosong, dan (5) Kunci API yang disimpan berada di file konfigurasi lokal perangkat.',
     },
     {
-      id: 'faq-dataset-search',
+      id: 'faq-internet-connection',
       category: 'general',
-      question: 'Bagaimana cara mencari dan mengunduh dataset di DORA?',
+      question: 'Kapan aplikasi memerlukan koneksi internet dan kapan bekerja secara lokal?',
       answer:
-        'Anda dapat membuka menu Dataset Search, mengetik kata kunci topik penelitian yang diinginkan, dan memilih provider pencarian (Kaggle, Hugging Face, atau All providers). Fitur ini mengakses API penyedia publik secara online dan hasil pencarian dapat langsung diunduh ke workspace lokal DORA hanya dengan satu klik.',
+        'Pemuatan dataset lokal (CSV, Excel, JSON, Parquet), profiling, perhitungan statistik, pemeriksaan kualitas data, pembersihan 4 strategi Drop Missing Values, diagnostik pra-pemodelan, eksekusi pipeline Node Editor, serta eksekusi kode di Editor Analysis berjalan secara lokal di komputer pengguna. Koneksi internet diperlukan ketika Anda mencari dan mengunduh dataset publik (Kaggle & Hugging Face), memasang paket tambahan dari PyPI (pip install), mencari paper akademik dan memeriksa status jurnal (SINTA, DOAJ, Scopus), atau meminta penjelasan opsional melalui API Google Gemini.',
     },
     {
       id: 'faq-editor-notebook',
       category: 'general',
-      question: 'Apa fungsi Editor Analysis di dalam aplikasi?',
+      question: 'Apa perbedaan antara Editor Analysis dan Node Editor?',
       answer:
-        'Editor Analysis menyediakan ruang kerja interaktif bergaya Jupyter Notebook dengan template kode Python siap pakai untuk Data Profiling, Cleaning, EDA, Feature Engineering, hingga algoritma klasifikasi, regresi, clustering, dan ensemble. Kode dieksekusi di runtime Python lokal komputer Anda dengan akses instalasi paket PyPI online (pip install) dan dukungan membuka/menyimpan berkas .ipynb.',
-    },
-    {
-      id: 'faq-academic-indexing',
-      category: 'support',
-      question: 'Provider publikasi apa saja yang didukung dan bagaimana status jurnal diperiksa?',
-      answer:
-        'DORA terhubung secara online ke provider akademik terkemuka seperti OpenAlex, Crossref, Semantic Scholar, Europe PMC, OpenAIRE, dan Scopus (opsional via API key Elsevier). DORA juga menyediakan fitur pemeriksaan status akreditasi nasional SINTA secara daring serta indeks reputasi internasional seperti DOAJ dan Scopus.',
-    },
-    {
-      id: 'faq-admin-install',
-      category: 'installation',
-      question: 'Apakah dibutuhkan hak Administrator untuk memasang di Windows?',
-      answer:
-        'Tidak. Windows Installer resmi DORA dirancang sebagai installer per-user yang terpasang di folder %LOCALAPPDATA%\\Programs\\Dataset Research, sehingga Anda tidak memerlukan hak akses administrator Windows untuk menginstal atau memperbaruinya.',
-    },
-    {
-      id: 'faq-pricing-license',
-      category: 'general',
-      question: 'Apakah software ini gratis?',
-      answer:
-        'Ya! DORA dapat diunduh dan digunakan secara gratis untuk keperluan riset dan pembelajaran melalui installer Windows resmi yang tersedia di halaman ini.',
-    },
-    {
-      id: 'faq-download-troubleshooting',
-      category: 'installation',
-      question: 'Bagaimana jika berkas installer tidak berhasil diunduh (download gagal atau terblokir browser)?',
-      answer:
-        'Jika berkas tidak berhasil diunduh: (1) Lakukan hard refresh browser (Ctrl + F5) lalu coba unduh kembali, (2) Jika browser (Edge/Chrome) menampilkan peringatan "isn\'t commonly downloaded", klik ikon Titik Tiga (⋯) > "Keep" > "Keep anyway" karena installer belum menggunakan sertifikat code-signing berbayar, atau (3) Buka panduan 5 langkah Windows Defender yang tersedia di bawah tombol Download.',
-    },
-    {
-      id: 'faq-loader-formats',
-      category: 'general',
-      question: 'Format berkas apa saja yang didukung oleh loader DORA?',
-      answer:
-        'DORA mendukung beragam format data penelitian populer: CSV, Microsoft Excel (.xlsx dan .xls), JSON, serta Apache Parquet. Loader DORA secara cerdas mendeteksi otomatis encoding berkas serta karakter delimiter pemisah (koma, titik-koma, tab), sehingga pengguna tidak perlu melakukan konversi format manual sebelum memulai analisis.',
+        'Editor Analysis menyediakan ruang kerja berbasis kode Python bergaya Jupyter Notebook (.ipynb) dengan 6 tahapan template yang dapat diedit manual, fitur autosave, instalasi pustaka PyPI, serta output konsol dan grafik Matplotlib. Sementara itu, Node Editor menyediakan kanvas visual berbasis blok/node untuk merangkai alur kerja data, pra-pemrosesan, validasi silang, penyetelan hiperparameter, dan evaluasi model secara modular, yang kemudian dapat diekspor menjadi skrip .py atau notebook .ipynb.',
     },
     {
       id: 'faq-drop-missing-strategy',
       category: 'general',
-      question: 'Bagaimana cara kerja fitur Drop Missing Values dan apakah berkas asli akan tertimpa?',
+      question: 'Bagaimana cara kerja 4 strategi Drop Missing Values dan apakah file CSV asli aman?',
       answer:
-        'Berkas asli Anda aman dan tidak pernah ditimpa. DORA membuat salinan versi bersih ("Cleaned Dataset") baru di ruang kerja aplikasi sehingga Anda dapat berpindah antara versi Original dan Cleaned kapan saja. DORA menyediakan 4 strategi pembersihan: (1) Drop baris (aturan any/all), (2) Drop kolom berbasis ambang batas kelangkaan, (3) Imputasi statistik (mean, median, mode, interpolasi, per-grup), dan (4) Laporan pratinjau dampak. Nilai angka nol (0) yang valid secara cerdas dipisahkan dari missing value sesungguhnya, dan saat diekspor ke CSV, baris yang dibuang juga dicatat rapi dalam berkas saudara bernama <nama>_dropped_rows.csv.',
+        'File CSV atau dataset asli Anda tidak pernah ditulis ulang. Saat menggunakan Drop Missing Values, DORA membuat versi dataset baru bernama Cleaned Dataset di workspace sehingga Anda tetap dapat memilih versi Original maupun Cleaned pada halaman Analysis. Tersedia 4 strategi: (1) Drop baris berdasarkan kolom terpilih (mode any atau all), (2) Drop kolom jika proporsi missing melewati ambang batas, (3) Imputasi (mean, median, mode, forward/back fill, interpolasi, konstanta, atau statistik per kelompok), dan (4) Laporan dampak saja tanpa mengubah dataset. Saat versi bersih diekspor ke CSV, baris yang dibuang juga disimpan ke berkas saudara bernama <nama>_dropped_rows.csv.',
+    },
+    {
+      id: 'faq-academic-indexing',
+      category: 'support',
+      question: 'Bagaimana DORA memverifikasi status akreditasi SINTA, DOAJ, dan Scopus pada literatur ilmiah?',
+      answer:
+        'Academic Research dan halaman Papers mencari artikel melalui OpenAlex, Crossref, Semantic Scholar, Europe PMC, OpenAIRE, dan Scopus (opsional dengan ELSEVIER_API_KEY). DORA memeriksa status akreditasi jurnal nasional SINTA (SINTA 1 hingga SINTA 6) dan menampilkan status indeks internasional seperti DOAJ serta Scopus secara terpisah, karena status keterindeksan DOAJ/Scopus bukan merupakan peringkat akreditasi SINTA.',
+    },
+    {
+      id: 'faq-admin-install',
+      category: 'installation',
+      question: 'Di mana lokasi instalasi v6.0.0 dan apakah dibutuhkan hak Administrator?',
+      answer:
+        'Tidak memerlukan hak Administrator. Installer resmi Data-Overview-Research-Assistant-v6-Setup.exe memasang aplikasi secara per-user ke dalam direktori %LOCALAPPDATA%\\Programs\\DORA (dengan executable utama DORA.exe) dan menyimpan data runtime lokal di %LOCALAPPDATA%\\Dataset Research.',
+    },
+    {
+      id: 'faq-download-troubleshooting',
+      category: 'installation',
+      question: 'Bagaimana jika berkas installer tertahan oleh peringatan browser atau Windows SmartScreen?',
+      answer:
+        'Karena installer didistribusikan tanpa sertifikat code-signing komersial, browser atau Windows SmartScreen dapat menampilkan peringatan pada berkas baru. Pada daftar unduhan browser, klik ikon Titik Tiga (⋯) di samping berkas Data-Overview-Research-Assistant-v6-Setup.exe, pilih "Keep", lalu pilih "Keep anyway". Anda juga dapat memverifikasi keaslian berkas menggunakan checksum SHA256 yang tertera pada Pusat Unduhan di halaman ini.',
     },
     {
       id: 'faq-ui-scale-shortcuts',
       category: 'support',
-      question: 'Bagaimana cara mengatur skala tampilan atau zoom pada antarmuka DORA?',
+      question: 'Bagaimana cara menyesuaikan ukuran tampilan (UI Scale) pada layar laptop yang berbeda?',
       answer:
-        'DORA menyediakan fitur UI Scale fleksibel di menu View dengan pilihan Auto (otomatis menyesuaikan layar) atau skala manual 70% hingga 150%. Anda juga dapat menggunakan pintasan keyboard praktis: tekan Ctrl + = untuk memperbesar tampilan, Ctrl + - untuk memperkecil, Ctrl + 0 untuk kembali ke skala Auto, atau Ctrl + scroll mouse pada area konten aplikasi. Selain itu, sidebar navigasi dapat dibuka/diciutkan dan otomatis beralih menjadi mode ikon pada jendela layar sempit.',
+        'Buka menu View lalu pilih UI Scale yang selalu tersedia di seluruh 16 rute halaman aplikasi, dengan pilihan Auto (menyesuaikan layar aktif secara otomatis) atau skala manual 70% hingga 150%. Anda juga dapat memakai pintasan keyboard: Ctrl+= untuk memperbesar, Ctrl+- untuk memperkecil, Ctrl+0 untuk kembali ke mode Auto, atau Ctrl+scroll pada area konten. Sidebar navigasi juga otomatis beralih ke mode ikon ringkas saat jendela dipersempit.',
     },
   ],
 };

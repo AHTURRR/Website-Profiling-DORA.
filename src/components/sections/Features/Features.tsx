@@ -3,7 +3,7 @@ import {
   Database,
   Search,
   Cpu,
-  Sparkles,
+  BarChart3,
   BookOpen,
   FileText,
   Shield,
@@ -24,10 +24,11 @@ interface FeaturesProps {
 
 const PRIMARY_PIPELINE_IDS = [
   'overview-pipeline',
-  'multi-format-loader',
-  'data-quality-drop',
+  'node-editor-graph',
+  'dataset-profiling',
+  'data-quality-cleaning',
   'ml-intelligence',
-  'literature-search',
+  'academic-research',
 ];
 
 export const Features: React.FC<FeaturesProps> = ({ features }) => {
@@ -62,8 +63,9 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
         return <Search size={size} className="feature-icon" />;
       case 'cpu':
         return <Cpu size={size} className="feature-icon" />;
+      case 'bar-chart':
       case 'sparkles':
-        return <Sparkles size={size} className="feature-icon" />;
+        return <BarChart3 size={size} className="feature-icon" />;
       case 'book-open':
         return <BookOpen size={size} className="feature-icon" />;
       case 'file-text':
@@ -79,7 +81,7 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
       case 'sliders':
         return <Sliders size={size} className="feature-icon" />;
       default:
-        return <Sparkles size={size} className="feature-icon" />;
+        return <Layers size={size} className="feature-icon" />;
     }
   };
 
@@ -90,11 +92,11 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
         <div className="section-header">
           <div className="section-tag">
             <CheckCircle2 size={14} />
-            <span>Katalog Fitur Riset Terpadu</span>
+            <span>Katalog Fitur Riset Terpadu v6.0</span>
           </div>
-          <h2 className="section-title">Solusi Terintegrasi Siklus Riset Data & Machine Learning</h2>
+          <h2 className="section-title">Solusi Terintegrasi Siklus Riset Data, Visual ML & Literatur</h2>
           <p className="section-subtitle">
-            Klik kartu fitur di bawah ini untuk melihat kemampuan mendalam, alur otomasi, serta integrasi pustaka pada
+            Klik kartu fitur di bawah ini untuk melihat kemampuan mendalam, arsitektur Node Editor v6.0.0, serta integrasi pustaka pada
             aplikasi desktop DORA.
           </p>
         </div>
@@ -125,7 +127,7 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
                   <div className="spotlight-badge-row">
                     <div className="spotlight-icon-wrapper">{renderIcon(spotlightFeature.icon, 24)}</div>
                     <div className="compact-badge-group">
-                      <span className="compact-pillar-tag">Modul Utama Terpadu</span>
+                      <span className="compact-pillar-tag">Modul Utama v6.0</span>
                       {spotlightFeature.benefitBadge && (
                         <span className="compact-benefit-badge">{spotlightFeature.benefitBadge}</span>
                       )}
@@ -139,19 +141,19 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
                         {spotlightFeature.description}
                       </p>
                       <div className="spotlight-pipeline-stages">
-                        <span className="stage-pill stage-active">01 Multi-Format</span>
+                        <span className="stage-pill stage-active">01 Dataset & Quality</span>
                         <span className="stage-arrow">→</span>
-                        <span className="stage-pill stage-active">02 Quality Audit</span>
+                        <span className="stage-pill stage-active">02 Analysis & Leakage</span>
                         <span className="stage-arrow">→</span>
-                        <span className="stage-pill stage-active">03 Pre-Modeling</span>
+                        <span className="stage-pill stage-active">03 Visual Node Editor</span>
                         <span className="stage-arrow">→</span>
-                        <span className="stage-pill stage-active">04 Dataset Search</span>
+                        <span className="stage-pill stage-active">04 Editor PyPI</span>
                         <span className="stage-arrow">→</span>
-                        <span className="stage-pill stage-active">05 Editor PyPI</span>
+                        <span className="stage-pill stage-active">05 ML Intelligence</span>
                         <span className="stage-arrow">→</span>
-                        <span className="stage-pill stage-active">06 ML Intelligence</span>
+                        <span className="stage-pill stage-active">06 SINTA & Scopus</span>
                         <span className="stage-arrow">→</span>
-                        <span className="stage-pill stage-active">07 SINTA/Scopus</span>
+                        <span className="stage-pill stage-active">07 Report & Export</span>
                       </div>
                     </div>
 
@@ -159,21 +161,20 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
                       <div className="spotlight-highlights-list">
                         <div className="spotlight-highlight-item">
                           <Check size={16} className="spotlight-check" />
-                          <span>Status Siklus Pipeline 7 Tahapan Terpadu</span>
+                          <span>Navigasi Seragam di Seluruh 16 Rute Menu</span>
                         </div>
                         <div className="spotlight-highlight-item">
                           <Check size={16} className="spotlight-check" />
-                          <span>Checklist Kesiapan Pra-Pemodelan ML Empiris</span>
+                          <span>Node Editor Background Worker & Cache Analisis</span>
                         </div>
                         <div className="spotlight-highlight-item">
                           <Check size={16} className="spotlight-check" />
-                          <span>Penyimpanan SQLite Privat Bebas Kebocoran</span>
+                          <span>Penyimpanan SQLite Lokal & Panel Privasi v6.0</span>
                         </div>
                       </div>
                       <div className="spotlight-cta-wrapper">
                         <span className="spotlight-cta-btn">
                           <span>Buka Detail Modul Lengkap</span>
-                          <span aria-hidden="true">→</span>
                         </span>
                       </div>
                     </div>
@@ -221,11 +222,10 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
                         </p>
                       </div>
 
-                      {/* Bottom: Trigger indicator "Lihat Detail" */}
+                      {/* Bottom: Trigger indicator "Lihat Detail Modul" */}
                       <div className="compact-card-footer">
                         <span className="compact-detail-trigger">
                           <span>Lihat Detail Modul</span>
-                          <span aria-hidden="true" style={{ marginLeft: '4px' }}>→</span>
                         </span>
                       </div>
                     </div>

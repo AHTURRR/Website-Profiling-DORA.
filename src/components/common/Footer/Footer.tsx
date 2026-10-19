@@ -63,13 +63,27 @@ export const Footer = ({ product, latestVersion }: FooterProps) => {
             </ul>
           </div>
 
-          {/* Legal */}
+          {/* Legal & Repository */}
           <div className="footer-links-col">
-            <h4 className="footer-heading">Legal</h4>
+            <h4 className="footer-heading">Repositori & Privasi</h4>
             <ul className="footer-nav-list">
               <li>
-                <a href="#faq">Kebijakan Privasi &amp; Pemrosesan Data</a>
+                <a href="#faq">Kebijakan Privasi &amp; Pemrosesan Data (v6.0)</a>
               </li>
+              {product.links.repositoryUrl && (
+                <li>
+                  <a href={product.links.repositoryUrl} target="_blank" rel="noopener noreferrer">
+                    Repositori GitHub Resmi
+                  </a>
+                </li>
+              )}
+              {product.links.releasesUrl && (
+                <li>
+                  <a href={product.links.releasesUrl} target="_blank" rel="noopener noreferrer">
+                    Catatan Rilis (GitHub Releases)
+                  </a>
+                </li>
+              )}
             </ul>
           </div>
         </div>
@@ -80,7 +94,7 @@ export const Footer = ({ product, latestVersion }: FooterProps) => {
             © {product.developer.copyrightYear} {product.developer.name}. Seluruh hak cipta dilindungi.
           </p>
           <div className="footer-meta-right">
-            <span>DORA (Data Overview & Research Assistant): Official Desktop Software & Research Center</span>
+            <span>DORA (Data Overview &amp; Research Assistant {latestVersion}): Official Desktop Software &amp; Research Center</span>
           </div>
         </div>
       </div>
