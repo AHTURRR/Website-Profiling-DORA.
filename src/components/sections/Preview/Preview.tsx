@@ -32,10 +32,14 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
   }, [modalOpen]);
 
   const getCategoryForPreview = (idx: number) => {
-    if (idx <= 3) return 'data';
-    if (idx <= 7) return 'modeling';
+    if (idx <= 4) return 'data';
+    if (idx <= 8) return 'modeling';
     return 'academic';
   };
+
+  const dataCount = previews.filter((_, idx) => getCategoryForPreview(idx) === 'data').length;
+  const modelingCount = previews.filter((_, idx) => getCategoryForPreview(idx) === 'modeling').length;
+  const academicCount = previews.filter((_, idx) => getCategoryForPreview(idx) === 'academic').length;
 
   const filteredPreviews = previews
     .map((p, originalIdx) => ({ ...p, originalIdx }))
@@ -61,6 +65,7 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
     if (tag.includes('loader') || tag.includes('dataset')) return <Database size={16} />;
     if (tag.includes('quality') || tag.includes('missing')) return <Sliders size={16} />;
     if (tag.includes('search')) return <Search size={16} />;
+    if (tag.includes('node')) return <Cpu size={16} />;
     if (tag.includes('editor')) return <Terminal size={16} />;
     if (tag.includes('ml')) return <Cpu size={16} />;
     if (tag.includes('literatur') || tag.includes('paper')) return <BookOpen size={16} />;
@@ -97,8 +102,8 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
           </div>
           <h2 className="section-title">Antarmuka Desktop DORA v6.0.0 yang Konsisten & Responsif</h2>
           <p className="section-subtitle">
-            Jelajahi tangkapan layar asli DORA (Data Overview & Research Assistant v6.0.0) berbasis PySide6 dengan
-            navigasi sidebar 16 rute yang seragam, menu Node Editor, analisis sidik jari SHA-256, hingga halaman Tentang & Privasi.
+            Jelajahi tangkapan layar asli yang diambil langsung dari aplikasi DORA (Data Overview & Research Assistant v6.0.0)
+            dengan navigasi sidebar 16 rute yang seragam, Visual Node Editor, analisis SHA-256, hingga halaman Tentang & Privasi.
           </p>
         </div>
 
@@ -117,7 +122,7 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
             onClick={() => handleCategorySelect('data')}
           >
             <Database size={14} />
-            <span>Data & Kualitas (4)</span>
+            <span>Data & Kualitas ({dataCount})</span>
           </button>
           <button
             type="button"
@@ -125,7 +130,7 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
             onClick={() => handleCategorySelect('modeling')}
           >
             <Cpu size={14} />
-            <span>Analisis, Node & ML (4)</span>
+            <span>Analisis, Node & ML ({modelingCount})</span>
           </button>
           <button
             type="button"
@@ -133,7 +138,7 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
             onClick={() => handleCategorySelect('academic')}
           >
             <BookOpen size={14} />
-            <span>Literatur, Laporan & Info (4)</span>
+            <span>Literatur, Laporan & Info ({academicCount})</span>
           </button>
         </div>
 
