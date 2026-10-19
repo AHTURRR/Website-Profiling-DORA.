@@ -68,7 +68,7 @@ export const Footer = ({ product, latestVersion }: FooterProps) => {
             <h4 className="footer-heading">Repositori & Privasi</h4>
             <ul className="footer-nav-list">
               <li>
-                <a href="#faq">Kebijakan Privasi &amp; Pemrosesan Data (v6.0)</a>
+                <a href="#faq">Kebijakan Privasi &amp; Pemrosesan Data (v2.0)</a>
               </li>
               {product.links.repositoryUrl && (
                 <li>

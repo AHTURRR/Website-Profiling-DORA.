@@ -92,11 +92,11 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
         <div className="section-header">
           <div className="section-tag">
             <CheckCircle2 size={14} />
-            <span>Katalog Fitur Riset Terpadu v6.0</span>
+            <span>Katalog Fitur Riset Terpadu v2.0</span>
           </div>
           <h2 className="section-title">Solusi Terintegrasi Siklus Riset Data, Visual ML & Literatur</h2>
           <p className="section-subtitle">
-            Klik kartu fitur di bawah ini untuk melihat kemampuan mendalam, arsitektur Node Editor v6.0.0, serta integrasi pustaka pada
+            Klik kartu fitur di bawah ini untuk melihat kemampuan mendalam, arsitektur Node Editor v2.0.0, serta integrasi pustaka pada
             aplikasi desktop DORA.
           </p>
         </div>
@@ -127,7 +127,7 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
                   <div className="spotlight-badge-row">
                     <div className="spotlight-icon-wrapper">{renderIcon(spotlightFeature.icon, 24)}</div>
                     <div className="compact-badge-group">
-                      <span className="compact-pillar-tag">Modul Utama v6.0</span>
+                      <span className="compact-pillar-tag">Modul Utama v2.0</span>
                       {spotlightFeature.benefitBadge && (
                         <span className="compact-benefit-badge">{spotlightFeature.benefitBadge}</span>
                       )}
@@ -169,7 +169,7 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
                         </div>
                         <div className="spotlight-highlight-item">
                           <Check size={16} className="spotlight-check" />
-                          <span>Penyimpanan SQLite Lokal & Panel Privasi v6.0</span>
+                          <span>Penyimpanan SQLite Lokal & Panel Privasi v2.0</span>
                         </div>
                       </div>
                       <div className="spotlight-cta-wrapper">

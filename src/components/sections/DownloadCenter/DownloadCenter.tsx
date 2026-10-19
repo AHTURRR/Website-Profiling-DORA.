@@ -211,9 +211,9 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
                     className="troubleshoot-btn-link"
                     target="_blank"
                     rel="noopener noreferrer"
-                    onClick={() => handleDownloadClick(releases[0]?.filename || 'Data-Overview-Research-Assistant-v6-Setup.exe')}
+                    onClick={() => handleDownloadClick(releases[0]?.filename || 'Data-Overview-Research-Assistant-v2-Setup.exe')}
                   >
-                    <span>Buka GitHub Releases v6.0.0</span>
+                    <span>Buka GitHub Releases v2.0.0</span>
                     <Download size={13} />
                   </a>
                 </div>
@@ -231,12 +231,12 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
                 <div className="troubleshoot-cli-snippet">
                   <div className="cli-code-text">
                     <Terminal size={13} className="cli-icon" />
-                    <code>curl.exe -L -o {releases[0]?.filename || 'Data-Overview-Research-Assistant-v6-Setup.exe'} {releases[0]?.downloadUrl}</code>
+                    <code>curl.exe -L -o {releases[0]?.filename || 'Data-Overview-Research-Assistant-v2-Setup.exe'} {releases[0]?.downloadUrl}</code>
                   </div>
                   <button
                     type="button"
                     className="cli-inline-copy-btn"
-                    onClick={() => copyCurlCommand(`curl.exe -L -o ${releases[0]?.filename || 'Data-Overview-Research-Assistant-v6-Setup.exe'} "${releases[0]?.downloadUrl}"`)}
+                    onClick={() => copyCurlCommand(`curl.exe -L -o ${releases[0]?.filename || 'Data-Overview-Research-Assistant-v2-Setup.exe'} "${releases[0]?.downloadUrl}"`)}
                     title="Salin perintah cURL"
                   >
                     {copiedCurl ? (
@@ -289,8 +289,8 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
             <p>
               Seluruh berkas installer resmi didistribusikan langsung dari repositori GitHub resmi Metriks Studio (<code>NezzyGremory/Data-Overview-Research-Assistant</code>).
               Verifikasi kesesuaian nilai SHA256 hash di Windows PowerShell menggunakan perintah:{' '}
-              <code>Get-FileHash {releases[0]?.filename || 'Data-Overview-Research-Assistant-v6-Setup.exe'} -Algorithm SHA256</code> atau di Command Prompt{' '}
-              <code>certutil -hashfile {releases[0]?.filename || 'Data-Overview-Research-Assistant-v6-Setup.exe'} SHA256</code>.
+              <code>Get-FileHash {releases[0]?.filename || 'Data-Overview-Research-Assistant-v2-Setup.exe'} -Algorithm SHA256</code> atau di Command Prompt{' '}
+              <code>certutil -hashfile {releases[0]?.filename || 'Data-Overview-Research-Assistant-v2-Setup.exe'} SHA256</code>.
             </p>
           </div>
         </div>

@@ -12,7 +12,7 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
   const [isDefenderModalOpen, setIsDefenderModalOpen] = useState(false);
-  const currentVersion = recommendedRelease ? recommendedRelease.version : 'v6.0.0';
+  const currentVersion = recommendedRelease ? recommendedRelease.version : 'v2.0.0';
 
   return (
     <section id="hero" className="hero-section">
@@ -62,7 +62,7 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
             )}
 
             <a href="#features" className="hero-btn-secondary" id="hero-explore-features-btn">
-              <span>Lihat Modul v6.0</span>
+              <span>Lihat Modul v2.0</span>
             </a>
           </div>
 
@@ -85,7 +85,7 @@ export const Hero: React.FC<HeroProps> = ({ product, recommendedRelease }) => {
             isOpen={isDefenderModalOpen}
             onClose={() => setIsDefenderModalOpen(false)}
             downloadUrl={recommendedRelease?.downloadUrl}
-            filename={recommendedRelease?.filename || 'Data-Overview-Research-Assistant-v6-Setup.exe'}
+            filename={recommendedRelease?.filename || 'Data-Overview-Research-Assistant-v2-Setup.exe'}
           />
 
           {/* Sleek Horizontal Trust Strip */}

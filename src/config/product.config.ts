@@ -1,7 +1,7 @@
 import type { ProductConfig } from '../types/product.types';
 
 /**
- * PUSAT KONFIGURASI PRODUK DORA (Data Overview & Research Assistant) v6.0.0
+ * PUSAT KONFIGURASI PRODUK DORA (Data Overview & Research Assistant) v2.0.0
  * Repositori Resmi: https://github.com/NezzyGremory/Data-Overview-Research-Assistant.git
  * Pengembang: Metriks Studio
  */
@@ -9,11 +9,11 @@ export const productConfig: ProductConfig = {
   product: {
     name: 'DORA',
     tagline:
-      'Data Overview & Research Assistant v6.0.0: Aplikasi Desktop Eksplorasi Dataset, Visual ML Node Editor & Riset Literatur Ilmiah',
+      'Data Overview & Research Assistant v2.0.0: Aplikasi Desktop Eksplorasi Dataset, Visual ML Node Editor & Riset Literatur Ilmiah',
     shortDescription:
-      'Aplikasi desktop native PySide6 (v6.0.0) untuk alur kerja riset data dan akademik: pemuatan dataset multi-format (CSV/Excel/JSON/Parquet), audit kualitas data 4 strategi, Visual Node Editor & ML Graph Engine dengan ekspor multi-format (.py, .ipynb, .pkl, .csv, .zip), Editor Analysis interaktif, penelusuran literatur terindeks SINTA/Scopus/DOAJ, hingga ekspor laporan PDF.',
+      'Aplikasi desktop native PySide6 (v2.0.0) untuk alur kerja riset data dan akademik: pemuatan dataset multi-format (CSV/Excel/JSON/Parquet), audit kualitas data 4 strategi, Visual Node Editor & ML Graph Engine dengan ekspor multi-format (.py, .ipynb, .pkl, .csv, .zip), Editor Analysis interaktif, penelusuran literatur terindeks SINTA/Scopus/DOAJ, hingga ekspor laporan PDF.',
     fullDescription:
-      'Data Overview & Research Assistant (DORA v6.0.0) dikembangkan oleh Metriks Studio sebagai aplikasi desktop native berbasis Python 3.13 dan PySide6 6.11 yang memadukan pemrosesan dataset lokal di perangkat dengan layanan pencarian online. Pada rilis v6.0.0, DORA menghadirkan penyempurnaan tata letak Overview (kondisi kosong maupun terisi), keselarasan navigasi sidebar pada seluruh 16 rute aktif, Node Editor visual yang berjalan di latar belakang dengan cache analisis serta ekspor multi-format, penguatan kontrol event Qt pada Editor Analisis, peluncuran otomatis berbasis virtual environment proyek (.venv), serta panel informasi privasi lengkap pada halaman Tentang.',
+      'Data Overview & Research Assistant (DORA v2.0.0) dikembangkan oleh Metriks Studio sebagai aplikasi desktop native berbasis Python 3.13 dan PySide6 6.11 yang memadukan pemrosesan dataset lokal di perangkat dengan layanan pencarian online. Pada rilis v2.0.0, DORA menghadirkan penyempurnaan tata letak Overview (kondisi kosong maupun terisi), keselarasan navigasi sidebar pada seluruh 16 rute aktif, Node Editor visual yang berjalan di latar belakang dengan cache analisis serta ekspor multi-format, penguatan kontrol event Qt pada Editor Analisis, peluncuran otomatis berbasis virtual environment proyek (.venv), serta panel informasi privasi lengkap pada halaman Tentang.',
     developer: {
       name: 'Metriks Studio',
       copyrightYear: 2026,
@@ -32,16 +32,16 @@ export const productConfig: ProductConfig = {
   features: [
     {
       id: 'overview-pipeline',
-      title: 'Overview & Navigasi 16 Rute Konsisten (v6.0)',
+      title: 'Overview & Navigasi 16 Rute Konsisten (v2.0)',
       shortSummary:
         'Dashboard utama dengan tata letak yang dirapikan, ML Pipeline Checklist, dan navigasi sidebar seragam di 16 rute.',
       description:
-        'Dashboard sentral yang merangkum status dataset aktif, skor kualitas data, rekomendasi model ML, progres pipeline riset 7 tahapan, dan pintasan laporan. Pada v6.0.0, skala tipografi, jarak, dan tampilan saat belum ada dataset dibuat lebih jelas dan responsif, didukung navigasi sidebar yang selaras di seluruh 16 rute menu dengan transisi halaman 140 ms.',
+        'Dashboard sentral yang merangkum status dataset aktif, skor kualitas data, rekomendasi model ML, progres pipeline riset 7 tahapan, dan pintasan laporan. Pada v2.0.0, skala tipografi, jarak, dan tampilan saat belum ada dataset dibuat lebih jelas dan responsif, didukung navigasi sidebar yang selaras di seluruh 16 rute menu dengan transisi halaman 140 ms.',
       benefitBadge: 'Overview & 16 Rute UI',
       executionScope: 'Hybrid (Lokal + Online)',
       icon: 'layers',
       capabilities: [
-        'Tampilan Overview v6.0.0 yang konsisten baik saat kondisi dataset kosong maupun setelah dataset dimuat',
+        'Tampilan Overview v2.0.0 yang konsisten baik saat kondisi dataset kosong maupun setelah dataset dimuat',
         'ML Pipeline Checklist 7 tahapan untuk memantau progres dari pemuatan dataset hingga penyusunan laporan',
         'Navigasi sidebar seragam di 16 rute aktif (Workspace, Alat Tambahan, dan Research Tools) dengan fokus keyboard yang jelas',
         'Pintasan langsung ke halaman Dataset, Analysis, Node Editor, ML Intelligence, serta Research Report',
@@ -49,11 +49,11 @@ export const productConfig: ProductConfig = {
     },
     {
       id: 'node-editor-graph',
-      title: 'Visual Node Editor & ML Graph Engine (Baru di v6.0)',
+      title: 'Visual Node Editor & ML Graph Engine (Baru di v2.0)',
       shortSummary:
         'Susun pipeline ML secara visual dengan deteksi task otomatis, cache latar belakang, dan ekspor 5 format.',
       description:
-        'Ruang kerja berbasis node visual untuk merancang, memvalidasi, dan mengeksekusi eksperimen Machine Learning. Pada v6.0.0, pemuatan dan analisis dataset, deteksi task otomatis, serta pembuatan template graph dinamis dijalankan di latar belakang dengan dukungan cache analisis untuk mengurangi pemrosesan berulang.',
+        'Ruang kerja berbasis node visual untuk merancang, memvalidasi, dan mengeksekusi eksperimen Machine Learning. Pada v2.0.0, pemuatan dan analisis dataset, deteksi task otomatis, serta pembuatan template graph dinamis dijalankan di latar belakang dengan dukungan cache analisis untuk mengurangi pemrosesan berulang.',
       benefitBadge: 'Visual Graph & 5 Ekspor',
       executionScope: 'Hybrid (Lokal + Online)',
       icon: 'cpu',
@@ -119,16 +119,16 @@ export const productConfig: ProductConfig = {
     },
     {
       id: 'editor-analysis',
-      title: 'Editor Analysis & Notebook Kernel PyPI (Diperkuat v6.0)',
+      title: 'Editor Analysis & Notebook Kernel PyPI (Diperkuat v2.0)',
       shortSummary:
         'Editor kode Python bergaya notebook dengan penguatan event Qt, autosave, manajemen kernel, dan instalasi PyPI.',
       description:
-        'Editor interaktif bergaya Jupyter Notebook dengan tahapan terstruktur (Data Understanding, Cleaning, EDA, Feature Engineering, Metode Algoritma, Evaluasi Model). Pada v6.0.0, koneksi kontrol dan penanganan event Qt untuk editor kode, cell notebook, autosave, eksekusi, serta pengelolaan kernel lokal diperkuat.',
+        'Editor interaktif bergaya Jupyter Notebook dengan tahapan terstruktur (Data Understanding, Cleaning, EDA, Feature Engineering, Metode Algoritma, Evaluasi Model). Pada v2.0.0, koneksi kontrol dan penanganan event Qt untuk editor kode, cell notebook, autosave, eksekusi, serta pengelolaan kernel lokal diperkuat.',
       benefitBadge: 'Notebook .ipynb & PyPI',
       executionScope: 'Hybrid (Lokal + Online)',
       icon: 'file-text',
       capabilities: [
-        'Penguatan penanganan event Qt di v6.0.0 untuk editor kode, cell notebook, fitur autosave, dan mulai ulang kernel Python',
+        'Penguatan penanganan event Qt di v2.0.0 untuk editor kode, cell notebook, fitur autosave, dan mulai ulang kernel Python',
         'Template kode Python terstruktur yang dapat diedit, dijalankan per langkah, atau dipulihkan ke kondisi awal',
         'Eksekusi kode lokal pada salinan dataset dengan keluaran teks konsol dan grafik visualisasi Matplotlib',
         'Pemasangan pustaka Python tambahan dari PyPI langsung di lingkungan proyek (contoh: pip install seaborn atau xgboost)',
@@ -188,11 +188,11 @@ export const productConfig: ProductConfig = {
     },
     {
       id: 'landscape-gap-privacy',
-      title: 'Research Gap, Laporan PDF & Panel Privasi (v6.0)',
+      title: 'Research Gap, Laporan PDF & Panel Privasi (v2.0)',
       shortSummary:
         'Pemetaan lanskap riset, analisis Research Gap, ekspor PDF format A4, serta transparansi privasi di halaman Tentang.',
       description:
-        'Menyajikan pemetaan Research Landscape, kandidat Research Gap dengan penjelasan otomatis (engine lokal atau Google Gemini berbasis ringkasan analisis), serta kompilasi Research Report berformat Times New Roman 12 pt (A4) siap ekspor ke PDF. Rilis v6.0.0 juga menambahkan bagian Informasi Privasi yang transparan pada halaman Tentang serta skala tampilan UI Scale (Auto atau 70% hingga 150%).',
+        'Menyajikan pemetaan Research Landscape, kandidat Research Gap dengan penjelasan otomatis (engine lokal atau Google Gemini berbasis ringkasan analisis), serta kompilasi Research Report berformat Times New Roman 12 pt (A4) siap ekspor ke PDF. Rilis v2.0.0 juga menambahkan bagian Informasi Privasi yang transparan pada halaman Tentang serta skala tampilan UI Scale (Auto atau 70% hingga 150%).',
       benefitBadge: 'Research Gap, PDF & Privasi',
       executionScope: 'Hybrid (Lokal + Online)',
       icon: 'shield',
@@ -200,7 +200,7 @@ export const productConfig: ProductConfig = {
         'Pemetaan visual Research Landscape dan identifikasi kandidat Research Gap otomatis setelah perhitungan insights selesai',
         'Penjelasan berbantuan Gemini (mengirim ringkasan statistik/profil tanpa mengirim file CSV utuh) atau fallback engine lokal',
         'Penyusunan pratinjau Research Report gabungan dan ekspor dokumen ke format PDF standar A4',
-        'Panel Informasi Privasi baru pada halaman Tentang (v6.0.0) yang merinci pemrosesan lokal, pencarian online, Gemini, telemetry opsional, visibilitas IP, dan kunci API',
+        'Panel Informasi Privasi baru pada halaman Tentang (v2.0.0) yang merinci pemrosesan lokal, pencarian online, Gemini, telemetry opsional, visibilitas IP, dan kunci API',
         'Pengaturan UI Scale responsif (Auto atau 70%-150%) melalui menu View serta pintasan Ctrl+=, Ctrl+-, Ctrl+0, dan Ctrl+scroll',
       ],
     },
@@ -209,15 +209,15 @@ export const productConfig: ProductConfig = {
   previews: [
     {
       id: 'preview-overview',
-      title: 'Overview & Pipeline Workspace (v6.0)',
+      title: 'Overview & Pipeline Workspace (v2.0)',
       caption:
-        'Dashboard ringkasan v6.0.0 dengan tata letak baru yang menampilkan kartu status kesiapan dataset aktif (Titanic-dataset.csv), alur 5 langkah kerja terpadu, fitur utama DORA, serta pintasan langsung ke Analisis dan ML Intelligence.',
+        'Dashboard ringkasan v2.0.0 dengan tata letak baru yang menampilkan kartu status kesiapan dataset aktif (Titanic-dataset.csv), alur 5 langkah kerja terpadu, fitur utama DORA, serta pintasan langsung ke Analisis dan ML Intelligence.',
       aspectRatio: '16/10',
-      badge: 'Dashboard v6.0',
+      badge: 'Dashboard v2.0',
       imageSrc: '/screenshots/overview.png',
       tag: 'Overview',
       details: [
-        'Tata Letak & Tipografi v6.0 Konsisten',
+        'Tata Letak & Tipografi v2.0 Konsisten',
         'Status Dataset Aktif & Langkah Berikutnya',
         'Alur Kerja 5 Tahapan Terpadu',
         'Navigasi 16 Rute & Skala UI Otomatis',
@@ -305,9 +305,9 @@ export const productConfig: ProductConfig = {
     },
     {
       id: 'preview-editor',
-      title: 'Editor Analysis & Kernel PyPI (v6.0)',
+      title: 'Editor Analysis & Kernel PyPI (v2.0)',
       caption:
-        'Ruang kerja Editor Analysis bergaya notebook dengan 6 tahapan analisis, dukungan instalasi library PyPI, manajemen kernel Python lokal yang diperkuat di v6.0.0, serta akses ke menu Node Editor di sidebar Alat Tambahan.',
+        'Ruang kerja Editor Analysis bergaya notebook dengan 6 tahapan analisis, dukungan instalasi library PyPI, manajemen kernel Python lokal yang diperkuat di v2.0.0, serta akses ke menu Node Editor di sidebar Alat Tambahan.',
       aspectRatio: '16/10',
       badge: 'Editor Notebook',
       imageSrc: '/screenshots/editor-analysis.png',
@@ -316,16 +316,16 @@ export const productConfig: ProductConfig = {
         '6 Tahapan Template Analisis & Pemodelan',
         'Menu Alat Tambahan: Editor Analysis & Node Editor',
         'Instalasi Paket PyPI & Dukungan .ipynb',
-        'Penanganan Event Qt & Kernel Diperkuat (v6.0)',
+        'Penanganan Event Qt & Kernel Diperkuat (v2.0)',
       ],
     },
     {
       id: 'preview-node-editor',
-      title: 'Visual Node Editor & ML Graph Engine (v6.0)',
+      title: 'Visual Node Editor & ML Graph Engine (v2.0)',
       caption:
-        'Kanvas Node Editor v6.0.0 untuk merancang alur kerja Machine Learning secara visual dengan port berwarna (data, estimator, model, metrik), deteksi task otomatis, inspektor parameter, dan tabel ringkasan metrik evaluasi.',
+        'Kanvas Node Editor v2.0.0 untuk merancang alur kerja Machine Learning secara visual dengan port berwarna (data, estimator, model, metrik), deteksi task otomatis, inspektor parameter, dan tabel ringkasan metrik evaluasi.',
       aspectRatio: '16/10',
-      badge: 'Baru di v6.0',
+      badge: 'Baru di v2.0',
       imageSrc: '/screenshots/node-editor.png',
       tag: 'Node Editor',
       details: [
@@ -417,11 +417,11 @@ export const productConfig: ProductConfig = {
     },
     {
       id: 'preview-about',
-      title: 'Tentang DORA & Privasi Keamanan (v6.0)',
+      title: 'Tentang DORA & Privasi Keamanan (v2.0)',
       caption:
-        'Halaman informasi aplikasi DORA yang pada rilis v6.0.0 dilengkapi bagian Privasi & Keamanan untuk menjelaskan pemrosesan dataset lokal, pencarian online, penjelasan Gemini, telemetry opsional, alamat IP, dan kunci API lokal.',
+        'Halaman informasi aplikasi DORA yang pada rilis v2.0.0 dilengkapi bagian Privasi & Keamanan untuk menjelaskan pemrosesan dataset lokal, pencarian online, penjelasan Gemini, telemetry opsional, alamat IP, dan kunci API lokal.',
       aspectRatio: '16/10',
-      badge: 'Tentang & Privasi v6.0',
+      badge: 'Tentang & Privasi v2.0',
       imageSrc: '/screenshots/about.png',
       tag: 'Tentang & Privasi',
       details: [
@@ -435,45 +435,45 @@ export const productConfig: ProductConfig = {
 
   releases: [
     {
-      id: 'win-installer-v6',
+      id: 'win-installer-v2',
       os: 'windows',
-      osName: 'Microsoft Windows (Rilis Utama v6.0)',
+      osName: 'Microsoft Windows (Rilis Utama v2.0)',
       architecture: 'x64 (64-bit)',
-      version: 'v6.0.0',
+      version: 'v2.0.0',
       releaseDate: '18 Oktober 2026',
       fileSize: '95.1 MB',
-      filename: 'Data-Overview-Research-Assistant-v6-Setup.exe',
+      filename: 'Data-Overview-Research-Assistant-v2-Setup.exe',
       downloadUrl:
         'https://github.com/NezzyGremory/Data-Overview-Research-Assistant/releases/download/v6.0.0/Data-Overview-Research-Assistant-v6-Setup.exe',
       checksumSha256: '5c362738d57e470942aa14607b1036fc2f6ae1dd9258f554dae475752b1c1779',
       isPrimaryForPlatform: true,
-      buttonLabel: 'Download Windows Setup v6.0.0 (.exe)',
+      buttonLabel: 'Download Windows Setup v2.0.0 (.exe)',
       notes:
-        'Installer Windows resmi (Inno Setup 6) untuk Data Overview Research & Assistant v6.0.0. Mencakup penyempurnaan UI/UX Overview, keselarasan navigasi sidebar 16 rute, Node Editor responsif dengan pemrosesan latar belakang & cache analisis, penguatan kontrol Editor Analisis, serta panel Informasi Privasi pada halaman Tentang. Menginstal ke %LOCALAPPDATA%\\Programs\\DORA tanpa memerlukan hak Administrator.',
+        'Installer Windows resmi (Inno Setup 6) untuk Data Overview Research & Assistant v2.0.0. Mencakup penyempurnaan UI/UX Overview, keselarasan navigasi sidebar 16 rute, Node Editor responsif dengan pemrosesan latar belakang & cache analisis, penguatan kontrol Editor Analisis, serta panel Informasi Privasi pada halaman Tentang. Menginstal ke %LOCALAPPDATA%\\Programs\\DORA tanpa memerlukan hak Administrator.',
     },
     {
-      id: 'win-installer-v5',
+      id: 'win-installer-v1',
       os: 'windows',
-      osName: 'Microsoft Windows (Rilis Sebelumnya v5.0)',
+      osName: 'Microsoft Windows (Rilis Sebelumnya v1.0)',
       architecture: 'x64 (64-bit)',
-      version: 'v5.0.0',
+      version: 'v1.0.0',
       releaseDate: '13 Oktober 2026',
       fileSize: '92.3 MB',
-      filename: 'DORA-v5.0.0-Setup.exe',
+      filename: 'DORA-v1.0.0-Setup.exe',
       downloadUrl:
         'https://github.com/NezzyGremory/Data-Overview-Research-Assistant/releases/download/v5.0.0/DORA-v5.0.0-Setup.exe',
       checksumSha256: '05c5dcc67a0b213d6e9f3ac31bd0db38025b04dd6f4e1ede691a6540f47f88b3',
       isPrimaryForPlatform: false,
-      buttonLabel: 'Download Setup v5.0.0 (.exe)',
+      buttonLabel: 'Download Setup v1.0.0 (.exe)',
       notes:
-        'Installer Windows Setup resmi rilis v5.0.0 sebelumnya dari repositori Data-Overview-Research-Assistant. Tersedia sebagai arsip alternatif bagi pengguna yang membutuhkan paket instalasi versi v5.',
+        'Installer Windows Setup resmi rilis v1.0.0 sebelumnya dari repositori Data-Overview-Research-Assistant. Tersedia sebagai arsip alternatif bagi pengguna yang membutuhkan paket instalasi versi v1.0.',
     },
   ],
 
   systemRequirements: [
     {
       osKey: 'windows',
-      osName: 'Microsoft Windows (Installer v6.0.0 & Source)',
+      osName: 'Microsoft Windows (Installer v2.0.0 & Source)',
       minimumOs: 'Windows 10 (64-bit build 19041+) atau Windows 11',
       recommendedOs: 'Windows 11 versi 22H2 atau lebih baru (64-bit)',
       cpu: 'Prosesor 64-bit dual-core (Intel Core i3 / AMD Ryzen 3 atau setara; multi-core disarankan untuk background worker Node Editor)',
@@ -484,42 +484,42 @@ export const productConfig: ProductConfig = {
       network:
         'Analisis dataset utama berjalan secara lokal di perangkat. Koneksi internet diperlukan saat menggunakan pencarian dataset publik (Kaggle/Hugging Face), penelusuran literatur akademik (OpenAlex/Crossref/Semantic Scholar/Scopus/SINTA/DOAJ), penjelasan opsional Google Gemini, dan instalasi paket PyPI.',
       extraRuntime:
-        'Tidak memerlukan instalasi Python terpisah jika menggunakan installer Data-Overview-Research-Assistant-v6-Setup.exe. Untuk eksekusi dari source code, lingkungan pengembangan menggunakan snapshot Python 3.13.12 dan PySide6 6.11.2 di dalam .venv.',
+        'Tidak memerlukan instalasi Python terpisah jika menggunakan installer Windows Setup v2.0.0. Untuk eksekusi dari source code, lingkungan pengembangan menggunakan snapshot Python 3.13.12 dan PySide6 6.11.2 di dalam .venv.',
     },
   ],
 
   installationGuides: [
     {
       os: 'windows',
-      osName: 'Windows Setup Installer v6.0.0 (Rekomendasi)',
+      osName: 'Windows Setup Installer v2.0.0 (Rekomendasi)',
       steps: [
         {
           step: 1,
-          title: 'Unduh Installer v6.0.0 Resmi',
+          title: 'Unduh Installer v2.0.0 Resmi',
           description:
-            'Unduh berkas Data-Overview-Research-Assistant-v6-Setup.exe (95.1 MB) melalui tombol Download utama di halaman ini atau langsung dari halaman GitHub Releases resmi.',
+            'Unduh berkas installer Windows v2.0.0 (95.1 MB) melalui tombol Download utama di halaman ini atau langsung dari halaman GitHub Releases resmi.',
         },
         {
           step: 2,
           title: 'Jalankan Pemasangan Per-User',
           description:
-            'Klik ganda berkas Data-Overview-Research-Assistant-v6-Setup.exe. Installer bekerja pada mode pengguna saat ini (PrivilegesRequired=lowest) menuju direktori %LOCALAPPDATA%\\Programs\\DORA sehingga tidak memerlukan hak akses Administrator.',
+            'Klik ganda berkas installer yang telah diunduh. Installer bekerja pada mode pengguna saat ini (PrivilegesRequired=lowest) menuju direktori %LOCALAPPDATA%\\Programs\\DORA sehingga tidak memerlukan hak akses Administrator.',
         },
         {
           step: 3,
           title: 'Pembuatan Shortcut Otomatis',
           description:
-            'Setup wizard akan mengekstrak aplikasi utama (DORA.exe), membuat shortcut "Data Overview Research & Assistant v6" pada Desktop serta Start Menu Windows, dan menyiapkan uninstaller.',
+            'Setup wizard akan mengekstrak aplikasi utama (DORA.exe), membuat shortcut "Data Overview Research & Assistant v2" pada Desktop serta Start Menu Windows, dan menyiapkan uninstaller.',
         },
         {
           step: 4,
-          title: 'Jalankan Aplikasi DORA v6.0.0',
+          title: 'Jalankan Aplikasi DORA v2.0.0',
           description:
             'Buka aplikasi dari shortcut Desktop atau Start Menu. Seluruh database SQLite, konfigurasi, dan versi dataset disimpan secara aman di %LOCALAPPDATA%\\Dataset Research.',
         },
       ],
       firstRunTip:
-        'Jika Anda memperbarui dari versi sebelumnya, data lokal pada %LOCALAPPDATA%\\Dataset Research tetap dipertahankan secara otomatis tanpa menghapus proyek atau dataset yang sudah ada.',
+        'Jika Anda memperbarui dari versi sebelumnya (v1.0.0), data lokal pada %LOCALAPPDATA%\\Dataset Research tetap dipertahankan secara otomatis tanpa menghapus proyek atau dataset yang sudah ada.',
       troubleshootingTip:
         'Installer ini belum ditandatangani dengan sertifikat code-signing berbayar, sehingga Windows SmartScreen dapat menampilkan peringatan penerbit belum dikenal. Klik "More info" lalu pilih "Run anyway" setelah memastikan kecocokan hash SHA256.',
     },
@@ -552,7 +552,7 @@ export const productConfig: ProductConfig = {
           step: 4,
           title: 'Luncurkan Aplikasi',
           description:
-            'Jalankan entry point aplikasi. Pada v6.0.0, launcher secara otomatis memprioritaskan interpreter dari virtual environment proyek (.venv) saat tersedia.',
+            'Jalankan entry point aplikasi. Pada v2.0.0, launcher secara otomatis memprioritaskan interpreter dari virtual environment proyek (.venv) saat tersedia.',
           codeSnippet: 'python run.py',
         },
       ],
@@ -565,11 +565,11 @@ export const productConfig: ProductConfig = {
 
   faqList: [
     {
-      id: 'faq-what-is-dora-v6',
+      id: 'faq-what-is-dora-v2',
       category: 'general',
-      question: 'Apa saja pembaruan utama pada Data Overview Research & Assistant v6.0.0?',
+      question: 'Apa saja pembaruan utama pada Data Overview Research & Assistant v2.0.0?',
       answer:
-        'Rilis v6.0.0 menghadirkan enam pembaruan utama: (1) Tampilan Overview yang lebih konsisten dan responsif baik saat belum ada dataset maupun saat dataset aktif, (2) Navigasi sidebar yang diselaraskan pada seluruh 16 rute menu termasuk Alat Tambahan, Dataset Search, dan Academic Research, (3) Node Editor yang lebih responsif dengan pemrosesan dataset, deteksi task, dan pembuatan template di latar belakang beserta cache analisis, (4) Penguatan koneksi kontrol dan event Qt pada Editor Analisis untuk cell notebook, autosave, eksekusi, dan pengelolaan kernel, (5) Penambahan bagian Informasi Privasi yang transparan pada halaman Tentang, serta (6) Peluncuran aplikasi yang konsisten menggunakan virtual environment proyek (.venv) saat tersedia.',
+        'Rilis v2.0.0 menghadirkan enam pembaruan utama dibanding v1.0.0: (1) Tampilan Overview yang lebih konsisten dan responsif baik saat belum ada dataset maupun saat dataset aktif, (2) Navigasi sidebar yang diselaraskan pada seluruh 16 rute menu termasuk Alat Tambahan, Dataset Search, dan Academic Research, (3) Node Editor yang lebih responsif dengan pemrosesan dataset, deteksi task, dan pembuatan template di latar belakang beserta cache analisis, (4) Penguatan koneksi kontrol dan event Qt pada Editor Analisis untuk cell notebook, autosave, eksekusi, dan pengelolaan kernel, (5) Penambahan bagian Informasi Privasi yang transparan pada halaman Tentang, serta (6) Peluncuran aplikasi yang konsisten menggunakan virtual environment proyek (.venv) saat tersedia.',
     },
     {
       id: 'faq-node-editor',
@@ -581,7 +581,7 @@ export const productConfig: ProductConfig = {
     {
       id: 'faq-dataset-privacy',
       category: 'general',
-      question: 'Bagaimana kebijakan privasi dan pemrosesan data pada DORA v6.0.0?',
+      question: 'Bagaimana kebijakan privasi dan pemrosesan data pada DORA v2.0.0?',
       answer:
         'Sebagaimana dirinci pada bagian Informasi Privasi di halaman Tentang aplikasi: (1) Analisis dataset utama berjalan secara lokal di perangkat dan tersimpan di database SQLite lokal (%LOCALAPPDATA%\\Dataset Research), (2) Pencarian dataset publik dan literatur hanya mengirim kata kunci pencarian ke penyedia terkait (Kaggle, Hugging Face, OpenAlex, Crossref, Semantic Scholar, Scopus, SINTA, DOAJ), (3) Jika fitur penjelasan Google Gemini dikonfigurasi dan dipakai, aplikasi hanya mengirim ringkasan analisis (profil, statistik, nilai kosong, duplikasi, outlier, korelasi, dan fingerprint) tanpa mengirim file CSV utuh; tanpa API key, penjelasan memakai engine lokal, (4) Telemetry tidak dikirim selama endpoint TELEMETRY_API_URL kosong, dan (5) Kunci API yang disimpan berada di file konfigurasi lokal perangkat.',
     },
@@ -616,16 +616,16 @@ export const productConfig: ProductConfig = {
     {
       id: 'faq-admin-install',
       category: 'installation',
-      question: 'Di mana lokasi instalasi v6.0.0 dan apakah dibutuhkan hak Administrator?',
+      question: 'Di mana lokasi instalasi v2.0.0 dan apakah dibutuhkan hak Administrator?',
       answer:
-        'Tidak memerlukan hak Administrator. Installer resmi Data-Overview-Research-Assistant-v6-Setup.exe memasang aplikasi secara per-user ke dalam direktori %LOCALAPPDATA%\\Programs\\DORA (dengan executable utama DORA.exe) dan menyimpan data runtime lokal di %LOCALAPPDATA%\\Dataset Research.',
+        'Tidak memerlukan hak Administrator. Installer resmi DORA v2.0.0 memasang aplikasi secara per-user ke dalam direktori %LOCALAPPDATA%\\Programs\\DORA (dengan executable utama DORA.exe) dan menyimpan data runtime lokal di %LOCALAPPDATA%\\Dataset Research.',
     },
     {
       id: 'faq-download-troubleshooting',
       category: 'installation',
       question: 'Bagaimana jika berkas installer tertahan oleh peringatan browser atau Windows SmartScreen?',
       answer:
-        'Karena installer didistribusikan tanpa sertifikat code-signing komersial, browser atau Windows SmartScreen dapat menampilkan peringatan pada berkas baru. Pada daftar unduhan browser, klik ikon Titik Tiga (⋯) di samping berkas Data-Overview-Research-Assistant-v6-Setup.exe, pilih "Keep", lalu pilih "Keep anyway". Anda juga dapat memverifikasi keaslian berkas menggunakan checksum SHA256 yang tertera pada Pusat Unduhan di halaman ini.',
+        'Karena installer didistribusikan tanpa sertifikat code-signing komersial, browser atau Windows SmartScreen dapat menampilkan peringatan pada berkas baru. Pada daftar unduhan browser, klik ikon Titik Tiga (⋯) di samping berkas installer DORA, pilih "Keep", lalu pilih "Keep anyway". Anda juga dapat memverifikasi keaslian berkas menggunakan checksum SHA256 yang tertera pada Pusat Unduhan di halaman ini.',
     },
     {
       id: 'faq-ui-scale-shortcuts',

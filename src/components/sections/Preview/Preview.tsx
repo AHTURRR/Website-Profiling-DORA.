@@ -98,11 +98,11 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
         <div className="section-header">
           <div className="section-tag">
             <Eye size={14} />
-            <span>Galeri & Tangkapan Layar Asli v6.0</span>
+            <span>Galeri & Tangkapan Layar Asli v2.0</span>
           </div>
-          <h2 className="section-title">Antarmuka Desktop DORA v6.0.0 yang Konsisten & Responsif</h2>
+          <h2 className="section-title">Antarmuka Desktop DORA v2.0.0 yang Konsisten & Responsif</h2>
           <p className="section-subtitle">
-            Jelajahi tangkapan layar asli yang diambil langsung dari aplikasi DORA (Data Overview & Research Assistant v6.0.0)
+            Jelajahi tangkapan layar asli yang diambil langsung dari aplikasi DORA (Data Overview & Research Assistant v2.0.0)
             dengan navigasi sidebar 16 rute yang seragam, Visual Node Editor, analisis SHA-256, hingga halaman Tentang & Privasi.
           </p>
         </div>
@@ -170,7 +170,7 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
             <div className="mock-window-header">
               <div className="window-title-group">
                 <img src="/brand/about-brand-mark.png" alt="DORA" className="window-app-icon" onError={(e) => { (e.currentTarget as HTMLElement).style.display = 'none'; }} />
-                <div className="mock-window-title">DORA v6.0.0: [{currentPreview.title}]</div>
+                <div className="mock-window-title">DORA v2.0.0: [{currentPreview.title}]</div>
               </div>
               <div className="mock-window-actions">
                 <button
