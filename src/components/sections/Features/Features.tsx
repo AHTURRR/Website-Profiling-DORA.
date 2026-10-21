@@ -89,7 +89,7 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
     <section id="features" className="section features-section">
       <div className="container">
         {/* Section Header */}
-        <div className="section-header">
+        <div className="section-header reveal-on-scroll">
           <div className="section-tag">
             <CheckCircle2 size={14} />
             <span>Katalog Fitur Riset Terpadu v2.0</span>
@@ -110,7 +110,7 @@ export const Features: React.FC<FeaturesProps> = ({ features }) => {
             <>
               {spotlightFeature && (
                 <div
-                  className="feature-spotlight-card"
+                  className="feature-spotlight-card reveal-on-scroll reveal-delay-1"
                   id={`feature-card-${spotlightFeature.id}`}
                   onClick={() => setSelectedFeature(spotlightFeature)}
                   role="button"

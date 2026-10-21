@@ -36,6 +36,11 @@
   color: #ffffff;
   overflow: hidden;
   padding: 3px;
+  transition: transform var(--transition-normal);
+}
+
+.footer-brand-header:hover .footer-logo-icon {
+  transform: rotate(-6deg) scale(1.08);
 }
 
 .footer-logo-img {
@@ -70,6 +75,12 @@
   padding: 0.3rem 0.65rem;
   border-radius: var(--radius-full);
   width: fit-content;
+  transition: transform var(--transition-fast), background-color var(--transition-fast);
+}
+
+.footer-license-badge:hover {
+  transform: translateY(-1px);
+  background: rgba(31, 94, 255, 0.25);
 }
 
 .footer-heading {
@@ -87,13 +98,15 @@
 }
 
 .footer-nav-list a {
+  display: inline-block;
   font-size: 0.875rem;
   color: #94a3b8;
-  transition: color var(--transition-fast);
+  transition: color var(--transition-fast), transform var(--transition-fast);
 }
 
 .footer-nav-list a:hover {
   color: #ffffff;
+  transform: translateX(4px);
 }
 
 .footer-nav-list a:focus-visible {

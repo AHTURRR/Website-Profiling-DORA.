@@ -107,7 +107,7 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
     <section id="preview" className="section preview-section">
       <div className="container">
         {/* Header */}
-        <div className="section-header">
+        <div className="section-header reveal-on-scroll">
           <div className="section-tag">
             <Eye size={14} />
             <span>Galeri & Tangkapan Layar Asli v2.0</span>

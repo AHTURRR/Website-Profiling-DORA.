@@ -103,10 +103,21 @@
   animation: heroSlideUp 450ms 70ms cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
+@keyframes textShimmer {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
 .hero-title-gradient {
-  background: linear-gradient(135deg, var(--color-blue-accent) 0%, #0044ee 100%);
+  background: linear-gradient(135deg, var(--color-blue-accent) 0%, #38bdf8 50%, #0044ee 100%);
+  background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  animation: textShimmer 6s ease infinite;
 }
 
 .hero-description {
@@ -139,6 +150,25 @@
   box-shadow: 0 2px 6px rgba(31, 94, 255, 0.22), 0 1px 2px rgba(15, 23, 42, 0.05);
   transition: all var(--transition-normal);
   text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero-btn-primary::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transform: skewX(-20deg);
+  transition: left 600ms ease;
+  pointer-events: none;
+}
+
+.hero-btn-primary:hover::after {
+  left: 140%;
 }
 
 .hero-btn-primary:hover {
@@ -275,11 +305,22 @@
   font-size: 0.78rem;
   font-weight: var(--font-weight-medium);
   color: var(--color-text-secondary);
+  transition: transform 180ms ease, color 180ms ease;
+}
+
+.trust-strip-item:hover {
+  transform: translateY(-1px);
+  color: var(--color-navy);
 }
 
 .trust-strip-icon {
   color: var(--color-blue-accent);
   flex-shrink: 0;
+  transition: transform 200ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.trust-strip-item:hover .trust-strip-icon {
+  transform: scale(1.18);
 }
 
 .trust-strip-sep {
@@ -354,6 +395,19 @@
   border-radius: 3px;
   user-select: none;
   background: rgba(255, 255, 255, 0.04);
+  transition: all 150ms ease;
+  cursor: pointer;
+}
+
+.win-btn.win-close:hover {
+  background: #ef4444;
+  color: #ffffff;
+}
+
+.win-btn.win-max:hover,
+.win-btn.win-min:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #ffffff;
 }
 
 .window-body {
@@ -439,6 +493,12 @@
   overflow: hidden;
   text-overflow: ellipsis;
   font-weight: var(--font-weight-medium);
+  transition: transform 180ms ease, filter 180ms ease;
+}
+
+.track-bar:hover {
+  transform: translateX(3px);
+  filter: brightness(1.12);
 }
 
 .bar-1 {
@@ -481,12 +541,25 @@
   gap: 0.45rem;
 }
 
+@keyframes pingPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 7px rgba(16, 185, 129, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+  }
+}
+
 .status-ping {
   width: 7px;
   height: 7px;
   background-color: #10b981;
   border-radius: 50%;
   box-shadow: 0 0 6px #10b981;
+  animation: pingPulse 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
 }
 
 .engine-meta {

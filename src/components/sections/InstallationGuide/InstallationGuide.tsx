@@ -17,7 +17,7 @@ export const InstallationGuide: React.FC<InstallationGuideProps> = ({ guides }) 
     <section id="installation" className="section installation-section">
       <div className="container">
         {/* Header */}
-        <div className="section-header">
+        <div className="section-header reveal-on-scroll">
           <div className="section-tag">
             <BookOpen size={14} />
             <span>Panduan Instalasi & Eksekusi</span>
@@ -31,7 +31,7 @@ export const InstallationGuide: React.FC<InstallationGuideProps> = ({ guides }) 
 
         {/* Method Selector Tabs or Single Badge */}
         {guides.length > 1 ? (
-          <div className="guide-os-tabs">
+          <div className="guide-os-tabs reveal-on-scroll reveal-delay-1">
             {guides.map((guide, idx) => (
               <button
                 key={idx}

@@ -23,7 +23,7 @@ export const FAQ: React.FC<FAQProps> = ({ faqList, product }) => {
     <section id="faq" className="section faq-section">
       <div className="container container-narrow">
         {/* Header */}
-        <div className="section-header">
+        <div className="section-header reveal-on-scroll">
           <div className="section-tag">
             <HelpCircle size={14} />
             <span>Pertanyaan Umum (FAQ)</span>
@@ -35,7 +35,7 @@ export const FAQ: React.FC<FAQProps> = ({ faqList, product }) => {
         </div>
 
         {/* FAQ Accordion List */}
-        <div className="faq-accordion-list">
+        <div className="faq-accordion-list reveal-on-scroll reveal-delay-1">
           {faqList.map((faq) => {
             const isOpen = openIds.includes(faq.id);
             return (

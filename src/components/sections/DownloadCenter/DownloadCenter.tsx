@@ -54,7 +54,7 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
     <section id="downloads" className="section download-center-section">
       <div className="container">
         {/* Header */}
-        <div className="section-header">
+        <div className="section-header reveal-on-scroll">
           <div className="section-tag">
             <Download size={14} />
             <span>Pusat Unduhan Resmi</span>
@@ -67,7 +67,7 @@ export const DownloadCenter: React.FC<DownloadCenterProps> = ({ product, release
         </div>
 
         {/* Releases Cards Grid */}
-        <div className="releases-grid">
+        <div className="releases-grid reveal-on-scroll reveal-delay-1">
           {releases.map((release) => (
             <div
               key={release.id}

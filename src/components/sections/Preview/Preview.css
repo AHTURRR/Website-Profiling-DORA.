@@ -457,6 +457,14 @@
   border: 1px solid #1e314f;
   padding: 0.25rem 0.65rem;
   border-radius: var(--radius-full);
+  transition: all 180ms ease;
+}
+
+.preview-detail-tag:hover {
+  color: #ffffff;
+  border-color: var(--color-blue-accent);
+  background: rgba(31, 94, 255, 0.15);
+  transform: translateY(-1px);
 }
 
 /* Modal */

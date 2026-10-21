@@ -1,4 +1,4 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useEffect } from 'react';
 import { productConfig } from './config/product.config';
 import { detectUserOS } from './utils/platformDetector';
 import { Navbar } from './components/common/Navbar/Navbar';
@@ -27,6 +27,31 @@ export const App: React.FC = () => {
   }, [releases, userOSInfo.os]);
 
   const latestVersion = releases[0]?.version || 'v1.0.0';
+
+  // Smooth scroll reveal observer across all sections
+  useEffect(() => {
+    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      {
+        threshold: 0.08,
+        rootMargin: '0px 0px -40px 0px',
+      }
+    );
+
+    const elements = document.querySelectorAll('.reveal-on-scroll');
+    elements.forEach((el) => observer.observe(el));
+
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="app-layout">

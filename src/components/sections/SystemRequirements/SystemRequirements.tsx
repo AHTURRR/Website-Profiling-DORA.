@@ -12,7 +12,7 @@ export const SystemRequirements: React.FC<SystemRequirementsProps> = ({ requirem
     <section id="requirements" className="section requirements-section">
       <div className="container">
         {/* Header */}
-        <div className="section-header">
+        <div className="section-header reveal-on-scroll">
           <div className="section-tag">
             <Monitor size={14} />
             <span>Kompatibilitas Perangkat</span>
@@ -25,7 +25,7 @@ export const SystemRequirements: React.FC<SystemRequirementsProps> = ({ requirem
         </div>
 
         {/* Requirements Cards */}
-        <div className="requirements-grid">
+        <div className="requirements-grid reveal-on-scroll reveal-delay-1">
           {requirements.map((req, idx) => (
             <div key={`${req.osKey}-${idx}`} className="requirement-card" id={`req-card-${req.osKey}-${idx}`}>
               <div className="req-header">
