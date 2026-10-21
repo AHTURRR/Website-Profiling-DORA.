@@ -38,6 +38,11 @@
   outline-offset: 2px;
 }
 
+.category-pill:active {
+  transform: scale(0.96);
+  transition: transform 80ms ease;
+}
+
 .category-pill.active {
   background-color: var(--color-navy);
   color: #ffffff;
@@ -83,6 +88,11 @@
 .preview-tab-btn:focus-visible {
   outline: 2px solid var(--color-blue-accent);
   outline-offset: 2px;
+}
+
+.preview-tab-btn:active {
+  transform: scale(0.97);
+  transition: transform 80ms ease;
 }
 
 .preview-tab-btn.active {
@@ -164,6 +174,11 @@
   border-color: var(--color-blue-accent);
 }
 
+.mock-fullscreen-btn:active {
+  transform: scale(0.95);
+  transition: transform 80ms ease;
+}
+
 .mock-fullscreen-btn:focus-visible {
   outline: 2px solid var(--color-blue-accent);
   outline-offset: 2px;
@@ -198,6 +213,17 @@
   justify-content: center;
 }
 
+@keyframes previewImageFade {
+  from {
+    opacity: 0.85;
+    transform: scale(0.995);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
 .preview-real-screenshot {
   width: 100%;
   height: 100%;
@@ -205,6 +231,7 @@
   object-position: top center;
   display: block;
   transition: transform var(--transition-normal);
+  animation: previewImageFade 220ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
 }
 
 .preview-image-wrapper:hover .preview-real-screenshot {
@@ -493,6 +520,11 @@
 .preview-modal-close:focus-visible {
   outline: 2px solid var(--color-blue-accent);
   outline-offset: 2px;
+}
+
+.preview-modal-close:active {
+  transform: scale(0.92);
+  transition: transform 80ms ease;
 }
 
 .preview-modal-body {

@@ -31,6 +31,11 @@
   box-shadow: 0 16px 36px -8px rgba(31, 94, 255, 0.16);
 }
 
+.feature-spotlight-card:active {
+  transform: scale(0.99);
+  transition: transform 80ms ease;
+}
+
 .feature-spotlight-card:focus-visible {
   border-color: var(--color-blue-accent);
   outline: 2px solid var(--color-blue-accent);
@@ -187,6 +192,11 @@
   transform: translateY(-4px);
   border-color: var(--color-blue-accent);
   box-shadow: 0 14px 28px -6px rgba(31, 94, 255, 0.12), 0 2px 6px rgba(15, 23, 42, 0.04);
+}
+
+.feature-compact-card:active {
+  transform: scale(0.985);
+  transition: transform 80ms ease;
 }
 
 .feature-compact-card:focus-visible {
@@ -594,6 +604,11 @@
 .modal-dismiss-btn:hover {
   background-color: var(--color-blue-accent);
   box-shadow: 0 4px 12px rgba(31, 94, 255, 0.25);
+}
+
+.modal-dismiss-btn:active {
+  transform: scale(0.97);
+  transition: transform 80ms ease;
 }
 
 /* ==========================================================================

@@ -208,6 +208,7 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
               {currentPreview.imageSrc ? (
                 <div className="preview-image-wrapper" onClick={() => setModalOpen(true)}>
                   <img
+                    key={currentPreview.id}
                     src={currentPreview.imageSrc}
                     alt={currentPreview.title}
                     className="preview-real-screenshot"

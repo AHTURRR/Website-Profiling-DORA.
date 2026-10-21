@@ -130,6 +130,11 @@
   transform: rotate(90deg);
 }
 
+.defender-close-btn:active {
+  transform: scale(0.92);
+  transition: transform 80ms ease;
+}
+
 /* 5 Steps Vertical List */
 .defender-steps-list {
   flex: 1 1 auto;
@@ -270,6 +275,11 @@
 .defender-primary-btn:hover {
   background-color: #1d4ed8;
   box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+}
+
+.defender-primary-btn:active {
+  transform: scale(0.97);
+  transition: transform 80ms ease;
 }
 
 .defender-primary-btn:focus-visible {
