@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Menu, X, Download } from 'lucide-react';
 import type { ProductInfo } from '../../../types/product.types';
 import './Navbar.css';
@@ -11,6 +11,7 @@ interface NavbarProps {
 export const Navbar = ({ product, latestVersion }: NavbarProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const toggleRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,6 +23,36 @@ export const Navbar = ({ product, latestVersion }: NavbarProps) => {
   }, []);
 
   const closeMenu = () => setMobileMenuOpen(false);
+
+  // While the mobile drawer is open: lock page scroll, close on Escape,
+  // and close automatically when the viewport grows past the mobile breakpoint.
+  useEffect(() => {
+    if (!mobileMenuOpen) return;
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setMobileMenuOpen(false);
+        toggleRef.current?.focus();
+      }
+    };
+
+    const desktopQuery = window.matchMedia('(min-width: 901px)');
+    const handleViewportChange = (e: MediaQueryListEvent) => {
+      if (e.matches) setMobileMenuOpen(false);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    desktopQuery.addEventListener('change', handleViewportChange);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener('keydown', handleKeyDown);
+      desktopQuery.removeEventListener('change', handleViewportChange);
+    };
+  }, [mobileMenuOpen]);
 
   return (
     <header className={`navbar-header ${isScrolled ? 'navbar-scrolled' : ''}`}>
@@ -82,10 +113,12 @@ export const Navbar = ({ product, latestVersion }: NavbarProps) => {
 
           {/* Mobile Menu Toggle */}
           <button
+            ref={toggleRef}
             type="button"
             className="navbar-mobile-toggle"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-expanded={mobileMenuOpen}
+            aria-controls="mobile-nav-menu"
             aria-label={mobileMenuOpen ? 'Tutup navigasi' : 'Buka navigasi'}
             id="mobile-nav-toggle-btn"
           >

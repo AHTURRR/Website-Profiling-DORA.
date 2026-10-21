@@ -462,3 +462,42 @@
     display: none;
   }
 }
+
+/* Small phones: the mock window reflows so every label stays readable instead of truncating */
+@media (max-width: 480px) {
+  .window-body {
+    padding: 0.85rem;
+  }
+
+  .mock-stat-bar {
+    grid-template-columns: 1fr;
+    gap: 0.6rem;
+  }
+
+  .mock-stat-label {
+    font-size: 0.75rem;
+  }
+
+  .mock-graph-header {
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    font-size: 0.75rem;
+  }
+
+  .timeline-track {
+    height: auto;
+  }
+
+  .track-bar {
+    padding: 0.4rem 0.6rem;
+    font-size: 0.75rem;
+    line-height: 1.35;
+    white-space: normal;
+  }
+
+  .window-footer-bar {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    font-size: 0.75rem;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Eye, Maximize2, X, Check, BarChart3, Database, Terminal, Cpu, BookOpen, Layers, Search, FileText, Sliders, Shield } from 'lucide-react';
 import type { ProductPreviewImage } from '../../../types/product.types';
 import './Preview.css';
@@ -11,6 +11,18 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
   const [selectedCategory, setSelectedCategory] = useState<'all' | 'data' | 'modeling' | 'academic'>('all');
   const [activeTab, setActiveTab] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
+  const tabsListRef = useRef<HTMLDivElement>(null);
+
+  // On narrow screens the tab row scrolls horizontally; keep the active tab centered in view.
+  // Only the row's own scrollLeft changes, so the page never jumps vertically.
+  useEffect(() => {
+    const list = tabsListRef.current;
+    if (!list || list.scrollWidth <= list.clientWidth) return;
+    const activeBtn = list.querySelector<HTMLElement>('.preview-tab-btn.active');
+    if (!activeBtn) return;
+    const target = activeBtn.offsetLeft - (list.clientWidth - activeBtn.offsetWidth) / 2;
+    list.scrollTo({ left: Math.max(0, target), behavior: 'smooth' });
+  }, [activeTab, selectedCategory]);
 
   useEffect(() => {
     if (modalOpen) {
@@ -144,7 +156,7 @@ export const Preview: React.FC<PreviewProps> = ({ previews }) => {
 
         {/* Preview Tabs */}
         <div className="preview-tabs-container">
-          <div className="preview-tabs-list" role="tablist" aria-label="Tab Pratinjau Antarmuka">
+          <div className="preview-tabs-list" role="tablist" aria-label="Tab Pratinjau Antarmuka" ref={tabsListRef}>
             {filteredPreviews.map((preview) => (
               <button
                 key={preview.id}

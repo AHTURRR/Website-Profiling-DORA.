@@ -247,10 +247,9 @@
   font-family: var(--font-family-mono);
   font-size: 0.725rem;
   color: #e2e8f0;
+  /* Full hash must stay readable for visual verification, so it wraps instead of truncating */
   word-break: break-all;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  overflow-wrap: anywhere;
 }
 
 /* Action button */
@@ -592,6 +591,17 @@
   }
   .troubleshoot-options-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .copy-checksum-btn,
+  .cli-inline-copy-btn {
+    min-height: 44px;
+    min-width: 44px;
+    padding: 0.5rem 0.85rem;
+    font-size: 0.8rem;
+    justify-content: center;
   }
 }
 

@@ -29,6 +29,7 @@
   width: 100%;
   max-width: 640px;
   max-height: 90vh;
+  max-height: 90dvh;
   display: flex;
   flex-direction: column;
   background: #ffffff;
@@ -131,6 +132,8 @@
 
 /* 5 Steps Vertical List */
 .defender-steps-list {
+  flex: 1 1 auto;
+  min-height: 0;
   padding: 1.5rem 2rem;
   overflow-y: auto;
   display: flex;
@@ -293,5 +296,28 @@
 
   .defender-modal-title {
     font-size: 1.15rem;
+  }
+
+  /* Full-screen sheet on phones: the "Mengerti / Tutup" button stays above browser toolbars */
+  .defender-modal-overlay {
+    padding: 0;
+  }
+
+  .defender-modal-card {
+    max-width: 100%;
+    height: 100vh;
+    height: 100dvh;
+    max-height: none;
+    border-radius: 0;
+    border: none;
+  }
+
+  .defender-close-btn {
+    width: 44px;
+    height: 44px;
+  }
+
+  .defender-primary-btn {
+    min-height: 44px;
   }
 }
