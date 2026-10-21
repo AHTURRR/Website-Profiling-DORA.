@@ -29,6 +29,8 @@
 .hero-release-badge {
   display: inline-flex;
   align-items: center;
+  flex-wrap: wrap;
+  max-width: 100%;
   gap: 0.5rem;
   padding: 0.28rem 0.65rem;
   background: var(--color-bg-surface);
@@ -55,7 +57,7 @@
 }
 
 .hero-title {
-  font-size: clamp(1.75rem, 2.7vw, 2.65rem);
+  font-size: clamp(1.6rem, 1.35rem + 1.8vw, 2.75rem);
   font-weight: var(--font-weight-extrabold);
   line-height: 1.2;
   letter-spacing: -0.025em;
@@ -72,11 +74,11 @@
 }
 
 .hero-description {
-  font-size: clamp(0.925rem, 1.2vw, 1.05rem);
-  line-height: 1.55;
+  font-size: clamp(0.925rem, 0.88rem + 0.35vw, 1.05rem);
+  line-height: 1.6;
   color: var(--color-text-secondary);
   margin-bottom: 1.25rem;
-  max-width: 540px;
+  max-width: 560px;
 }
 
 /* CTA Group */
@@ -429,12 +431,23 @@
 @media (max-width: 992px) {
   .hero-section {
     min-height: auto;
-    padding: 3rem 0;
+    padding: 2.5rem 0 2.75rem 0;
   }
 
   .hero-container {
     grid-template-columns: 1fr;
-    gap: 2.5rem;
+    gap: 2.25rem;
+    max-width: 720px;
+  }
+
+  .hero-title {
+    font-size: clamp(1.85rem, 3.8vw, 2.45rem);
+    line-height: 1.22;
+  }
+
+  .hero-description {
+    max-width: 100%;
+    font-size: 1.025rem;
   }
 
   .mock-stat-bar {
@@ -442,62 +455,170 @@
   }
 }
 
-@media (max-width: 640px) {
-  .hero-cta-group {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  .hero-btn-primary, .hero-btn-secondary {
-    justify-content: center;
-  }
-
-  .hero-trust-strip {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.5rem;
-  }
-
-  .trust-strip-sep {
-    display: none;
-  }
-}
-
-/* Small phones: the mock window reflows so every label stays readable instead of truncating */
-@media (max-width: 480px) {
-  .window-body {
-    padding: 0.85rem;
-  }
-
-  .mock-stat-bar {
-    grid-template-columns: 1fr;
-    gap: 0.6rem;
-  }
-
-  .mock-stat-label {
-    font-size: 0.75rem;
-  }
-
-  .mock-graph-header {
-    flex-wrap: wrap;
-    gap: 0.35rem;
-    font-size: 0.75rem;
-  }
-
+@media (max-width: 768px) {
   .timeline-track {
     height: auto;
   }
 
   .track-bar {
-    padding: 0.4rem 0.6rem;
-    font-size: 0.75rem;
+    padding: 0.35rem 0.55rem;
+    font-size: 0.7rem;
     line-height: 1.35;
     white-space: normal;
   }
+}
+
+@media (max-width: 640px) {
+  .hero-section {
+    padding: 1.5rem 0 2rem 0;
+  }
+
+  .hero-container {
+    gap: 1.75rem;
+  }
+
+  .hero-release-badge {
+    font-size: 0.725rem;
+    padding: 0.25rem 0.55rem;
+    gap: 0.35rem;
+  }
+
+  .hero-title {
+    font-size: clamp(1.45rem, 6.2vw, 1.85rem);
+    line-height: 1.25;
+    letter-spacing: -0.02em;
+    margin-bottom: 0.65rem;
+  }
+
+  .hero-description {
+    font-size: 0.925rem;
+    line-height: 1.58;
+    margin-bottom: 1.15rem;
+  }
+
+  .hero-cta-group {
+    flex-direction: column;
+    align-items: stretch;
+    width: 100%;
+    gap: 0.65rem;
+  }
+
+  .hero-btn-primary,
+  .hero-btn-secondary {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero-btn-primary {
+    padding: 0.75rem 1.15rem;
+  }
+
+  .hero-btn-action {
+    font-size: 0.925rem;
+  }
+
+  .hero-btn-meta {
+    font-size: 0.7rem;
+  }
+
+  .hero-btn-secondary {
+    min-height: 44px;
+    padding: 0.75rem;
+  }
+
+  .hero-defender-hint {
+    width: 100%;
+  }
+
+  .hero-defender-inline-btn {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.35rem 0.45rem;
+    align-items: flex-start;
+    font-size: 0.75rem;
+    line-height: 1.45;
+  }
+
+  .hero-defender-inline-btn svg {
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  .hero-trust-strip {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.65rem 0.75rem;
+    padding-top: 0.85rem;
+  }
+
+  .trust-strip-sep {
+    display: none;
+  }
+
+  .trust-strip-item {
+    font-size: 0.75rem;
+    line-height: 1.35;
+  }
+
+  /* Mock Window on Mobile */
+  .window-header {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .window-header .window-controls {
+    display: none;
+  }
+
+  .window-title-text {
+    font-size: 0.72rem;
+  }
+
+  .window-body {
+    padding: 0.75rem 0.85rem;
+  }
+
+  .mock-graph-container {
+    padding: 0.65rem 0.75rem;
+  }
+
+  .mock-graph-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    font-size: 0.72rem;
+  }
 
   .window-footer-bar {
-    flex-wrap: wrap;
-    gap: 0.4rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    font-size: 0.7rem;
+    line-height: 1.35;
+  }
+}
+
+/* Small phones (<= 400px): compact stat bar and trust strip */
+@media (max-width: 400px) {
+  .hero-title {
+    font-size: 1.38rem;
+    line-height: 1.25;
+  }
+
+  .mock-stat-bar {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
+  }
+
+  .mock-stat-label {
+    font-size: 0.7rem;
+  }
+
+  .mock-stat-val {
     font-size: 0.75rem;
+  }
+
+  .hero-trust-strip {
+    grid-template-columns: 1fr;
+    gap: 0.5rem;
   }
 }
