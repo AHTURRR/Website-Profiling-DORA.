@@ -1,67 +1,51 @@
-# DORA: Official Desktop Software Profiling & Download Center
+# DORA · Metriks Studio
 
-Website resmi profil produk dan pusat unduhan untuk **DORA v2.0.0** (*Data Overview & Research Assistant*), aplikasi desktop riset data, Visual ML Node Editor, dan eksplorasi literatur ilmiah yang dikembangkan oleh **Metriks Studio**.
+Website profil dan pusat unduhan Data Overview & Research Assistant, dengan halaman tim pengembang dan akses ke repositori GitHub resmi.
 
-Situs ini dibangun sesuai spesifikasi teknis dan etika transparansi dalam dokumen [PRD_Website_Profiling_Software_Desktop.md](./PRD_Website_Profiling_Software_Desktop.md).
+## Menjalankan
 
----
-
-## Fitur Utama Website
-
-1. **Config-Driven Architecture:** Seluruh metadata software, paket rilis, galeri tangkapan layar, spesifikasi sistem, panduan instalasi, dan FAQ dikelola secara terpusat melalui `src/config/product.config.ts`.
-2. **Pusat Unduhan Resmi (Windows Focused):**
-   - Paket biner resmi Windows Setup Installer rilis terbaru **v2.0.0** (`Data-Overview-Research-Assistant-v2-Setup.exe`, 95.1 MB) dan arsip rilis sebelumnya **v1.0.0** (`DORA-v1.0.0-Setup.exe`, 92.3 MB).
-   - Panduan eksekusi langsung dari Source Code (`git clone https://github.com/NezzyGremory/Data-Overview-Research-Assistant.git`) melalui Windows PowerShell dan `.venv`.
-   - Dilengkapi validasi integritas biner SHA256 dengan tombol salin interaktif.
-3. **Galeri Tangkapan Layar Asli (14 Layar + Lightbox Zoom):** Menampilkan antarmuka nyata DORA v2.0.0 (Overview 16 Rute, Dataset Search, Dataset Loader, Dataset Profiling, Data Quality, Dataset Analysis SHA-256, Editor Analysis & Node Editor, ML Intelligence, Academic Research SINTA/Scopus, Research Landscape & Gap, Research Report PDF, serta halaman Tentang & Privasi) yang disinkronkan dari repositori resmi.
-4. **Persyaratan Sistem Terverifikasi:** Kartu spesifikasi perangkat keras dan perangkat lunak untuk lingkungan Setup Installer (`%LOCALAPPDATA%\Programs\DORA`) serta Developer Source Mode (`Python 3.13.12` & `PySide6 6.11.2`).
-5. **Panduan Instalasi 2 Metode:** Tab interaktif untuk Windows Setup Installer v2.0.0 dan instalasi mandiri dari Source Code via Git & PowerShell.
-6. **FAQ & Transparansi Privasi v2.0.0:** Penjelasan transparan mengenai pemrosesan dataset lokal (`%LOCALAPPDATA%\Dataset Research`), pencarian online (Kaggle/HF/OpenAlex/SINTA/Scopus), penggunaan ringkasan analisis pada Google Gemini (tanpa mengirim file CSV utuh), telemetry opsional, serta fitur baru Visual Node Editor & ekspor 5 format (`.py`, `.ipynb`, `.pkl`, `.csv`, `.zip`).
-7. **Aksesibilitas & Performa:** Memenuhi standar WCAG AA (kontras warna teruji, navigasi keyboard penuh, penutupan modal dengan tombol `Escape`, semantic HTML5, skip link).
-
----
-
-## Tech Stack
-
-- **Framework:** React 19 + TypeScript
-- **Bundler:** Vite 6
-- **Styling:** Vanilla CSS dengan Design Tokens (`src/styles/tokens.css`)
-- **Typography:** *Plus Jakarta Sans* & *JetBrains Mono* (Google Fonts)
-- **Icons:** `lucide-react`
-- **Linting:** Oxlint & TypeScript strict mode
-
----
-
-## Panduan Menjalankan Proyek
-
-### 1. Instalasi Dependensi
-```bash
-npm install
-```
-
-### 2. Mode Pengembangan (Development Server)
-```bash
+```sh
+npm ci
 npm run dev
 ```
-Buka browser pada tautan `http://localhost:5173`.
 
-### 3. Kompilasi Produksi (Production Build)
-```bash
+```sh
+npm run lint
 npm run build
-```
-Hasil build biner web statis siap di-deploy akan berada di folder `dist/`.
-
-### 4. Pratinjau Build Lokal
-```bash
 npm run preview
 ```
 
----
+Stack: React 19, TypeScript 6, Vite 8, CSS, dan ikon Lucide. Tidak ada dependensi produksi baru untuk redesign ini.
 
-## Tautan Terkait
+## Halaman
 
-- **Repositori Resmi Software DORA:** [NezzyGremory/Data-Overview-Research-Assistant](https://github.com/NezzyGremory/Data-Overview-Research-Assistant)
-- **Rilis Resmi Terbaru (v2.0.0):** [GitHub Releases](https://github.com/NezzyGremory/Data-Overview-Research-Assistant/releases)
-- **Lisensi Software:** MIT License
-- **Pengembang:** Metriks Studio (2026)
+- `/`: profil produk, modul fitur, galeri, installer, spesifikasi, panduan, repositori, dan FAQ.
+- `/tim`: enam anggota tim dari kredit resmi, Special Thanks, dan tautan kontribusi.
+- URL yang tidak dikenal menampilkan pesan pemulihan dan tautan beranda.
 
+Navigasi menggunakan anchor biasa sehingga mendukung riwayat browser. Rewrite di `vercel.json` melayani akses langsung dan refresh `/tim`. Hosting lain perlu mengarahkan rute aplikasi ke `index.html`. Pesan pemulihan aplikasi tidak mengubah respons HTTP menjadi status 404.
+
+## Mengubah konten
+
+- `src/config/team.config.ts`: nama, peran, monogram, dan bio anggota. **Bio masih dummy** dan ditandai di halaman. Ganti `draftBio` dengan informasi yang disetujui pemilik profil dan sesuaikan label dummy saat konten siap dipublikasikan.
+- `src/config/product.config.ts`: fitur, screenshot, persyaratan, panduan, FAQ, dan paket rilis.
+- `src/config/site.config.ts`: presentasi rilis utama dari konfigurasi produk serta tanggal pembaruan aset. Komponen baru menyesuaikan label versi lama dalam konten dengan versi rilis utama.
+- `src/styles/site.css`: tampilan dua halaman dan motion CSS.
+- `src/styles/themes-motion.css`: tema terang/gelap, navbar mengambang, cahaya hero, dan penyesuaian reduced motion. Tombol matahari/bulan menyimpan pilihan di `localStorage` dengan key `dora-theme`; bootstrap di `index.html` menerapkannya sebelum CSS dimuat.
+- `src/components/site/useSiteMotion.ts`: intro satu kali per sesi, reveal tiga bagian, serta jeda animasi hero saat keluar layar atau tab disembunyikan.
+- `DESIGN.md`: arah visual, alasan keputusan, sumber kredit, dan spesifikasi gerak.
+
+Komponen halaman baru berada di `src/components/site/`. Komponen sebelumnya tetap tersedia tetapi tidak digunakan oleh `App.tsx`.
+
+## Sumber
+
+- [Repositori DORA](https://github.com/NezzyGremory/Data-Overview-Research-Assistant)
+- [Kredit nama dan peran](https://github.com/NezzyGremory/Data-Overview-Research-Assistant/blob/main/app/ui/data/credits.json)
+- [Rilis v6.0.0](https://github.com/NezzyGremory/Data-Overview-Research-Assistant/releases/tag/v6.0.0)
+- [Referensi visual Outcrowd](https://dribbble.com/shots/26742281-Website-for-an-Incident-Management-Platform)
+
+Metadata rilis diperiksa melalui GitHub pada 29 Oktober 2026. SHA256 sesuai digest aset pada API GitHub; installer tidak diunduh atau dijalankan saat pengujian website. Repositori ditautkan secara statis, tanpa token GitHub atau API runtime.
+
+## Verifikasi
+
+Lihat `docs/verification-2026-10-29.md` untuk cakupan uji browser, aksesibilitas, dan batas pemeriksaan. Publikasi produksi belum dilakukan.

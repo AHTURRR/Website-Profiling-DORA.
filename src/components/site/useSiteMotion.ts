@@ -1,0 +1,71 @@
+import { useEffect } from 'react';
+
+export function useSiteMotion() {
+  useEffect(() => {
+    const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+    let dispose = () => {};
+    const start = () => {
+      dispose();
+      const animations: Animation[] = [];
+      const hero = document.querySelector<HTMLElement>('.new-hero');
+      const observers: IntersectionObserver[] = [];
+      const end = () => {
+        observers.forEach(observer => observer.disconnect());
+        animations.forEach(animation => animation.cancel());
+        if (hero) hero.dataset.heroActive = 'false';
+      };
+      dispose = end;
+      if (media.matches || !('IntersectionObserver' in window)) return;
+
+      if (hero) {
+        let inView = false;
+        const update = () => { hero.dataset.heroActive = String(inView && !document.hidden); };
+        const observer = new IntersectionObserver(entries => { inView = entries[0].isIntersecting; update(); });
+        observer.observe(hero);
+        observers.push(observer);
+        document.addEventListener('visibilitychange', update);
+        dispose = () => { end(); document.removeEventListener('visibilitychange', update); };
+      }
+
+      let visited = false;
+      try { visited = sessionStorage.getItem('dora-intro-played') === 'true'; } catch { visited = true; }
+      if (!visited) {
+        const targets = document.querySelectorAll<HTMLElement>('.new-hero h1, .hero-lead, .hero-actions, .hero-product-frame');
+        targets.forEach((target, index) => {
+          animations.push(target.animate([
+            { opacity: .45, transform: `translateY(${index === 3 ? 22 : 12}px)` },
+            { opacity: 1, transform: 'translateY(0)' },
+          ], { duration: index === 3 ? 850 : 650, delay: index * 65, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' }));
+        });
+        if (targets.length) {
+          const markVisited = window.setTimeout(() => {
+            try { sessionStorage.setItem('dora-intro-played', 'true'); } catch { /* Intro tetap dapat berjalan ketika penyimpanan sesi diblokir. */ }
+          }, 0);
+          const previous = dispose;
+          dispose = () => { window.clearTimeout(markVisited); previous(); };
+        }
+      }
+
+      const targets = document.querySelectorAll<HTMLElement>('.workflow-image, .repository-panel, .team-principles');
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          const target = entry.target as HTMLElement;
+          if (!target.dataset.motionPlayed) {
+            target.dataset.motionPlayed = 'true';
+            animations.push(target.animate([
+              { opacity: .65, transform: 'translateY(20px)' },
+              { opacity: 1, transform: 'translateY(0)' },
+            ], { duration: 650, easing: 'cubic-bezier(.16,1,.3,1)' }));
+          }
+          observer.unobserve(target);
+        });
+      }, { threshold: .12 });
+      targets.forEach(target => observer.observe(target));
+      observers.push(observer);
+    };
+    start();
+    media.addEventListener('change', start);
+    return () => { dispose(); media.removeEventListener('change', start); };
+  }, []);
+}

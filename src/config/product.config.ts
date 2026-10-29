@@ -435,19 +435,19 @@ export const productConfig: ProductConfig = {
 
   releases: [
     {
-      id: 'win-installer-v2',
+      id: 'win-installer-v6',
       os: 'windows',
-      osName: 'Microsoft Windows (Rilis Utama v2.0)',
+      osName: 'Microsoft Windows (Rilis Utama v6.0)',
       architecture: 'x64 (64-bit)',
-      version: 'v2.0.0',
-      releaseDate: '21 Oktober 2026',
+      version: 'v6.0.0',
+      releaseDate: '18 Oktober 2026',
       fileSize: '95.1 MB',
-      filename: 'Data-Overview-Research-Assistant-v2-Setup.exe',
+      filename: 'Data-Overview-Research-Assistant-v6-Setup.exe',
       downloadUrl:
         'https://github.com/NezzyGremory/Data-Overview-Research-Assistant/releases/download/v6.0.0/Data-Overview-Research-Assistant-v6-Setup.exe',
       checksumSha256: '9cf4d44398aeb63afb863bcd5c431547d67441872f03dcda2f9344da6011f0c6',
       isPrimaryForPlatform: true,
-      buttonLabel: 'Download Windows Setup v2.0.0 (.exe)',
+      buttonLabel: 'Download Windows Setup v6.0.0 (.exe)',
       notes:
         'Installer Windows resmi (Inno Setup 6) untuk Data Overview Research & Assistant v2.0.0 yang diperbarui langsung dari build repositori terbaru. Mencakup penyempurnaan UI/UX Overview, keselarasan navigasi sidebar 16 rute, Node Editor responsif dengan pemrosesan latar belakang & cache analisis, penguatan kontrol Editor Analisis, serta panel Informasi Privasi pada halaman Tentang. Menginstal ke %LOCALAPPDATA%\\Programs\\DORA tanpa memerlukan hak Administrator.',
     },

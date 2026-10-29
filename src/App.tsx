@@ -1,83 +1,30 @@
-import React, { useMemo, useEffect } from 'react';
-import { productConfig } from './config/product.config';
-import { detectUserOS } from './utils/platformDetector';
-import { Navbar } from './components/common/Navbar/Navbar';
-import { Hero } from './components/sections/Hero/Hero';
-import { Features } from './components/sections/Features/Features';
-import { Preview } from './components/sections/Preview/Preview';
-import { DownloadCenter } from './components/sections/DownloadCenter/DownloadCenter';
-import { SystemRequirements } from './components/sections/SystemRequirements/SystemRequirements';
-import { InstallationGuide } from './components/sections/InstallationGuide/InstallationGuide';
-import { FAQ } from './components/sections/FAQ/FAQ';
-import { Footer } from './components/common/Footer/Footer';
+import { useEffect } from 'react';
+import { SiteHeader, SiteFooter } from './components/site/SiteChrome';
+import { HomePage } from './components/site/HomePage';
+import { TeamPage } from './components/site/TeamPage';
+import { useSiteMotion } from './components/site/useSiteMotion';
+import './styles/site.css';
+import './styles/themes-motion.css';
 
-export const App: React.FC = () => {
-  const { product, features, previews, systemRequirements, installationGuides, faqList, releases } = productConfig;
+export default function App() {
+  useSiteMotion();
+  const path = window.location.pathname.replace(/\/+$/, '') || '/';
+  const isTeam = path === '/tim';
+  const isNotFound = path !== '/' && !isTeam;
 
-  // Detect visitor's operating system
-  const userOSInfo = useMemo(() => detectUserOS(), []);
-
-  // Find primary recommended release for visitor's OS
-  const recommendedRelease = useMemo(() => {
-    return (
-      releases.find((rel) => rel.os === userOSInfo.os && rel.isPrimaryForPlatform) ||
-      releases.find((rel) => rel.os === userOSInfo.os) ||
-      releases[0]
-    );
-  }, [releases, userOSInfo.os]);
-
-  const latestVersion = releases[0]?.version || 'v1.0.0';
-
-  // Smooth scroll reveal observer across all sections
   useEffect(() => {
-    if (typeof window === 'undefined' || !('IntersectionObserver' in window)) return;
+    document.title = isTeam ? 'Tim Pengembang | DORA · Metriks Studio' : isNotFound ? 'Halaman tidak ditemukan | DORA' : 'DORA · Dari data, menjadi arah riset';
+    document.querySelector('meta[name="description"]')?.setAttribute('content', isTeam
+      ? 'Kenali tim Metriks Studio di balik DORA. Nama dan peran bersumber dari kredit resmi aplikasi.'
+      : 'DORA: aplikasi desktop untuk eksplorasi dataset, pipeline machine learning visual, dan riset literatur. Unduh installer Windows dari repositori resmi.');
+  }, [isTeam, isNotFound]);
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('is-visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      {
-        threshold: 0.08,
-        rootMargin: '0px 0px -40px 0px',
-      }
-    );
-
-    const elements = document.querySelectorAll('.reveal-on-scroll');
-    elements.forEach((el) => observer.observe(el));
-
-    return () => observer.disconnect();
-  }, []);
-
-  return (
-    <div className="app-layout">
-      {/* Accessibility Skip Link */}
-      <a href="#main-content" className="skip-link">
-        Loncat langsung ke konten utama
-      </a>
-
-      {/* Top Navigation */}
-      <Navbar product={product} latestVersion={latestVersion} />
-
-      {/* Main Content Landmarks */}
-      <main id="main-content">
-        <Hero product={product} detectedOS={userOSInfo} recommendedRelease={recommendedRelease} />
-        <Features features={features} />
-        <Preview previews={previews} />
-        <DownloadCenter product={product} releases={releases} userOS={userOSInfo.os} />
-        <SystemRequirements requirements={systemRequirements} />
-        <InstallationGuide guides={installationGuides} initialOS={userOSInfo.os} />
-        <FAQ faqList={faqList} product={product} />
-      </main>
-
-      {/* Footer */}
-      <Footer product={product} latestVersion={latestVersion} />
-    </div>
-  );
-};
-
-export default App;
+  return <div className="dora-site">
+    <a className="skip-link" href="#main-content">Langsung ke konten</a>
+    <SiteHeader isTeam={isTeam} />
+    <main id="main-content">
+      {isNotFound ? <section className="site-container not-found"><span className="eyebrow">404</span><h1>Halaman ini belum ada.</h1><a className="button primary" href="/">Kembali ke beranda</a></section> : isTeam ? <TeamPage /> : <HomePage />}
+    </main>
+    <SiteFooter />
+  </div>;
+}
