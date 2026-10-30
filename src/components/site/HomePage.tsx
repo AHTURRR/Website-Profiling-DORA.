@@ -1,8 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, ArrowRight, Download, GitFork as Github, Database, Workflow, BookOpen, Check, Copy, Monitor, Maximize2, Code2, GitPullRequest, ShieldCheck, Plus, Terminal, Cpu, HardDrive, Layers, Puzzle, FileCode2, Wrench, ChevronLeft, ChevronRight, Activity, Globe } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Download, GitFork as Github, Database, Workflow, BookOpen, Check, Copy, Monitor, Maximize2, Code2, GitPullRequest, ShieldCheck, Plus, Terminal, Cpu, HardDrive, Layers, Puzzle, FileCode2, Wrench, ChevronLeft, ChevronRight, Activity, Globe, ShieldAlert } from 'lucide-react';
 import { productConfig } from '../../config/product.config';
 import type { FeatureItem } from '../../types/product.types';
 import { ContentDialog } from './ContentDialog';
+import { WindowsDefenderGuideModal } from '../modals/WindowsDefenderGuideModal';
 import { currentRelease, legacyRelease, doraWebUrl, repositoryUrl, websiteRepositoryUrl } from '../../config/site.config';
 import { addonCategories, verifiedAddons, addonsCatalogMeta, type AddonCategoryId } from '../../config/addons.config';
 
@@ -104,6 +105,7 @@ export function HomePage() {
   const [imageTarget, setImageTarget] = useState<'hero' | 'gallery'>('gallery');
   const [guideTab, setGuideTab] = useState<'installer' | 'source'>('installer');
   const [helpOpen, setHelpOpen] = useState(false);
+  const [defenderModalOpen, setDefenderModalOpen] = useState(false);
   const { features, previews, systemRequirements, installationGuides, faqList } = productConfig;
   const activeHeroView = heroViews[heroViewIndex];
   const activePreview = previews[previewIndex];
@@ -685,7 +687,23 @@ export function HomePage() {
             </details>
           </div>
 
-          <button className="download-help" onClick={() => setHelpOpen(true)}>Muncul peringatan saat mengunduh?</button>
+          {/* Windows Defender Alert & Direct Solution Box */}
+          <div className="defender-troubleshoot-alert" onClick={() => setDefenderModalOpen(true)}>
+            <div className="alert-badge-row">
+              <span className="alert-warning-pill"><ShieldAlert size={14} /> Solusi Unduhan Windows</span>
+              <span className="alert-hint">Klik untuk melihat panduan lengkap</span>
+            </div>
+            <strong>Muncul Peringatan Windows Defender / SmartScreen?</strong>
+            <p>
+              Karena installer belum memiliki reputasi unduhan global Microsoft, browser atau Windows dapat memblokir file. Klik ikon <strong>Titik Tiga (⋯)</strong> &gt; <em>Keep</em> &gt; <em>Keep anyway</em>.
+            </p>
+            <button type="button" className="defender-guide-open-btn" onClick={(e) => { e.stopPropagation(); setDefenderModalOpen(true); }}>
+              <ShieldAlert size={14} />
+              <span>Buka Panduan 5 Langkah Mengatasi Blokir</span>
+            </button>
+          </div>
+
+          <button className="download-help" onClick={() => setHelpOpen(true)}>Periksa integritas file & SHA256?</button>
         </div>
       </div>
     </section>
@@ -788,15 +806,16 @@ export function HomePage() {
           </div>
         </div>
         <div className="repo-distinction-bar">
-          <div>
+          <div className="repo-distinction-item">
             <span className="repo-distinction-label">Repositori Aplikasi Desktop (Inti)</span>
             <strong>NezzyGremory / Data-Overview-Research-Assistant</strong>
             <small>Python 3.13 · PySide6 · Lisensi MIT · Rilis {currentRelease.version}</small>
           </div>
-          <div>
+          <div className="repo-distinction-item">
             <span className="repo-distinction-label">Repositori Website Profil Ini</span>
             <a href={websiteRepositoryUrl} target="_blank" rel="noopener noreferrer">
-              AHTURRR / Website-Profiling-DORA.<ArrowUpRight size={14} />
+              <span>AHTURRR / Website-Profiling-DORA.</span>
+              <ArrowUpRight size={14} />
             </a>
             <small>React 19 · TypeScript · Pusat informasi, pratinjau, dan dokumentasi web</small>
           </div>
@@ -809,5 +828,12 @@ export function HomePage() {
     {feature && <ContentDialog title={cleanProductText(feature.title)} onClose={() => setFeature(null)}><span className="dialog-scope">{feature.executionScope}</span><p>{cleanProductText(feature.description)}</p><ul className="dialog-capabilities">{feature.capabilities?.map(item => <li key={item}><Check size={16} /><span>{cleanProductText(item)}</span></li>)}</ul></ContentDialog>}
     {imageOpen && <ContentDialog title={imageTarget === 'hero' ? activeHeroView.title : cleanProductText(activePreview.title)} onClose={() => setImageOpen(false)} wide><Screenshot src={imageTarget === 'hero' ? activeHeroView.src : activePreview.imageSrc || '/screenshots/overview.png'} title={imageTarget === 'hero' ? activeHeroView.title : cleanProductText(activePreview.title)} eager /></ContentDialog>}
     {helpOpen && <ContentDialog title="Memeriksa unduhan DORA" onClose={() => setHelpOpen(false)}><p>Installer yang belum dikenal browser atau Windows dapat menampilkan peringatan. Periksa sumber dan integritas file sebelum melanjutkan.</p><ol className="help-steps"><li>Pastikan file berasal dari repositori resmi <strong>NezzyGremory/Data-Overview-Research-Assistant</strong>.</li><li>Cocokkan nama file dan versi dengan aset di bagian Repositori.</li><li>Hitung SHA256 menggunakan perintah di bawah, lalu bandingkan hasilnya dengan checksum yang tercantum.</li><li>Jika hash berbeda atau Anda ragu, jangan jalankan file. Laporkan melalui bagian Repositori (GitHub Issues).</li></ol><CopyControl value={`Get-FileHash -Algorithm SHA256 "${currentRelease.filename}"`} label="Perintah PowerShell" /><a className="button secondary" href="#github" onClick={() => setHelpOpen(false)}>Buka Repositori Resmi<ArrowRight size={16} /></a></ContentDialog>}
+
+    <WindowsDefenderGuideModal
+      isOpen={defenderModalOpen}
+      onClose={() => setDefenderModalOpen(false)}
+      downloadUrl={currentRelease.url}
+      filename={currentRelease.filename}
+    />
   </>;
 }

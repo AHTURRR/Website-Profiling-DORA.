@@ -238,7 +238,42 @@
 :root[data-theme="light"] :is(.repo-links > a, .repo-links > a:first-child, .repo-distinction-bar) { border-color: var(--site-line); }
 :root[data-theme="light"] .button.secondary { background: #fff; border-color: #b5a9cd; color: var(--site-text); }
 :root[data-theme="light"] .preview-picker select { border-color: #b5a9cd; }
-:root[data-theme="light"] .segmented-control button[aria-pressed="true"] { color: #4c308e; background: #e5ddf4; }
+:root[data-theme="light"] .segmented-control {
+  background: #f3f0fa;
+  border-color: #dcd6e8;
+}
+:root[data-theme="light"] .segmented-control button {
+  color: #635f73;
+}
+:root[data-theme="light"] .segmented-control button:hover:not([aria-pressed="true"]) {
+  color: #1e1b29;
+  background: rgba(0, 0, 0, 0.04);
+}
+:root[data-theme="light"] .segmented-control button[aria-pressed="true"] {
+  color: #4c308e;
+  background: #ffffff;
+  border-color: #8c75c7;
+  box-shadow: 0 2px 8px rgba(76, 48, 142, 0.12);
+}
+:root[data-theme="light"] .repo-distinction-item {
+  background: #faf8fd;
+  border-color: #dcd6e8;
+}
+:root[data-theme="light"] .defender-troubleshoot-alert {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.08) 0%, #fffdf8 100%);
+  border-color: rgba(217, 119, 6, 0.4);
+}
+:root[data-theme="light"] .defender-troubleshoot-alert strong {
+  color: #78350f;
+}
+:root[data-theme="light"] .defender-troubleshoot-alert p {
+  color: #92400e;
+}
+:root[data-theme="light"] .alert-warning-pill {
+  color: #b45309;
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(217, 119, 6, 0.35);
+}
 :root[data-theme="light"] .member-visual { background: #eae2f4; border-color: #c5b3d7; }
 :root[data-theme="light"] .member-visual-1 { background: #e6ecf1; border-color: #bdcad5; }
 :root[data-theme="light"] .member-visual-2 { background: #ede5ee; border-color: #cbb9ce; }
