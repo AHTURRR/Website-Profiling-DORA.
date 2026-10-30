@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, ArrowRight, Download, GitFork as Github, Database, Workflow, BookOpen, Check, Copy, Monitor, Maximize2, Code2, GitPullRequest, ShieldCheck, Plus, Terminal, Cpu, HardDrive, Layers, Puzzle, FileCode2, Wrench } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Download, GitFork as Github, Database, Workflow, BookOpen, Check, Copy, Monitor, Maximize2, Code2, GitPullRequest, ShieldCheck, Plus, Terminal, Cpu, HardDrive, Layers, Puzzle, FileCode2, Wrench, ChevronLeft, ChevronRight, Activity } from 'lucide-react';
 import { productConfig } from '../../config/product.config';
 import type { FeatureItem } from '../../types/product.types';
 import { ContentDialog } from './ContentDialog';
@@ -62,6 +62,16 @@ const categoryIcons: Record<AddonCategoryId, typeof Puzzle> = {
   companion: Wrench,
 };
 
+const previewCategories = [
+  { id: 'all', label: 'Semua (14)' },
+  { id: 'workspace', label: 'Workspace', tags: ['Overview', 'Scale', 'Privacy'] },
+  { id: 'data', label: 'Dataset & Profiling', tags: ['Search', 'Loader', 'Dataset', 'Missing', 'Outlier', 'Distribution', 'Cleaning'] },
+  { id: 'ml', label: 'Machine Learning', tags: ['Node Editor', 'Intelligence', 'Editor'] },
+  { id: 'research', label: 'Riset Literatur', tags: ['Research'] },
+] as const;
+
+type PreviewCategoryId = (typeof previewCategories)[number]['id'];
+
 const cleanProductText = (text: string) => text.replace(/v2\.0\.0/g, currentRelease.version).replace(/v2\.0\b/g, 'v6.0');
 
 function CopyControl({ value, label }: { value: string; label: string }) {
@@ -88,6 +98,8 @@ export function HomePage() {
   const [heroViewIndex, setHeroViewIndex] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
   const [previewIndex, setPreviewIndex] = useState(0);
+  const [activeCategory, setActiveCategory] = useState<PreviewCategoryId>('all');
+  const [scanPulse, setScanPulse] = useState(0);
   const [imageOpen, setImageOpen] = useState(false);
   const [imageTarget, setImageTarget] = useState<'hero' | 'gallery'>('gallery');
   const [guideTab, setGuideTab] = useState<'installer' | 'source'>('installer');
@@ -99,9 +111,56 @@ export function HomePage() {
   const requirements = systemRequirements[0];
   const openPreview = (target: 'hero' | 'gallery') => { setImageTarget(target); setImageOpen(true); };
 
+  const prevPreview = () => {
+    setPreviewIndex(prev => (prev > 0 ? prev - 1 : previews.length - 1));
+    setScanPulse(p => p + 1);
+  };
+
+  const nextPreview = () => {
+    setPreviewIndex(prev => (prev < previews.length - 1 ? prev + 1 : 0));
+    setScanPulse(p => p + 1);
+  };
+
+  const handleCategorySelect = (catId: PreviewCategoryId) => {
+    setActiveCategory(catId);
+    if (catId === 'all') return;
+    const cat = previewCategories.find(c => c.id === catId);
+    if (!cat || !('tags' in cat)) return;
+    const firstMatch = previews.findIndex(p => (cat.tags as readonly string[]).includes(p.tag));
+    if (firstMatch !== -1) {
+      setPreviewIndex(firstMatch);
+      setScanPulse(p => p + 1);
+    }
+  };
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (document.activeElement?.tagName === 'INPUT' || document.activeElement?.tagName === 'TEXTAREA' || document.activeElement?.tagName === 'SELECT') return;
+      if (e.key === 'ArrowLeft') {
+        setPreviewIndex(prev => (prev > 0 ? prev - 1 : previews.length - 1));
+        setScanPulse(p => p + 1);
+      }
+      if (e.key === 'ArrowRight') {
+        setPreviewIndex(prev => (prev < previews.length - 1 ? prev + 1 : 0));
+        setScanPulse(p => p + 1);
+      }
+    };
+    window.addEventListener('keydown', handleKey);
+    return () => window.removeEventListener('keydown', handleKey);
+  }, [previews.length]);
+
   return <>
     <section id="hero" className="new-hero">
       <div className="hero-light" aria-hidden="true" />
+      <div className="hero-orbital-backdrop" aria-hidden="true">
+        <svg className="hero-orbital-svg" viewBox="0 0 600 600" fill="none">
+          <circle cx="300" cy="300" r="280" stroke="currentColor" strokeWidth="0.8" strokeDasharray="4 8" opacity="0.2" />
+          <circle cx="300" cy="300" r="210" stroke="currentColor" strokeWidth="1" strokeDasharray="16 10" opacity="0.3" className="orbital-ring-rev" />
+          <circle cx="300" cy="300" r="140" stroke="currentColor" strokeWidth="0.8" opacity="0.15" />
+          <line x1="300" y1="10" x2="300" y2="590" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 8" opacity="0.2" />
+          <line x1="10" y1="300" x2="590" y2="300" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 8" opacity="0.2" />
+        </svg>
+      </div>
       <div className="site-container hero-inner">
         <a className="release-link" href={`${repositoryUrl}/releases/tag/${currentRelease.version}`} target="_blank" rel="noopener noreferrer"><span className="release-dot" />DORA {currentRelease.version}<span className="release-divider" />Kenali rilis terbaru<ArrowUpRight size={14} /></a>
         <h1>Dari data mentah,<br />menjadi <span>arah riset.</span></h1>
@@ -187,13 +246,210 @@ export function HomePage() {
       <details className="all-features"><summary>Semua kemampuan bawaan DORA<span>{features.length} modul utama<Plus size={18} /></span></summary><div className="feature-directory">{features.map(item => <button key={item.id} onClick={() => setFeature(item)}>{cleanProductText(item.title)}<ArrowUpRight size={16} /></button>)}</div></details>
     </section>
 
-    <section className="workflow-section"><div className="site-container workflow-layout"><div className="workflow-copy"><span className="eyebrow">Eksperimen, dengan alur yang jelas</span><h2>Susun idenya.<br /><span>Hubungkan nodenya.</span></h2><p>Visual Node Editor membantu Anda merancang pipeline machine learning tanpa kehilangan gambaran besarnya.</p><ul className="check-list"><li><Check size={16} />Deteksi task dan validasi graph</li><li><Check size={16} />Pemrosesan di latar belakang & cache analisis</li><li><Check size={16} />Ekspor Python, notebook, model, CSV, dan ZIP</li></ul><button className="text-button" onClick={() => setFeature(features.find(f => f.id === 'node-editor-graph') || null)}>Kenali Node Editor<ArrowUpRight size={17} /></button></div><div className="workflow-image"><div className="image-caption"><Workflow size={16} /><span>Visual Node Editor</span><span className="caption-spacer" />DORA desktop</div><Screenshot src="/screenshots/node-editor.png" title="Screenshot asli Visual Node Editor DORA dengan kanvas pipeline machine learning" /></div></div></section>
+    <section className="workflow-section">
+      <div className="site-container">
+        {/* Motion Graphic SVG Pipeline Banner */}
+        <div className="node-pipeline-motion-banner" aria-hidden="true">
+          <div className="pipeline-banner-header">
+            <span className="pipeline-live-tag"><span className="pulse-dot" /> DORA VISUAL GRAPH ENGINE // PIPELINE TOPOLOGY</span>
+            <span className="pipeline-latency">LATENCY: 0ms · 100% LOCAL COMPUTE</span>
+          </div>
+          <svg className="pipeline-graph-svg" viewBox="0 0 960 110" fill="none" preserveAspectRatio="xMidYMid meet">
+            {/* Animated Laser Connections */}
+            <path d="M 180 55 C 240 55, 240 55, 300 55" className="wire-track" />
+            <path d="M 180 55 C 240 55, 240 55, 300 55" className="wire-laser wire-laser-1" />
 
-    <section id="preview" className="site-container content-section preview-section">
-      <div className="section-heading centered-heading"><span className="eyebrow">Lihat sebelum mengunduh</span><h2>Bukan sekadar cerita.<br /><span>Ini ruang kerjanya.</span></h2><p>Tangkapan layar asli DORA. Pilih tampilan untuk menjelajahi setiap bagian aplikasi.</p></div>
-      <div className="preview-picker"><label htmlFor="preview-select">Jelajahi tampilan</label><select id="preview-select" value={previewIndex} onChange={event => setPreviewIndex(Number(event.target.value))}>{previews.map((item, index) => <option value={index} key={item.id}>{item.tag || item.title}</option>)}</select><button className="icon-button" onClick={() => openPreview('gallery')} aria-label="Perbesar screenshot terpilih"><Maximize2 size={18} /></button></div>
-      <div className="gallery-frame"><Screenshot key={activePreview.id} src={activePreview.imageSrc || '/screenshots/overview.png'} title={cleanProductText(activePreview.title)} /></div>
-      <div className="gallery-caption"><span><strong>{activePreview.tag}</strong>{cleanProductText(activePreview.caption)}</span><span>{String(previewIndex + 1).padStart(2, '0')} / {previews.length}</span></div>
+            <path d="M 440 55 C 500 55, 500 55, 560 55" className="wire-track" />
+            <path d="M 440 55 C 500 55, 500 55, 560 55" className="wire-laser wire-laser-2" />
+
+            <path d="M 700 55 C 760 55, 760 55, 820 55" className="wire-track" />
+            <path d="M 700 55 C 760 55, 760 55, 820 55" className="wire-laser wire-laser-3" />
+
+            {/* Node 1: Ingestion */}
+            <g className="node-group" transform="translate(40, 20)">
+              <rect width="140" height="70" rx="8" className="node-box" />
+              <circle cx="18" cy="24" r="4.5" className="node-port" />
+              <text x="32" y="28" className="node-title">01 · DATASET</text>
+              <text x="18" y="50" className="node-sub">CSV, Excel, Parquet</text>
+            </g>
+
+            {/* Node 2: Preprocess */}
+            <g className="node-group" transform="translate(300, 20)">
+              <rect width="140" height="70" rx="8" className="node-box" />
+              <circle cx="18" cy="24" r="4.5" className="node-port" />
+              <text x="32" y="28" className="node-title">02 · PROFILING</text>
+              <text x="18" y="50" className="node-sub">Missing, Outlier, Split</text>
+            </g>
+
+            {/* Node 3: Model */}
+            <g className="node-group" transform="translate(560, 20)">
+              <rect width="140" height="70" rx="8" className="node-box active-node" />
+              <circle cx="18" cy="24" r="4.5" className="node-port active-port" />
+              <text x="32" y="28" className="node-title">03 · ML ENGINE</text>
+              <text x="18" y="50" className="node-sub">XGBoost, RF, Sklearn</text>
+            </g>
+
+            {/* Node 4: Export */}
+            <g className="node-group" transform="translate(820, 20)">
+              <rect width="140" height="70" rx="8" className="node-box" />
+              <circle cx="18" cy="24" r="4.5" className="node-port" />
+              <text x="32" y="28" className="node-title">04 · REPORT</text>
+              <text x="18" y="50" className="node-sub">PDF A4, Notebook</text>
+            </g>
+          </svg>
+        </div>
+
+        <div className="workflow-layout">
+          <div className="workflow-copy">
+            <span className="eyebrow">Eksperimen, dengan alur yang jelas</span>
+            <h2>Susun idenya.<br /><span>Hubungkan nodenya.</span></h2>
+            <p>Visual Node Editor membantu Anda merancang pipeline machine learning tanpa kehilangan gambaran besarnya.</p>
+            <ul className="check-list">
+              <li><Check size={16} />Deteksi task dan validasi graph</li>
+              <li><Check size={16} />Pemrosesan di latar belakang & cache analisis</li>
+              <li><Check size={16} />Ekspor Python, notebook, model, CSV, dan ZIP</li>
+            </ul>
+            <button className="text-button" onClick={() => setFeature(features.find(f => f.id === 'node-editor-graph') || null)}>Kenali Node Editor<ArrowUpRight size={17} /></button>
+          </div>
+          <div className="workflow-image">
+            <div className="image-caption"><Workflow size={16} /><span>Visual Node Editor</span><span className="caption-spacer" />DORA desktop</div>
+            <Screenshot src="/screenshots/node-editor.png" title="Screenshot asli Visual Node Editor DORA dengan kanvas pipeline machine learning" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="preview" className="site-container content-section preview-section" aria-labelledby="preview-heading">
+      <div className="section-heading centered-heading">
+        <span className="eyebrow"><Activity size={13} className="motion-pulse-icon" /> Teater Eksplorasi Visual</span>
+        <h2 id="preview-heading">Bukan sekadar cerita.<br /><span>Ini ruang kerjanya.</span></h2>
+        <p>Tangkapan layar asli resolusi penuh dari DORA. Jelajahi 14 ruang kerja dan modul analisis secara interaktif.</p>
+      </div>
+
+      <div className="preview-theater">
+        {/* Category filtering chips */}
+        <div className="preview-filter-strip" role="tablist" aria-label="Kategori pratinjau DORA">
+          {previewCategories.map(cat => (
+            <button
+              key={cat.id}
+              type="button"
+              role="tab"
+              aria-selected={activeCategory === cat.id}
+              className={`preview-filter-pill ${activeCategory === cat.id ? 'is-active' : ''}`}
+              onClick={() => handleCategorySelect(cat.id)}
+            >
+              {cat.label}
+            </button>
+          ))}
+        </div>
+
+        {/* Cybernetic Motion Graphic Frame */}
+        <div className="preview-hud-wrapper" key={scanPulse}>
+          <div className="hud-corner top-left" aria-hidden="true" />
+          <div className="hud-corner top-right" aria-hidden="true" />
+          <div className="hud-corner bottom-left" aria-hidden="true" />
+          <div className="hud-corner bottom-right" aria-hidden="true" />
+          <div className="preview-scanline-laser" aria-hidden="true" />
+
+          {/* HUD Top Bar */}
+          <div className="preview-hud-top">
+            <div className="hud-stream-status">
+              <span className="hud-beacon" aria-hidden="true" />
+              <span className="hud-code-label">STREAM // VIEW [{String(previewIndex + 1).padStart(2, '0')}/{String(previews.length).padStart(2, '0')}]</span>
+            </div>
+            <div className="hud-center-title">
+              <span className="hud-tag-pill">{activePreview.tag}</span>
+              <strong>{cleanProductText(activePreview.title)}</strong>
+            </div>
+            <div className="hud-actions">
+              <span className="hud-metric">1920×1080 NATIVE</span>
+              <button
+                type="button"
+                className="hud-expand-btn"
+                onClick={() => openPreview('gallery')}
+                aria-label={`Perbesar screenshot ${activePreview.title} layar penuh`}
+              >
+                <Maximize2 size={14} />
+                <span>Perbesar</span>
+              </button>
+            </div>
+          </div>
+
+          {/* Main Screenshot Screen */}
+          <div className="preview-screen-viewport">
+            <Screenshot key={activePreview.id} src={activePreview.imageSrc || '/screenshots/overview.png'} title={cleanProductText(activePreview.title)} />
+          </div>
+
+          {/* HUD Controls Bottom Bar */}
+          <div className="preview-hud-bottom">
+            <button
+              type="button"
+              className="hud-nav-btn prev"
+              onClick={prevPreview}
+              aria-label="Tampilan sebelumnya (Panah Kiri)"
+            >
+              <ChevronLeft size={18} />
+              <span>Sebelumnya</span>
+            </button>
+
+            <div className="hud-progress-track" aria-hidden="true">
+              <div
+                className="hud-progress-fill"
+                style={{ width: `${((previewIndex + 1) / previews.length) * 100}%` }}
+              />
+            </div>
+
+            <button
+              type="button"
+              className="hud-nav-btn next"
+              onClick={nextPreview}
+              aria-label="Tampilan berikutnya (Panah Kanan)"
+            >
+              <span>Berikutnya</span>
+              <ChevronRight size={18} />
+            </button>
+          </div>
+        </div>
+
+        {/* Thumbnail Selector Ribbon */}
+        <div className="preview-thumb-strip" role="tablist" aria-label="Daftar thumbnail screenshot">
+          {previews.map((item, index) => {
+            const isCurrent = previewIndex === index;
+            return (
+              <button
+                key={item.id}
+                type="button"
+                role="tab"
+                aria-selected={isCurrent}
+                className={`preview-thumb-btn ${isCurrent ? 'is-active' : ''}`}
+                onClick={() => {
+                  setPreviewIndex(index);
+                  setScanPulse(p => p + 1);
+                }}
+                title={item.title}
+              >
+                <span className="thumb-index">{String(index + 1).padStart(2, '0')}</span>
+                <span className="thumb-label">{item.tag || item.title}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Details & Telemetry Specs */}
+        <div className="preview-meta-panel">
+          <div className="preview-meta-copy">
+            <span className="preview-badge-lead">{activePreview.badge || 'Modul DORA'}</span>
+            <p>{cleanProductText(activePreview.caption)}</p>
+          </div>
+          {activePreview.details && activePreview.details.length > 0 && (
+            <ul className="preview-capabilities-chips">
+              {activePreview.details.map((detail, idx) => (
+                <li key={idx}><Check size={13} /><span>{detail}</span></li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
     </section>
 
     <section id="addons" className="addons-section" aria-labelledby="addons-heading">

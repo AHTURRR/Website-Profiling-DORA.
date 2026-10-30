@@ -37,7 +37,7 @@ export function useSiteMotion() {
       });
 
       const targets = document.querySelectorAll<HTMLElement>(
-        '.flow-strip-inner, .module-card, .workflow-layout, .gallery-frame, .addons-category-strip, .addons-empty-state, .addons-catalog-grid, .download-card, .requirements-section-new, .installation-steps > li, .repository-panel, .team-card, .principle-list > div, .team-invitation'
+        '.flow-strip-inner, .module-card, .node-pipeline-motion-banner, .workflow-layout, .preview-theater, .addons-category-strip, .addons-empty-state, .addons-catalog-grid, .download-card, .requirements-section-new, .installation-steps > li, .repository-panel, .team-card, .principle-list > div, .team-invitation'
       );
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {

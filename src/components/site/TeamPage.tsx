@@ -22,7 +22,21 @@ export function TeamPage() {
     <section className="site-container team-section" aria-labelledby="team-heading">
       <div className="section-heading"><div><span className="eyebrow">Orang di balik produknya</span><h2 id="team-heading">Berbeda keahlian.<br />Satu ruang eksplorasi.</h2></div><p>Nama dan peran mengikuti kredit resmi aplikasi. Bio di bawah adalah <strong>data dummy</strong> untuk pratinjau tata letak.</p></div>
       <div className="team-grid">{teamMembers.map((member, index) => <article className="team-card" key={member.name}>
-        <div className={`member-visual member-visual-${index % 3}`} aria-hidden="true"><span className="member-discipline">{member.discipline}</span><span className="member-initials">{member.initials}</span><span className="member-index">0{index + 1} / Metriks Studio</span></div>
+        <div className={`member-visual member-visual-${index % 3}`} aria-hidden="true">
+          <svg className="member-gyro" viewBox="0 0 100 100" fill="none" aria-hidden="true">
+            <circle cx="50" cy="50" r="44" stroke="currentColor" strokeWidth="0.75" strokeDasharray="3 3" opacity="0.35" />
+            <circle cx="50" cy="50" r="32" stroke="currentColor" strokeWidth="1" strokeDasharray="14 6" opacity="0.5" />
+            <ellipse cx="50" cy="50" rx="46" ry="18" stroke="currentColor" strokeWidth="0.75" opacity="0.3" />
+            <ellipse cx="50" cy="50" rx="18" ry="46" stroke="currentColor" strokeWidth="0.75" opacity="0.3" />
+            <circle cx="50" cy="50" r="4" fill="currentColor" opacity="0.4" />
+          </svg>
+          <div className="member-hud-meta">
+            <span className="member-discipline">{member.discipline}</span>
+            <span className="member-hud-tag">[UNIT // 0{index + 1}]</span>
+          </div>
+          <span className="member-initials">{member.initials}</span>
+          <span className="member-index">0{index + 1} / Metriks Studio</span>
+        </div>
         <div className="member-copy"><h3>{member.name}</h3><span className="member-role">{member.role}</span><div className="dummy-label">Bio dummy</div><p>{member.draftBio}</p></div>
       </article>)}</div>
       <div className="team-source-note"><BookOpen size={20} /><p>Nama dan peran disalin langsung dari <a href={creditSource} target="_blank" rel="noopener noreferrer">app/ui/data/credits.json pada repositori DORA</a>. Monogram teks menggantikan foto karena sumber resmi tidak memuat foto profil; tidak ada foto, kontak, atau tautan personal rekaan.</p></div>

@@ -99,6 +99,102 @@
 @keyframes surface-exit-reduced { to { opacity: 0; } }
 @keyframes backdrop-exit { to { opacity: 0; } }
 
+/* Motion Graphic Keyframes */
+@keyframes gyro-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes orbital-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+@keyframes laser-flow {
+  from { stroke-dashoffset: 48; }
+  to { stroke-dashoffset: 0; }
+}
+@keyframes laser-scanline {
+  0% { transform: translateY(-100%); opacity: 0; }
+  25% { opacity: 1; }
+  75% { opacity: 1; }
+  100% { transform: translateY(850px); opacity: 0; }
+}
+@keyframes beacon-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.85); }
+}
+
+:root[data-theme="light"] .node-pipeline-motion-banner {
+  background: #f3eff9;
+  border-color: #d1c7e6;
+}
+:root[data-theme="light"] .pipeline-live-tag {
+  color: #5e3fb8;
+}
+:root[data-theme="light"] .wire-track {
+  stroke: #d8d0e8;
+}
+:root[data-theme="light"] .wire-laser {
+  stroke: #5e3fb8;
+  filter: drop-shadow(0 0 3px rgba(94, 63, 184, 0.4));
+}
+:root[data-theme="light"] .node-box {
+  fill: #fff;
+  stroke: #c8bede;
+}
+:root[data-theme="light"] .node-box.active-node {
+  fill: #f5f0ff;
+  stroke: #7f69b8;
+}
+:root[data-theme="light"] .node-title {
+  fill: #22202e;
+}
+:root[data-theme="light"] .node-sub {
+  fill: #5a5468;
+}
+:root[data-theme="light"] .preview-hud-wrapper {
+  background: #f8f6fc;
+  border-color: #c4b6df;
+  box-shadow: 0 16px 45px rgba(94, 63, 184, 0.1);
+}
+:root[data-theme="light"] .preview-hud-top,
+:root[data-theme="light"] .preview-hud-bottom {
+  background: #ede7f6;
+  border-color: #cfc2e7;
+}
+:root[data-theme="light"] .hud-tag-pill {
+  background: #e2d9f3;
+  border-color: #baabdc;
+  color: #4a2f96;
+}
+:root[data-theme="light"] .hud-expand-btn,
+:root[data-theme="light"] .hud-nav-btn {
+  background: #fff;
+  border-color: #c0b2dd;
+  color: #22202e;
+}
+:root[data-theme="light"] .preview-filter-pill.is-active {
+  background: #e9e2f6;
+  border-color: #8c75c7;
+  color: #432b85;
+}
+:root[data-theme="light"] .preview-thumb-btn.is-active {
+  background: #eae3f7;
+  border-color: #8c75c7;
+  color: #432b85;
+}
+:root[data-theme="light"] .preview-screen-viewport {
+  background: #e4ddf2;
+}
+:root[data-theme="light"] .hud-corner {
+  border-color: #7b62c4;
+}
+:root[data-theme="light"] .preview-capabilities-chips li {
+  color: var(--site-muted);
+}
+:root[data-theme="light"] .member-hud-tag {
+  color: var(--site-accent);
+}
+
 @media (hover: hover) and (pointer: fine) {
   .hero-product-frame:hover { transform: translateY(-3px); border-color: #8f78b5; }
   .hero-screenshot:hover img { transform: scale(1.01); }
@@ -135,6 +231,12 @@
   .site-nav { min-height: 64px; }
   .mobile-navigation { top: calc(100% + 9px); border-radius: 16px; max-height: calc(100dvh - 100px); }
   .hero-light { left: calc(50% - 630px); }
+  .hero-orbital-backdrop { width: 380px; height: 380px; top: -60px; right: calc(50% - 320px); opacity: 0.35; }
+  .preview-hud-top { flex-direction: column; align-items: flex-start; gap: 10px; }
+  .hud-actions { width: 100%; justify-content: space-between; }
+  .preview-meta-panel { grid-template-columns: 1fr; gap: 20px; padding: 20px; }
+  .node-pipeline-motion-banner { overflow-x: auto; padding: 14px 16px; }
+  .pipeline-graph-svg { min-width: 700px; }
 }
 @media (max-width: 600px) {
   .site-header { padding-top: 10px; }
@@ -147,16 +249,18 @@
   .hero-light::before { width: 60px; }
   .new-hero::before { opacity: .3; }
   .hero-product-frame { box-shadow: -8px -8px 35px #9a7fef1a; }
+  .preview-hud-bottom { flex-wrap: wrap; gap: 12px; }
+  .hud-progress-track { order: 3; width: 100%; max-width: none; }
 }
 @media (max-width: 400px) {
   .nav-download { font-size: 0; width: 44px; padding: 0; }
   .nav-download svg { display: block; width: 17px; }
 }
 @media (prefers-reduced-motion: reduce) {
-  .hero-light, .new-hero::before, .theme-icon { animation: none; }
+  .hero-light, .new-hero::before, .theme-icon, .hero-orbital-svg, .orbital-ring-rev, .wire-laser, .pulse-dot, .hud-beacon, .preview-scanline-laser, .member-gyro { animation: none !important; }
   .hero-light { transform: rotate(-29deg); opacity: .65; }
   .button.primary::after { display: none; }
   .member-initials, .hero-product-frame, .hero-product-frame .hero-screenshot img { transition: none; transform: none !important; }
-  .gallery-frame img, .hero-screenshot img { animation: backdrop-enter 100ms ease-out; }
+  .gallery-frame img, .hero-screenshot img, .preview-screen-viewport img { animation: backdrop-enter 100ms ease-out; }
   .content-dialog.is-closing { animation: surface-exit-reduced 100ms ease-out both; }
 }
