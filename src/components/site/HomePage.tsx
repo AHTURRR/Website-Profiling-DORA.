@@ -153,53 +153,102 @@ export function HomePage() {
     <section id="hero" className="new-hero">
       <div className="hero-light" aria-hidden="true" />
       <div className="hero-orbital-backdrop" aria-hidden="true">
-        <svg className="hero-orbital-svg" viewBox="0 0 600 600" fill="none">
-          <circle cx="300" cy="300" r="280" stroke="currentColor" strokeWidth="0.8" strokeDasharray="4 8" opacity="0.2" />
-          <circle cx="300" cy="300" r="210" stroke="currentColor" strokeWidth="1" strokeDasharray="16 10" opacity="0.3" className="orbital-ring-rev" />
-          <circle cx="300" cy="300" r="140" stroke="currentColor" strokeWidth="0.8" opacity="0.15" />
-          <line x1="300" y1="10" x2="300" y2="590" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 8" opacity="0.2" />
-          <line x1="10" y1="300" x2="590" y2="300" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 8" opacity="0.2" />
-        </svg>
+        <div className="hero-reticle hero-reticle-left">
+          <svg viewBox="0 0 400 400" fill="none">
+            <circle cx="200" cy="200" r="180" stroke="currentColor" strokeWidth="0.8" strokeDasharray="4 8" opacity="0.22" className="hero-reticle-spin" />
+            <circle cx="200" cy="200" r="130" stroke="currentColor" strokeWidth="1" strokeDasharray="14 12" opacity="0.32" className="hero-reticle-rev" />
+            <circle cx="200" cy="200" r="80" stroke="currentColor" strokeWidth="0.8" strokeDasharray="2 6" opacity="0.18" />
+            <line x1="200" y1="10" x2="200" y2="390" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 6" opacity="0.2" />
+            <line x1="10" y1="200" x2="390" y2="200" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 6" opacity="0.2" />
+          </svg>
+        </div>
+        <div className="hero-reticle hero-reticle-right">
+          <svg viewBox="0 0 400 400" fill="none">
+            <circle cx="200" cy="200" r="180" stroke="currentColor" strokeWidth="0.8" strokeDasharray="6 10" opacity="0.22" className="hero-reticle-rev" />
+            <circle cx="200" cy="200" r="120" stroke="currentColor" strokeWidth="1" strokeDasharray="16 8" opacity="0.3" className="hero-reticle-spin" />
+            <circle cx="200" cy="200" r="60" stroke="currentColor" strokeWidth="0.8" opacity="0.2" />
+            <line x1="200" y1="10" x2="200" y2="390" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 6" opacity="0.2" />
+            <line x1="10" y1="200" x2="390" y2="200" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 6" opacity="0.2" />
+          </svg>
+        </div>
+
+        {/* HUD Telemetry Accents */}
+        <div className="hero-telemetry-tag tag-top-left">
+          <span className="telemetry-bracket">[</span>
+          <span className="telemetry-dot" />
+          <code>ENGINE: AIRGAPPED LOCAL</code>
+          <span className="telemetry-bracket">]</span>
+        </div>
+        <div className="hero-telemetry-tag tag-top-right">
+          <span className="telemetry-bracket">[</span>
+          <span className="telemetry-dot" />
+          <code>RUNTIME: PYTORCH · SKLEARN</code>
+          <span className="telemetry-bracket">]</span>
+        </div>
+        <div className="hero-telemetry-tag tag-bottom-left">
+          <span className="telemetry-bracket">[</span>
+          <code>GRAPH: REACTIVE PIPELINE</code>
+          <span className="telemetry-bracket">]</span>
+        </div>
+        <div className="hero-telemetry-tag tag-bottom-right">
+          <span className="telemetry-bracket">[</span>
+          <code>PRIVACY: ZERO-TELEMETRY</code>
+          <span className="telemetry-bracket">]</span>
+        </div>
       </div>
       <div className="site-container hero-inner">
         <a className="release-link" href={`${repositoryUrl}/releases/tag/${currentRelease.version}`} target="_blank" rel="noopener noreferrer"><span className="release-dot" />DORA {currentRelease.version}<span className="release-divider" />Kenali rilis terbaru<ArrowUpRight size={14} /></a>
-        <h1>Dari data mentah,<br />menjadi <span>arah riset.</span></h1>
+        <h1>Dari data mentah,<br />menjadi <span className="headline-gradient">arah riset.</span></h1>
         <p className="hero-lead">Eksplorasi dataset, rangkai eksperimen machine learning,<br className="desktop-break" /> dan temukan literatur ilmiah. Dalam satu ruang kerja desktop.</p>
         <div className="hero-actions"><a className="button primary" href="#downloads"><Download size={17} />Unduh untuk Windows</a><a className="button secondary" href="#preview">Jelajahi {productConfig.previews.length} tampilan<ArrowRight size={16} /></a></div>
         <div className="hero-caption"><span>Windows 10/11 · x64</span><span className="caption-dot" />Pemrosesan dataset lokal<span className="caption-dot" /><a href={`${repositoryUrl}/blob/main/LICENSE`} target="_blank" rel="noopener noreferrer">Lisensi MIT</a></div>
 
         <div className="hero-product-stage">
           <div className="hero-view-bar" role="toolbar" aria-label="Pilih tampilan ruang kerja DORA di hero">
-            <span className="hero-view-prompt">Tampilan aplikasi asli:</span>
-            <div className="hero-view-tabs">
-              {heroViews.map((view, idx) => (
-                <button
-                  key={view.id}
-                  type="button"
-                  className="hero-view-tab"
-                  aria-pressed={heroViewIndex === idx}
-                  onClick={() => { setHeroViewIndex(idx); setActiveStep(idx); }}
-                >
-                  {view.label}
-                </button>
-              ))}
+            <div className="hero-view-pill-cluster">
+              <div className="hero-view-cluster-label">
+                <span className="cluster-beacon" aria-hidden="true" />
+                <span>Ruang Kerja:</span>
+              </div>
+              <div className="hero-view-cluster-divider" aria-hidden="true" />
+              <div className="hero-view-tabs">
+                {heroViews.map((view, idx) => (
+                  <button
+                    key={view.id}
+                    type="button"
+                    className="hero-view-tab"
+                    aria-pressed={heroViewIndex === idx}
+                    onClick={() => { setHeroViewIndex(idx); setActiveStep(idx); }}
+                  >
+                    <span className="hero-view-tab-num">0{idx + 1}</span>
+                    <span>{view.label}</span>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
           <div className="hero-product-frame">
+            <div className="hero-frame-border-beam" aria-hidden="true" />
             <div className="product-frame-top">
               <div className="frame-window-title">
-                <span className="frame-decor-dots" aria-hidden="true"><i /><i /><i /></span>
+                <span className="frame-decor-dots" aria-hidden="true">
+                  <i className="dot-red" />
+                  <i className="dot-yellow" />
+                  <i className="dot-green" />
+                </span>
                 <img src="/brand/about-brand-mark.png" width="16" height="16" alt="" />
-                <strong>DORA desktop</strong>
+                <strong>DORA Desktop</strong>
+                <span className="frame-version-pill">v{currentRelease.version}</span>
                 <span className="frame-stage-badge">{activeHeroView.stage}</span>
               </div>
               <button type="button" onClick={() => openPreview('hero')} aria-label={`Perbesar screenshot ${activeHeroView.label}`}>
-                <Maximize2 size={14} />
+                <Maximize2 size={13} />
                 <span>Perbesar layar</span>
               </button>
             </div>
             <div className="hero-screenshot">
+              <div className="hero-scan-beam" key={heroViewIndex} aria-hidden="true" />
               <Screenshot key={activeHeroView.id} src={activeHeroView.src} title={activeHeroView.title} eager />
             </div>
             <div className="product-frame-footer">
