@@ -424,18 +424,76 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
 @keyframes backdrop-enter { from { opacity: 0; } to { opacity: 1; } }
 
 @media (hover: hover) and (pointer: fine) {
-  .button.primary:hover { background: var(--site-button-hover); }
-  .button.secondary:hover { background: #23202c; border-color: #665678; }
+  .button.primary:hover {
+    background: var(--site-button-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(104, 84, 223, 0.4);
+  }
+  .button.secondary:hover {
+    background: #23202c;
+    border-color: #7b699e;
+    transform: translateY(-2px);
+  }
   .desktop-links a:hover, .footer-link-group a:hover { color: var(--site-text); }
   .text-button:hover, .inline-link:hover, .download-help:hover, .team-intro-links a:hover { color: var(--site-accent); }
-  .hero-view-tab:hover:not([aria-pressed="true"]) { color: var(--site-text); background: #1d1c27; }
-  .product-frame-top button:hover { background: #2c273d; border-color: #5d4f7c; }
-  .flow-step-trigger:hover { border-color: #5b4d7e; background: #161520; }
-  .module-card { transition: border-color 160ms ease-out; }
-  .module-card:hover { border-color: #5c4b76; }
-  .repo-links > a { transition: background-color 160ms ease-out; }
-  .repo-links > a:hover { background: #201a2b; }
-  .icon-button:hover { background: #292432; }
+  .hero-view-tab:hover:not([aria-pressed="true"]) {
+    color: var(--site-text);
+    background: #1d1c27;
+    transform: translateY(-1px);
+  }
+  .product-frame-top button:hover {
+    background: #2c273d;
+    border-color: #7b699e;
+    transform: translateY(-1px);
+  }
+  .flow-step-trigger:hover {
+    border-color: #6b599e;
+    background: #181524;
+    transform: translateY(-2px);
+  }
+  .module-card:hover {
+    border-color: #6b599e;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  }
+  .feature-directory button:hover {
+    border-color: #6b599e;
+    background: #191724;
+    transform: translateY(-2px);
+  }
+  .addon-card:hover {
+    border-color: #6b599e;
+    transform: translateY(-4px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  }
+  .download-card:hover {
+    border-color: #6b599e;
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  }
+  .repository-panel:hover {
+    border-color: #6b599e;
+    transform: translateY(-3px);
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.35);
+  }
+  .team-card:hover {
+    transform: translateY(-4px);
+  }
+  .team-card:hover .member-visual {
+    border-color: #725d99;
+  }
+  .team-card:hover .member-initials {
+    transform: scale(1.05);
+  }
+  .repo-links > a:hover {
+    background: #201a2b;
+    border-color: #5c4b76;
+    transform: translateY(-1px);
+  }
+  .icon-button:hover {
+    background: #292432;
+    transform: translateY(-1px);
+  }
 }
 
 @media (max-width: 1100px) {

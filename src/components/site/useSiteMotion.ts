@@ -27,24 +27,14 @@ export function useSiteMotion() {
         dispose = () => { end(); document.removeEventListener('visibilitychange', update); };
       }
 
-      let visited = false;
-      try { visited = sessionStorage.getItem('dora-intro-played') === 'true'; } catch { visited = true; }
-      if (!visited) {
-        const targets = document.querySelectorAll<HTMLElement>('.new-hero h1, .hero-lead, .hero-actions, .hero-product-stage');
-        targets.forEach((target, index) => {
-          animations.push(target.animate([
-            { opacity: .45, transform: `translateY(${index === 3 ? 22 : 12}px)` },
-            { opacity: 1, transform: 'translateY(0)' },
-          ], { duration: index === 3 ? 850 : 650, delay: index * 65, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' }));
-        });
-        if (targets.length) {
-          const markVisited = window.setTimeout(() => {
-            try { sessionStorage.setItem('dora-intro-played', 'true'); } catch { /* Intro tetap dapat berjalan ketika penyimpanan sesi diblokir. */ }
-          }, 0);
-          const previous = dispose;
-          dispose = () => { window.clearTimeout(markVisited); previous(); };
-        }
-      }
+      // Hero staggered entrance animation runs on mount
+      const heroTargets = document.querySelectorAll<HTMLElement>('.new-hero h1, .hero-lead, .hero-actions, .hero-product-stage');
+      heroTargets.forEach((target, index) => {
+        animations.push(target.animate([
+          { opacity: 0.15, transform: `translateY(${index === 3 ? 24 : 14}px)` },
+          { opacity: 1, transform: 'translateY(0)' },
+        ], { duration: index === 3 ? 800 : 600, delay: index * 75, easing: 'cubic-bezier(.16,1,.3,1)', fill: 'backwards' }));
+      });
 
       const targets = document.querySelectorAll<HTMLElement>(
         '.flow-strip-inner, .module-card, .workflow-layout, .gallery-frame, .addons-category-strip, .addons-empty-state, .addons-catalog-grid, .download-card, .requirements-section-new, .installation-steps > li, .repository-panel, .team-card, .principle-list > div, .team-invitation'
