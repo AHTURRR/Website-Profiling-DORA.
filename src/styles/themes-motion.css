@@ -274,6 +274,22 @@
   background: rgba(245, 158, 11, 0.15);
   border-color: rgba(217, 119, 6, 0.35);
 }
+:root[data-theme="light"] .spec-grid > div {
+  background: #ffffff;
+  border-color: #dcd6e8;
+}
+:root[data-theme="light"] .spec-grid > div:hover {
+  border-color: #8c75c7;
+  box-shadow: 0 4px 16px rgba(104, 84, 223, 0.08);
+}
+:root[data-theme="light"] .team-card {
+  background: #ffffff;
+  border-color: #dcd6e8;
+}
+:root[data-theme="light"] .team-card:hover {
+  border-color: #8c75c7;
+  box-shadow: 0 12px 28px rgba(104, 84, 223, 0.1);
+}
 :root[data-theme="light"] .member-visual { background: #eae2f4; border-color: #c5b3d7; }
 :root[data-theme="light"] .member-visual-1 { background: #e6ecf1; border-color: #bdcad5; }
 :root[data-theme="light"] .member-visual-2 { background: #ede5ee; border-color: #cbb9ce; }
