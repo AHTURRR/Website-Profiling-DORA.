@@ -465,178 +465,96 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
   overflow: hidden;
 }
 
-/* 3D Polyhedron Crystal from DORA Web */
-.crystal-centerpiece {
+/* Hero Motion Graphic Cybernetic Orbital Engine */
+.hero-orbital-backdrop {
   position: absolute;
-  top: 15px;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  color: var(--site-accent);
+  overflow: hidden;
+}
+
+/* Metriks Studio Cybernetic Orbital Engine */
+.hero-engine-centerpiece {
+  position: absolute;
+  top: -120px;
   left: 50%;
   transform: translateX(-50%);
-  width: 360px;
-  height: 260px;
-  display: grid;
-  place-items: center;
+  width: 640px;
+  height: 640px;
   pointer-events: none;
-  opacity: 0.65;
+  opacity: 0.7;
 }
-.crystal-halo {
+.engine-quantum-halo {
   position: absolute;
-  width: 280px;
-  height: 280px;
+  inset: 15%;
   border-radius: 50%;
-  background: radial-gradient(circle, rgba(158, 145, 255, 0.28) 0%, rgba(104, 84, 223, 0.12) 45%, transparent 72%);
-  filter: blur(24px);
-  animation: haloPulse 7s ease-in-out infinite alternate;
+  background: radial-gradient(circle, rgba(158, 145, 255, 0.2) 0%, rgba(104, 84, 223, 0.08) 50%, transparent 72%);
+  filter: blur(32px);
+  animation: engineHalo 8s ease-in-out infinite alternate;
 }
-.crystal-stage {
+.engine-radar-ring {
+  position: absolute;
+  inset: 22%;
+  border-radius: 50%;
+  border: 1px dashed rgba(158, 145, 255, 0.25);
+}
+.engine-gyro-svg {
   position: relative;
-  width: 320px;
-  height: 240px;
-  display: grid;
-  place-items: center;
-}
-.crystal-grid-plane {
-  position: absolute;
-  bottom: 24px;
-  width: 240px;
-  height: 70px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse at center, rgba(158, 145, 255, 0.2), transparent 70%);
-  transform: rotateX(68deg);
-  pointer-events: none;
-}
-.grid-ring {
-  position: absolute;
-  inset: 0;
-  border-radius: 50%;
-  border: 1px dashed rgba(158, 145, 255, 0.4);
-}
-.grid-ring-inner {
-  inset: 24%;
-  border-style: solid;
-  border-color: rgba(158, 145, 255, 0.5);
-}
-.crystal-scene {
-  position: relative;
-  width: 140px;
-  height: 140px;
-  perspective: 900px;
-  perspective-origin: 50% 48%;
-}
-.crystal-assembly {
-  position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-  animation: crystalHover 7s ease-in-out infinite;
-}
-.crystal-polyhedron {
-  position: absolute;
-  inset: 0;
-  transform-style: preserve-3d;
-  animation: crystalSpin 24s linear infinite;
-}
-.crystal-facet {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  width: 58px;
-  height: 52px;
-  margin-left: -29px;
-  border: 1px solid rgba(255, 255, 255, 0.7);
-  box-shadow: inset 0 0 14px rgba(158, 145, 255, 0.4);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-}
-.facet-top {
-  margin-top: -52px;
-  transform-origin: 50% 100%;
-  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
-  background: linear-gradient(175deg, rgba(255, 255, 255, 0.75), rgba(158, 145, 255, 0.5) 55%, rgba(104, 84, 223, 0.3));
-}
-.facet-t1 { transform: rotateY(0deg) translateZ(28px) rotateX(-34deg); }
-.facet-t2 { transform: rotateY(90deg) translateZ(28px) rotateX(-34deg); }
-.facet-t3 { transform: rotateY(180deg) translateZ(28px) rotateX(-34deg); }
-.facet-t4 { transform: rotateY(270deg) translateZ(28px) rotateX(-34deg); }
-.facet-bottom {
-  margin-top: 0;
-  transform-origin: 50% 0%;
-  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
-  background: linear-gradient(5deg, rgba(255, 255, 255, 0.7), rgba(104, 84, 223, 0.5) 55%, rgba(68, 51, 160, 0.35));
-}
-.facet-b1 { transform: rotateY(0deg) translateZ(28px) rotateX(34deg); }
-.facet-b2 { transform: rotateY(90deg) translateZ(28px) rotateX(34deg); }
-.facet-b3 { transform: rotateY(180deg) translateZ(28px) rotateX(34deg); }
-.facet-b4 { transform: rotateY(270deg) translateZ(28px) rotateX(34deg); }
-
-@keyframes crystalSpin {
-  0% { transform: rotateY(0deg) rotateX(14deg); }
-  100% { transform: rotateY(360deg) rotateX(14deg); }
-}
-@keyframes crystalHover {
-  0%, 100% { transform: translateY(0px) rotateZ(-2deg); }
-  50% { transform: translateY(-12px) rotateZ(3deg); }
-}
-@keyframes haloPulse {
-  0% { transform: scale(0.92); opacity: 0.6; }
-  100% { transform: scale(1.08); opacity: 1; }
-}
-
-/* Floating Motes Motion Graphic Field */
-.hero-motes-field {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-.mote {
-  position: absolute;
-  border-radius: 36%;
-  background: linear-gradient(140deg, #ffffff, #dcd4ff);
-  border: 1px solid rgba(255, 255, 255, 0.85);
-  box-shadow: 0 4px 14px rgba(104, 84, 223, 0.4);
-  opacity: 0.65;
-  animation: moteFloat var(--dur, 14s) ease-in-out infinite alternate;
-  animation-delay: var(--delay, 0s);
-}
-.mote.is-ring {
-  background: transparent;
-  border: 1.5px solid rgba(158, 145, 255, 0.35);
-  box-shadow: none;
-  border-radius: 50%;
-  opacity: 0.45;
-}
-@keyframes moteFloat {
-  0% { transform: translateY(0px) scale(0.9); }
-  50% { transform: translateY(-16px) translateX(8px) scale(1.05); }
-  100% { transform: translateY(-28px) translateX(-6px) scale(1); }
-}
-.hero-reticle {
-  position: absolute;
-  width: 440px;
-  height: 440px;
-  pointer-events: none;
-  opacity: 0.38;
-}
-.hero-reticle-left {
-  top: -60px;
-  left: calc(50% - 660px);
-}
-.hero-reticle-right {
-  top: -30px;
-  right: calc(50% - 660px);
-}
-.hero-reticle svg {
   width: 100%;
   height: 100%;
-}
-.hero-reticle-spin {
-  animation: orbital-spin 48s linear infinite;
   transform-origin: center;
 }
-.hero-reticle-rev {
-  animation: orbital-spin 32s linear infinite reverse;
-  transform-origin: center;
+.engine-spin-slow {
+  animation: orbital-spin 56s linear infinite;
+  transform-origin: 300px 300px;
+}
+.engine-spin-rev {
+  animation: orbital-spin 38s linear infinite reverse;
+  transform-origin: 300px 300px;
+}
+.engine-spin-medium {
+  animation: orbital-spin 26s linear infinite;
+  transform-origin: 300px 300px;
+}
+.engine-orbit-x {
+  animation: orbitTiltX 16s ease-in-out infinite alternate;
+  transform-origin: 300px 300px;
+}
+.engine-orbit-y {
+  animation: orbitTiltY 20s ease-in-out infinite alternate;
+  transform-origin: 300px 300px;
 }
 
-/* Ambient HUD Telemetry Tags */
+.quantum-node {
+  filter: drop-shadow(0 0 6px var(--site-accent));
+}
+.pulse-dot-1 { animation: quantumPulse 2.8s ease-in-out infinite; }
+.pulse-dot-2 { animation: quantumPulse 2.8s ease-in-out infinite 0.7s; }
+.pulse-dot-3 { animation: quantumPulse 2.8s ease-in-out infinite 1.4s; }
+.pulse-dot-4 { animation: quantumPulse 2.8s ease-in-out infinite 2.1s; }
+
+@keyframes engineHalo {
+  0% { transform: scale(0.9); opacity: 0.6; }
+  100% { transform: scale(1.1); opacity: 0.95; }
+}
+@keyframes orbitTiltX {
+  0% { transform: rotate(0deg) scaleY(1); }
+  50% { transform: rotate(180deg) scaleY(0.75); }
+  100% { transform: rotate(360deg) scaleY(1); }
+}
+@keyframes orbitTiltY {
+  0% { transform: rotate(0deg) scaleX(1); }
+  50% { transform: rotate(-180deg) scaleX(0.75); }
+  100% { transform: rotate(-360deg) scaleX(1); }
+}
+@keyframes quantumPulse {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.8); opacity: 1; }
+}
+
+/* Ambient HUD Telemetry Tags - Only at top */
 .hero-telemetry-tag {
   position: absolute;
   display: inline-flex;
@@ -680,16 +598,6 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
   top: 140px;
   right: calc(50% - 590px);
   animation-delay: 1.6s;
-}
-.tag-bottom-left {
-  bottom: 120px;
-  left: calc(50% - 580px);
-  animation-delay: 3s;
-}
-.tag-bottom-right {
-  bottom: 130px;
-  right: calc(50% - 580px);
-  animation-delay: 4.4s;
 }
 
 @keyframes float-telemetry {
@@ -1365,17 +1273,140 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
 .spec-grid span { color: var(--site-muted); font-size: 11px; }
 .spec-grid strong { font-weight: 500; font-size: 16px; }
 .spec-grid small { font-size: 11px; color: var(--site-muted); }
-.segmented-control { display: inline-flex; gap: 4px; padding: 4px; background: var(--site-surface); border: 1px solid var(--site-line); border-radius: var(--radius-inner); margin-bottom: 35px; }
-.segmented-control button { display: flex; align-items: center; justify-content: center; gap: 9px; border-radius: var(--radius-sm); color: var(--site-muted); padding: 11px 20px; font-size: 12px; min-height: 44px; transition: background-color 160ms ease-out, color 160ms ease-out; }
-.segmented-control button[aria-pressed="true"] { background: #2c273e; color: #d4cbff; }
-.installation-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 50px; }
-.installation-steps > li { display: flex; align-items: flex-start; gap: 20px; border-top: 1px solid var(--site-line); padding-top: 25px; min-width: 0; }
-.step-index { color: var(--site-accent); font-size: 12px; padding-top: 3px; }
-.installation-steps > li > div { min-width: 0; width: 100%; }
-.installation-steps h3 { font-size: 17px; margin-bottom: 12px; }
-.installation-steps p { font-size: 13px; overflow-wrap: anywhere; }
-.installation-note { display: flex; align-items: flex-start; gap: 11px; padding: 21px 24px; background: var(--site-surface); border: 1px solid var(--site-line); border-radius: var(--radius-inner); margin-top: 36px; font-size: 12px; }
-.installation-note svg { color: var(--site-accent); flex-shrink: 0; margin-top: 2px; }
+/* Modernized Clean Installation & Guide Section */
+.installation-new {
+  padding-block: 85px;
+  border-bottom: 1px solid var(--site-line);
+}
+.installation-card-shell {
+  background: var(--site-surface);
+  border: 1px solid var(--site-line);
+  border-radius: var(--radius-card);
+  padding: 44px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 36px;
+}
+.installation-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding-bottom: 28px;
+  border-bottom: 1px solid var(--site-line);
+}
+.installation-header-copy {
+  max-width: 580px;
+}
+.installation-header-copy h2 {
+  font-size: clamp(30px, 3.2vw, 42px);
+  margin-block: 8px 12px;
+}
+.installation-header-copy p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--site-muted);
+  margin: 0;
+}
+.installation-tab-wrapper {
+  flex-shrink: 0;
+}
+.installation-tab-wrapper .segmented-control {
+  margin-bottom: 0;
+}
+
+.installation-steps-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.installation-step-card {
+  background: #151320;
+  border: 1px solid #2f2840;
+  border-radius: var(--radius-inner);
+  padding: 24px 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  transition: transform 180ms var(--site-ease-quick), border-color 180ms ease-out, box-shadow 180ms ease-out;
+}
+.installation-step-card:hover {
+  transform: translateY(-2px);
+  border-color: #55447a;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.3);
+}
+.step-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.step-badge {
+  font-family: var(--font-family-mono);
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--site-accent);
+  background: rgba(158, 145, 255, 0.1);
+  border: 1px solid rgba(158, 145, 255, 0.25);
+  padding: 2px 9px;
+  border-radius: var(--radius-sm);
+}
+.step-counter {
+  font-family: var(--font-family-mono);
+  font-size: 14px;
+  font-weight: 700;
+  color: #5c5573;
+}
+.step-card-content h3 {
+  font-size: 16.5px;
+  font-weight: 600;
+  color: var(--site-text);
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+}
+.step-card-content p {
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--site-muted);
+  margin: 0;
+}
+.step-card-content .copy-control {
+  margin-top: 14px;
+  margin-bottom: 0;
+}
+
+.installation-footer-note {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background: #12101b;
+  border: 1px solid #2b253b;
+  border-radius: var(--radius-inner);
+  font-size: 12.5px;
+  line-height: 1.6;
+  color: var(--site-muted);
+}
+.note-icon-wrap {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius-sm);
+  background: rgba(158, 145, 255, 0.12);
+  border: 1px solid rgba(158, 145, 255, 0.25);
+  color: var(--site-accent);
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+}
+.note-text-wrap strong {
+  color: var(--site-text);
+  font-weight: 600;
+}
 
 .repository-section { padding-bottom: 100px; }
 .repository-panel {
@@ -1728,8 +1759,9 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
   .spec-grid small { font-size: 11px; }
   .segmented-control { display: flex; width: 100%; }
   .segmented-control button { flex: 1; padding-inline: 9px; font-size: 11px; }
-  .installation-steps { grid-template-columns: 1fr; gap: 25px; }
-  .installation-note { padding: 18px; }
+  .installation-card-shell { padding: 22px 18px; }
+  .installation-steps-grid { grid-template-columns: 1fr; gap: 14px; }
+  .installation-footer-note { flex-direction: column; align-items: flex-start; gap: 12px; }
   .repository-section { padding-bottom: 60px; }
   .repository-panel { padding: 22px 18px; }
   .repo-heading { font-size: 11px; gap: 10px; margin-bottom: 24px; }

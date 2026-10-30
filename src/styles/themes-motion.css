@@ -188,6 +188,41 @@
   border-color: #cfc2e3;
   background: #ede6f8;
 }
+:root[data-theme="light"] .installation-card-shell {
+  background: #ffffff;
+  border-color: #cbbfdf;
+  box-shadow: 0 16px 40px rgba(94, 63, 184, 0.08);
+}
+:root[data-theme="light"] .installation-step-card {
+  background: #fbf9fd;
+  border-color: #dfd5ed;
+}
+:root[data-theme="light"] .installation-step-card:hover {
+  background: #ffffff;
+  border-color: #a792d4;
+  box-shadow: 0 12px 32px rgba(94, 63, 184, 0.12);
+}
+:root[data-theme="light"] .step-badge {
+  background: #f0eaf8;
+  border-color: #cbb8e6;
+  color: #4a2e90;
+}
+:root[data-theme="light"] .step-counter {
+  color: #a497bd;
+}
+:root[data-theme="light"] .installation-footer-note {
+  background: #f6f2fa;
+  border-color: #dfd5ed;
+}
+:root[data-theme="light"] .note-icon-wrap {
+  background: #eee7ff;
+  border-color: #cfc0eb;
+  color: #5e3fb8;
+}
+:root[data-theme="light"] .note-text-wrap strong {
+  color: #22202e;
+}
+
 :root[data-theme="light"] .product-frame-top button { background: #fff; border-color: #bfb3d8; color: var(--site-text); }
 :root[data-theme="light"] .hero-view-tab[aria-pressed="true"] { background: #e5ddf4; color: #4a2e90; }
 :root[data-theme="light"] :is(.flow-strip-section, .addons-section) { background: #f2eff8; }

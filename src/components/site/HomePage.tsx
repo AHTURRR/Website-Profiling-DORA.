@@ -153,61 +153,37 @@ export function HomePage() {
     <section id="hero" className="new-hero">
       <div className="hero-light" aria-hidden="true" />
       <div className="hero-orbital-backdrop" aria-hidden="true">
-        {/* DORA Web Signature 3D Crystal & Grid Ring Centerpiece */}
-        <div className="crystal-centerpiece">
-          <div className="crystal-halo" />
-          <div className="crystal-stage">
-            <div className="crystal-grid-plane">
-              <div className="grid-ring" />
-              <div className="grid-ring grid-ring-inner" />
-            </div>
-            <div className="crystal-scene">
-              <div className="crystal-assembly">
-                <div className="crystal-polyhedron">
-                  <div className="crystal-facet facet-top facet-t1" />
-                  <div className="crystal-facet facet-top facet-t2" />
-                  <div className="crystal-facet facet-top facet-t3" />
-                  <div className="crystal-facet facet-top facet-t4" />
-                  <div className="crystal-facet facet-bottom facet-b1" />
-                  <div className="crystal-facet facet-bottom facet-b2" />
-                  <div className="crystal-facet facet-bottom facet-b3" />
-                  <div className="crystal-facet facet-bottom facet-b4" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Ambient Floating Motes from DORA Web */}
-        <div className="hero-motes-field">
-          <div className="mote mote-1" style={{ '--dur': '13s', '--delay': '0s', top: '18%', left: '8%', width: '13px', height: '13px' } as React.CSSProperties} />
-          <div className="mote mote-2 is-ring" style={{ '--dur': '17s', '--delay': '1.5s', top: '38%', left: '12%', width: '24px', height: '24px' } as React.CSSProperties} />
-          <div className="mote mote-3" style={{ '--dur': '15s', '--delay': '3s', top: '24%', right: '9%', width: '16px', height: '16px' } as React.CSSProperties} />
-          <div className="mote mote-4 is-ring" style={{ '--dur': '19s', '--delay': '0.8s', top: '52%', right: '11%', width: '28px', height: '28px' } as React.CSSProperties} />
-          <div className="mote mote-5" style={{ '--dur': '14s', '--delay': '2.2s', bottom: '16%', left: '15%', width: '11px', height: '11px' } as React.CSSProperties} />
-          <div className="mote mote-6 is-ring" style={{ '--dur': '16s', '--delay': '4s', bottom: '22%', right: '18%', width: '20px', height: '20px' } as React.CSSProperties} />
-        </div>
-
-        <div className="hero-reticle hero-reticle-left">
-          <svg viewBox="0 0 400 400" fill="none">
-            <circle cx="200" cy="200" r="180" stroke="currentColor" strokeWidth="0.8" strokeDasharray="4 8" opacity="0.22" className="hero-reticle-spin" />
-            <circle cx="200" cy="200" r="130" stroke="currentColor" strokeWidth="1" strokeDasharray="14 12" opacity="0.32" className="hero-reticle-rev" />
-            <circle cx="200" cy="200" r="80" stroke="currentColor" strokeWidth="0.8" strokeDasharray="2 6" opacity="0.18" />
-            <line x1="200" y1="10" x2="200" y2="390" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 6" opacity="0.2" />
-            <line x1="10" y1="200" x2="390" y2="200" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 6" opacity="0.2" />
-          </svg>
-        </div>
-        <div className="hero-reticle hero-reticle-right">
-          <svg viewBox="0 0 400 400" fill="none">
-            <circle cx="200" cy="200" r="180" stroke="currentColor" strokeWidth="0.8" strokeDasharray="6 10" opacity="0.22" className="hero-reticle-rev" />
-            <circle cx="200" cy="200" r="120" stroke="currentColor" strokeWidth="1" strokeDasharray="16 8" opacity="0.3" className="hero-reticle-spin" />
-            <circle cx="200" cy="200" r="60" stroke="currentColor" strokeWidth="0.8" opacity="0.2" />
-            <line x1="200" y1="10" x2="200" y2="390" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 6" opacity="0.2" />
-            <line x1="10" y1="200" x2="390" y2="200" stroke="currentColor" strokeWidth="0.5" strokeDasharray="4 6" opacity="0.2" />
+        {/* Metriks Studio Cybernetic Orbital Engine Motion Graphic */}
+        <div className="hero-engine-centerpiece">
+          <div className="engine-quantum-halo" />
+          <div className="engine-radar-ring" />
+          <svg className="engine-gyro-svg" viewBox="0 0 600 600" fill="none">
+            {/* Outer Cardinal Compass Grid */}
+            <circle cx="300" cy="300" r="280" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 7" opacity="0.25" className="engine-spin-slow" />
+            <circle cx="300" cy="300" r="230" stroke="currentColor" strokeWidth="1.2" strokeDasharray="18 10 4 10" opacity="0.35" className="engine-spin-rev" />
+            
+            {/* Inner Gyroscopic Ellipses */}
+            <ellipse cx="300" cy="300" rx="260" ry="110" stroke="currentColor" strokeWidth="1" strokeDasharray="8 6" opacity="0.3" className="engine-orbit-x" />
+            <ellipse cx="300" cy="300" rx="110" ry="260" stroke="currentColor" strokeWidth="1" strokeDasharray="8 6" opacity="0.3" className="engine-orbit-y" />
+            
+            {/* Core Reticle Target */}
+            <circle cx="300" cy="300" r="160" stroke="currentColor" strokeWidth="1" opacity="0.2" />
+            <circle cx="300" cy="300" r="90" stroke="currentColor" strokeWidth="1.5" strokeDasharray="24 16" opacity="0.4" className="engine-spin-medium" />
+            <circle cx="300" cy="300" r="40" stroke="currentColor" strokeWidth="1" opacity="0.25" />
+            
+            {/* Crosshair Ray Lines */}
+            <line x1="300" y1="20" x2="300" y2="580" stroke="currentColor" strokeWidth="0.75" strokeDasharray="4 8" opacity="0.25" />
+            <line x1="20" y1="300" x2="580" y2="300" stroke="currentColor" strokeWidth="0.75" strokeDasharray="4 8" opacity="0.25" />
+            
+            {/* Data Node Pulse Markers */}
+            <circle cx="300" cy="70" r="3.5" fill="currentColor" opacity="0.8" className="quantum-node pulse-dot-1" />
+            <circle cx="530" cy="300" r="3.5" fill="currentColor" opacity="0.8" className="quantum-node pulse-dot-2" />
+            <circle cx="300" cy="530" r="3.5" fill="currentColor" opacity="0.8" className="quantum-node pulse-dot-3" />
+            <circle cx="70" cy="300" r="3.5" fill="currentColor" opacity="0.8" className="quantum-node pulse-dot-4" />
           </svg>
         </div>
 
-        {/* HUD Telemetry Accents */}
+        {/* Ambient Scientific HUD Nodes - Positioned only in the top open area */}
         <div className="hero-telemetry-tag tag-top-left">
           <span className="telemetry-bracket">[</span>
           <span className="telemetry-dot" />
@@ -218,16 +194,6 @@ export function HomePage() {
           <span className="telemetry-bracket">[</span>
           <span className="telemetry-dot" />
           <code>RUNTIME: PYTORCH · SKLEARN</code>
-          <span className="telemetry-bracket">]</span>
-        </div>
-        <div className="hero-telemetry-tag tag-bottom-left">
-          <span className="telemetry-bracket">[</span>
-          <code>GRAPH: REACTIVE PIPELINE</code>
-          <span className="telemetry-bracket">]</span>
-        </div>
-        <div className="hero-telemetry-tag tag-bottom-right">
-          <span className="telemetry-bracket">[</span>
-          <code>PRIVACY: ZERO-TELEMETRY</code>
           <span className="telemetry-bracket">]</span>
         </div>
       </div>
@@ -726,7 +692,64 @@ export function HomePage() {
 
     <section id="requirements" className="site-container requirements-section-new"><div><span className="eyebrow">Sebelum mulai</span><h2>Pastikan perangkat<br />Anda siap.</h2><p>Spesifikasi dasar dari dokumentasi produk.</p></div><div className="spec-grid"><div><Monitor size={20} /><span>Sistem operasi</span><strong>Windows 10 / 11</strong><small>64-bit · Windows 10 build 19041+</small></div><div><Cpu size={20} /><span>Memori</span><strong>{requirements.ramMinimum}</strong><small>8 GB atau lebih disarankan</small></div><div><HardDrive size={20} /><span>Penyimpanan</span><strong>500 MB</strong><small>Ditambah ruang untuk dataset Anda</small></div><div><Code2 size={20} /><span>Runtime</span><strong>Siap dari installer</strong><small>Tidak perlu memasang Python terpisah</small></div></div></section>
 
-    <section id="installation" className="site-container content-section installation-new"><div className="section-heading"><div><span className="eyebrow">Dari unduh ke eksplorasi</span><h2>Mulai dari sini.</h2></div><p>Pilih installer untuk langsung memakai DORA, atau jalankan source code di lingkungan pengembangan Anda.</p></div><div className="segmented-control" role="group" aria-label="Metode instalasi"><button aria-pressed={guideTab === 'installer'} onClick={() => setGuideTab('installer')}><Monitor size={16} />Windows Installer</button><button aria-pressed={guideTab === 'source'} onClick={() => setGuideTab('source')}><Terminal size={16} />Dari source code</button></div><ol className="installation-steps">{guide.steps.map((step, index) => <li key={`${guideTab}-${step.step}`}><span className="step-index">0{index + 1}</span><div><h3>{cleanProductText(step.title)}</h3><p>{index === 2 && guideTab === 'installer' ? 'Ikuti setup wizard sampai selesai. Installer menyiapkan aplikasi, shortcut, dan uninstaller di perangkat Anda.' : cleanProductText(step.description)}</p>{guideTab === 'source' && index === 1 && <CopyControl value="cd Data-Overview-Research-Assistant" label="Masuk direktori proyek" />}{step.codeSnippet && <CopyControl value={step.codeSnippet} label={`Perintah langkah ${index + 1}`} />}</div></li>)}</ol><p className="installation-note"><ShieldCheck size={18} />Analisis dataset utama berlangsung di perangkat. Pencarian online dan fitur Gemini opsional membutuhkan koneksi internet.</p></section>
+    <section id="installation" className="site-container content-section installation-new">
+      <div className="installation-card-shell">
+        <div className="installation-header">
+          <div className="installation-header-copy">
+            <span className="eyebrow">Panduan Ringkas & Instalasi</span>
+            <h2>Mulai dari sini.</h2>
+            <p>Pilih metode yang sesuai: pasang instan menggunakan Windows Installer resmi atau jalankan langsung dari source code di lingkungan pengembangan Anda.</p>
+          </div>
+          <div className="installation-tab-wrapper">
+            <div className="segmented-control" role="group" aria-label="Metode instalasi">
+              <button aria-pressed={guideTab === 'installer'} onClick={() => setGuideTab('installer')}>
+                <Monitor size={15} />
+                <span>Windows Installer</span>
+              </button>
+              <button aria-pressed={guideTab === 'source'} onClick={() => setGuideTab('source')}>
+                <Terminal size={15} />
+                <span>Dari Source Code</span>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <ol className="installation-steps-grid">
+          {guide.steps.map((step, index) => (
+            <li key={`${guideTab}-${step.step}`} className="installation-step-card">
+              <div className="step-card-top">
+                <span className="step-badge">Langkah 0{index + 1}</span>
+                <span className="step-counter">0{index + 1}</span>
+              </div>
+              <div className="step-card-content">
+                <h3>{cleanProductText(step.title)}</h3>
+                <p>
+                  {index === 2 && guideTab === 'installer'
+                    ? 'Ikuti setup wizard sampai selesai. Installer menyiapkan aplikasi, shortcut, dan uninstaller di perangkat Anda.'
+                    : cleanProductText(step.description)}
+                </p>
+                {guideTab === 'source' && index === 1 && (
+                  <CopyControl value="cd Data-Overview-Research-Assistant" label="Masuk direktori proyek" />
+                )}
+                {step.codeSnippet && (
+                  <CopyControl value={step.codeSnippet} label={`Perintah langkah ${index + 1}`} />
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+
+        <div className="installation-footer-note">
+          <div className="note-icon-wrap">
+            <ShieldCheck size={18} />
+          </div>
+          <div className="note-text-wrap">
+            <strong>Keamanan & Privasi Pemrosesan:</strong>
+            <span> Seluruh audit struktur dan analisis dataset utama berlangsung 100% lokal di perangkat Anda. Pencarian literatur online dan fitur Gemini opsional membutuhkan koneksi internet.</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section id="github" className="site-container repository-section">
       <div className="repository-panel">
