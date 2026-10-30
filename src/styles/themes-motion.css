@@ -183,10 +183,19 @@
   border-color: #d1c7e1;
   color: #6f5f8b;
 }
+:root[data-theme="light"] .release-label {
+  background: #eee7ff;
+  border-color: #cfc0eb;
+  color: #5e3fb8;
+}
 :root[data-theme="light"] .release-label.is-previous {
   color: #645582;
   border-color: #cfc2e3;
   background: #ede6f8;
+}
+:root[data-theme="light"] .web-access-box {
+  background: #fbf9fd;
+  border-color: #dcd4eb;
 }
 :root[data-theme="light"] .installation-card-shell {
   background: #ffffff;

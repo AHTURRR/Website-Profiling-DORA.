@@ -852,7 +852,7 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
   position: relative;
   background: #0d0c14;
   border: 1px solid #3d3550;
-  border-radius: var(--radius-lg);
+  border-radius: var(--radius-card);
   overflow: hidden;
   box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45), 0 0 40px rgba(158, 145, 255, 0.08);
 }
@@ -1042,7 +1042,8 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
   background: var(--site-surface);
   border: 1px solid var(--site-line);
   padding: 7px 14px;
-  border-radius: 8px;
+  border-radius: var(--radius-btn);
+  font-family: var(--font-family-sans);
   font-size: 12px;
   color: var(--site-muted);
   cursor: pointer;
@@ -1077,7 +1078,7 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
   gap: 32px;
   background: var(--site-surface);
   border: 1px solid var(--site-line);
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-card);
   padding: 24px 28px;
   align-items: center;
 }
@@ -1089,12 +1090,14 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
 .preview-badge-lead {
   font-family: var(--font-family-mono);
   font-size: 11px;
+  font-weight: 600;
   color: var(--site-accent);
   letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
 .preview-meta-copy p {
-  font-size: 13px;
-  line-height: 1.7;
+  font-size: 13.5px;
+  line-height: 1.65;
   color: var(--site-text);
   margin: 0;
 }
@@ -1110,7 +1113,7 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
   display: flex;
   align-items: center;
   gap: 8px;
-  font-size: 12px;
+  font-size: 12.5px;
   color: #c9c5d8;
 }
 .preview-capabilities-chips svg {
@@ -1282,7 +1285,7 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
   padding: 20px 22px;
   background: #151320;
   border: 1px solid #3c3254;
-  border-radius: var(--radius-card);
+  border-radius: var(--radius-inner);
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -1293,12 +1296,13 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
   gap: 10px;
 }
 .web-access-header strong {
-  font-size: 14px;
+  font-family: var(--font-family-display);
+  font-size: 14.5px;
   color: var(--site-text);
-  font-weight: 500;
+  font-weight: 600;
 }
 .web-access-box p {
-  font-size: 12.5px;
+  font-size: 13.5px;
   color: var(--site-muted);
   line-height: 1.6;
   margin: 0;
@@ -1308,6 +1312,9 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
   min-height: 38px;
   padding: 6px 16px;
   font-size: 12.5px;
+  border-radius: var(--radius-btn);
+  display: inline-flex;
+  align-items: center;
   gap: 8px;
 }
 
@@ -1343,31 +1350,42 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
   border-color: #383149;
   color: #928ba8;
 }
+.release-label {
+  margin-left: auto;
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 3px 9px;
+  border-radius: var(--radius-tag);
+  background: rgba(104, 84, 223, 0.22);
+  border: 1px solid rgba(138, 120, 241, 0.45);
+  color: #ded8ff;
+  white-space: nowrap;
+}
 .release-label.is-previous {
-  color: #988fb6;
-  border: 1px solid #3d3550;
-  background: #1b1826;
-  padding: 2px 8px;
-  border-radius: var(--radius-pill);
+  color: #b0a7cb;
+  border: 1px solid #453c5a;
+  background: rgba(255, 255, 255, 0.04);
 }
 .download-card:hover {
   transform: translateY(-2px);
-  border-color: #635282;
+  border-color: #7b66ad;
   box-shadow: 0 12px 36px rgba(10, 8, 20, 0.4);
 }
 .download-card-heading { display: flex; align-items: center; gap: 13px; }
 .download-icon { width: 45px; height: 45px; display: grid; place-items: center; background: #29223e; color: #b1a3ff; border: 1px solid #41345e; border-radius: var(--radius-inner); flex-shrink: 0; transition: transform 220ms var(--site-ease), color 220ms ease; }
-.download-card-heading strong { font-size: 15px; display: block; font-weight: 500; }
-.download-card-heading small { color: var(--site-muted); font-size: 11px; }
-.release-label { margin-left: auto; color: #c9c0ff; font-size: 10px; white-space: nowrap; }
-.download-file { color: #b5b0c4; font-family: var(--font-family-mono); font-size: 12px; margin-block: 24px; overflow-wrap: anywhere; }
-.release-facts { display: flex; gap: 20px; justify-content: space-between; padding-block: 20px; border-top: 1px solid var(--site-line); }
-.release-facts dt { color: var(--site-muted); font-size: 10px; }
-.release-facts dd { font-size: 12px; margin-top: 5px; }
+.download-card-heading strong { font-family: var(--font-family-display); font-size: 16px; display: block; font-weight: 600; color: var(--site-text); }
+.download-card-heading small { font-family: var(--font-family-mono); color: var(--site-muted); font-size: 11px; }
+.download-file { color: #b5b0c4; font-family: var(--font-family-mono); font-size: 12px; margin-block: 20px 22px; overflow-wrap: anywhere; }
+.release-facts { display: flex; gap: 16px; justify-content: space-between; padding-block: 16px; border-top: 1px solid var(--site-line); }
+.release-facts dt { font-family: var(--font-family-mono); color: var(--site-muted); font-size: 10.5px; text-transform: uppercase; letter-spacing: 0.04em; }
+.release-facts dd { font-family: var(--font-family-mono); font-size: 12.5px; font-weight: 600; color: var(--site-text); margin-top: 4px; }
 .full-width { width: 100%; }
-.download-card .download-origin { font-size: 10px; display: flex; align-items: center; justify-content: center; gap: 6px; margin: 13px 0 20px; max-width: none; }
+.download-card .download-origin { font-family: var(--font-family-mono); font-size: 10.5px; display: flex; align-items: center; justify-content: center; gap: 6px; margin: 13px 0 18px; max-width: none; color: #aaa5be; }
 .checksum-details { border-top: 1px solid var(--site-line); }
-.checksum-details > summary { display: flex; align-items: center; justify-content: space-between; min-height: 53px; color: #c6c1d4; font-size: 12px; cursor: pointer; }
+.checksum-details > summary { display: flex; align-items: center; justify-content: space-between; min-height: 48px; color: #c6c1d4; font-family: var(--font-family-sans); font-size: 12.5px; font-weight: 500; cursor: pointer; }
 .checksum-details > p { font-size: 12px; margin-block: 12px; }
 .copy-control { border: 1px solid #3d3949; background: #0d0d14; border-radius: var(--radius-inner); margin-block: 12px; padding: 12px; min-width: 0; }
 .copy-heading { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 5px; color: #bdb8cd; font-size: 10px; }
