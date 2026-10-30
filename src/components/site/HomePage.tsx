@@ -4,7 +4,7 @@ import { productConfig } from '../../config/product.config';
 import type { FeatureItem } from '../../types/product.types';
 import { ContentDialog } from './ContentDialog';
 import { WindowsDefenderGuideModal } from '../modals/WindowsDefenderGuideModal';
-import { currentRelease, legacyRelease, doraWebUrl, repositoryUrl, websiteRepositoryUrl } from '../../config/site.config';
+import { currentRelease, legacyRelease, doraWebUrl, repositoryUrl } from '../../config/site.config';
 import { addonCategories, verifiedAddons, addonsCatalogMeta, type AddonCategoryId } from '../../config/addons.config';
 
 const modules = [
@@ -807,17 +807,12 @@ export function HomePage() {
         </div>
         <div className="repo-distinction-bar">
           <div className="repo-distinction-item">
-            <span className="repo-distinction-label">Repositori Aplikasi Desktop (Inti)</span>
-            <strong>NezzyGremory / Data-Overview-Research-Assistant</strong>
-            <small>Python 3.13 · PySide6 · Lisensi MIT · Rilis {currentRelease.version}</small>
-          </div>
-          <div className="repo-distinction-item">
-            <span className="repo-distinction-label">Repositori Website Profil Ini</span>
-            <a href={websiteRepositoryUrl} target="_blank" rel="noopener noreferrer">
-              <span>AHTURRR / Website-Profiling-DORA.</span>
+            <span className="repo-distinction-label">Repositori Resmi Aplikasi Desktop (Inti)</span>
+            <a href={repositoryUrl} target="_blank" rel="noopener noreferrer">
+              <span>NezzyGremory / Data-Overview-Research-Assistant</span>
               <ArrowUpRight size={14} />
             </a>
-            <small>React 19 · TypeScript · Pusat informasi, pratinjau, dan dokumentasi web</small>
+            <small>Python 3.13 · PySide6 · Lisensi MIT · Rilis {currentRelease.version} · 100% Pemrosesan Dataset Lokal</small>
           </div>
         </div>
       </div>

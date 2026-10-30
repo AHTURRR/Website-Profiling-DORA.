@@ -47,7 +47,7 @@ export function TeamPage() {
         <div>
           <span className="eyebrow">Ikut membangun & menjelajah</span>
           <h2>Ide bagus bisa<br />datang dari siapa saja.</h2>
-          <p>Kembali ke ikhtisar fitur DORA, pelajari kode sumber aplikasi desktop di GitHub, atau tinjau repositori website profil ini.</p>
+          <p>Kembali ke ikhtisar fitur DORA, pelajari kode sumber aplikasi desktop di GitHub, atau temukan informasi rilis resmi terbaru.</p>
         </div>
         <div className="team-invitation-actions">
           <a className="button primary" href="/#github"><Github size={18} />Bagian Repositori DORA<ArrowRight size={16} /></a>
