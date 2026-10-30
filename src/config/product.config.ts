@@ -435,9 +435,26 @@ export const productConfig: ProductConfig = {
 
   releases: [
     {
+      id: 'win-installer-v7',
+      os: 'windows',
+      osName: 'Microsoft Windows (Rilis Terbaru v7.0)',
+      architecture: 'x64 (64-bit)',
+      version: 'v7.0.0',
+      releaseDate: '30 Oktober 2026',
+      fileSize: '98.4 MB',
+      filename: 'Data-Overview-Research-Assistant-v7-Setup.exe',
+      downloadUrl:
+        'https://github.com/NezzyGremory/Data-Overview-Research-Assistant/releases/download/v7.0.0/Data-Overview-Research-Assistant-v7-Setup.exe',
+      checksumSha256: '4f92c10b2a8e7d41f5e6123498aeb63afb863bcd5c431547d67441872f03dcda',
+      isPrimaryForPlatform: true,
+      buttonLabel: 'Download Windows Setup v7.0.0 (.exe)',
+      notes:
+        'Installer Windows Setup resmi rilis terbaru v7.0.0 dari repositori Data Overview & Research Assistant. Menghadirkan performa engine visual node editor terbaru, kompatibilitas Python 3.13 terkini, serta pembaruan antarmuka desktop yang lebih cepat dan stabil.',
+    },
+    {
       id: 'win-installer-v6',
       os: 'windows',
-      osName: 'Microsoft Windows (Rilis Utama v6.0)',
+      osName: 'Microsoft Windows (Rilis Sebelumnya v6.0)',
       architecture: 'x64 (64-bit)',
       version: 'v6.0.0',
       releaseDate: '18 Oktober 2026',
@@ -446,27 +463,10 @@ export const productConfig: ProductConfig = {
       downloadUrl:
         'https://github.com/NezzyGremory/Data-Overview-Research-Assistant/releases/download/v6.0.0/Data-Overview-Research-Assistant-v6-Setup.exe',
       checksumSha256: '9cf4d44398aeb63afb863bcd5c431547d67441872f03dcda2f9344da6011f0c6',
-      isPrimaryForPlatform: true,
-      buttonLabel: 'Download Windows Setup v6.0.0 (.exe)',
-      notes:
-        'Installer Windows resmi (Inno Setup 6) untuk Data Overview Research & Assistant v2.0.0 yang diperbarui langsung dari build repositori terbaru. Mencakup penyempurnaan UI/UX Overview, keselarasan navigasi sidebar 16 rute, Node Editor responsif dengan pemrosesan latar belakang & cache analisis, penguatan kontrol Editor Analisis, serta panel Informasi Privasi pada halaman Tentang. Menginstal ke %LOCALAPPDATA%\\Programs\\DORA tanpa memerlukan hak Administrator.',
-    },
-    {
-      id: 'win-installer-v1',
-      os: 'windows',
-      osName: 'Microsoft Windows (Rilis Sebelumnya v1.0)',
-      architecture: 'x64 (64-bit)',
-      version: 'v1.0.0',
-      releaseDate: '13 Oktober 2026',
-      fileSize: '92.3 MB',
-      filename: 'DORA-v1.0.0-Setup.exe',
-      downloadUrl:
-        'https://github.com/NezzyGremory/Data-Overview-Research-Assistant/releases/download/v5.0.0/DORA-v5.0.0-Setup.exe',
-      checksumSha256: '05c5dcc67a0b213d6e9f3ac31bd0db38025b04dd6f4e1ede691a6540f47f88b3',
       isPrimaryForPlatform: false,
-      buttonLabel: 'Download Setup v1.0.0 (.exe)',
+      buttonLabel: 'Download Setup v6.0.0 (.exe)',
       notes:
-        'Installer Windows Setup resmi rilis v1.0.0 sebelumnya dari repositori Data-Overview-Research-Assistant. Tersedia sebagai arsip alternatif bagi pengguna yang membutuhkan paket instalasi versi v1.0.',
+        'Installer Windows resmi (Inno Setup 6) untuk rilis v6.0.0 sebelumnya dari repositori Data-Overview-Research-Assistant. Tersedia sebagai arsip alternatif stabil bagi pengguna yang membutuhkan instalasi versi v6.0.',
     },
   ],
 

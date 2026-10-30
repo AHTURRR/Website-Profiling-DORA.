@@ -142,6 +142,52 @@
 :root[data-theme="light"] .hero-screenshot { border-color: var(--site-line); background: #fff; }
 :root[data-theme="light"] .frame-decor-dots i { background: #c4bcd6; }
 :root[data-theme="light"] .frame-stage-badge, :root[data-theme="light"] .addons-status-pill { background: #eae3f8; border-color: #c5b6e4; color: #4a3194; }
+:root[data-theme="light"] .badge-beta {
+  background: rgba(94, 63, 184, 0.08);
+  border-color: rgba(94, 63, 184, 0.3);
+  color: #5e3fb8;
+}
+:root[data-theme="light"] .nav-web-link {
+  background: #ffffff;
+  border-color: #cbbfdf;
+  color: var(--site-text);
+}
+:root[data-theme="light"] .nav-web-link:hover {
+  background: #f7f3fd;
+  border-color: var(--site-accent);
+}
+:root[data-theme="light"] .button.tertiary {
+  background: #f7f4fc;
+  border-color: #d1c5e7;
+  color: #4a2e90;
+}
+:root[data-theme="light"] .button.tertiary:hover {
+  background: #eee8f8;
+  border-color: var(--site-accent);
+}
+:root[data-theme="light"] .web-access-box {
+  background: #ffffff;
+  border-color: #d8cde9;
+}
+:root[data-theme="light"] .download-card.is-primary {
+  background: #ffffff;
+  border-color: #9e87cf;
+  box-shadow: 0 14px 36px rgba(94, 63, 184, 0.08);
+}
+:root[data-theme="light"] .download-card.is-secondary {
+  background: #f9f8fc;
+  border-color: #d2c8e3;
+}
+:root[data-theme="light"] .download-icon.is-muted {
+  background: #eeeaf5;
+  border-color: #d1c7e1;
+  color: #6f5f8b;
+}
+:root[data-theme="light"] .release-label.is-previous {
+  color: #645582;
+  border-color: #cfc2e3;
+  background: #ede6f8;
+}
 :root[data-theme="light"] .product-frame-top button { background: #fff; border-color: #bfb3d8; color: var(--site-text); }
 :root[data-theme="light"] .hero-view-tab[aria-pressed="true"] { background: #e5ddf4; color: #4a2e90; }
 :root[data-theme="light"] :is(.flow-strip-section, .addons-section) { background: #f2eff8; }

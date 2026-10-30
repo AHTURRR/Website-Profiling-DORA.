@@ -1,6 +1,5 @@
 import { ArrowUpRight, ArrowRight, GitFork as Github, Code2, PenTool, BookOpen } from 'lucide-react';
 import { creditSource, studioCredits, teamMembers, specialThanks } from '../../config/team.config';
-import { repositoryUrl, websiteRepositoryUrl } from '../../config/site.config';
 
 export function TeamPage() {
   return <>
@@ -15,7 +14,7 @@ export function TeamPage() {
         <span>Tim pengembang berdasarkan berkas kredit resmi aplikasi</span>
         <div className="team-intro-links">
           <a href={creditSource} target="_blank" rel="noopener noreferrer">Sumber credits.json<ArrowUpRight size={15} /></a>
-          <a href={repositoryUrl} target="_blank" rel="noopener noreferrer">Repositori DORA<ArrowUpRight size={15} /></a>
+          <a href="/#github">Bagian Repositori DORA<ArrowRight size={15} /></a>
         </div>
       </div>
     </section>
@@ -51,9 +50,8 @@ export function TeamPage() {
           <p>Kembali ke ikhtisar fitur DORA, pelajari kode sumber aplikasi desktop di GitHub, atau tinjau repositori website profil ini.</p>
         </div>
         <div className="team-invitation-actions">
-          <a className="button primary" href={repositoryUrl} target="_blank" rel="noopener noreferrer"><Github size={18} />Repositori utama DORA<ArrowUpRight size={16} /></a>
+          <a className="button primary" href="/#github"><Github size={18} />Bagian Repositori DORA<ArrowRight size={16} /></a>
           <a className="button secondary" href="/">Kembali ke beranda DORA<ArrowRight size={16} /></a>
-          <a className="inline-link" href={websiteRepositoryUrl} target="_blank" rel="noopener noreferrer">Repositori website profil<ArrowUpRight size={15} /></a>
         </div>
       </div>
     </section>

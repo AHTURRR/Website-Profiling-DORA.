@@ -1,9 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, ArrowRight, Download, GitFork as Github, Database, Workflow, BookOpen, Check, Copy, Monitor, Maximize2, Code2, GitPullRequest, ShieldCheck, Plus, Terminal, Cpu, HardDrive, Layers, Puzzle, FileCode2, Wrench, ChevronLeft, ChevronRight, Activity } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Download, GitFork as Github, Database, Workflow, BookOpen, Check, Copy, Monitor, Maximize2, Code2, GitPullRequest, ShieldCheck, Plus, Terminal, Cpu, HardDrive, Layers, Puzzle, FileCode2, Wrench, ChevronLeft, ChevronRight, Activity, Globe } from 'lucide-react';
 import { productConfig } from '../../config/product.config';
 import type { FeatureItem } from '../../types/product.types';
 import { ContentDialog } from './ContentDialog';
-import { currentRelease, repositoryUrl, websiteRepositoryUrl } from '../../config/site.config';
+import { currentRelease, legacyRelease, doraWebUrl, repositoryUrl, websiteRepositoryUrl } from '../../config/site.config';
 import { addonCategories, verifiedAddons, addonsCatalogMeta, type AddonCategoryId } from '../../config/addons.config';
 
 const modules = [
@@ -90,7 +90,7 @@ function Screenshot({ src, title, eager = false }: { src: string; title: string;
   useEffect(() => {
     if (imageRef.current?.complete && imageRef.current.naturalWidth > 0) setLoaded(true);
   }, [src]);
-  return failed ? <div className="image-fallback"><Monitor size={32} /><p>Pratinjau belum dapat dimuat.</p><a href={repositoryUrl} target="_blank" rel="noopener noreferrer">Lihat aplikasi di repositori</a></div> : <div className={`screenshot-content ${loaded ? 'is-loaded' : ''}`}><img ref={imageRef} src={src} alt={title} width="1920" height="1080" loading={eager ? 'eager' : 'lazy'} onLoad={() => setLoaded(true)} onError={() => setFailed(true)} />{!loaded && <span className="screenshot-loading" role="status">Memuat pratinjau aplikasi…</span>}</div>;
+  return failed ? <div className="image-fallback"><Monitor size={32} /><p>Pratinjau belum dapat dimuat.</p><a href="#downloads">Buka bagian unduhan</a></div> : <div className={`screenshot-content ${loaded ? 'is-loaded' : ''}`}><img ref={imageRef} src={src} alt={title} width="1920" height="1080" loading={eager ? 'eager' : 'lazy'} onLoad={() => setLoaded(true)} onError={() => setFailed(true)} />{!loaded && <span className="screenshot-loading" role="status">Memuat pratinjau aplikasi…</span>}</div>;
 }
 
 export function HomePage() {
@@ -197,11 +197,20 @@ export function HomePage() {
         </div>
       </div>
       <div className="site-container hero-inner">
-        <a className="release-link" href={`${repositoryUrl}/releases/tag/${currentRelease.version}`} target="_blank" rel="noopener noreferrer"><span className="release-dot" />DORA {currentRelease.version}<span className="release-divider" />Kenali rilis terbaru<ArrowUpRight size={14} /></a>
+        <a className="release-link" href="#downloads"><span className="release-dot" />DORA {currentRelease.version}<span className="release-divider" />Rilis v7.0 Terbaru<ArrowRight size={14} /></a>
         <h1>Dari data mentah,<br />menjadi <span className="headline-gradient">arah riset.</span></h1>
         <p className="hero-lead">Eksplorasi dataset, rangkai eksperimen machine learning,<br className="desktop-break" /> dan temukan literatur ilmiah. Dalam satu ruang kerja desktop.</p>
-        <div className="hero-actions"><a className="button primary" href="#downloads"><Download size={17} />Unduh untuk Windows</a><a className="button secondary" href="#preview">Jelajahi {productConfig.previews.length} tampilan<ArrowRight size={16} /></a></div>
-        <div className="hero-caption"><span>Windows 10/11 · x64</span><span className="caption-dot" />Pemrosesan dataset lokal<span className="caption-dot" /><a href={`${repositoryUrl}/blob/main/LICENSE`} target="_blank" rel="noopener noreferrer">Lisensi MIT</a></div>
+        <div className="hero-actions">
+          <a className="button primary" href="#downloads"><Download size={17} />Unduh untuk Windows</a>
+          <a className="button secondary" href="#preview">Jelajahi {productConfig.previews.length} tampilan<ArrowRight size={16} /></a>
+          <a className="button tertiary web-beta-hero-btn" href={doraWebUrl} target="_blank" rel="noopener noreferrer">
+            <Globe size={15} />
+            <span>Buka DORA Web</span>
+            <span className="badge-beta">Beta</span>
+            <ArrowUpRight size={13} />
+          </a>
+        </div>
+        <div className="hero-caption"><span>Windows 10/11 · x64</span><span className="caption-dot" />Pemrosesan dataset lokal<span className="caption-dot" /><a href="#github">Lisensi MIT (Open Source)</a></div>
 
         <div className="hero-product-stage">
           <div className="hero-view-bar" role="toolbar" aria-label="Pilih tampilan ruang kerja DORA di hero">
@@ -592,7 +601,93 @@ export function HomePage() {
       </div>
     </section>
 
-    <section id="downloads" className="download-section"><div className="site-container download-layout"><div><span className="eyebrow">Ruang kerja berikutnya, di desktop Anda</span><h2>Siap menemukan<br /><span>cerita di balik data?</span></h2><p>Unduh installer resmi DORA dari GitHub Releases. Untuk Windows 10 dan 11, arsitektur 64-bit.</p><div className="download-facts"><span><Monitor size={17} />Windows x64</span><span><HardDrive size={17} />{currentRelease.size}</span><span><Code2 size={17} />MIT License</span></div><a className="inline-link" href={`${repositoryUrl}/releases`} target="_blank" rel="noopener noreferrer">Lihat semua rilis dan source code<ArrowUpRight size={16} /></a></div><div className="download-card"><div className="download-card-heading"><span className="download-icon"><Download size={24} /></span><span><strong>DORA untuk Windows</strong><small>Installer resmi · {currentRelease.version}</small></span><span className="release-label">Rilis terbaru</span></div><div className="download-file">{currentRelease.filename}</div><dl className="release-facts"><div><dt>Versi</dt><dd>{currentRelease.version}</dd></div><div><dt>Ukuran</dt><dd>{currentRelease.size}</dd></div><div><dt>Aset diperbarui</dt><dd>{currentRelease.updated}</dd></div></dl><a className="button primary full-width" href={currentRelease.url}><Download size={17} />Unduh installer Windows<ArrowUpRight size={16} /></a><p className="download-origin"><ShieldCheck size={14} />File disediakan oleh GitHub Releases</p><details className="checksum-details"><summary>Verifikasi integritas file<Plus size={16} /></summary><CopyControl value={currentRelease.sha256} label="SHA256" /><CopyControl value={`Get-FileHash -Algorithm SHA256 "${currentRelease.filename}"`} label="Perintah verifikasi PowerShell" /><p>Cocokkan hasil perintah dengan SHA256 di atas sebelum menjalankan installer.</p></details><button className="download-help" onClick={() => setHelpOpen(true)}>Muncul peringatan saat mengunduh?</button></div></div></section>
+    <section id="downloads" className="download-section">
+      <div className="site-container download-layout">
+        <div>
+          <span className="eyebrow">Ruang kerja riset, di desktop & web Anda</span>
+          <h2>Siap menemukan<br /><span>cerita di balik data?</span></h2>
+          <p>Pilih paket installer resmi DORA untuk Windows 64-bit sesuai kebutuhan riset Anda, atau akses langsung melalui web browser tanpa perlu instalasi.</p>
+          <div className="download-facts">
+            <span><Monitor size={17} />Windows 10/11 x64</span>
+            <span><HardDrive size={17} />{currentRelease.size}</span>
+            <span><Code2 size={17} />Lisensi Open Source</span>
+          </div>
+
+          <div className="web-access-box">
+            <div className="web-access-header">
+              <span className="badge-beta">BETA</span>
+              <strong>Akses DORA via Web Browser</strong>
+            </div>
+            <p>Eksplorasi dataset dan analisis literatur instan langsung dari browser tanpa perlu mengunduh file instalasi.</p>
+            <a className="button primary web-button" href={doraWebUrl} target="_blank" rel="noopener noreferrer">
+              <Globe size={16} />
+              <span>Buka DORA Web</span>
+              <span className="badge-beta">Beta</span>
+              <ArrowUpRight size={15} />
+            </a>
+          </div>
+
+          <a className="inline-link" href="#github">
+            Pelajari kode sumber di bagian Repositori<ArrowRight size={16} />
+          </a>
+        </div>
+
+        <div className="download-cards-container">
+          {/* Card Versi 7 (Terbaru) */}
+          <div className="download-card is-primary">
+            <div className="download-card-heading">
+              <span className="download-icon"><Download size={22} /></span>
+              <span><strong>DORA v7</strong><small>Installer resmi · {currentRelease.version}</small></span>
+              <span className="release-label">Rilis Terbaru</span>
+            </div>
+            <div className="download-file">{currentRelease.filename}</div>
+            <dl className="release-facts">
+              <div><dt>Versi</dt><dd>{currentRelease.version}</dd></div>
+              <div><dt>Ukuran</dt><dd>{currentRelease.size}</dd></div>
+              <div><dt>Pembaruan</dt><dd>{currentRelease.updated}</dd></div>
+            </dl>
+            <a className="button primary full-width" href={currentRelease.url} download>
+              <Download size={16} />
+              <span>Unduh DORA v7 (.exe)</span>
+              <ArrowUpRight size={15} />
+            </a>
+            <p className="download-origin"><ShieldCheck size={14} />Rilis Utama Windows x64</p>
+            <details className="checksum-details">
+              <summary>Verifikasi integritas file SHA256<Plus size={15} /></summary>
+              <CopyControl value={currentRelease.sha256} label="SHA256" />
+              <CopyControl value={`Get-FileHash -Algorithm SHA256 "${currentRelease.filename}"`} label="Perintah PowerShell" />
+            </details>
+          </div>
+
+          {/* Card Versi 6 (Sebelumnya) */}
+          <div className="download-card is-secondary">
+            <div className="download-card-heading">
+              <span className="download-icon is-muted"><Download size={20} /></span>
+              <span><strong>DORA v6</strong><small>Installer arsip · {legacyRelease.version}</small></span>
+              <span className="release-label is-previous">Rilis Sebelumnya</span>
+            </div>
+            <div className="download-file">{legacyRelease.filename}</div>
+            <dl className="release-facts">
+              <div><dt>Versi</dt><dd>{legacyRelease.version}</dd></div>
+              <div><dt>Ukuran</dt><dd>{legacyRelease.size}</dd></div>
+              <div><dt>Pembaruan</dt><dd>{legacyRelease.updated}</dd></div>
+            </dl>
+            <a className="button secondary full-width" href={legacyRelease.url} download>
+              <Download size={16} />
+              <span>Unduh DORA v6 (.exe)</span>
+              <ArrowUpRight size={15} />
+            </a>
+            <details className="checksum-details">
+              <summary>Verifikasi integritas file SHA256<Plus size={15} /></summary>
+              <CopyControl value={legacyRelease.sha256} label="SHA256" />
+              <CopyControl value={`Get-FileHash -Algorithm SHA256 "${legacyRelease.filename}"`} label="Perintah PowerShell" />
+            </details>
+          </div>
+
+          <button className="download-help" onClick={() => setHelpOpen(true)}>Muncul peringatan saat mengunduh?</button>
+        </div>
+      </div>
+    </section>
 
     <section id="requirements" className="site-container requirements-section-new"><div><span className="eyebrow">Sebelum mulai</span><h2>Pastikan perangkat<br />Anda siap.</h2><p>Spesifikasi dasar dari dokumentasi produk.</p></div><div className="spec-grid"><div><Monitor size={20} /><span>Sistem operasi</span><strong>Windows 10 / 11</strong><small>64-bit · Windows 10 build 19041+</small></div><div><Cpu size={20} /><span>Memori</span><strong>{requirements.ramMinimum}</strong><small>8 GB atau lebih disarankan</small></div><div><HardDrive size={20} /><span>Penyimpanan</span><strong>500 MB</strong><small>Ditambah ruang untuk dataset Anda</small></div><div><Code2 size={20} /><span>Runtime</span><strong>Siap dari installer</strong><small>Tidak perlu memasang Python terpisah</small></div></div></section>
 
@@ -651,10 +746,10 @@ export function HomePage() {
       </div>
     </section>
 
-    <section id="faq" className="site-container faq-new"><div><span className="eyebrow">Hal yang mungkin Anda tanyakan</span><h2>Sebelum melangkah<br />lebih jauh.</h2><p>Informasi penggunaan, privasi, dan dukungan DORA.</p><a className="inline-link" href={`${repositoryUrl}/issues`} target="_blank" rel="noopener noreferrer">Ada pertanyaan lain?<ArrowUpRight size={16} /></a></div><div className="faq-list">{faqList.map(faq => <details key={faq.id}><summary>{cleanProductText(faq.question)}<Plus size={18} /></summary><p>{cleanProductText(faq.answer)}</p></details>)}</div></section>
+    <section id="faq" className="site-container faq-new"><div><span className="eyebrow">Hal yang mungkin Anda tanyakan</span><h2>Sebelum melangkah<br />lebih jauh.</h2><p>Informasi penggunaan, privasi, dan dukungan DORA.</p><a className="inline-link" href="#github">Punya pertanyaan lain? Buka bagian Repositori<ArrowRight size={16} /></a></div><div className="faq-list">{faqList.map(faq => <details key={faq.id}><summary>{cleanProductText(faq.question)}<Plus size={18} /></summary><p>{cleanProductText(faq.answer)}</p></details>)}</div></section>
 
     {feature && <ContentDialog title={cleanProductText(feature.title)} onClose={() => setFeature(null)}><span className="dialog-scope">{feature.executionScope}</span><p>{cleanProductText(feature.description)}</p><ul className="dialog-capabilities">{feature.capabilities?.map(item => <li key={item}><Check size={16} /><span>{cleanProductText(item)}</span></li>)}</ul></ContentDialog>}
     {imageOpen && <ContentDialog title={imageTarget === 'hero' ? activeHeroView.title : cleanProductText(activePreview.title)} onClose={() => setImageOpen(false)} wide><Screenshot src={imageTarget === 'hero' ? activeHeroView.src : activePreview.imageSrc || '/screenshots/overview.png'} title={imageTarget === 'hero' ? activeHeroView.title : cleanProductText(activePreview.title)} eager /></ContentDialog>}
-    {helpOpen && <ContentDialog title="Memeriksa unduhan DORA" onClose={() => setHelpOpen(false)}><p>Installer yang belum dikenal browser atau Windows dapat menampilkan peringatan. Periksa sumber dan integritas file sebelum melanjutkan.</p><ol className="help-steps"><li>Pastikan file berasal dari repositori resmi <strong>NezzyGremory/Data-Overview-Research-Assistant</strong>.</li><li>Cocokkan nama file dan versi dengan aset di GitHub Releases.</li><li>Hitung SHA256 menggunakan perintah di bawah, lalu bandingkan hasilnya dengan checksum yang tercantum.</li><li>Jika hash berbeda atau Anda ragu, jangan jalankan file. Laporkan melalui GitHub Issues.</li></ol><CopyControl value={`Get-FileHash -Algorithm SHA256 "${currentRelease.filename}"`} label="Perintah PowerShell" /><a className="button secondary" href={`${repositoryUrl}/releases/tag/${currentRelease.version}`} target="_blank" rel="noopener noreferrer">Periksa rilis resmi<ArrowUpRight size={16} /></a></ContentDialog>}
+    {helpOpen && <ContentDialog title="Memeriksa unduhan DORA" onClose={() => setHelpOpen(false)}><p>Installer yang belum dikenal browser atau Windows dapat menampilkan peringatan. Periksa sumber dan integritas file sebelum melanjutkan.</p><ol className="help-steps"><li>Pastikan file berasal dari repositori resmi <strong>NezzyGremory/Data-Overview-Research-Assistant</strong>.</li><li>Cocokkan nama file dan versi dengan aset di bagian Repositori.</li><li>Hitung SHA256 menggunakan perintah di bawah, lalu bandingkan hasilnya dengan checksum yang tercantum.</li><li>Jika hash berbeda atau Anda ragu, jangan jalankan file. Laporkan melalui bagian Repositori (GitHub Issues).</li></ol><CopyControl value={`Get-FileHash -Algorithm SHA256 "${currentRelease.filename}"`} label="Perintah PowerShell" /><a className="button secondary" href="#github" onClick={() => setHelpOpen(false)}>Buka Repositori Resmi<ArrowRight size={16} /></a></ContentDialog>}
   </>;
 }
