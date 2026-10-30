@@ -153,6 +153,41 @@ export function HomePage() {
     <section id="hero" className="new-hero">
       <div className="hero-light" aria-hidden="true" />
       <div className="hero-orbital-backdrop" aria-hidden="true">
+        {/* DORA Web Signature 3D Crystal & Grid Ring Centerpiece */}
+        <div className="crystal-centerpiece">
+          <div className="crystal-halo" />
+          <div className="crystal-stage">
+            <div className="crystal-grid-plane">
+              <div className="grid-ring" />
+              <div className="grid-ring grid-ring-inner" />
+            </div>
+            <div className="crystal-scene">
+              <div className="crystal-assembly">
+                <div className="crystal-polyhedron">
+                  <div className="crystal-facet facet-top facet-t1" />
+                  <div className="crystal-facet facet-top facet-t2" />
+                  <div className="crystal-facet facet-top facet-t3" />
+                  <div className="crystal-facet facet-top facet-t4" />
+                  <div className="crystal-facet facet-bottom facet-b1" />
+                  <div className="crystal-facet facet-bottom facet-b2" />
+                  <div className="crystal-facet facet-bottom facet-b3" />
+                  <div className="crystal-facet facet-bottom facet-b4" />
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Ambient Floating Motes from DORA Web */}
+        <div className="hero-motes-field">
+          <div className="mote mote-1" style={{ '--dur': '13s', '--delay': '0s', top: '18%', left: '8%', width: '13px', height: '13px' } as React.CSSProperties} />
+          <div className="mote mote-2 is-ring" style={{ '--dur': '17s', '--delay': '1.5s', top: '38%', left: '12%', width: '24px', height: '24px' } as React.CSSProperties} />
+          <div className="mote mote-3" style={{ '--dur': '15s', '--delay': '3s', top: '24%', right: '9%', width: '16px', height: '16px' } as React.CSSProperties} />
+          <div className="mote mote-4 is-ring" style={{ '--dur': '19s', '--delay': '0.8s', top: '52%', right: '11%', width: '28px', height: '28px' } as React.CSSProperties} />
+          <div className="mote mote-5" style={{ '--dur': '14s', '--delay': '2.2s', bottom: '16%', left: '15%', width: '11px', height: '11px' } as React.CSSProperties} />
+          <div className="mote mote-6 is-ring" style={{ '--dur': '16s', '--delay': '4s', bottom: '22%', right: '18%', width: '20px', height: '20px' } as React.CSSProperties} />
+        </div>
+
         <div className="hero-reticle hero-reticle-left">
           <svg viewBox="0 0 400 400" fill="none">
             <circle cx="200" cy="200" r="180" stroke="currentColor" strokeWidth="0.8" strokeDasharray="4 8" opacity="0.22" className="hero-reticle-spin" />

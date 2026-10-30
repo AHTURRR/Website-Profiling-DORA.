@@ -12,15 +12,18 @@
   --site-ease: cubic-bezier(.16, 1, .3, 1);
   --site-ease-quick: cubic-bezier(.22, 1, .36, 1);
   
-  /* Standardized Geometric Radius System */
-  --radius-pill: 9999px;
+  /* Harmonized Radius System Inspired by DORA Web */
+  --radius-lg: 20px;
   --radius-card: 16px;
+  --radius-nav: 14px;
+  --radius-btn: 10px;
   --radius-inner: 10px;
-  --radius-sm: 6px;
-  --radius-full: 9999px;
-  --radius-lg: 16px;
   --radius-md: 10px;
+  --radius-sm: 8px;
   --radius-xs: 6px;
+  --radius-tag: 6px;
+  --radius-pill: 10px; /* Redefined from 9999px to 10px for cohesive button & control radius */
+  --radius-full: 9999px;
 }
 
 html { background: var(--site-bg); color-scheme: dark; scroll-padding-top: 110px; }
@@ -79,7 +82,7 @@ body { background: var(--site-bg); color: var(--site-text); overflow-x: clip; }
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-nav);
   background: rgba(14, 15, 22, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
@@ -119,7 +122,7 @@ body { background: var(--site-bg); color: var(--site-text); overflow-x: clip; }
   gap: 2px;
   background: rgba(255, 255, 255, 0.03);
   padding: 4px;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-inner);
   border: 1px solid rgba(255, 255, 255, 0.05);
 }
 .desktop-links a {
@@ -130,7 +133,7 @@ body { background: var(--site-bg); color: var(--site-text); overflow-x: clip; }
   font-size: 13px;
   font-weight: 500;
   color: #a5a3b8;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   transition: all 180ms var(--site-ease);
   white-space: nowrap;
   line-height: 1;
@@ -266,7 +269,7 @@ body { background: var(--site-bg); color: var(--site-text); overflow-x: clip; }
   padding: 5px 6px 5px 16px;
   background: rgba(19, 18, 28, 0.9);
   border: 1px solid rgba(120, 99, 152, 0.5);
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-inner);
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
   backdrop-filter: blur(12px);
   max-width: 100%;
@@ -304,7 +307,7 @@ body { background: var(--site-bg); color: var(--site-text); overflow-x: clip; }
   gap: 6px;
   min-height: 36px;
   padding: 0 16px;
-  border-radius: var(--radius-pill);
+  border-radius: var(--radius-sm);
   font-size: 12.5px;
   font-weight: 500;
   color: #aaa5be;
@@ -363,11 +366,11 @@ body { background: var(--site-bg); color: var(--site-text); overflow-x: clip; }
   color: #a89ecc;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 1px 7px;
-  border-radius: var(--radius-pill);
+  padding: 2px 8px;
+  border-radius: var(--radius-tag);
 }
-.frame-stage-badge { font-size: 11px; color: #cbc2f5; padding: 3px 10px; border-radius: var(--radius-pill); background: #262038; border: 1px solid #473b63; font-family: var(--font-family-mono); }
-.product-frame-top button { display: inline-flex; align-items: center; gap: 7px; min-height: 34px; padding: 5px 13px; border-radius: var(--radius-pill); background: #211e2d; border: 1px solid #413857; color: var(--site-text); font-size: 12px; flex-shrink: 0; transition: background-color 160ms ease-out, border-color 160ms ease-out, transform 160ms ease-out; }
+.frame-stage-badge { font-size: 11px; color: #cbc2f5; padding: 3px 10px; border-radius: var(--radius-tag); background: #262038; border: 1px solid #473b63; font-family: var(--font-family-mono); }
+.product-frame-top button { display: inline-flex; align-items: center; gap: 7px; min-height: 34px; padding: 5px 13px; border-radius: var(--radius-sm); background: #211e2d; border: 1px solid #413857; color: var(--site-text); font-size: 12px; flex-shrink: 0; transition: background-color 160ms ease-out, border-color 160ms ease-out, transform 160ms ease-out; }
 .hero-screenshot { position: relative; display: block; width: 100%; border-radius: var(--radius-inner); overflow: hidden; border: 1px solid #2c293a; background: var(--site-bg); }
 .hero-scan-beam {
   position: absolute;
@@ -460,6 +463,150 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
   z-index: 1;
   color: var(--site-accent);
   overflow: hidden;
+}
+
+/* 3D Polyhedron Crystal from DORA Web */
+.crystal-centerpiece {
+  position: absolute;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 360px;
+  height: 260px;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+  opacity: 0.65;
+}
+.crystal-halo {
+  position: absolute;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(158, 145, 255, 0.28) 0%, rgba(104, 84, 223, 0.12) 45%, transparent 72%);
+  filter: blur(24px);
+  animation: haloPulse 7s ease-in-out infinite alternate;
+}
+.crystal-stage {
+  position: relative;
+  width: 320px;
+  height: 240px;
+  display: grid;
+  place-items: center;
+}
+.crystal-grid-plane {
+  position: absolute;
+  bottom: 24px;
+  width: 240px;
+  height: 70px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(158, 145, 255, 0.2), transparent 70%);
+  transform: rotateX(68deg);
+  pointer-events: none;
+}
+.grid-ring {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 1px dashed rgba(158, 145, 255, 0.4);
+}
+.grid-ring-inner {
+  inset: 24%;
+  border-style: solid;
+  border-color: rgba(158, 145, 255, 0.5);
+}
+.crystal-scene {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  perspective: 900px;
+  perspective-origin: 50% 48%;
+}
+.crystal-assembly {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  animation: crystalHover 7s ease-in-out infinite;
+}
+.crystal-polyhedron {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+  animation: crystalSpin 24s linear infinite;
+}
+.crystal-facet {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 58px;
+  height: 52px;
+  margin-left: -29px;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 0 14px rgba(158, 145, 255, 0.4);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+}
+.facet-top {
+  margin-top: -52px;
+  transform-origin: 50% 100%;
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: linear-gradient(175deg, rgba(255, 255, 255, 0.75), rgba(158, 145, 255, 0.5) 55%, rgba(104, 84, 223, 0.3));
+}
+.facet-t1 { transform: rotateY(0deg) translateZ(28px) rotateX(-34deg); }
+.facet-t2 { transform: rotateY(90deg) translateZ(28px) rotateX(-34deg); }
+.facet-t3 { transform: rotateY(180deg) translateZ(28px) rotateX(-34deg); }
+.facet-t4 { transform: rotateY(270deg) translateZ(28px) rotateX(-34deg); }
+.facet-bottom {
+  margin-top: 0;
+  transform-origin: 50% 0%;
+  clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+  background: linear-gradient(5deg, rgba(255, 255, 255, 0.7), rgba(104, 84, 223, 0.5) 55%, rgba(68, 51, 160, 0.35));
+}
+.facet-b1 { transform: rotateY(0deg) translateZ(28px) rotateX(34deg); }
+.facet-b2 { transform: rotateY(90deg) translateZ(28px) rotateX(34deg); }
+.facet-b3 { transform: rotateY(180deg) translateZ(28px) rotateX(34deg); }
+.facet-b4 { transform: rotateY(270deg) translateZ(28px) rotateX(34deg); }
+
+@keyframes crystalSpin {
+  0% { transform: rotateY(0deg) rotateX(14deg); }
+  100% { transform: rotateY(360deg) rotateX(14deg); }
+}
+@keyframes crystalHover {
+  0%, 100% { transform: translateY(0px) rotateZ(-2deg); }
+  50% { transform: translateY(-12px) rotateZ(3deg); }
+}
+@keyframes haloPulse {
+  0% { transform: scale(0.92); opacity: 0.6; }
+  100% { transform: scale(1.08); opacity: 1; }
+}
+
+/* Floating Motes Motion Graphic Field */
+.hero-motes-field {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.mote {
+  position: absolute;
+  border-radius: 36%;
+  background: linear-gradient(140deg, #ffffff, #dcd4ff);
+  border: 1px solid rgba(255, 255, 255, 0.85);
+  box-shadow: 0 4px 14px rgba(104, 84, 223, 0.4);
+  opacity: 0.65;
+  animation: moteFloat var(--dur, 14s) ease-in-out infinite alternate;
+  animation-delay: var(--delay, 0s);
+}
+.mote.is-ring {
+  background: transparent;
+  border: 1.5px solid rgba(158, 145, 255, 0.35);
+  box-shadow: none;
+  border-radius: 50%;
+  opacity: 0.45;
+}
+@keyframes moteFloat {
+  0% { transform: translateY(0px) scale(0.9); }
+  50% { transform: translateY(-16px) translateX(8px) scale(1.05); }
+  100% { transform: translateY(-28px) translateX(-6px) scale(1); }
 }
 .hero-reticle {
   position: absolute;
@@ -1218,8 +1365,8 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
 .spec-grid span { color: var(--site-muted); font-size: 11px; }
 .spec-grid strong { font-weight: 500; font-size: 16px; }
 .spec-grid small { font-size: 11px; color: var(--site-muted); }
-.segmented-control { display: inline-flex; gap: 4px; padding: 4px; background: var(--site-surface); border: 1px solid var(--site-line); border-radius: var(--radius-pill); margin-bottom: 35px; }
-.segmented-control button { display: flex; align-items: center; justify-content: center; gap: 9px; border-radius: var(--radius-pill); color: var(--site-muted); padding: 11px 20px; font-size: 12px; min-height: 44px; transition: background-color 160ms ease-out, color 160ms ease-out; }
+.segmented-control { display: inline-flex; gap: 4px; padding: 4px; background: var(--site-surface); border: 1px solid var(--site-line); border-radius: var(--radius-inner); margin-bottom: 35px; }
+.segmented-control button { display: flex; align-items: center; justify-content: center; gap: 9px; border-radius: var(--radius-sm); color: var(--site-muted); padding: 11px 20px; font-size: 12px; min-height: 44px; transition: background-color 160ms ease-out, color 160ms ease-out; }
 .segmented-control button[aria-pressed="true"] { background: #2c273e; color: #d4cbff; }
 .installation-steps { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 32px 50px; }
 .installation-steps > li { display: flex; align-items: flex-start; gap: 20px; border-top: 1px solid var(--site-line); padding-top: 25px; min-width: 0; }
