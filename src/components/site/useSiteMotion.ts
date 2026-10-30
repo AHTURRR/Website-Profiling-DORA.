@@ -37,7 +37,7 @@ export function useSiteMotion() {
       });
 
       const targets = document.querySelectorAll<HTMLElement>(
-        '.flow-strip-inner, .module-card, .node-pipeline-motion-banner, .workflow-layout, .preview-theater, .addons-category-strip, .addons-empty-state, .addons-catalog-grid, .download-card, .requirements-section-new, .installation-steps > li, .repository-panel, .team-card, .principle-list > div, .team-invitation'
+        '.section-heading, .flow-strip-inner, .module-card, .all-features, .node-pipeline-motion-banner, .workflow-layout, .preview-theater, .addons-category-strip, .addons-empty-state, .addons-catalog-grid, .download-card, .requirements-section-new, .installation-steps > li, .faq-list details, .repository-panel, .team-card, .principle-list > div, .thanks-section, .team-invitation, .footer-main > div'
       );
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
@@ -49,17 +49,25 @@ export function useSiteMotion() {
             // Stagger detection if target is in a list or grid
             let delay = 0;
             const parent = target.parentElement;
-            if (parent && (parent.classList.contains('module-grid') || parent.classList.contains('installation-steps') || parent.classList.contains('team-grid') || parent.classList.contains('principle-list'))) {
+            if (parent && (
+              parent.classList.contains('module-grid') ||
+              parent.classList.contains('installation-steps') ||
+              parent.classList.contains('team-grid') ||
+              parent.classList.contains('principle-list') ||
+              parent.classList.contains('feature-directory') ||
+              parent.classList.contains('faq-list') ||
+              parent.classList.contains('footer-main')
+            )) {
               const siblings = Array.from(parent.children);
               const index = siblings.indexOf(target);
-              if (index > 0) delay = Math.min(index * 60, 240);
+              if (index > 0) delay = Math.min(index * 70, 350);
             }
 
             animations.push(target.animate([
-              { opacity: .5, transform: 'translateY(16px)' },
-              { opacity: 1, transform: 'translateY(0)' },
+              { opacity: 0.15, transform: 'translateY(24px) scale(0.98)' },
+              { opacity: 1, transform: 'translateY(0) scale(1)' },
             ], { 
-              duration: 550, 
+              duration: 650, 
               delay,
               easing: 'cubic-bezier(.16,1,.3,1)',
               fill: 'both'
