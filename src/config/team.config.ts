@@ -1,5 +1,13 @@
 export const creditSource = 'https://github.com/NezzyGremory/Data-Overview-Research-Assistant/blob/main/app/ui/data/credits.json';
 
+export const studioCredits = {
+  intro: 'A Metriks Studio Production',
+  app: 'DORA',
+  tagline: 'Data Overview & Research Assistant',
+  team: 'Metriks Studio',
+  closing: 'Thank you for using DORA',
+};
+
 export interface TeamMember {
   name: string;
   role: string;

@@ -1,6 +1,7 @@
 import { productConfig } from './product.config';
 
 export const repositoryUrl = productConfig.product.links.repositoryUrl!;
+export const websiteRepositoryUrl = 'https://github.com/AHTURRR/Website-Profiling-DORA.';
 const primaryRelease = productConfig.releases.find(release => release.isPrimaryForPlatform)!;
 export const currentRelease = {
   version: primaryRelease.version,

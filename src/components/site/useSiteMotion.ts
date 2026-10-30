@@ -30,7 +30,7 @@ export function useSiteMotion() {
       let visited = false;
       try { visited = sessionStorage.getItem('dora-intro-played') === 'true'; } catch { visited = true; }
       if (!visited) {
-        const targets = document.querySelectorAll<HTMLElement>('.new-hero h1, .hero-lead, .hero-actions, .hero-product-frame');
+        const targets = document.querySelectorAll<HTMLElement>('.new-hero h1, .hero-lead, .hero-actions, .hero-product-stage');
         targets.forEach((target, index) => {
           animations.push(target.animate([
             { opacity: .45, transform: `translateY(${index === 3 ? 22 : 12}px)` },
@@ -46,7 +46,7 @@ export function useSiteMotion() {
         }
       }
 
-      const targets = document.querySelectorAll<HTMLElement>('.workflow-image, .repository-panel, .team-principles');
+      const targets = document.querySelectorAll<HTMLElement>('.workflow-image, .addons-empty-state, .addons-catalog-grid, .repository-panel, .team-principles');
       const observer = new IntersectionObserver(entries => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;

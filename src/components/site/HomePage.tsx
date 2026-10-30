@@ -1,15 +1,66 @@
 import { useEffect, useRef, useState } from 'react';
-import { ArrowUpRight, ArrowRight, Download, GitFork as Github, Database, Workflow, BookOpen, Check, Copy, Monitor, Maximize2, Code2, GitPullRequest, ShieldCheck, Plus, Terminal, Cpu, HardDrive } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, Download, GitFork as Github, Database, Workflow, BookOpen, Check, Copy, Monitor, Maximize2, Code2, GitPullRequest, ShieldCheck, Plus, Terminal, Cpu, HardDrive, Layers, Puzzle, FileCode2, Wrench } from 'lucide-react';
 import { productConfig } from '../../config/product.config';
 import type { FeatureItem } from '../../types/product.types';
 import { ContentDialog } from './ContentDialog';
-import { currentRelease, repositoryUrl } from '../../config/site.config';
+import { currentRelease, repositoryUrl, websiteRepositoryUrl } from '../../config/site.config';
+import { addonCategories, verifiedAddons, addonsCatalogMeta, type AddonCategoryId } from '../../config/addons.config';
 
 const modules = [
   { id: 'dataset-profiling', title: 'Kenali data Anda.', text: 'Buka CSV, Excel, JSON, atau Parquet. Pahami tipe kolom, distribusi, dan kualitas data sebelum melangkah lebih jauh.', icon: Database, label: 'Dataset & profiling' },
   { id: 'node-editor-graph', title: 'Rangkai eksperimen.', text: 'Hubungkan node menjadi pipeline machine learning. Validasi alurnya, jalankan eksperimen, lalu ekspor hasilnya.', icon: Workflow, label: 'Visual machine learning' },
   { id: 'academic-research', title: 'Temukan konteksnya.', text: 'Jelajahi literatur ilmiah dan susun landasan penelitian. Hubungkan temuan data dengan pertanyaan yang lebih besar.', icon: BookOpen, label: 'Riset literatur' },
 ];
+
+const heroViews = [
+  {
+    id: 'overview',
+    label: 'Overview',
+    stage: '01 · Memuat & memantau data',
+    src: '/screenshots/overview.png',
+    title: 'Overview · Ruang kerja utama DORA',
+    summary: 'Ringkasan kesiapan dataset aktif, daftar periksa alur riset 5 tahap, dan pintasan langsung ke modul analisis.',
+  },
+  {
+    id: 'dataset',
+    label: 'Dataset',
+    stage: '02 · Memahami struktur data',
+    src: '/screenshots/dataset-preview.png',
+    title: 'Dataset · Pratinjau tabel & profil kolom',
+    summary: 'Pemeriksaan baris tabel interaktif, deteksi tipe kolom, nilai kosong, outlier, serta sidik jari SHA-256 lokal.',
+  },
+  {
+    id: 'node-editor',
+    label: 'Node Editor',
+    stage: '03 · Merangkai eksperimen ML',
+    src: '/screenshots/node-editor.png',
+    title: 'Node Editor · Pipeline machine learning visual',
+    summary: 'Kanvas blok visual untuk menyusun pra-pemrosesan, validasi silang, pelatihan model, dan ekspor 5 format.',
+  },
+  {
+    id: 'research',
+    label: 'Research',
+    stage: '04 · Menelusuri literatur & laporan',
+    src: '/screenshots/academic-research.png',
+    title: 'Academic Research · Penelusuran paper & SINTA/DOAJ',
+    summary: 'Pencarian publikasi ilmiah berbasis konteks dataset dengan pemeriksaan akreditasi SINTA 1-6 dan indeks DOAJ/Scopus.',
+  },
+] as const;
+
+const researchFlowSteps = [
+  { step: '01', label: 'Memuat data', detail: 'CSV, Excel, JSON, Parquet, atau katalog Kaggle & Hugging Face', viewIndex: 0 },
+  { step: '02', label: 'Memahami data', detail: 'Profil kolom, audit missing value vs angka 0, outlier & korelasi', viewIndex: 1 },
+  { step: '03', label: 'Merangkai eksperimen', detail: 'Visual Node Editor, notebook Python interaktif & kandidat ML', viewIndex: 2 },
+  { step: '04', label: 'Menelusuri literatur', detail: 'Pencarian paper akademik, indeks SINTA/Scopus & celah riset', viewIndex: 3 },
+  { step: '05', label: 'Menyusun hasil', detail: 'Kompilasi temuan data, model, dan literatur ke laporan PDF A4', viewIndex: 3 },
+] as const;
+
+const categoryIcons: Record<AddonCategoryId, typeof Puzzle> = {
+  plugin: Puzzle,
+  integration: Layers,
+  template: FileCode2,
+  companion: Wrench,
+};
 
 const cleanProductText = (text: string) => text.replace(/v2\.0\.0/g, currentRelease.version).replace(/v2\.0\b/g, 'v6.0');
 
@@ -34,12 +85,15 @@ function Screenshot({ src, title, eager = false }: { src: string; title: string;
 
 export function HomePage() {
   const [feature, setFeature] = useState<FeatureItem | null>(null);
+  const [heroViewIndex, setHeroViewIndex] = useState(0);
+  const [activeStep, setActiveStep] = useState(0);
   const [previewIndex, setPreviewIndex] = useState(0);
   const [imageOpen, setImageOpen] = useState(false);
   const [imageTarget, setImageTarget] = useState<'hero' | 'gallery'>('gallery');
   const [guideTab, setGuideTab] = useState<'installer' | 'source'>('installer');
   const [helpOpen, setHelpOpen] = useState(false);
   const { features, previews, systemRequirements, installationGuides, faqList } = productConfig;
+  const activeHeroView = heroViews[heroViewIndex];
   const activePreview = previews[previewIndex];
   const guide = installationGuides[guideTab === 'installer' ? 0 : 1];
   const requirements = systemRequirements[0];
@@ -51,28 +105,186 @@ export function HomePage() {
       <div className="site-container hero-inner">
         <a className="release-link" href={`${repositoryUrl}/releases/tag/${currentRelease.version}`} target="_blank" rel="noopener noreferrer"><span className="release-dot" />DORA {currentRelease.version}<span className="release-divider" />Kenali rilis terbaru<ArrowUpRight size={14} /></a>
         <h1>Dari data mentah,<br />menjadi <span>arah riset.</span></h1>
-        <p className="hero-lead">Eksplorasi dataset, rangkai eksperimen machine learning,<br className="desktop-break" /> dan temukan literatur. Dalam satu ruang kerja desktop.</p>
-        <div className="hero-actions"><a className="button primary" href="#downloads"><Download size={17} />Unduh untuk Windows</a><a className="button secondary" href="#preview">Lihat aplikasinya<ArrowRight size={16} /></a></div>
+        <p className="hero-lead">Eksplorasi dataset, rangkai eksperimen machine learning,<br className="desktop-break" /> dan temukan literatur ilmiah. Dalam satu ruang kerja desktop.</p>
+        <div className="hero-actions"><a className="button primary" href="#downloads"><Download size={17} />Unduh untuk Windows</a><a className="button secondary" href="#preview">Jelajahi {productConfig.previews.length} tampilan<ArrowRight size={16} /></a></div>
         <div className="hero-caption"><span>Windows 10/11 · x64</span><span className="caption-dot" />Pemrosesan dataset lokal<span className="caption-dot" /><a href={`${repositoryUrl}/blob/main/LICENSE`} target="_blank" rel="noopener noreferrer">Lisensi MIT</a></div>
-        <div className="hero-product-frame"><div className="product-frame-top"><span><img src="/brand/about-brand-mark.png" width="18" height="18" alt="" />DORA workspace</span><button onClick={() => openPreview('hero')} aria-label="Perbesar screenshot Overview"><Maximize2 size={14} /><span>Perbesar</span></button></div><div className="hero-screenshot"><Screenshot src="/screenshots/overview.png" title="Tampilan asli Overview aplikasi desktop DORA" eager /></div></div>
+
+        <div className="hero-product-stage">
+          <div className="hero-view-bar" role="toolbar" aria-label="Pilih tampilan ruang kerja DORA di hero">
+            <span className="hero-view-prompt">Tampilan aplikasi asli:</span>
+            <div className="hero-view-tabs">
+              {heroViews.map((view, idx) => (
+                <button
+                  key={view.id}
+                  type="button"
+                  className="hero-view-tab"
+                  aria-pressed={heroViewIndex === idx}
+                  onClick={() => { setHeroViewIndex(idx); setActiveStep(idx); }}
+                >
+                  {view.label}
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <div className="hero-product-frame">
+            <div className="product-frame-top">
+              <div className="frame-window-title">
+                <span className="frame-decor-dots" aria-hidden="true"><i /><i /><i /></span>
+                <img src="/brand/about-brand-mark.png" width="16" height="16" alt="" />
+                <strong>DORA desktop</strong>
+                <span className="frame-stage-badge">{activeHeroView.stage}</span>
+              </div>
+              <button type="button" onClick={() => openPreview('hero')} aria-label={`Perbesar screenshot ${activeHeroView.label}`}>
+                <Maximize2 size={14} />
+                <span>Perbesar layar</span>
+              </button>
+            </div>
+            <div className="hero-screenshot">
+              <Screenshot key={activeHeroView.id} src={activeHeroView.src} title={activeHeroView.title} eager />
+            </div>
+            <div className="product-frame-footer">
+              <p><strong>{activeHeroView.label}:</strong> {activeHeroView.summary}</p>
+              <span>Tangkapan layar asli DORA {currentRelease.version}</span>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
-    <div className="capability-strip site-container"><span>Ruang untuk seluruh proses riset Anda</span><div><span><Database size={17} />Data profiling</span><span><Workflow size={17} />Visual ML</span><span><Code2 size={17} />Python notebook</span><span><BookOpen size={17} />Academic research</span></div></div>
+    <section className="flow-strip-section" aria-label="Ilustrasi alur kerja riset di DORA">
+      <div className="site-container flow-strip-inner">
+        <div className="flow-strip-header">
+          <span className="flow-context-tag">Ilustrasi alur kerja konseptual di DORA</span>
+          <p>Pilih tahap untuk melihat contoh tampilan ruang kerja yang berkaitan di atas.</p>
+        </div>
+        <ol className="flow-steps-grid">
+          {researchFlowSteps.map((item, idx) => {
+            const isHighlighted = activeStep === idx;
+            return (
+              <li key={item.step} className={`flow-step-item ${isHighlighted ? 'is-active' : ''}`}>
+                <button
+                  type="button"
+                  className="flow-step-trigger"
+                  aria-pressed={isHighlighted}
+                  onClick={() => { setHeroViewIndex(item.viewIndex); setActiveStep(idx); }}
+                  aria-label={`Tampilkan ruang kerja untuk tahap ${item.label}`}
+                >
+                  <span className="flow-step-num">{item.step}</span>
+                  <strong>{item.label}</strong>
+                  <small>{item.detail}</small>
+                </button>
+              </li>
+            );
+          })}
+        </ol>
+      </div>
+    </section>
 
     <section id="features" className="site-container content-section">
       <div className="section-heading"><div><span className="eyebrow">Satu alur. Banyak kemungkinan.</span><h2>Lebih sedikit berpindah.<br /><span>Lebih banyak menemukan.</span></h2></div><p>Dari memahami data sampai menyusun argumen ilmiah. DORA menghubungkan alat yang Anda perlukan dalam satu aplikasi.</p></div>
       <div className="module-grid">{modules.map((module, index) => { const Icon = module.icon; const item = features.find(f => f.id === module.id); return <article className="module-card" key={module.id}><div className="module-top"><Icon size={25} /><span>0{index + 1}</span></div><span className="module-label">{module.label}</span><h3>{module.title}</h3><p>{module.text}</p>{item && <button className="text-button" onClick={() => setFeature(item)}>Jelajahi modul<Plus size={16} /></button>}</article>; })}</div>
-      <details className="all-features"><summary>Semua kemampuan DORA<span>{features.length} modul<Plus size={18} /></span></summary><div className="feature-directory">{features.map(item => <button key={item.id} onClick={() => setFeature(item)}>{cleanProductText(item.title)}<ArrowUpRight size={16} /></button>)}</div></details>
+      <details className="all-features"><summary>Semua kemampuan bawaan DORA<span>{features.length} modul utama<Plus size={18} /></span></summary><div className="feature-directory">{features.map(item => <button key={item.id} onClick={() => setFeature(item)}>{cleanProductText(item.title)}<ArrowUpRight size={16} /></button>)}</div></details>
     </section>
 
     <section className="workflow-section"><div className="site-container workflow-layout"><div className="workflow-copy"><span className="eyebrow">Eksperimen, dengan alur yang jelas</span><h2>Susun idenya.<br /><span>Hubungkan nodenya.</span></h2><p>Visual Node Editor membantu Anda merancang pipeline machine learning tanpa kehilangan gambaran besarnya.</p><ul className="check-list"><li><Check size={16} />Deteksi task dan validasi graph</li><li><Check size={16} />Pemrosesan di latar belakang & cache analisis</li><li><Check size={16} />Ekspor Python, notebook, model, CSV, dan ZIP</li></ul><button className="text-button" onClick={() => setFeature(features.find(f => f.id === 'node-editor-graph') || null)}>Kenali Node Editor<ArrowUpRight size={17} /></button></div><div className="workflow-image"><div className="image-caption"><Workflow size={16} /><span>Visual Node Editor</span><span className="caption-spacer" />DORA desktop</div><Screenshot src="/screenshots/node-editor.png" title="Screenshot asli Visual Node Editor DORA dengan kanvas pipeline machine learning" /></div></div></section>
 
     <section id="preview" className="site-container content-section preview-section">
-      <div className="section-heading centered-heading"><span className="eyebrow">Lihat sebelum mengunduh</span><h2>Bukan sekadar cerita.<br /><span>Ini ruang kerjanya.</span></h2><p>Tangkapan layar asli DORA. Pilih tampilan untuk menjelajahi alur kerja aplikasi.</p></div>
+      <div className="section-heading centered-heading"><span className="eyebrow">Lihat sebelum mengunduh</span><h2>Bukan sekadar cerita.<br /><span>Ini ruang kerjanya.</span></h2><p>Tangkapan layar asli DORA. Pilih tampilan untuk menjelajahi setiap bagian aplikasi.</p></div>
       <div className="preview-picker"><label htmlFor="preview-select">Jelajahi tampilan</label><select id="preview-select" value={previewIndex} onChange={event => setPreviewIndex(Number(event.target.value))}>{previews.map((item, index) => <option value={index} key={item.id}>{item.tag || item.title}</option>)}</select><button className="icon-button" onClick={() => openPreview('gallery')} aria-label="Perbesar screenshot terpilih"><Maximize2 size={18} /></button></div>
       <div className="gallery-frame"><Screenshot key={activePreview.id} src={activePreview.imageSrc || '/screenshots/overview.png'} title={cleanProductText(activePreview.title)} /></div>
       <div className="gallery-caption"><span><strong>{activePreview.tag}</strong>{cleanProductText(activePreview.caption)}</span><span>{String(previewIndex + 1).padStart(2, '0')} / {previews.length}</span></div>
+    </section>
+
+    <section id="addons" className="addons-section" aria-labelledby="addons-heading">
+      <div className="site-container">
+        <div className="section-heading">
+          <div>
+            <span className="eyebrow">Ekstensi & ekosistem opsional</span>
+            <h2 id="addons-heading">Add-ons.<br /><span>Perluas saat dibutuhkan.</span></h2>
+          </div>
+          <p>DORA dirancang lengkap sejak instalasi pertama. Katalog Add-ons menampung paket opsional yang terverifikasi untuk kebutuhan riset khusus.</p>
+        </div>
+
+        <div className="addons-category-strip" aria-label="Jenis Add-ons yang didukung">
+          {addonCategories.map(cat => {
+            const Icon = categoryIcons[cat.id];
+            return (
+              <div key={cat.id} className="addon-category-item">
+                <div className="addon-category-head">
+                  <Icon size={18} />
+                  <strong>{cat.label}</strong>
+                </div>
+                <p>{cat.description}</p>
+                <span className="addon-format-tag">{cat.exampleFormat}</span>
+              </div>
+            );
+          })}
+        </div>
+
+        {verifiedAddons.length > 0 ? (
+          <div className="addons-catalog-grid">
+            {verifiedAddons.map(item => (
+              <article key={item.id} className="addon-card">
+                <div className="addon-card-top">
+                  <span className="addon-type-badge">{item.category}</span>
+                  <span className="addon-compat">DORA {item.doraVersionCompatibility}</span>
+                </div>
+                <h3>{item.name}</h3>
+                <p>{item.summary}</p>
+                <div className="addon-usage">
+                  <strong>Cara penggunaan:</strong>
+                  <span>{item.usageGuide}</span>
+                </div>
+                <div className="addon-actions">
+                  <a className="button secondary" href={item.repositoryUrl} target="_blank" rel="noopener noreferrer">
+                    Repositori resmi<ArrowUpRight size={15} />
+                  </a>
+                  {item.guideUrl && (
+                    <a className="inline-link" href={item.guideUrl} target="_blank" rel="noopener noreferrer">
+                      Panduan<ArrowUpRight size={15} />
+                    </a>
+                  )}
+                </div>
+              </article>
+            ))}
+          </div>
+        ) : (
+          <div className="addons-empty-state" role="region" aria-label="Status katalog Add-ons">
+            <div className="addons-empty-main">
+              <span className="addons-status-pill">Status katalog · Diperiksa {addonsCatalogMeta.lastChecked}</span>
+              <h3>Belum ada Add-ons eksternal terverifikasi saat ini.</h3>
+              <p>
+                Kami memeriksa repositori publik pengembang dan dokumentasi rilis secara langsung. Hingga saat ini belum ada repositori plugin, integrasi, template, atau perangkat pendamping terpisah yang diterbitkan sebagai paket add-on DORA mandiri.
+              </p>
+              <p className="addons-builtin-note">
+                Seluruh fitur utama seperti pencarian dataset <strong>Kaggle & Hugging Face</strong>, literatur <strong>OpenAlex / Crossref / Semantic Scholar / Scopus / SINTA / DOAJ</strong>, serta dukungan pustaka opsional di Node Editor dan Notebook (<code>xgboost</code>, <code>lightgbm</code>, <code>imbalanced-learn</code>, <code>optuna</code>, <code>shap</code>) sudah tersedia langsung di dalam aplikasi desktop DORA tanpa perlu mengunduh add-on terpisah.
+              </p>
+              <div className="addons-empty-actions">
+                <a className="button secondary" href={addonsCatalogMeta.mainRepositoryUrl} target="_blank" rel="noopener noreferrer">
+                  <Github size={16} />Periksa repositori utama<ArrowUpRight size={15} />
+                </a>
+                <a className="inline-link" href={addonsCatalogMeta.submissionIssuesUrl} target="_blank" rel="noopener noreferrer">
+                  Usulkan atau daftarkan add-on melalui GitHub Issues<ArrowUpRight size={15} />
+                </a>
+              </div>
+            </div>
+            <div className="addons-verification-box">
+              <h4>Kriteria verifikasi katalog</h4>
+              <p>Setiap item baru wajib melewati empat pemeriksaan sebelum ditampilkan di katalog:</p>
+              <ul className="check-list">
+                {addonsCatalogMeta.verificationCriteria.map(criterion => (
+                  <li key={criterion}><Check size={15} /><span>{criterion}</span></li>
+                ))}
+              </ul>
+              <dl className="addons-schema-preview">
+                <div><dt>Skema data katalog</dt><dd>Nama · Kegunaan · Jenis · Kompatibilitas versi · Panduan · Tautan resmi</dd></div>
+                <div><dt>Sumber diperiksa</dt><dd>GitHub NezzyGremory & dokumentasi DORA {currentRelease.version}</dd></div>
+              </dl>
+            </div>
+          </div>
+        )}
+      </div>
     </section>
 
     <section id="downloads" className="download-section"><div className="site-container download-layout"><div><span className="eyebrow">Ruang kerja berikutnya, di desktop Anda</span><h2>Siap menemukan<br /><span>cerita di balik data?</span></h2><p>Unduh installer resmi DORA dari GitHub Releases. Untuk Windows 10 dan 11, arsitektur 64-bit.</p><div className="download-facts"><span><Monitor size={17} />Windows x64</span><span><HardDrive size={17} />{currentRelease.size}</span><span><Code2 size={17} />MIT License</span></div><a className="inline-link" href={`${repositoryUrl}/releases`} target="_blank" rel="noopener noreferrer">Lihat semua rilis dan source code<ArrowUpRight size={16} /></a></div><div className="download-card"><div className="download-card-heading"><span className="download-icon"><Download size={24} /></span><span><strong>DORA untuk Windows</strong><small>Installer resmi · {currentRelease.version}</small></span><span className="release-label">Rilis terbaru</span></div><div className="download-file">{currentRelease.filename}</div><dl className="release-facts"><div><dt>Versi</dt><dd>{currentRelease.version}</dd></div><div><dt>Ukuran</dt><dd>{currentRelease.size}</dd></div><div><dt>Aset diperbarui</dt><dd>{currentRelease.updated}</dd></div></dl><a className="button primary full-width" href={currentRelease.url}><Download size={17} />Unduh installer Windows<ArrowUpRight size={16} /></a><p className="download-origin"><ShieldCheck size={14} />File disediakan oleh GitHub Releases</p><details className="checksum-details"><summary>Verifikasi integritas file<Plus size={16} /></summary><CopyControl value={currentRelease.sha256} label="SHA256" /><CopyControl value={`Get-FileHash -Algorithm SHA256 "${currentRelease.filename}"`} label="Perintah verifikasi PowerShell" /><p>Cocokkan hasil perintah dengan SHA256 di atas sebelum menjalankan installer.</p></details><button className="download-help" onClick={() => setHelpOpen(true)}>Muncul peringatan saat mengunduh?</button></div></div></section>
@@ -81,12 +293,63 @@ export function HomePage() {
 
     <section id="installation" className="site-container content-section installation-new"><div className="section-heading"><div><span className="eyebrow">Dari unduh ke eksplorasi</span><h2>Mulai dari sini.</h2></div><p>Pilih installer untuk langsung memakai DORA, atau jalankan source code di lingkungan pengembangan Anda.</p></div><div className="segmented-control" role="group" aria-label="Metode instalasi"><button aria-pressed={guideTab === 'installer'} onClick={() => setGuideTab('installer')}><Monitor size={16} />Windows Installer</button><button aria-pressed={guideTab === 'source'} onClick={() => setGuideTab('source')}><Terminal size={16} />Dari source code</button></div><ol className="installation-steps">{guide.steps.map((step, index) => <li key={`${guideTab}-${step.step}`}><span className="step-index">0{index + 1}</span><div><h3>{cleanProductText(step.title)}</h3><p>{index === 2 && guideTab === 'installer' ? 'Ikuti setup wizard sampai selesai. Installer menyiapkan aplikasi, shortcut, dan uninstaller di perangkat Anda.' : cleanProductText(step.description)}</p>{guideTab === 'source' && index === 1 && <CopyControl value="cd Data-Overview-Research-Assistant" label="Masuk direktori proyek" />}{step.codeSnippet && <CopyControl value={step.codeSnippet} label={`Perintah langkah ${index + 1}`} />}</div></li>)}</ol><p className="installation-note"><ShieldCheck size={18} />Analisis dataset utama berlangsung di perangkat. Pencarian online dan fitur Gemini opsional membutuhkan koneksi internet.</p></section>
 
-    <section id="github" className="site-container repository-section"><div className="repository-panel"><div className="repo-heading"><Github size={32} /><span>Kode terbuka. Ruang kolaborasi.</span></div><div className="repo-layout"><div><h2>Kenali yang bekerja<br /><span>di balik layar.</span></h2><p>Jelajahi kode DORA, ikuti perubahannya, atau bantu membuatnya lebih baik. Semuanya dimulai dari repositori yang sama.</p><a className="button secondary" href={repositoryUrl} target="_blank" rel="noopener noreferrer"><Github size={17} />Buka repositori<ArrowUpRight size={17} /></a></div><div className="repo-links"><a href={`${repositoryUrl}/releases`} target="_blank" rel="noopener noreferrer"><span><Download size={20} /><span><strong>Catatan rilis</strong><small>Lihat perubahan di setiap versi</small></span></span><ArrowUpRight size={19} /></a><a href={`${repositoryUrl}/issues`} target="_blank" rel="noopener noreferrer"><span><GitPullRequest size={20} /><span><strong>Masukan & kendala</strong><small>Diskusikan lewat GitHub Issues</small></span></span><ArrowUpRight size={19} /></a><a href="/tim"><span><Code2 size={20} /><span><strong>Tim pengembang</strong><small>Kenali orang di balik DORA</small></span></span><ArrowUpRight size={19} /></a></div></div><div className="repo-path"><span>NezzyGremory / Data-Overview-Research-Assistant</span><span>Public repository · MIT</span></div></div></section>
+    <section id="github" className="site-container repository-section">
+      <div className="repository-panel">
+        <div className="repo-heading">
+          <Github size={32} />
+          <span>Repositori Utama DORA · Kode sumber aplikasi desktop</span>
+        </div>
+        <div className="repo-layout">
+          <div>
+            <h2>Kenali yang bekerja<br /><span>di balik layar.</span></h2>
+            <p>
+              Bagian ini menautkan langsung ke repositori inti aplikasi desktop DORA (Python & PySide6), terpisah dari katalog Add-ons opsional. Jelajahi arsitektur modul, pelajari perubahan tiap rilis, atau laporkan temuan Anda.
+            </p>
+            <div className="repo-primary-actions">
+              <a className="button primary" href={repositoryUrl} target="_blank" rel="noopener noreferrer"><Github size={17} />Buka repositori aplikasi<ArrowUpRight size={17} /></a>
+              <a className="button secondary" href="/tim">Profil tim pengembang<ArrowRight size={16} /></a>
+            </div>
+          </div>
+          <div className="repo-links">
+            <a href={repositoryUrl} target="_blank" rel="noopener noreferrer">
+              <span><Code2 size={20} /><span><strong>Kode sumber utama</strong><small>Modul analyzer, ML graph engine, riset literatur, dan UI PySide6</small></span></span>
+              <ArrowUpRight size={19} />
+            </a>
+            <a href={`${repositoryUrl}/releases`} target="_blank" rel="noopener noreferrer">
+              <span><Download size={20} /><span><strong>Catatan rilis & installer</strong><small>Riwayat versi, perubahan fitur, dan paket unduhan resmi ({currentRelease.version})</small></span></span>
+              <ArrowUpRight size={19} />
+            </a>
+            <a href={`${repositoryUrl}/issues`} target="_blank" rel="noopener noreferrer">
+              <span><GitPullRequest size={20} /><span><strong>Pelaporan masalah (Issues)</strong><small>Sampaikan bug, kendala instalasi, atau usulan fitur baru</small></span></span>
+              <ArrowUpRight size={19} />
+            </a>
+            <a href="/tim">
+              <span><BookOpen size={20} /><span><strong>Tim pengembang Metriks Studio</strong><small>Kenali kontributor dan sumber kredit resmi di balik DORA</small></span></span>
+              <ArrowRight size={19} />
+            </a>
+          </div>
+        </div>
+        <div className="repo-distinction-bar">
+          <div>
+            <span className="repo-distinction-label">Repositori Aplikasi Desktop (Inti)</span>
+            <strong>NezzyGremory / Data-Overview-Research-Assistant</strong>
+            <small>Python 3.13 · PySide6 · Lisensi MIT · Rilis {currentRelease.version}</small>
+          </div>
+          <div>
+            <span className="repo-distinction-label">Repositori Website Profil Ini</span>
+            <a href={websiteRepositoryUrl} target="_blank" rel="noopener noreferrer">
+              AHTURRR / Website-Profiling-DORA.<ArrowUpRight size={14} />
+            </a>
+            <small>React 19 · TypeScript · Pusat informasi, pratinjau, dan dokumentasi web</small>
+          </div>
+        </div>
+      </div>
+    </section>
 
     <section id="faq" className="site-container faq-new"><div><span className="eyebrow">Hal yang mungkin Anda tanyakan</span><h2>Sebelum melangkah<br />lebih jauh.</h2><p>Informasi penggunaan, privasi, dan dukungan DORA.</p><a className="inline-link" href={`${repositoryUrl}/issues`} target="_blank" rel="noopener noreferrer">Ada pertanyaan lain?<ArrowUpRight size={16} /></a></div><div className="faq-list">{faqList.map(faq => <details key={faq.id}><summary>{cleanProductText(faq.question)}<Plus size={18} /></summary><p>{cleanProductText(faq.answer)}</p></details>)}</div></section>
 
     {feature && <ContentDialog title={cleanProductText(feature.title)} onClose={() => setFeature(null)}><span className="dialog-scope">{feature.executionScope}</span><p>{cleanProductText(feature.description)}</p><ul className="dialog-capabilities">{feature.capabilities?.map(item => <li key={item}><Check size={16} /><span>{cleanProductText(item)}</span></li>)}</ul></ContentDialog>}
-    {imageOpen && <ContentDialog title={imageTarget === 'hero' ? 'Overview · DORA desktop' : cleanProductText(activePreview.title)} onClose={() => setImageOpen(false)} wide><Screenshot src={imageTarget === 'hero' ? '/screenshots/overview.png' : activePreview.imageSrc || '/screenshots/overview.png'} title={imageTarget === 'hero' ? 'Overview DORA' : cleanProductText(activePreview.title)} eager /></ContentDialog>}
+    {imageOpen && <ContentDialog title={imageTarget === 'hero' ? activeHeroView.title : cleanProductText(activePreview.title)} onClose={() => setImageOpen(false)} wide><Screenshot src={imageTarget === 'hero' ? activeHeroView.src : activePreview.imageSrc || '/screenshots/overview.png'} title={imageTarget === 'hero' ? activeHeroView.title : cleanProductText(activePreview.title)} eager /></ContentDialog>}
     {helpOpen && <ContentDialog title="Memeriksa unduhan DORA" onClose={() => setHelpOpen(false)}><p>Installer yang belum dikenal browser atau Windows dapat menampilkan peringatan. Periksa sumber dan integritas file sebelum melanjutkan.</p><ol className="help-steps"><li>Pastikan file berasal dari repositori resmi <strong>NezzyGremory/Data-Overview-Research-Assistant</strong>.</li><li>Cocokkan nama file dan versi dengan aset di GitHub Releases.</li><li>Hitung SHA256 menggunakan perintah di bawah, lalu bandingkan hasilnya dengan checksum yang tercantum.</li><li>Jika hash berbeda atau Anda ragu, jangan jalankan file. Laporkan melalui GitHub Issues.</li></ol><CopyControl value={`Get-FileHash -Algorithm SHA256 "${currentRelease.filename}"`} label="Perintah PowerShell" /><a className="button secondary" href={`${repositoryUrl}/releases/tag/${currentRelease.version}`} target="_blank" rel="noopener noreferrer">Periksa rilis resmi<ArrowUpRight size={16} /></a></ContentDialog>}
   </>;
 }
