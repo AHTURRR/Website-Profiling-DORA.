@@ -73,7 +73,7 @@ const previewCategories = [
 
 type PreviewCategoryId = (typeof previewCategories)[number]['id'];
 
-const cleanProductText = (text: string) => text.replace(/v2\.0\.0/g, currentRelease.version).replace(/v2\.0\b/g, 'v6.0');
+const cleanProductText = (text: string) => text;
 
 function CopyControl({ value, label }: { value: string; label: string }) {
   const [status, setStatus] = useState<'idle' | 'copied' | 'error'>('idle');
@@ -200,7 +200,7 @@ export function HomePage() {
         </div>
       </div>
       <div className="site-container hero-inner">
-        <a className="release-link" href="#downloads"><span className="release-dot" />DORA {currentRelease.version}<span className="release-divider" />Rilis v7.0 Terbaru<ArrowRight size={14} /></a>
+        <a className="release-link" href="#downloads"><span className="release-dot" />DORA {currentRelease.version}<span className="release-divider" />Rilis v2.0 Terbaru<ArrowRight size={14} /></a>
         <h1>Dari data mentah,<br />menjadi <span className="headline-gradient">arah riset.</span></h1>
         <p className="hero-lead">Eksplorasi dataset, rangkai eksperimen machine learning,<br className="desktop-break" /> dan temukan literatur ilmiah. Dalam satu ruang kerja desktop.</p>
         <div className="hero-actions">
@@ -251,7 +251,7 @@ export function HomePage() {
                 </span>
                 <img src="/brand/about-brand-mark.png" width="16" height="16" alt="" />
                 <strong>DORA Desktop</strong>
-                <span className="frame-version-pill">v{currentRelease.version}</span>
+                <span className="frame-version-pill">{currentRelease.version}</span>
                 <span className="frame-stage-badge">{activeHeroView.stage}</span>
               </div>
               <button type="button" onClick={() => openPreview('hero')} aria-label={`Perbesar screenshot ${activeHeroView.label}`}>
@@ -636,11 +636,11 @@ export function HomePage() {
         </div>
 
         <div className="download-cards-container">
-          {/* Card Versi 7 (Terbaru) */}
+          {/* Card Versi 2 (Terbaru) */}
           <div className="download-card is-primary">
             <div className="download-card-heading">
               <span className="download-icon"><Download size={22} /></span>
-              <span><strong>DORA v7</strong><small>Installer resmi · {currentRelease.version}</small></span>
+              <span><strong>DORA v2</strong><small>Installer resmi · {currentRelease.version}</small></span>
               <span className="release-label">Rilis Terbaru</span>
             </div>
             <div className="download-file">{currentRelease.filename}</div>
@@ -651,7 +651,7 @@ export function HomePage() {
             </dl>
             <a className="button primary full-width" href={currentRelease.url} download>
               <Download size={16} />
-              <span>Unduh DORA v7 (.exe)</span>
+              <span>Unduh DORA v2 (.exe)</span>
               <ArrowUpRight size={15} />
             </a>
             <p className="download-origin"><ShieldCheck size={14} />Rilis Utama Windows x64</p>
@@ -662,11 +662,11 @@ export function HomePage() {
             </details>
           </div>
 
-          {/* Card Versi 6 (Sebelumnya) */}
+          {/* Card Versi 1 (Sebelumnya) */}
           <div className="download-card is-secondary">
             <div className="download-card-heading">
               <span className="download-icon is-muted"><Download size={20} /></span>
-              <span><strong>DORA v6</strong><small>Installer arsip · {legacyRelease.version}</small></span>
+              <span><strong>DORA v1</strong><small>Installer arsip · {legacyRelease.version}</small></span>
               <span className="release-label is-previous">Rilis Sebelumnya</span>
             </div>
             <div className="download-file">{legacyRelease.filename}</div>
@@ -677,7 +677,7 @@ export function HomePage() {
             </dl>
             <a className="button secondary full-width" href={legacyRelease.url} download>
               <Download size={16} />
-              <span>Unduh DORA v6 (.exe)</span>
+              <span>Unduh DORA v1 (.exe)</span>
               <ArrowUpRight size={15} />
             </a>
             <details className="checksum-details">

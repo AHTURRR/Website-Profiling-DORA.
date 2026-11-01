@@ -76,7 +76,7 @@ export const addonsCatalogMeta = {
     'Repositori publik tersedia dan dapat diakses.',
     'Dokumentasi menjelaskan keterkaitan langsung dengan alur kerja DORA.',
     'Tautan panduan instalasi atau paket unduhan valid.',
-    'Rentang kompatibilitas versi DORA (mis. v6.0.0) tercantum jelas.',
+    'Rentang kompatibilitas versi DORA (mis. v2.0.0) tercantum jelas.',
   ],
 };
 
