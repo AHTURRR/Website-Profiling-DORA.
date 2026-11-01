@@ -445,7 +445,7 @@ export const productConfig: ProductConfig = {
       filename: 'Data-Overview-Research-Assistant-v2.0.0-Setup.exe',
       downloadUrl:
         'https://github.com/NezzyGremory/Data-Overview-Research-Assistant/releases/download/v2.0.0/Data-Overview-Research-Assistant-v2.0.0-Setup.exe',
-      checksumSha256: '61bd2c2bca54c5811fc204196870a0a46e3c15f7d4fe095e4a418913f497a4b0',
+      checksumSha256: '6004fe62f7ea2eaa7f9e350ac49c83e2b0aff5a4bb82c02beb10d62cf36b79e1',
       isPrimaryForPlatform: true,
       buttonLabel: 'Download Windows Setup v2.0.0 (.exe)',
       notes:

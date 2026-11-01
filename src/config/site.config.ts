@@ -13,7 +13,7 @@ export const currentRelease = {
   filename: primaryRelease.filename,
   size: primaryRelease.fileSize,
   date: primaryRelease.releaseDate,
-  updated: '31 Oktober 2026',
+  updated: '1 November 2026',
   url: primaryRelease.downloadUrl,
   sha256: primaryRelease.checksumSha256!,
   notes: primaryRelease.notes,
