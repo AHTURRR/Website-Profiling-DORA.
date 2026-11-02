@@ -13,16 +13,59 @@ export interface TeamMember {
   role: string;
   initials: string;
   discipline: string;
-  draftBio: string;
+  photo: string;
+  jobdesk: string;
 }
 
 export const teamMembers: TeamMember[] = [
-  { name: 'Abdul Muhis', role: 'Software Engineering', initials: 'AM', discipline: 'Engineering', draftBio: 'Contoh bio: mengembangkan fondasi aplikasi dan menghubungkan alur pengolahan data dengan pengalaman desktop yang terstruktur.' },
-  { name: 'Lyra Anindita Ferani', role: 'UI/UX Design', initials: 'LA', discipline: 'Design', draftBio: 'Contoh bio: mengeksplorasi alur penggunaan, hierarki informasi, dan interaksi agar proses riset lebih mudah dipahami.' },
-  { name: 'Muchammad Soufwan Fauzi', role: 'UI/UX Design', initials: 'MS', discipline: 'Design', draftBio: 'Contoh bio: merancang komponen antarmuka dan menyelaraskan pengalaman di setiap bagian ruang kerja aplikasi.' },
-  { name: 'Ahmad Turmudi', role: 'Graphic Design & Web Developer', initials: 'AT', discipline: 'Web & Visual', draftBio: 'Contoh bio: mempertemukan identitas visual dan pengembangan web untuk memperkenalkan produk dengan lebih jelas.' },
-  { name: 'Muhammad Zaki Musyaffa', role: 'Scientific Paper Writing', initials: 'MZ', discipline: 'Research', draftBio: 'Contoh bio: membantu penyusunan tulisan ilmiah dan mengomunikasikan konteks penelitian secara runtut.' },
-  { name: 'Rohmad Abidin, M.Kom', role: 'Academic Supervisor', initials: 'RA', discipline: 'Academic', draftBio: 'Contoh bio: memberikan perspektif akademik dalam pengembangan perangkat pendukung eksplorasi data dan penelitian.' },
+  {
+    name: 'Rohmad Abidin, M.Kom',
+    role: 'Academic Supervisor',
+    initials: 'RA',
+    discipline: 'Academic',
+    photo: '/team/rohmad-abidin.png',
+    jobdesk: 'Memberikan supervisi akademik, bimbingan metodologis, serta arahan saintifik dalam perancangan arsitektur dan instrumen riset data DORA.',
+  },
+  {
+    name: 'Abdul Muhis',
+    role: 'Software Engineering',
+    initials: 'AM',
+    discipline: 'Engineering',
+    photo: '/team/abdul-muhis.jpg',
+    jobdesk: 'Mengembangkan arsitektur perangkat lunak utama desktop DORA, integrasi PySide6/Qt, reactive analysis pipeline, serta sistem eksekusi background worker.',
+  },
+  {
+    name: 'Lyra Anindita Ferani',
+    role: 'UI/UX Design',
+    initials: 'LA',
+    discipline: 'Design',
+    photo: '/team/lyra-anindita.jpg',
+    jobdesk: 'Merancang tata kelola pengalaman pengguna (UX), hierarki visual ruang kerja riset, arsitektur informasi antarmuka, serta kemudahan navigasi aplikasi.',
+  },
+  {
+    name: 'Muchammad Soufwan Fauzi',
+    role: 'UI/UX Design',
+    initials: 'MS',
+    discipline: 'Design',
+    photo: '/team/muhammad-fauzi.jpg',
+    jobdesk: 'Menyusun sistem komponen antarmuka (UI System), interaksi visual node editor, state kontrol data interaktif, dan konsistensi antarmuka pengguna.',
+  },
+  {
+    name: 'Ahmad Turmudi',
+    role: 'Graphic Design & Web Developer',
+    initials: 'AT',
+    discipline: 'Web & Visual',
+    photo: '/team/ahmad-turmudi.jpg',
+    jobdesk: 'Membangun identitas visual grafis, aset visual aplikasi, media komunikasi produk, serta arsitektur dan pengembangan website profiling resmi DORA.',
+  },
+  {
+    name: 'Muhammad Zaki Musyaffa',
+    role: 'Scientific Paper Writing',
+    initials: 'MZ',
+    discipline: 'Research',
+    photo: '/team/zaki-musyaffa.jpg',
+    jobdesk: 'Menyusun struktur naskah ilmiah, tinjauan literatur saintifik, perumusan metodologi penelitian, serta dokumentasi akademik pendukung DORA.',
+  },
 ];
 
 export const specialThanks = 'UIN K.H. Abdurrahman Wahid Pekalongan';

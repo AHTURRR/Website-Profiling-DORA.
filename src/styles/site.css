@@ -1816,17 +1816,107 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
   border-color: #5d4a75;
   box-shadow: 0 12px 32px rgba(10, 8, 20, 0.35);
 }
-.member-visual { aspect-ratio: 1.25; border: 1px solid #3c334a; border-radius: var(--radius-inner); background: #1b1727; position: relative; overflow: hidden; padding: 20px; display: flex; flex-direction: column; justify-content: space-between; }
+.member-visual {
+  aspect-ratio: 1 / 1.15;
+  border: 1px solid #3c334a;
+  border-radius: var(--radius-inner);
+  background: #1b1727;
+  position: relative;
+  overflow: hidden;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .member-visual-1 { background: #151c25; border-color: #2f3d4d; }
 .member-visual-2 { background: #201c25; border-color: #44384a; }
-.member-discipline { position: relative; font-family: var(--font-family-mono); font-size: 11px; font-weight: 600; color: #c2b6d8; text-transform: uppercase; letter-spacing: 0.04em; }
-.member-initials { font-family: var(--font-family-display); font-size: clamp(56px, 6.5vw, 92px); line-height: 1; letter-spacing: -.05em; align-self: center; color: #9d8bb8; font-weight: 700; }
-.member-visual-1 .member-initials { color: #88a1b6; }
-.member-visual-2 .member-initials { color: #b29bad; }
-.member-index { font-family: var(--font-family-mono); font-size: 9.5px; color: #b5a8ca; letter-spacing: 0.04em; }
+.member-photo {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 20%;
+  transition: transform 320ms var(--site-ease);
+  z-index: 1;
+}
+.team-card:hover .member-photo {
+  transform: scale(1.04);
+}
+.member-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(14, 11, 23, 0.6) 0%, rgba(14, 11, 23, 0.1) 45%, rgba(14, 11, 23, 0.82) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+.member-hud-meta {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+.member-discipline {
+  position: relative;
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+  font-weight: 600;
+  color: #f1edff;
+  background: rgba(18, 14, 28, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 3px 8px;
+  border-radius: var(--radius-tag);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.member-hud-tag {
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+  color: #cbc2f5;
+  background: rgba(18, 14, 28, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 3px 8px;
+  border-radius: var(--radius-tag);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.member-index {
+  position: relative;
+  z-index: 3;
+  font-family: var(--font-family-mono);
+  font-size: 9.5px;
+  color: #e4ddfa;
+  background: rgba(18, 14, 28, 0.72);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  padding: 3px 8px;
+  border-radius: var(--radius-tag);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  align-self: flex-start;
+  letter-spacing: 0.04em;
+}
 .member-copy { padding: 18px 4px 6px; }
 .member-copy h3 { font-family: var(--font-family-display); font-size: 18px; font-weight: 600; letter-spacing: -.025em; line-height: 1.35; }
 .member-role { display: block; font-family: var(--font-family-mono); font-size: 11.5px; font-weight: 600; color: var(--site-accent); text-transform: uppercase; letter-spacing: 0.04em; margin-top: 4px; }
+.member-jobdesk-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 12px;
+  color: #bfaee3;
+  background: rgba(82, 59, 133, 0.18);
+  border: 1px solid #4a3c66;
+  padding: 3px 9px;
+  border-radius: var(--radius-tag);
+  font-family: var(--font-family-mono);
+  font-size: 10px;
+  letter-spacing: 0.03em;
+}
+.member-jobdesk-tag svg { color: var(--site-accent); }
 .dummy-label { display: inline-block; margin-top: 12px; color: #a99ec4; border: 1px solid #423652; padding: 2px 7px; border-radius: var(--radius-tag); font-family: var(--font-family-mono); font-size: 10px; text-transform: uppercase; letter-spacing: 0.05em; }
 .member-copy p { margin-top: 8px; font-size: 13.5px; line-height: 1.65; color: var(--site-muted); }
 .team-source-note { display: flex; align-items: flex-start; gap: 13px; padding: 20px 24px; margin-top: 40px; border: 1px solid var(--site-line); border-radius: var(--radius-inner); font-size: 12.5px; color: var(--site-muted); line-height: 1.6; }

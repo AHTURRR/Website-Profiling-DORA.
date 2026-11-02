@@ -302,9 +302,21 @@
 :root[data-theme="light"] .member-visual { background: #eae2f4; border-color: #c5b3d7; }
 :root[data-theme="light"] .member-visual-1 { background: #e6ecf1; border-color: #bdcad5; }
 :root[data-theme="light"] .member-visual-2 { background: #ede5ee; border-color: #cbb9ce; }
-:root[data-theme="light"] .member-visual .member-initials { color: #6a5084; }
-:root[data-theme="light"] .member-visual-1 .member-initials { color: #49677d; }
-:root[data-theme="light"] .member-visual-2 .member-initials { color: #77566d; }
+:root[data-theme="light"] .member-photo-overlay {
+  background: linear-gradient(180deg, rgba(247, 243, 253, 0.45) 0%, rgba(247, 243, 253, 0.08) 45%, rgba(245, 240, 252, 0.82) 100%);
+}
+:root[data-theme="light"] .member-discipline,
+:root[data-theme="light"] .member-hud-tag,
+:root[data-theme="light"] .member-index {
+  color: #3b285b;
+  background: rgba(255, 255, 255, 0.88);
+  border-color: rgba(140, 118, 186, 0.35);
+}
+:root[data-theme="light"] .member-jobdesk-tag {
+  color: #553585;
+  background: #f2ebfc;
+  border-color: #cfc0e8;
+}
 :root[data-theme="light"] :is(.member-discipline, .member-index, .dummy-label) { color: #584869; }
 :root[data-theme="light"] .dummy-label { border-color: #b5a5c8; }
 :root[data-theme="light"] .team-section .section-heading strong { color: var(--site-text); }

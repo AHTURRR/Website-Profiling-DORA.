@@ -1,4 +1,4 @@
-import { ArrowUpRight, ArrowRight, GitFork as Github, Code2, PenTool, BookOpen } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, GitFork as Github, Code2, PenTool, BookOpen, Check } from 'lucide-react';
 import { creditSource, studioCredits, teamMembers, specialThanks } from '../../config/team.config';
 
 export function TeamPage() {
@@ -19,26 +19,46 @@ export function TeamPage() {
       </div>
     </section>
     <section className="site-container team-section" aria-labelledby="team-heading">
-      <div className="section-heading"><div><span className="eyebrow">Orang di balik produknya</span><h2 id="team-heading">Berbeda keahlian.<br />Satu ruang eksplorasi.</h2></div><p>Nama dan peran mengikuti kredit resmi aplikasi. Bio di bawah adalah <strong>data dummy</strong> untuk pratinjau tata letak.</p></div>
-      <div className="team-grid">{teamMembers.map((member, index) => <article className="team-card" key={member.name}>
-        <div className={`member-visual member-visual-${index % 3}`} aria-hidden="true">
-          <svg className="member-gyro" viewBox="0 0 100 100" fill="none" aria-hidden="true">
-            <circle cx="50" cy="50" r="44" stroke="currentColor" strokeWidth="0.75" strokeDasharray="3 3" opacity="0.35" />
-            <circle cx="50" cy="50" r="32" stroke="currentColor" strokeWidth="1" strokeDasharray="14 6" opacity="0.5" />
-            <ellipse cx="50" cy="50" rx="46" ry="18" stroke="currentColor" strokeWidth="0.75" opacity="0.3" />
-            <ellipse cx="50" cy="50" rx="18" ry="46" stroke="currentColor" strokeWidth="0.75" opacity="0.3" />
-            <circle cx="50" cy="50" r="4" fill="currentColor" opacity="0.4" />
-          </svg>
-          <div className="member-hud-meta">
-            <span className="member-discipline">{member.discipline}</span>
-            <span className="member-hud-tag">[UNIT // 0{index + 1}]</span>
-          </div>
-          <span className="member-initials">{member.initials}</span>
-          <span className="member-index">0{index + 1} / Metriks Studio</span>
+      <div className="section-heading">
+        <div>
+          <span className="eyebrow">Orang di balik produknya</span>
+          <h2 id="team-heading">Berbeda keahlian.<br />Satu ruang eksplorasi.</h2>
         </div>
-        <div className="member-copy"><h3>{member.name}</h3><span className="member-role">{member.role}</span><div className="dummy-label">Bio dummy</div><p>{member.draftBio}</p></div>
-      </article>)}</div>
-      <div className="team-source-note"><BookOpen size={20} /><p>Nama dan peran disalin langsung dari <a href={creditSource} target="_blank" rel="noopener noreferrer">app/ui/data/credits.json pada repositori DORA</a>. Monogram teks menggantikan foto karena sumber resmi tidak memuat foto profil; tidak ada foto, kontak, atau tautan personal rekaan.</p></div>
+        <p>Nama, peran, dan pembagian tugas (jobdesk) bersumber langsung dari kredit resmi aplikasi DORA (<code>credits.json</code>) bersama tim pengembang Metriks Studio.</p>
+      </div>
+      <div className="team-grid">
+        {teamMembers.map((member, index) => (
+          <article className="team-card" key={member.name}>
+            <div className={`member-visual member-visual-${index % 3}`}>
+              <img
+                src={member.photo}
+                alt={`Foto profil ${member.name}`}
+                className="member-photo"
+                loading="lazy"
+              />
+              <div className="member-photo-overlay" aria-hidden="true" />
+              <div className="member-hud-meta">
+                <span className="member-discipline">{member.discipline}</span>
+                <span className="member-hud-tag">[UNIT // 0{index + 1}]</span>
+              </div>
+              <span className="member-index">0{index + 1} / Metriks Studio</span>
+            </div>
+            <div className="member-copy">
+              <h3>{member.name}</h3>
+              <span className="member-role">{member.role}</span>
+              <div className="member-jobdesk-tag">
+                <Check size={11} />
+                <span>Jobdesk Terverifikasi</span>
+              </div>
+              <p>{member.jobdesk}</p>
+            </div>
+          </article>
+        ))}
+      </div>
+      <div className="team-source-note">
+        <BookOpen size={20} />
+        <p>Nama, peran, dan pembagian jobdesk disalin langsung berdasarkan <a href={creditSource} target="_blank" rel="noopener noreferrer">app/ui/data/credits.json pada repositori DORA</a>. Foto profil resmi anggota tim pengembang Metriks Studio disematkan langsung pada masing-masing kartu profil.</p>
+      </div>
     </section>
     <section className="team-principles site-container"><div><span className="eyebrow">Cara kami berkontribusi</span><h2>Dari berbagai sudut,<br />untuk satu produk.</h2></div><div className="principle-list"><div><Code2 size={22} /><h3>Engineering</h3><p>Menghubungkan dataset, analisis, dan pipeline di dalam aplikasi desktop.</p></div><div><PenTool size={22} /><h3>Design</h3><p>Menyusun pengalaman visual dan interaksi untuk ruang kerja riset.</p></div><div><BookOpen size={22} /><h3>Research</h3><p>Membawa perspektif penulisan ilmiah dan pendampingan akademik.</p></div></div></section>
     <section className="thanks-section site-container"><span className="eyebrow">Special thanks</span><h2>{specialThanks}</h2><p>Dicantumkan sesuai bagian Special Thanks dalam kredit resmi aplikasi DORA.</p></section>
