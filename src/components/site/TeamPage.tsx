@@ -50,10 +50,6 @@ export function TeamPage() {
           </article>
         ))}
       </div>
-      <div className="team-source-note">
-        <BookOpen size={20} />
-        <p>Nama, peran, dan pembagian jobdesk disalin langsung berdasarkan <a href={creditSource} target="_blank" rel="noopener noreferrer">app/ui/data/credits.json pada repositori DORA</a>. Foto profil resmi anggota tim pengembang Metriks Studio disematkan langsung pada masing-masing kartu profil.</p>
-      </div>
     </section>
     <section className="team-principles site-container"><div><span className="eyebrow">Cara kami berkontribusi</span><h2>Dari berbagai sudut,<br />untuk satu produk.</h2></div><div className="principle-list"><div><Code2 size={22} /><h3>Engineering</h3><p>Menghubungkan dataset, analisis, dan pipeline di dalam aplikasi desktop.</p></div><div><PenTool size={22} /><h3>Design</h3><p>Menyusun pengalaman visual dan interaksi untuk ruang kerja riset.</p></div><div><BookOpen size={22} /><h3>Research</h3><p>Membawa perspektif penulisan ilmiah dan pendampingan akademik.</p></div></div></section>
     <section className="thanks-section site-container"><span className="eyebrow">Special thanks</span><h2>{specialThanks}</h2><p>Dicantumkan sesuai bagian Special Thanks dalam kredit resmi aplikasi DORA.</p></section>
