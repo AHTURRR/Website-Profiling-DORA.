@@ -1,4 +1,4 @@
-import { ArrowUpRight, ArrowRight, GitFork as Github, Code2, PenTool, BookOpen, Check } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, GitFork as Github, Code2, PenTool, BookOpen } from 'lucide-react';
 import { creditSource, studioCredits, teamMembers, specialThanks } from '../../config/team.config';
 
 export function TeamPage() {
@@ -39,17 +39,12 @@ export function TeamPage() {
               <div className="member-photo-overlay" aria-hidden="true" />
               <div className="member-hud-meta">
                 <span className="member-discipline">{member.discipline}</span>
-                <span className="member-hud-tag">[UNIT // 0{index + 1}]</span>
               </div>
               <span className="member-index">0{index + 1} / Metriks Studio</span>
             </div>
             <div className="member-copy">
               <h3>{member.name}</h3>
               <span className="member-role">{member.role}</span>
-              <div className="member-jobdesk-tag">
-                <Check size={11} />
-                <span>Jobdesk Terverifikasi</span>
-              </div>
               <p>{member.jobdesk}</p>
             </div>
           </article>

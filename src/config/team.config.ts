@@ -24,15 +24,15 @@ export const teamMembers: TeamMember[] = [
     initials: 'RA',
     discipline: 'Academic',
     photo: '/team/rohmad-abidin.png',
-    jobdesk: 'Memberikan supervisi akademik, bimbingan metodologis, serta arahan saintifik dalam perancangan arsitektur dan instrumen riset data DORA.',
+    jobdesk: 'Bertanggung jawab dalam supervisi akademik, memberikan bimbingan metodologis serta arahan saintifik dalam perancangan arsitektur dan instrumen riset data DORA.',
   },
   {
     name: 'Abdul Muhis',
-    role: 'Software Engineering',
+    role: 'Software Development',
     initials: 'AM',
-    discipline: 'Engineering',
+    discipline: 'Development',
     photo: '/team/abdul-muhis.jpg',
-    jobdesk: 'Mengembangkan arsitektur perangkat lunak utama desktop DORA, integrasi PySide6/Qt, reactive analysis pipeline, serta sistem eksekusi background worker.',
+    jobdesk: 'Bertanggung jawab dalam pengembangan perangkat lunak (software development) aplikasi desktop DORA, arsitektur sistem, integrasi modul analisis, dan eksekusi background worker.',
   },
   {
     name: 'Lyra Anindita Ferani',
@@ -40,7 +40,7 @@ export const teamMembers: TeamMember[] = [
     initials: 'LA',
     discipline: 'Design',
     photo: '/team/lyra-anindita.jpg',
-    jobdesk: 'Merancang tata kelola pengalaman pengguna (UX), hierarki visual ruang kerja riset, arsitektur informasi antarmuka, serta kemudahan navigasi aplikasi.',
+    jobdesk: 'Bertanggung jawab dalam perancangan antarmuka dan pengalaman pengguna (UI/UX design), alur interaksi ruang kerja riset, arsitektur informasi, serta kemudahan navigasi aplikasi.',
   },
   {
     name: 'Muchammad Soufwan Fauzi',
@@ -48,7 +48,7 @@ export const teamMembers: TeamMember[] = [
     initials: 'MS',
     discipline: 'Design',
     photo: '/team/muhammad-fauzi.jpg',
-    jobdesk: 'Menyusun sistem komponen antarmuka (UI System), interaksi visual node editor, state kontrol data interaktif, dan konsistensi antarmuka pengguna.',
+    jobdesk: 'Bertanggung jawab dalam perancangan desain antarmuka dan pengalaman pengguna (UI/UX design), sistem komponen grafis visual node editor, dan konsistensi tampilan DORA.',
   },
   {
     name: 'Ahmad Turmudi',
@@ -56,7 +56,7 @@ export const teamMembers: TeamMember[] = [
     initials: 'AT',
     discipline: 'Web & Visual',
     photo: '/team/ahmad-turmudi.jpg',
-    jobdesk: 'Membangun identitas visual grafis, aset visual aplikasi, media komunikasi produk, serta arsitektur dan pengembangan website profiling resmi DORA.',
+    jobdesk: 'Bertanggung jawab dalam desain grafis aset visual dan pengembangan website profiling resmi (graphic design & web developer) untuk DORA.',
   },
   {
     name: 'Muhammad Zaki Musyaffa',
@@ -64,7 +64,7 @@ export const teamMembers: TeamMember[] = [
     initials: 'MZ',
     discipline: 'Research',
     photo: '/team/zaki-musyaffa.jpg',
-    jobdesk: 'Menyusun struktur naskah ilmiah, tinjauan literatur saintifik, perumusan metodologi penelitian, serta dokumentasi akademik pendukung DORA.',
+    jobdesk: 'Bertanggung jawab dalam penulisan karya ilmiah dan publikasi akademik (scientific paper writing) terkait riset, metodologi, serta dokumentasi saintifik pendukung DORA.',
   },
 ];
 
