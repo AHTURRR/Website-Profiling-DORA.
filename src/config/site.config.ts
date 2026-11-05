@@ -5,8 +5,7 @@ export const websiteRepositoryUrl = 'https://github.com/AHTURRR/Website-Profilin
 export const doraWebUrl = 'https://data-overview-research-and-assistant.netlify.app';
 
 export const releases = productConfig.releases;
-const primaryRelease = productConfig.releases.find(release => release.isPrimaryForPlatform)!;
-const previousRelease = productConfig.releases.find(release => !release.isPrimaryForPlatform)!;
+const primaryRelease = productConfig.releases[0];
 
 export const currentRelease = {
   version: primaryRelease.version,
@@ -17,15 +16,4 @@ export const currentRelease = {
   url: primaryRelease.downloadUrl,
   sha256: primaryRelease.checksumSha256!,
   notes: primaryRelease.notes,
-};
-
-export const legacyRelease = {
-  version: previousRelease.version,
-  filename: previousRelease.filename,
-  size: previousRelease.fileSize,
-  date: previousRelease.releaseDate,
-  updated: '12 Oktober 2026',
-  url: previousRelease.downloadUrl,
-  sha256: previousRelease.checksumSha256!,
-  notes: previousRelease.notes,
 };

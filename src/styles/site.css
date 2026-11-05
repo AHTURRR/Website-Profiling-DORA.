@@ -360,7 +360,7 @@ body {
   height: 7px;
   border-radius: 50%;
   background: #34d399;
-  box-shadow: 0 0 8px #34d399;
+  box-shadow: 0 0 4px rgba(52, 211, 153, 0.5);
   animation: pulse-glow 2s ease-in-out infinite alternate;
 }
 .hero-view-cluster-divider {
@@ -770,7 +770,7 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
   stroke: #9e91ff;
   stroke-width: 2;
   stroke-dasharray: 8 16;
-  filter: drop-shadow(0 0 4px #9e91ff);
+  opacity: 0.85;
 }
 .wire-laser-1 { animation: laser-flow 1.8s linear infinite; }
 .wire-laser-2 { animation: laser-flow 1.5s linear infinite; }
@@ -1324,26 +1324,18 @@ details[open] > summary > svg, details[open] > summary > span > svg { transform:
   gap: 20px;
 }
 .download-card {
-  padding: 24px 26px;
-  border: 1px solid #484056;
-  background: #16151e;
+  padding: 26px 28px;
+  border: 1px solid #6d589d;
+  background: #171524;
   border-radius: var(--radius-card);
   min-width: 0;
+  box-shadow: 0 16px 40px rgba(8, 7, 16, 0.5);
   transition: transform 200ms var(--site-ease-quick), border-color 200ms ease-out, box-shadow 200ms ease-out;
 }
-.download-card.is-primary {
-  border-color: #6d589d;
-  background: #171524;
-  box-shadow: 0 16px 40px rgba(8, 7, 16, 0.5);
-}
-.download-card.is-secondary {
-  border-color: #3b354c;
-  background: #12111a;
-  opacity: 0.96;
-}
-.download-card.is-secondary:hover {
-  opacity: 1;
-  border-color: #5d4d7c;
+.download-card-title-group {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 .download-icon.is-muted {
   background: #1d1b28;

@@ -4,7 +4,7 @@ import { productConfig } from '../../config/product.config';
 import type { FeatureItem } from '../../types/product.types';
 import { ContentDialog } from './ContentDialog';
 import { WindowsDefenderGuideModal } from '../modals/WindowsDefenderGuideModal';
-import { currentRelease, legacyRelease, doraWebUrl, repositoryUrl } from '../../config/site.config';
+import { currentRelease, doraWebUrl, repositoryUrl } from '../../config/site.config';
 import { addonCategories, verifiedAddons, addonsCatalogMeta, type AddonCategoryId } from '../../config/addons.config';
 
 const modules = [
@@ -154,53 +154,8 @@ export function HomePage() {
   return <>
     <section id="hero" className="new-hero">
       <div className="hero-light" aria-hidden="true" />
-      <div className="hero-orbital-backdrop" aria-hidden="true">
-        {/* Metriks Studio Cybernetic Orbital Engine Motion Graphic */}
-        <div className="hero-engine-centerpiece">
-          <div className="engine-quantum-halo" />
-          <div className="engine-radar-ring" />
-          <svg className="engine-gyro-svg" viewBox="0 0 600 600" fill="none">
-            {/* Outer Cardinal Compass Grid */}
-            <circle cx="300" cy="300" r="280" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 7" opacity="0.25" className="engine-spin-slow" />
-            <circle cx="300" cy="300" r="230" stroke="currentColor" strokeWidth="1.2" strokeDasharray="18 10 4 10" opacity="0.35" className="engine-spin-rev" />
-            
-            {/* Inner Gyroscopic Ellipses */}
-            <ellipse cx="300" cy="300" rx="260" ry="110" stroke="currentColor" strokeWidth="1" strokeDasharray="8 6" opacity="0.3" className="engine-orbit-x" />
-            <ellipse cx="300" cy="300" rx="110" ry="260" stroke="currentColor" strokeWidth="1" strokeDasharray="8 6" opacity="0.3" className="engine-orbit-y" />
-            
-            {/* Core Reticle Target */}
-            <circle cx="300" cy="300" r="160" stroke="currentColor" strokeWidth="1" opacity="0.2" />
-            <circle cx="300" cy="300" r="90" stroke="currentColor" strokeWidth="1.5" strokeDasharray="24 16" opacity="0.4" className="engine-spin-medium" />
-            <circle cx="300" cy="300" r="40" stroke="currentColor" strokeWidth="1" opacity="0.25" />
-            
-            {/* Crosshair Ray Lines */}
-            <line x1="300" y1="20" x2="300" y2="580" stroke="currentColor" strokeWidth="0.75" strokeDasharray="4 8" opacity="0.25" />
-            <line x1="20" y1="300" x2="580" y2="300" stroke="currentColor" strokeWidth="0.75" strokeDasharray="4 8" opacity="0.25" />
-            
-            {/* Data Node Pulse Markers */}
-            <circle cx="300" cy="70" r="3.5" fill="currentColor" opacity="0.8" className="quantum-node pulse-dot-1" />
-            <circle cx="530" cy="300" r="3.5" fill="currentColor" opacity="0.8" className="quantum-node pulse-dot-2" />
-            <circle cx="300" cy="530" r="3.5" fill="currentColor" opacity="0.8" className="quantum-node pulse-dot-3" />
-            <circle cx="70" cy="300" r="3.5" fill="currentColor" opacity="0.8" className="quantum-node pulse-dot-4" />
-          </svg>
-        </div>
-
-        {/* Ambient Scientific HUD Nodes - Positioned only in the top open area */}
-        <div className="hero-telemetry-tag tag-top-left">
-          <span className="telemetry-bracket">[</span>
-          <span className="telemetry-dot" />
-          <code>ENGINE: AIRGAPPED LOCAL</code>
-          <span className="telemetry-bracket">]</span>
-        </div>
-        <div className="hero-telemetry-tag tag-top-right">
-          <span className="telemetry-bracket">[</span>
-          <span className="telemetry-dot" />
-          <code>RUNTIME: PYTORCH · SKLEARN</code>
-          <span className="telemetry-bracket">]</span>
-        </div>
-      </div>
       <div className="site-container hero-inner">
-        <a className="release-link" href="#downloads"><span className="release-dot" />DORA {currentRelease.version}<span className="release-divider" />Rilis v2.0 Terbaru<ArrowRight size={14} /></a>
+        <a className="release-link" href="#downloads"><span className="release-dot" />DORA {currentRelease.version}<span className="release-divider" />Unduh Installer Windows<ArrowRight size={14} /></a>
         <h1>Dari data mentah,<br />menjadi <span className="headline-gradient">arah riset.</span></h1>
         <p className="hero-lead">Eksplorasi dataset, rangkai eksperimen machine learning,<br className="desktop-break" /> dan temukan literatur ilmiah. Dalam satu ruang kerja desktop.</p>
         <div className="hero-actions">
@@ -260,7 +215,6 @@ export function HomePage() {
               </button>
             </div>
             <div className="hero-screenshot">
-              <div className="hero-scan-beam" key={heroViewIndex} aria-hidden="true" />
               <Screenshot key={activeHeroView.id} src={activeHeroView.src} title={activeHeroView.title} eager />
             </div>
             <div className="product-frame-footer">
@@ -312,8 +266,8 @@ export function HomePage() {
         {/* Motion Graphic SVG Pipeline Banner */}
         <div className="node-pipeline-motion-banner" aria-hidden="true">
           <div className="pipeline-banner-header">
-            <span className="pipeline-live-tag"><span className="pulse-dot" /> DORA VISUAL GRAPH ENGINE // PIPELINE TOPOLOGY</span>
-            <span className="pipeline-latency">LATENCY: 0ms · 100% LOCAL COMPUTE</span>
+            <span className="pipeline-live-tag"><span className="pulse-dot" /> ALUR VISUAL PIPELINE MACHINE LEARNING</span>
+            <span className="pipeline-latency">100% KOMPUTASI DATASET LOKAL</span>
           </div>
           <svg className="pipeline-graph-svg" viewBox="0 0 960 110" fill="none" preserveAspectRatio="xMidYMid meet">
             {/* Animated Laser Connections */}
@@ -382,7 +336,7 @@ export function HomePage() {
 
     <section id="preview" className="site-container content-section preview-section" aria-labelledby="preview-heading">
       <div className="section-heading centered-heading">
-        <span className="eyebrow"><Activity size={13} className="motion-pulse-icon" /> Teater Eksplorasi Visual</span>
+        <span className="eyebrow"><Activity size={13} className="motion-pulse-icon" /> Galeri Ruang Kerja DORA</span>
         <h2 id="preview-heading">Bukan sekadar cerita.<br /><span>Ini ruang kerjanya.</span></h2>
         <p>Tangkapan layar asli resolusi penuh dari DORA. Jelajahi 14 ruang kerja dan modul analisis secara interaktif.</p>
       </div>
@@ -404,26 +358,21 @@ export function HomePage() {
           ))}
         </div>
 
-        {/* Cybernetic Motion Graphic Frame */}
+        {/* Desktop Application Window Frame */}
         <div className="preview-hud-wrapper" key={scanPulse}>
-          <div className="hud-corner top-left" aria-hidden="true" />
-          <div className="hud-corner top-right" aria-hidden="true" />
-          <div className="hud-corner bottom-left" aria-hidden="true" />
-          <div className="hud-corner bottom-right" aria-hidden="true" />
-          <div className="preview-scanline-laser" aria-hidden="true" />
-
-          {/* HUD Top Bar */}
+          {/* Window Top Bar */}
           <div className="preview-hud-top">
-            <div className="hud-stream-status">
-              <span className="hud-beacon" aria-hidden="true" />
-              <span className="hud-code-label">STREAM // VIEW [{String(previewIndex + 1).padStart(2, '0')}/{String(previews.length).padStart(2, '0')}]</span>
+            <div className="frame-decor-dots" aria-hidden="true">
+              <i className="dot-red" />
+              <i className="dot-yellow" />
+              <i className="dot-green" />
             </div>
             <div className="hud-center-title">
               <span className="hud-tag-pill">{activePreview.tag}</span>
               <strong>{cleanProductText(activePreview.title)}</strong>
             </div>
             <div className="hud-actions">
-              <span className="hud-metric">1920×1080 NATIVE</span>
+              <span className="hud-metric">{previewIndex + 1} / {previews.length} · 1080p</span>
               <button
                 type="button"
                 className="hud-expand-btn"
@@ -435,7 +384,6 @@ export function HomePage() {
               </button>
             </div>
           </div>
-
           {/* Main Screenshot Screen */}
           <div className="preview-screen-viewport">
             <Screenshot key={activePreview.id} src={activePreview.imageSrc || '/screenshots/overview.png'} title={cleanProductText(activePreview.title)} />
@@ -636,12 +584,15 @@ export function HomePage() {
         </div>
 
         <div className="download-cards-container">
-          {/* Card Versi 2 (Terbaru) */}
-          <div className="download-card is-primary">
+          {/* Official DORA Desktop Installer Card */}
+          <div className="download-card">
             <div className="download-card-heading">
               <span className="download-icon"><Download size={22} /></span>
-              <span><strong>DORA v2</strong><small>Installer resmi · {currentRelease.version}</small></span>
-              <span className="release-label">Rilis Terbaru</span>
+              <div className="download-card-title-group">
+                <strong>DORA Desktop</strong>
+                <small>Installer Windows 64-bit · {currentRelease.version}</small>
+              </div>
+              <span className="release-label">Versi {currentRelease.version}</span>
             </div>
             <div className="download-file">{currentRelease.filename}</div>
             <dl className="release-facts">
@@ -651,39 +602,14 @@ export function HomePage() {
             </dl>
             <a className="button primary full-width" href={currentRelease.url} download>
               <Download size={16} />
-              <span>Unduh DORA v2 (.exe)</span>
+              <span>Unduh DORA (.exe)</span>
               <ArrowUpRight size={15} />
             </a>
-            <p className="download-origin"><ShieldCheck size={14} />Rilis Utama Windows x64</p>
+            <p className="download-origin"><ShieldCheck size={14} />Rilis Resmi Windows x64</p>
             <details className="checksum-details">
               <summary>Verifikasi integritas file SHA256<Plus size={15} /></summary>
               <CopyControl value={currentRelease.sha256} label="SHA256" />
               <CopyControl value={`Get-FileHash -Algorithm SHA256 "${currentRelease.filename}"`} label="Perintah PowerShell" />
-            </details>
-          </div>
-
-          {/* Card Versi 1 (Sebelumnya) */}
-          <div className="download-card is-secondary">
-            <div className="download-card-heading">
-              <span className="download-icon is-muted"><Download size={20} /></span>
-              <span><strong>DORA v1</strong><small>Installer arsip · {legacyRelease.version}</small></span>
-              <span className="release-label is-previous">Rilis Sebelumnya</span>
-            </div>
-            <div className="download-file">{legacyRelease.filename}</div>
-            <dl className="release-facts">
-              <div><dt>Versi</dt><dd>{legacyRelease.version}</dd></div>
-              <div><dt>Ukuran</dt><dd>{legacyRelease.size}</dd></div>
-              <div><dt>Pembaruan</dt><dd>{legacyRelease.updated}</dd></div>
-            </dl>
-            <a className="button secondary full-width" href={legacyRelease.url} download>
-              <Download size={16} />
-              <span>Unduh DORA v1 (.exe)</span>
-              <ArrowUpRight size={15} />
-            </a>
-            <details className="checksum-details">
-              <summary>Verifikasi integritas file SHA256<Plus size={15} /></summary>
-              <CopyControl value={legacyRelease.sha256} label="SHA256" />
-              <CopyControl value={`Get-FileHash -Algorithm SHA256 "${legacyRelease.filename}"`} label="Perintah PowerShell" />
             </details>
           </div>
 

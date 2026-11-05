@@ -20,7 +20,7 @@ interface WindowsDefenderGuideModalProps {
 export const WindowsDefenderGuideModal: React.FC<WindowsDefenderGuideModalProps> = ({
   isOpen,
   onClose,
-  filename = 'Data-Overview-Research-Assistant-v2-Setup.exe',
+  filename = 'Data-Overview-Research-Assistant-v2.0.0-Setup.exe',
 }) => {
   // Lock body scroll and register ESC key handler
   useEffect(() => {

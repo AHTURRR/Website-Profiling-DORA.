@@ -169,14 +169,10 @@
   background: #ffffff;
   border-color: #d8cde9;
 }
-:root[data-theme="light"] .download-card.is-primary {
+:root[data-theme="light"] .download-card {
   background: #ffffff;
   border-color: #9e87cf;
   box-shadow: 0 14px 36px rgba(94, 63, 184, 0.08);
-}
-:root[data-theme="light"] .download-card.is-secondary {
-  background: #f9f8fc;
-  border-color: #d2c8e3;
 }
 :root[data-theme="light"] .download-icon.is-muted {
   background: #eeeaf5;

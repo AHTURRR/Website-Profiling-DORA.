@@ -24,7 +24,7 @@ Stack: React 19, TypeScript 6, Vite 8, CSS, dan ikon Lucide. Tidak ada dependens
   - **Fitur & Workflow Node Editor**: ringkasan tiga disiplin riset utama, direktori 10 modul bawaan, serta sorotan Visual Node Editor.
   - **Pratinjau (Galeri)**: penjelajah 14 tangkapan layar asli DORA.
   - **Katalog Add-ons (`#addons`)**: struktur 4 jenis ekstensi opsional (`Plugin`, `Integrasi`, `Template`, `Perangkat pendamping`) beserta empty state jujur dan kriteria verifikasi katalog.
-  - **Pusat Unduhan, Spesifikasi, Panduan & FAQ**: installer Windows `v2.0.0` (dan arsip `v1.0.0`), verifikasi checksum SHA256, panduan instalasi installer vs source code, dan 10 FAQ produk.
+  - **Pusat Unduhan, Spesifikasi, Panduan & FAQ**: installer resmi Windows `v2.0.0`, verifikasi checksum SHA256, panduan instalasi installer vs source code, dan 10 FAQ produk.
   - **Repositori Utama (`#github`)**: akses ke kode sumber aplikasi desktop, catatan rilis, GitHub Issues, halaman tim, serta pembedaan tegas antara repositori aplikasi desktop (`NezzyGremory/Data-Overview-Research-Assistant`) dan repositori website profil (`AHTURRR/Website-Profiling-DORA.`).
 - `/tim`: pengantar Metriks Studio berdasarkan `credits.json`, enam anggota tim pengembang dengan foto profil resmi dan rincian jobdesk terverifikasi, sumber kredit resmi, Special Thanks (`UIN K.H. Abdurrahman Wahid Pekalongan`), serta navigasi kembali ke beranda dan repositori.
 - URL yang tidak dikenal menampilkan halaman pemulihan 404 dengan tautan kembali ke beranda.
