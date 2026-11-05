@@ -279,42 +279,54 @@
   background: rgba(245, 158, 11, 0.15);
   border-color: rgba(217, 119, 6, 0.35);
 }
-:root[data-theme="light"] .spec-grid > div {
+:root[data-theme="light"] .spec-card {
   background: #ffffff;
-  border-color: #dcd6e8;
+  border-color: #d6cee6;
+  box-shadow: 0 8px 24px rgba(94, 63, 184, 0.06);
 }
-:root[data-theme="light"] .spec-grid > div:hover {
+:root[data-theme="light"] .spec-card:hover {
   border-color: #8c75c7;
-  box-shadow: 0 4px 16px rgba(104, 84, 223, 0.08);
+  box-shadow: 0 14px 32px rgba(104, 84, 223, 0.11);
+}
+:root[data-theme="light"] .spec-card-head {
+  border-bottom-color: #ece6f5;
+}
+:root[data-theme="light"] .spec-icon-badge {
+  background: #f2ecfc;
+  border-color: #d4c4ef;
+  color: #5e3fb8;
+}
+:root[data-theme="light"] .spec-category-pill {
+  color: #4a328a;
+  background: #f5f1fc;
+  border-color: #ded3f2;
+}
+:root[data-theme="light"] .spec-card-body p {
+  color: #4c465e;
 }
 :root[data-theme="light"] .team-card {
   background: #ffffff;
-  border-color: #dcd6e8;
+  border-color: #d6cee6;
+  box-shadow: 0 10px 28px rgba(94, 63, 184, 0.07);
 }
 :root[data-theme="light"] .team-card:hover {
   border-color: #8c75c7;
-  box-shadow: 0 12px 28px rgba(104, 84, 223, 0.1);
+  box-shadow: 0 16px 36px rgba(104, 84, 223, 0.12);
 }
-:root[data-theme="light"] .member-visual { background: #eae2f4; border-color: #c5b3d7; }
-:root[data-theme="light"] .member-visual-1 { background: #e6ecf1; border-color: #bdcad5; }
-:root[data-theme="light"] .member-visual-2 { background: #ede5ee; border-color: #cbb9ce; }
-:root[data-theme="light"] .member-photo-overlay {
-  background: linear-gradient(180deg, rgba(247, 243, 253, 0.45) 0%, rgba(247, 243, 253, 0.08) 45%, rgba(245, 240, 252, 0.82) 100%);
+:root[data-theme="light"] .member-visual { background: #eae2f4; border-bottom-color: #dcd4eb; }
+:root[data-theme="light"] .member-visual-1 { background: #e6ecf1; }
+:root[data-theme="light"] .member-visual-2 { background: #ede5ee; }
+:root[data-theme="light"] .member-role-badge {
+  color: #4d319c;
+  background: #f2ecfc;
+  border-color: #d4c5ed;
 }
-:root[data-theme="light"] .member-discipline,
-:root[data-theme="light"] .member-hud-tag,
-:root[data-theme="light"] .member-index {
-  color: #3b285b;
-  background: rgba(255, 255, 255, 0.88);
-  border-color: rgba(140, 118, 186, 0.35);
+:root[data-theme="light"] .member-num {
+  color: #847a9e;
 }
-:root[data-theme="light"] .member-jobdesk-tag {
-  color: #553585;
-  background: #f2ebfc;
-  border-color: #cfc0e8;
+:root[data-theme="light"] .member-jobdesk-text {
+  color: #3a354b;
 }
-:root[data-theme="light"] :is(.member-discipline, .member-index, .dummy-label) { color: #584869; }
-:root[data-theme="light"] .dummy-label { border-color: #b5a5c8; }
 :root[data-theme="light"] .team-section .section-heading strong { color: var(--site-text); }
 :root[data-theme="light"] .content-dialog { box-shadow: 0 25px 90px #251b3e2e; }
 :root[data-theme="light"] .content-dialog::backdrop { background: #241b3e80; }

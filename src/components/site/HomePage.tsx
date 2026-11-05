@@ -154,13 +154,33 @@ export function HomePage() {
   return <>
     <section id="hero" className="new-hero">
       <div className="hero-light" aria-hidden="true" />
+      <div className="hero-orbital-backdrop" aria-hidden="true">
+        <div className="hero-engine-centerpiece">
+          <div className="engine-quantum-halo" />
+          <div className="engine-radar-ring" />
+          <svg className="engine-gyro-svg" viewBox="0 0 600 600" fill="none">
+            <circle cx="300" cy="300" r="280" stroke="currentColor" strokeWidth="0.8" strokeDasharray="3 7" opacity="0.25" className="engine-spin-slow" />
+            <circle cx="300" cy="300" r="230" stroke="currentColor" strokeWidth="1.2" strokeDasharray="18 10 4 10" opacity="0.35" className="engine-spin-rev" />
+            <ellipse cx="300" cy="300" rx="260" ry="110" stroke="currentColor" strokeWidth="1" strokeDasharray="8 6" opacity="0.3" className="engine-orbit-x" />
+            <ellipse cx="300" cy="300" rx="110" ry="260" stroke="currentColor" strokeWidth="1" strokeDasharray="8 6" opacity="0.3" className="engine-orbit-y" />
+            <circle cx="300" cy="300" r="160" stroke="currentColor" strokeWidth="1" opacity="0.2" />
+            <circle cx="300" cy="300" r="90" stroke="currentColor" strokeWidth="1.5" strokeDasharray="24 16" opacity="0.4" className="engine-spin-medium" />
+            <circle cx="300" cy="300" r="40" stroke="currentColor" strokeWidth="1" opacity="0.25" />
+            <line x1="300" y1="20" x2="300" y2="580" stroke="currentColor" strokeWidth="0.75" strokeDasharray="4 8" opacity="0.25" />
+            <line x1="20" y1="300" x2="580" y2="300" stroke="currentColor" strokeWidth="0.75" strokeDasharray="4 8" opacity="0.25" />
+            <circle cx="300" cy="70" r="3.5" fill="currentColor" opacity="0.8" className="quantum-node pulse-dot-1" />
+            <circle cx="530" cy="300" r="3.5" fill="currentColor" opacity="0.8" className="quantum-node pulse-dot-2" />
+            <circle cx="300" cy="530" r="3.5" fill="currentColor" opacity="0.8" className="quantum-node pulse-dot-3" />
+            <circle cx="70" cy="300" r="3.5" fill="currentColor" opacity="0.8" className="quantum-node pulse-dot-4" />
+          </svg>
+        </div>
+      </div>
       <div className="site-container hero-inner">
-        <a className="release-link" href="#downloads"><span className="release-dot" />DORA {currentRelease.version}<span className="release-divider" />Unduh Installer Windows<ArrowRight size={14} /></a>
         <h1>Dari data mentah,<br />menjadi <span className="headline-gradient">arah riset.</span></h1>
         <p className="hero-lead">Eksplorasi dataset, rangkai eksperimen machine learning,<br className="desktop-break" /> dan temukan literatur ilmiah. Dalam satu ruang kerja desktop.</p>
         <div className="hero-actions">
           <a className="button primary" href="#downloads"><Download size={17} />Unduh untuk Windows</a>
-          <a className="button secondary" href="#preview">Jelajahi {productConfig.previews.length} tampilan<ArrowRight size={16} /></a>
+          <a className="button secondary" href="#preview">Lihat {productConfig.previews.length} ruang kerja<ArrowRight size={16} /></a>
           <a className="button tertiary web-beta-hero-btn" href={doraWebUrl} target="_blank" rel="noopener noreferrer">
             <Globe size={15} />
             <span>Buka DORA Web</span>
@@ -206,20 +226,20 @@ export function HomePage() {
                 </span>
                 <img src="/brand/about-brand-mark.png" width="16" height="16" alt="" />
                 <strong>DORA Desktop</strong>
-                <span className="frame-version-pill">{currentRelease.version}</span>
                 <span className="frame-stage-badge">{activeHeroView.stage}</span>
               </div>
-              <button type="button" onClick={() => openPreview('hero')} aria-label={`Perbesar screenshot ${activeHeroView.label}`}>
+              <button type="button" onClick={() => openPreview('hero')} aria-label={`Perbesar pratinjau ${activeHeroView.label}`}>
                 <Maximize2 size={13} />
                 <span>Perbesar layar</span>
               </button>
             </div>
             <div className="hero-screenshot">
+              <div key={`beam-${heroViewIndex}`} className="hero-scan-beam" aria-hidden="true" />
               <Screenshot key={activeHeroView.id} src={activeHeroView.src} title={activeHeroView.title} eager />
             </div>
             <div className="product-frame-footer">
               <p><strong>{activeHeroView.label}:</strong> {activeHeroView.summary}</p>
-              <span>Tangkapan layar asli DORA {currentRelease.version}</span>
+              <span>Antarmuka Aplikasi Desktop DORA</span>
             </div>
           </div>
         </div>
@@ -257,7 +277,7 @@ export function HomePage() {
 
     <section id="features" className="site-container content-section">
       <div className="section-heading"><div><span className="eyebrow">Satu alur. Banyak kemungkinan.</span><h2>Lebih sedikit berpindah.<br /><span>Lebih banyak menemukan.</span></h2></div><p>Dari memahami data sampai menyusun argumen ilmiah. DORA menghubungkan alat yang Anda perlukan dalam satu aplikasi.</p></div>
-      <div className="module-grid">{modules.map((module, index) => { const Icon = module.icon; const item = features.find(f => f.id === module.id); return <article className="module-card" key={module.id}><div className="module-top"><Icon size={25} /><span>0{index + 1}</span></div><span className="module-label">{module.label}</span><h3>{module.title}</h3><p>{module.text}</p>{item && <button className="text-button" onClick={() => setFeature(item)}>Jelajahi modul<Plus size={16} /></button>}</article>; })}</div>
+      <div className="module-grid">{modules.map((module, index) => { const Icon = module.icon; const item = features.find(f => f.id === module.id); return <article className="module-card" key={module.id}><div className="module-top"><Icon size={25} /><span>0{index + 1}</span></div><span className="module-label">{module.label}</span><h3>{module.title}</h3><p>{module.text}</p>{item && <button className="text-button" onClick={() => setFeature(item)}>Pelajari modul<Plus size={16} /></button>}</article>; })}</div>
       <details className="all-features"><summary>Semua kemampuan bawaan DORA<span>{features.length} modul utama<Plus size={18} /></span></summary><div className="feature-directory">{features.map(item => <button key={item.id} onClick={() => setFeature(item)}>{cleanProductText(item.title)}<ArrowUpRight size={16} /></button>)}</div></details>
     </section>
 
@@ -328,7 +348,7 @@ export function HomePage() {
           </div>
           <div className="workflow-image">
             <div className="image-caption"><Workflow size={16} /><span>Visual Node Editor</span><span className="caption-spacer" />DORA desktop</div>
-            <Screenshot src="/screenshots/node-editor.png" title="Screenshot asli Visual Node Editor DORA dengan kanvas pipeline machine learning" />
+            <Screenshot src="/screenshots/node-editor.png" title="Pratinjau Visual Node Editor DORA dengan kanvas pipeline machine learning" />
           </div>
         </div>
       </div>
@@ -336,9 +356,9 @@ export function HomePage() {
 
     <section id="preview" className="site-container content-section preview-section" aria-labelledby="preview-heading">
       <div className="section-heading centered-heading">
-        <span className="eyebrow"><Activity size={13} className="motion-pulse-icon" /> Galeri Ruang Kerja DORA</span>
-        <h2 id="preview-heading">Bukan sekadar cerita.<br /><span>Ini ruang kerjanya.</span></h2>
-        <p>Tangkapan layar asli resolusi penuh dari DORA. Jelajahi 14 ruang kerja dan modul analisis secara interaktif.</p>
+        <span className="eyebrow"><Activity size={13} className="motion-pulse-icon" /> Pratinjau Antarmuka DORA</span>
+        <h2 id="preview-heading">Dirancang untuk kejelasan.<br /><span>Disusun untuk alur riset.</span></h2>
+        <p>Dokumentasi visual antarmuka aplikasi desktop DORA pada setiap tahapan kerja, mulai dari persiapan dataset, pemodelan machine learning, hingga penelusuran literatur ilmiah.</p>
       </div>
 
       <div className="preview-theater">
@@ -377,7 +397,7 @@ export function HomePage() {
                 type="button"
                 className="hud-expand-btn"
                 onClick={() => openPreview('gallery')}
-                aria-label={`Perbesar screenshot ${activePreview.title} layar penuh`}
+                aria-label={`Perbesar pratinjau ${activePreview.title} layar penuh`}
               >
                 <Maximize2 size={14} />
                 <span>Perbesar</span>
@@ -421,7 +441,7 @@ export function HomePage() {
         </div>
 
         {/* Thumbnail Selector Ribbon */}
-        <div className="preview-thumb-strip" role="tablist" aria-label="Daftar thumbnail screenshot">
+        <div className="preview-thumb-strip" role="tablist" aria-label="Daftar thumbnail pratinjau">
           {previews.map((item, index) => {
             const isCurrent = previewIndex === index;
             return (
@@ -634,7 +654,55 @@ export function HomePage() {
       </div>
     </section>
 
-    <section id="requirements" className="site-container requirements-section-new"><div><span className="eyebrow">Sebelum mulai</span><h2>Pastikan perangkat<br />Anda siap.</h2><p>Spesifikasi dasar dari dokumentasi produk.</p></div><div className="spec-grid"><div><Monitor size={20} /><span>Sistem operasi</span><strong>Windows 10 / 11</strong><small>64-bit · Windows 10 build 19041+</small></div><div><Cpu size={20} /><span>Memori</span><strong>{requirements.ramMinimum}</strong><small>8 GB atau lebih disarankan</small></div><div><HardDrive size={20} /><span>Penyimpanan</span><strong>500 MB</strong><small>Ditambah ruang untuk dataset Anda</small></div><div><Code2 size={20} /><span>Runtime</span><strong>Siap dari installer</strong><small>Tidak perlu memasang Python terpisah</small></div></div></section>
+    <section id="requirements" className="site-container requirements-section-new">
+      <div>
+        <span className="eyebrow">Spesifikasi Perangkat</span>
+        <h2>Pastikan perangkat<br />Anda siap.</h2>
+        <p>Kebutuhan perangkat keras dan sistem dasar agar seluruh modul komputasi lokal berjalan optimal.</p>
+      </div>
+      <div className="spec-grid">
+        <article className="spec-card">
+          <div className="spec-card-head">
+            <span className="spec-icon-badge"><Monitor size={18} /></span>
+            <span className="spec-category-pill">Sistem Operasi</span>
+          </div>
+          <div className="spec-card-body">
+            <strong>Windows 10 / 11 (64-bit)</strong>
+            <p>Mendukung arsitektur x64 · Windows 10 build 19041 atau lebih baru</p>
+          </div>
+        </article>
+        <article className="spec-card">
+          <div className="spec-card-head">
+            <span className="spec-icon-badge"><Cpu size={18} /></span>
+            <span className="spec-category-pill">Prosesor (CPU)</span>
+          </div>
+          <div className="spec-card-body">
+            <strong>Intel Core i3 / AMD Ryzen 3</strong>
+            <p>Prosesor multi-core 64-bit untuk komputasi tabel & eksperimen ML lokal</p>
+          </div>
+        </article>
+        <article className="spec-card">
+          <div className="spec-card-head">
+            <span className="spec-icon-badge"><Layers size={18} /></span>
+            <span className="spec-category-pill">Memori (RAM)</span>
+          </div>
+          <div className="spec-card-body">
+            <strong>Minimum {requirements.ramMinimum}</strong>
+            <p>8 GB atau lebih disarankan untuk pemrosesan dataset berukuran besar</p>
+          </div>
+        </article>
+        <article className="spec-card">
+          <div className="spec-card-head">
+            <span className="spec-icon-badge"><HardDrive size={18} /></span>
+            <span className="spec-category-pill">Penyimpanan</span>
+          </div>
+          <div className="spec-card-body">
+            <strong>500 MB Ruang Kosong</strong>
+            <p>Untuk instalasi aplikasi utama ditambah ruang kerja penyimpanan dataset</p>
+          </div>
+        </article>
+      </div>
+    </section>
 
     <section id="installation" className="site-container content-section installation-new">
       <div className="installation-card-shell">

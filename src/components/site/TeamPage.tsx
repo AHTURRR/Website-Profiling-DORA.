@@ -34,18 +34,17 @@ export function TeamPage() {
                 src={member.photo}
                 alt={`Foto profil ${member.name}`}
                 className="member-photo"
+                style={member.photoPosition ? { objectPosition: member.photoPosition } : undefined}
                 loading="lazy"
               />
-              <div className="member-photo-overlay" aria-hidden="true" />
-              <div className="member-hud-meta">
-                <span className="member-discipline">{member.discipline}</span>
-              </div>
-              <span className="member-index">0{index + 1} / Metriks Studio</span>
             </div>
             <div className="member-copy">
+              <div className="member-meta-top">
+                <span className="member-role-badge">{member.role}</span>
+                <span className="member-num">0{index + 1}</span>
+              </div>
               <h3>{member.name}</h3>
-              <span className="member-role">{member.role}</span>
-              <p>{member.jobdesk}</p>
+              <p className="member-jobdesk-text">{member.jobdesk}</p>
             </div>
           </article>
         ))}
