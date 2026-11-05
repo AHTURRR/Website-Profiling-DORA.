@@ -70,7 +70,7 @@ export const teamMembers: TeamMember[] = [
     initials: 'MZ',
     discipline: 'Analysis',
     photo: '/team/zaki-musyaffa.jpg',
-    photoPosition: 'center 20%',
+    photoPosition: 'center 14%',
     jobdesk: 'Bertanggung jawab dalam analisis desain sistem antarmuka dan evaluasi fungsional alur pengguna (Design Analysis) untuk mendukung efektivitas riset pada DORA.',
   },
 ];
